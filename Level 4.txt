@@ -1,0 +1,6245 @@
+///// FILE: "Sandbox Level 4/backend/babel.config.js"
+
+export default {
+  presets: [
+    "@babel/preset-env", // Converts new export/import syntax to old export/import syntax which is compatible with Jest
+    "@babel/preset-typescript", // Converts TypeScript to JavaScript
+  ],
+};
+
+
+///// FILE: "Sandbox Level 4/backend/backend.code-workspace"
+
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
+
+///// FILE: "Sandbox Level 4/backend/package.json"
+
+{
+  "scripts": {
+    "start": "npm run close-port && npm run start-server",
+    "start2": "npm run open-tab && npm run start-build",
+    "build": "npm run build-production",
+    "test": "npx jest --watch createAccount",
+    "deploy": "npm run upload-zip",
+    "------": "------------------------------------------------",
+    "build-production": "npx webpack --mode=production",
+    "open-tab": "npx open-cli http://localhost:8000",
+    "close-port": "npx kill-port 8000",
+    "start-server": "npx nodemon ./dist/index.js",
+    "start-build": "npx webpack --watch",
+    "upload-zip": "aws lambda update-function-code --function-name sandbox-level-4 --zip-file fileb://dist/index.js.zip"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.782.0",
+    "@aws-sdk/lib-dynamodb": "^3.782.0",
+    "axios": "^1.8.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/zip-webpack-plugin": "^3.0.6",
+    "babel-loader": "^10.0.0",
+    "jest": "^29.7.0",
+    "kill-port": "^2.0.1",
+    "nodemon": "^3.1.9",
+    "open-cli": "^8.0.0",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "zip-webpack-plugin": "^4.0.3"
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/index.ts"
+
+import express, { json, Request, Response } from "express";
+import cors from "cors";
+import { root } from "./routes/root";
+import { api } from "./routes/api";
+import { quote } from "./routes/quote";
+import { trivia } from "./routes/trivia";
+import { env } from "./routes/env";
+import serverless from "serverless-http";
+import dotenv from "dotenv";
+import { crud } from "./routes/crud";
+import { read } from "./routes/read";
+import { signup } from "./routes/signup";
+
+dotenv.config();
+
+const hostname = "localhost"; // Local domain
+const port = 8000; // Common backends ports: 8000, 9000, 3000
+const path = "/"; // The path where server info will be rendered in a browser
+
+const app = express(); // Instantiate the Express.js object
+app.use(cors());
+app.use(json());
+
+app.get("/", root); // The handler runs when the path is visited in the URL
+app.get("/api", api);
+app.get("/quote", quote);
+app.get("/trivia", trivia);
+app.get("/env", env);
+app.get("/crud", crud);
+app.post("/read", read);
+app.post("/signup", signup);
+
+const mode = process.env.mode;
+const isRunningLocally = mode === "development";
+console.log(`The mode is ${mode}`, `isRunningLocally is ${isRunningLocally}`);
+if (isRunningLocally) app.listen(port, hostname, handleListen); // The server listens at the specified hostname and port
+
+function handleListen() {
+  console.log(`Listening on http://${hostname}:${port}...`);
+  console.log(`Open a new terminal and type 'npm run start2'`);
+  console.log(`To debug, start this server in a JavaScript Debug Terminal`);
+}
+
+export const handler = serverless(app); // Convert Express app into a serverless app compatible wit AWS Lambda
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/Account.ts"
+
+export type Account = {
+  email: string;
+  password: string;
+  name: string;
+  phone: number;
+};
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/addition.test.ts"
+
+import { addition } from "./addition";
+
+describe("The addition function...", () => {
+  it("adds positive numbers", addPositives);
+  it("adds a positive and negative number", addPositiveNegative);
+  it("adds negative numbers", addNegatives);
+  it("return NaN when strings are used", addStrings);
+  it("adds number strings", addNumberStrings);
+});
+
+function addPositives() {
+  //ARRANGE: Set the variables for the test
+  const x = 3;
+  const y = 4;
+
+  //ACT: Use the unit with the variables
+  const result = addition(x, y);
+
+  //ASSERT: Check if the unit works as expected
+  expect(result).toBe(7);
+}
+
+function addPositiveNegative() {
+  //ARRANGE
+  const x = 3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-1);
+}
+
+function addNegatives() {
+  //ARRANGE
+  const x = -3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-7);
+}
+
+function addStrings() {
+  //ARRANGE
+  const x = "dog";
+  const y = "cat";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBeNaN();
+  // expect(result).toBe(NaN);
+}
+
+function addNumberStrings() {
+  //ARRANGE
+  const x = "3";
+  const y = "4";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(7);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/addition.ts"
+
+export function addition(x: number | string, y: number | string) {
+  const result = Number(x) + Number(y);
+  return result;
+}
+
+// const result = addition([16, 27, "cat", 45, "five", 60, "true"]);
+
+// function getGreeting(greetings: Array<string>) {
+//   return greetings[0];
+// }
+
+// const result2 = getGreeting(["hello", "hi", "what's up"]);
+
+// if (result2 === "123" || result2 === "hi")
+//   console.log("Those are my favorite greetings");
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/createAccount.test.ts"
+
+import { Account } from "./Account";
+import { createAccount } from "./createAccount";
+
+describe("createAccount", () => {
+  it("returns an account if the email is available (not in the database)", async () => {
+    // ARRANGE
+    const data: any = {
+      email: "available@email.com",
+      password: "available",
+    };
+
+    // ACT
+    const result = await createAccount(data);
+
+    // ASSERT
+    expect(result).toHaveProperty("email");
+    expect(result).toHaveProperty("password");
+
+    // CLEANUP
+    // Insert code here to delete the account so it becomes available again
+  });
+  it("returns nothing if the email is not available (already in the database)", async () => {
+    // ARRANGE
+    const data: any = {
+      email: "aaa@aaa.com",
+      password: "other password",
+    };
+
+    // ACT
+    const result = await createAccount(data);
+
+    // ASSERT
+    expect(result).toBeUndefined();
+  });
+});
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/createAccount.ts"
+
+import { GetCommandInput } from "@aws-sdk/lib-dynamodb";
+import { Account } from "./Account";
+import { niceClient } from "./niceClient";
+
+export async function createAccount(
+  signUp: Account
+): Promise<Account | undefined> {
+  const request: GetCommandInput = {
+    TableName: "logins",
+    Key: { email: signUp.email },
+  };
+
+  const response = await niceClient.get(request);
+  const result = response.Item as Account;
+  const doesAccountExist = result !== undefined;
+
+  if (doesAccountExist) return undefined;
+
+  const request2 = {
+    TableName: "logins",
+    Item: { email: signUp.email, password: signUp.password },
+  };
+
+  const response2 = await niceClient.put(request2);
+  const account = signUp;
+  return account;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/dynamodb/createDemo.ts"
+
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export async function createDemo() {
+  const apiKey = {
+    region: process.env.region,
+    credentials: {
+      accessKeyId: process.env.accessKeyId,
+      secretAccessKey: process.env.secretAccessKey,
+    },
+  };
+
+  const client = new DynamoDB(apiKey);
+  const niceClient = DynamoDBDocument.from(client);
+
+  const request = {
+    TableName: "logins",
+    Item: { email: "new@email.com", password: "new" },
+  };
+
+  const response = await niceClient.put(request);
+  return response;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/dynamodb/deleteDemo.ts"
+
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export async function deleteDemo() {
+  const apiKey = {
+    region: process.env.region,
+    credentials: {
+      accessKeyId: process.env.accessKeyId,
+      secretAccessKey: process.env.secretAccessKey,
+    },
+  };
+
+  const client = new DynamoDB(apiKey);
+  const niceClient = DynamoDBDocument.from(client);
+
+  const request = {
+    TableName: "logins",
+    Key: { email: "test@email.com" },
+  };
+
+  const response = await niceClient.delete(request);
+  return response;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/dynamodb/readDemo.ts"
+
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export async function readDemo() {
+  const apiKey = {
+    region: process.env.region,
+    credentials: {
+      accessKeyId: process.env.accessKeyId,
+      secretAccessKey: process.env.secretAccessKey,
+    },
+  };
+
+  const client = new DynamoDB(apiKey);
+  const niceClient = DynamoDBDocument.from(client);
+
+  const request = {
+    TableName: "logins",
+    Key: { email: "test@email.com" },
+  };
+
+  const response = await niceClient.get(request);
+  const loginData = response.Item;
+  return loginData;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/dynamodb/updateDemo.ts"
+
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument, UpdateCommandInput } from "@aws-sdk/lib-dynamodb";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export async function updateDemo() {
+  const apiKey = {
+    region: process.env.region,
+    credentials: {
+      accessKeyId: process.env.accessKeyId,
+      secretAccessKey: process.env.secretAccessKey,
+    },
+  };
+
+  const client = new DynamoDB(apiKey);
+  const niceClient = DynamoDBDocument.from(client);
+
+  const request: UpdateCommandInput = {
+    TableName: "logins",
+    Key: { email: "new@email.com" },
+    AttributeUpdates: {
+      name: { Value: "Noo" },
+      phone: { Value: 56789012345 },
+    },
+  };
+
+  const response = await niceClient.update(request);
+  return response;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/getQuote.test.ts"
+
+import { getQuote } from "./getQuote";
+
+describe("getQuote", allTests);
+
+function allTests() {
+  it("receives a response from FavQs API", async () => {
+    //ARRANGE
+    let result: { author: string; quote: string };
+
+    //ACT
+    result = await getQuote();
+
+    //ASSERT
+    expect(result).toHaveProperty("author");
+    expect(result).toHaveProperty("quote");
+  });
+
+  it("receives responses which are different", async () => {
+    //ARRANGE
+    let result1: { author: string; quote: string };
+    let result2: { author: string; quote: string };
+
+    //ACT
+    result1 = await getQuote();
+    result2 = await getQuote();
+
+    //ASSERT
+    expect(result1).toHaveProperty("author");
+    expect(result1).toHaveProperty("quote");
+    expect(result2).toHaveProperty("author");
+    expect(result2).toHaveProperty("quote");
+    expect(result1.author).not.toBe(result2.author);
+    expect(result1.quote).not.toBe(result2.quote);
+  });
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/getQuote.ts"
+
+import axios from "axios";
+
+export async function getQuote() {
+  const response = await axios.get("https://favqs.com/api/qotd");
+  const result = {
+    author: response.data.quote.author,
+    quote: response.data.quote.body,
+  };
+  return result;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/getTrivia.test.ts"
+
+import { getTrivia } from "./getTrivia";
+
+describe("getTrivia", () => {
+  it("accepts a query object with an amount, category, and type, and returns a result.", () => {
+    //ARRANGE
+    const query = {
+      amount: 1,
+      category: 12,
+      type: "multiple",
+    };
+
+    //ACT
+    const result = getTrivia(query);
+
+    //ASSERT
+    expect(result).toBeDefined();
+  });
+  it("accepts a query object and returns a response", async () => {
+    //ARRANGE
+    const query = {
+      amount: 1,
+      category: 12,
+      type: "multiple",
+    };
+
+    //ACT
+    const result = await getTrivia(query);
+    const question: string = result.question;
+    const choices: Array<string> = result.choices;
+    const answer: number = result.answer;
+
+    //ASSERT
+    expect(question).not.toBe("");
+    expect(choices).toBeInstanceOf(Array);
+    expect(Number(answer)).not.toBeNaN();
+  });
+  it.skip("responds with empty values if the amount is 0", async () => {
+    //ARRANGE
+    const query = {
+      amount: 0,
+      category: 12,
+      type: "multiple",
+    };
+
+    //ACT
+    const result = await getTrivia(query);
+    const question: string = result.question;
+    const choices: Array<string> = result.choices;
+    const answer: number = result.answer;
+
+    //EXPECT
+    expect(question).toBe("");
+    expect(choices).toHaveLength(0);
+    expect(answer).toBe(undefined);
+  });
+  it.skip("responds with empty values if the query is empty", async () => {
+    //ARRANGE
+    const query = {} as any;
+
+    //ACT
+    const result = await getTrivia(query);
+    const question: string = result.question;
+    const choices: Array<string> = result.choices;
+    const answer: number = result.answer;
+
+    //EXPECT
+    expect(question).toBe("");
+    expect(choices).toHaveLength(0);
+    expect(answer).toBe(undefined);
+  });
+  it.skip("randomizes the position of the answer", () => {
+    //ARRANGE
+    //ACT
+    //ASSERT
+  });
+});
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/getTrivia.ts"
+
+import axios from "axios";
+
+export async function getTrivia(query: {
+  amount: number;
+  category: number;
+  type: string;
+}) {
+  const { amount, category, type } = query;
+  const url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=${type}`;
+  const response = await axios.get(url);
+
+  const choice1 = response.data.results[0].correct_answer;
+  const choice2 = response.data.results[0].incorrect_answers[0];
+  const choice3 = response.data.results[0].incorrect_answers[1];
+  const choice4 = response.data.results[0].incorrect_answers[2];
+
+  const result = {
+    question: response.data.results[0].question,
+    choices: [choice1, choice2, choice3, choice4],
+    answer: 0,
+  };
+  return result;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/niceClient.ts"
+
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const apiKey = {
+  region: process.env.region,
+  credentials: {
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+  },
+};
+
+const client = new DynamoDB(apiKey);
+export const niceClient = DynamoDBDocument.from(client);
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/readAccount.test.ts"
+
+import { readAccount } from "./readAccount";
+
+describe("readAccount", () => {
+  it("returns an email, password, name, and phone when given a matching email and password", async () => {
+    // ARRANGE
+    const email = "aaa@aaa.com";
+    const password = "aaa";
+
+    //ACT
+    const result = await readAccount(email, password);
+
+    //ASSERT
+    expect(result).toHaveProperty("email");
+    expect(result).toHaveProperty("password");
+    expect(result).toHaveProperty("name");
+    expect(result).toHaveProperty("phone");
+  });
+  it("returns a result with the matching email and password when they are correct", async () => {
+    // ARRANGE
+    const email = "aaa@aaa.com";
+    const password = "aaa";
+
+    //ACT
+    const result = await readAccount(email, password);
+
+    //ASSERT
+    expect(result.email).toBe(email);
+    expect(result.password).toBe(password);
+  });
+  it("doesn't return a result if the email is not in the list", async () => {
+    //ARRANGE
+    const email = "unlisted@email.com";
+    const password = "aaa";
+
+    //ACT
+    const result = await readAccount(email, password);
+
+    //ASSERT
+    expect(result).toBeUndefined();
+  });
+  it("doesn't return a result if the email is an object", async () => {
+    //ARRANGE
+    const email: any = {};
+    const password = "aaa";
+
+    //ACT
+    const result = await readAccount(email, password);
+
+    //ASSERT
+    expect(result).toBeUndefined();
+  });
+  it("doesn't return a result if no email is provided", async () => {
+    //ARRANGE
+    const email: any = undefined;
+    const password = "aaa";
+
+    //ACT
+    const result = await readAccount(email, password);
+
+    //ASSERT
+    expect(result).toBeUndefined();
+  });
+});
+
+
+///// FILE: "Sandbox Level 4/backend/src/modules/readAccount.ts"
+
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument, GetCommandInput } from "@aws-sdk/lib-dynamodb";
+import dotenv from "dotenv";
+import { Account } from "./Account";
+import { niceClient } from "./niceClient";
+
+dotenv.config();
+
+export async function readAccount(
+  targetEmail: string,
+  targetPassword: string
+): Promise<Account | undefined> {
+  if (typeof targetEmail === "object") return undefined;
+  const isEmailFalsey = !targetEmail;
+  if (isEmailFalsey) return undefined;
+
+  const request: GetCommandInput = {
+    TableName: "logins",
+    Key: { email: targetEmail },
+  };
+
+  const response = await niceClient.get(request);
+  let account = response.Item as Account;
+
+  if (account && account.password !== targetPassword) account = undefined;
+
+  return account;
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/api.ts"
+
+import { Request, Response } from "express";
+
+export function api(request: Request, response: Response) {
+  const data = {
+    origin: request.headers.origin,
+    query: request.query,
+  };
+  response.send(data);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/crud.ts"
+
+import { Request, Response } from "express";
+import { readDemo } from "../modules/dynamodb/readDemo";
+import { createDemo } from "../modules/dynamodb/createDemo";
+import { updateDemo } from "../modules/dynamodb/updateDemo";
+import { deleteDemo } from "../modules/dynamodb/deleteDemo";
+
+export async function crud(request: Request, response: Response) {
+  const result = await readDemo();
+  // const result = await createDemo();
+  // const result = await updateDemo();
+  // const result = await deleteDemo();
+  response.send(result);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/env.ts"
+
+import { Request, Response } from "express";
+import dotenv from "dotenv";
+
+dotenv.config(); // It attaches the variables in .env to the process object
+
+export function env(request: Request, response: Response) {
+  const data = { mode: process.env.mode };
+  response.send(data);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/quote.ts"
+
+import { Request, Response } from "express";
+import { getQuote } from "../modules/getQuote";
+
+export async function quote(request: Request, response: Response) {
+  const result = await getQuote();
+  response.send(result);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/read.ts"
+
+import { Request, Response } from "express";
+import { readAccount } from "../modules/readAccount";
+import { Account } from "../modules/Account";
+
+export async function read(request: Request, response: Response) {
+  const email = request.body.email as string;
+  const password = request.body.password as string;
+  const account: Account = await readAccount(email, password);
+  response.send(account);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/root.ts"
+
+import { Request, Response } from "express";
+
+export function root(request: Request, response: Response) {
+  const { url } = request;
+  response.send(
+    `<h1>Sandbox Level 4 Backend</h1><p>Welcome to the backend page. Your path is ${url}</p>`
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/signup.ts"
+
+import { Request, Response } from "express";
+import { Account } from "../modules/Account";
+import { createAccount } from "../modules/createAccount";
+
+export async function signup(request: Request, response: Response) {
+  const data: Account = request.body;
+  const account = await createAccount(data);
+  response.send(account);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/trivia.ts"
+
+import { Request, Response } from "express";
+import { getTrivia } from "../modules/getTrivia";
+
+export async function trivia(request: Request, response: Response) {
+  const query: any = request.query;
+  const result = await getTrivia(query);
+  response.send(result);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/tsconfig.json"
+
+{
+  "compilerOptions": {
+    "module": "Preserve"
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/backend/webpack.config.ts"
+
+import { Configuration } from "webpack";
+import Zip from "zip-webpack-plugin";
+
+export default {
+  module: {
+    rules: [
+      {
+        test: /\.(js|ts)/, // Compile these files with babel-loader
+        exclude: /.(json)/, // Don't combile json files with babel-loader
+        use: "babel-loader",
+      },
+    ],
+  },
+  mode: "development",
+  devtool: "source-map",
+  resolve: {
+    extensions: [".js", ".ts"], // Automatically inserts file extensions in import statements
+  },
+  target: "node",
+  output: {
+    filename: "index.js", // Change the name of the bundle file (default is main.js)
+    library: { type: "commonjs" }, // Prevents tree shaking of unused bundle exports. Indicates that the bundle is a library.
+  },
+  plugins: [new Zip({ include: /^index.js$/ })], // The plugin zips the bundle files into one zip file in the dist folder. The regular expression (regex) is looking for an exact filename match.
+} as Configuration;
+
+
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/babel.config.js"
+
+export default {
+  presets: [
+    // "@babel/preset-env", // Converts new export/import syntax to old export/import syntax which is compatible with Jest
+    "@babel/preset-typescript", // Converts TypeScript to JavaScript
+  ],
+};
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/backendGoogleCloud.code-workspace"
+
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/package.json"
+
+{
+  "scripts": {
+    "start": "npm run close-port && npm run start-server",
+    "start2": "npm run open-tab && npm run start-build",
+    "build": "npm run build-production",
+    "test": "npx vitest getAnswer",
+    "deploy": "gcloud app deploy ./dist/app.yaml",
+    "------": "------------------------------------------------",
+    "build-production": "npx webpack --mode=production",
+    "open-live": "npx open-cli https://sandbox-level-4-rolazaraberin.wl.r.appspot.com",
+    "open-tab": "npx open-cli http://localhost:9000",
+    "close-port": "npx kill-port 9000",
+    "start-server": "npx nodemon ./dist/main.js",
+    "start-build": "npx webpack --watch"
+  },
+  "dependencies": {
+    "@xenova/transformers": "^2.17.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "babel-loader": "^10.0.0",
+    "kill-port": "^2.0.1",
+    "nodemon": "^3.1.9",
+    "open-cli": "^8.0.0",
+    "ts-node": "^10.9.2",
+    "vitest": "^3.1.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/pnpm-workspace.yaml"
+
+onlyBuiltDependencies:
+  - protobufjs
+  - sharp
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/index.ts"
+
+import express, { json, Request, Response, urlencoded } from "express";
+import cors from "cors";
+import { root } from "./routes/root";
+import { api } from "./routes/api";
+import dotenv from "dotenv";
+import { ai } from "./routes/ai";
+import { postDemo } from "./routes/postDemo";
+
+dotenv.config();
+
+const hostname = "localhost"; // Local domain
+const port: any = process.env.PORT; // Common backends ports: 8000, 9000, 3000
+const path = "/"; // The path where server info will be rendered in a browser
+
+const app = express(); // Instantiate the Express.js object
+app.use(cors()); // Allows communication with the frontend
+app.use(urlencoded()); // Allows data to be received from Postman through x-www-form-urlencoded
+app.use(json()); // Allows data to be received from Axios through JSON parameters
+
+app.get("/", root); // The handler runs when the path is visited in the URL
+app.get("/api", api);
+app.post("/ai", ai); // Use the HTTP method POST to receive data securely and unaltered (without special characters like %20)
+app.post("/postDemo", postDemo); // Use the HTTP method POST to listen on this route. POST is a like a channel that the client and server communicate on.
+app.listen(port, hostname, handleListen); // The server listens at the specified hostname and port
+
+function handleListen() {
+  console.log(`Listening on http://${hostname}:${port}...`);
+  console.log(`Open a new terminal and type 'npm run start2'`);
+  console.log(`To debug, start this server in a JavaScript Debug Terminal`);
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/modules/addition.test.ts"
+
+import { addition } from "./addition";
+
+describe("The addition function...", () => {
+  it("adds positive numbers", addPositives);
+  it("adds a positive and negative number", addPositiveNegative);
+  it("adds negative numbers", addNegatives);
+  it("return NaN when strings are used", addStrings);
+  it("adds number strings", addNumberStrings);
+});
+
+function addPositives() {
+  //ARRANGE: Set the variables for the test
+  const x = 3;
+  const y = 4;
+
+  //ACT: Use the unit with the variables
+  const result = addition(x, y);
+
+  //ASSERT: Check if the unit works as expected
+  expect(result).toBe(7);
+}
+
+function addPositiveNegative() {
+  //ARRANGE
+  const x = 3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-1);
+}
+
+function addNegatives() {
+  //ARRANGE
+  const x = -3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-7);
+}
+
+function addStrings() {
+  //ARRANGE
+  const x = "dog";
+  const y = "cat";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBeNaN();
+  // expect(result).toBe(NaN);
+}
+
+function addNumberStrings() {
+  //ARRANGE
+  const x = "3";
+  const y = "4";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(7);
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/modules/addition.ts"
+
+export function addition(x: number | string, y: number | string) {
+  const result = Number(x) + Number(y);
+  return result;
+}
+
+// const result = addition([16, 27, "cat", 45, "five", 60, "true"]);
+
+// function getGreeting(greetings: Array<string>) {
+//   return greetings[0];
+// }
+
+// const result2 = getGreeting(["hello", "hi", "what's up"]);
+
+// if (result2 === "123" || result2 === "hi")
+//   console.log("Those are my favorite greetings");
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/modules/getAnswer.test.ts"
+
+import { getAnswer } from "./getAnswer";
+
+describe("getAnswer", { timeout: 100000 }, () => {
+  it("accepts a question and a context, then returns a response", async () => {
+    // ARRANGE
+    const question =
+      "Which name is also used to describe the Amazon rainforest in English?";
+    const context =
+      "The Amazon rainforest, also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America.";
+
+    // ACT
+    const response = await getAnswer(question, context);
+
+    // ASSERT
+    expect(response).toBeDefined();
+  });
+  it("responds with the correct answer if it's in the context", async () => {
+    // ARRANGE
+    const question =
+      "Which name is also used to describe the Amazon rainforest in English?";
+    const context =
+      "The Amazon rainforest, also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America.";
+
+    // ACT
+    const response = await getAnswer(question, context);
+
+    // ASSERT
+    expect(response).toBe("Amazonia");
+  });
+  it.only("doesn't respond with an answer if it's not in the context", async () => {
+    // ARRANGE
+    const question =
+      "Which name is also used to describe the Amazon rainforest in English?";
+    const context =
+      "The Amazon rainforest is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America.";
+
+    // ACT
+    const response = await getAnswer(question, context);
+
+    // ASSERT
+    expect(response).toBeUndefined();
+  });
+  it("doesn't respond with an answer if there's no question", async () => {
+    // ARRANGE
+    const question = undefined;
+    const context =
+      "The Amazon rainforest, also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America.";
+
+    // ACT
+    const response = await getAnswer(question, context);
+
+    // ASSERT
+    expect(response).toBeUndefined();
+  });
+  it("doesn't respond with an answer if there's no context", async () => {
+    // ARRANGE
+    const question =
+      "Which name is also used to describe the Amazon rainforest in English?";
+    const context = undefined;
+
+    // ACT
+    const response = await getAnswer(question, context);
+
+    // ASSERT
+    expect(response).toBeUndefined();
+  });
+  it("doesn't respond with an answer if there's no question and no context", async () => {
+    // ARRANGE
+    const question = undefined;
+    const context = undefined;
+
+    // ACT
+    const response = await getAnswer(question, context);
+
+    // ASSERT
+    expect(response).toBeUndefined();
+  });
+  it("doesn't respond with an answer if either the question or context are empty strings", async () => {
+    // ARRANGE
+    const question = "";
+    const context = "";
+
+    // ACT
+    const response1 = await getAnswer(question, "placeholder context");
+    const response2 = await getAnswer("placeholder question", context);
+    const response3 = await getAnswer(question, context);
+
+    // ASSERT
+    expect(response1).toBeUndefined();
+    expect(response2).toBeUndefined();
+    expect(response3).toBeUndefined();
+  });
+});
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/modules/getAnswer.ts"
+
+import {
+  pipeline,
+  PretrainedOptions,
+  QuestionAnsweringOutput,
+} from "@xenova/transformers";
+
+const DEFAULT_MODEL = "Xenova/distilbert-base-cased-distilled-squad";
+
+export async function getAnswer(
+  userQuestion: string,
+  userContext: string
+): Promise<string | undefined> {
+  const options: PretrainedOptions = { cache_dir: "ai-models" };
+  const aiModel = await pipeline("question-answering", DEFAULT_MODEL, options);
+  const response = await aiModel(userQuestion, userContext);
+  let { answer, score } = response as QuestionAnsweringOutput;
+  if (score < 0.5) answer = undefined;
+  return answer;
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/routes/ai.ts"
+
+import { Request, Response } from "express";
+import { getAnswer } from "../modules/getAnswer";
+
+export async function ai(request: Request, response: Response) {
+  const { question, context }: any = request.body; // Get URL encoded data or JSON parameters
+  const answer = await getAnswer(question, context);
+  response.send(answer);
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/routes/api.ts"
+
+import { Request, Response } from "express";
+
+export function api(request: Request, response: Response) {
+  const data = {
+    origin: request.headers.origin,
+    query: request.query,
+  };
+  response.send(data);
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/routes/postDemo.ts"
+
+import { Request, Response } from "express";
+
+export function postDemo(request: Request, response: Response) {
+  const data = {
+    origin: request.headers.origin,
+    query: request.query,
+    body: request.body,
+  };
+  response.send(data);
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/src/routes/root.ts"
+
+import { Request, Response } from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export function root(request: Request, response: Response) {
+  const { url } = request;
+  response.send(
+    `<h1>Google Cloud</h1><p>Welcome to the backend page.</p><h6>mode = ${process.env.mode}</h6>`
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/tsconfig.json"
+
+{
+  "compilerOptions": {
+    "module": "Preserve",
+    "types": ["vitest/globals"] // DECLARES THE TEST FUNCTIONS (describe, it, and expect) FOR TYPESCRIPT. LIST OF FOLDERS THAT HAVE DECLARATION FILES.
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/vitest.config.ts"
+
+import { UserConfigExport } from "vitest/config";
+
+export default {
+  test: {
+    globals: true, // ALLOWS THE USE OF describe, it, and expect WITHOUT IMPORTING THEM
+    watch: false, // BY DEFAULT VITEST WATCHES TESTS
+  },
+} as UserConfigExport;
+
+
+///// FILE: "Sandbox Level 4/backendGoogleCloud/webpack.config.ts"
+
+import { Configuration } from "webpack";
+
+export default {
+  module: {
+    rules: [
+      {
+        test: /\.(js|ts)/, // Compile these files with babel-loader
+        exclude: /.(json)/, // Don't combile json files with babel-loader
+        use: "babel-loader",
+      },
+    ],
+  },
+  mode: "development",
+  devtool: "source-map",
+  resolve: {
+    extensions: [".js", ".ts"], // Automatically inserts file extensions in import statements
+  },
+  target: "node",
+  externals: ["@xenova/transformers"], // Don't bundle these packages.
+  externalsType: "commonjs-module", // Tells Webpack to use the module syntax to import external packages/modules.
+} as Configuration;
+
+
+///// FILE: "Sandbox Level 4/frontend/404.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/sandbox-level-4/redirect.js"></script>
+  </head>
+</html>
+
+
+///// FILE: "Sandbox Level 4/frontend/babel.config.js"
+
+export default {
+  presets: [
+    "@babel/preset-env", //Converts the new import/export syntax to the old import/export syntax
+    "@babel/preset-react", //Converts JSX to JavaScript
+    "@babel/preset-typescript", //Removes TypeScript code and makes the file look like JavaScript
+  ],
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/frontend.code-workspace"
+
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "github.copilot.enable": {
+      "*": false,
+      "plaintext": false,
+      "markdown": false,
+      "scminput": false
+    }
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/index.d.ts"
+
+// TypeScript declaration file
+// Declaration files inform TypeScript of data types that were not defined in the source code
+// Filename must end with .d.ts
+// Inform TypeScript that .jpg files and other assets can be imported
+
+// Add asset extension here:
+declare module "*.jpg";
+declare module "*.png";
+declare module "*.mp4";
+
+// Add functions and objects from external scripts here:
+declare const bootstrap: any;
+declare const imageMapResize: any;
+
+
+///// FILE: "Sandbox Level 4/frontend/index.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="titleTag">React Template</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+    <script src="./dist/main.js" defer></script>
+  </head>
+  <body id="bodyTag"></body>
+</html>
+
+
+///// FILE: "Sandbox Level 4/frontend/jest.config.js"
+
+export default {
+  testEnvironment: "jsdom", // Allows tests with the window and document objects. Must install jest-environment-jsdom.
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/package.json"
+
+{
+  "name": "react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx webpack server",
+    "build": "npx webpack --mode=production",
+    "test": "npx jest handleSignUpAttempt",
+    "deploy": "npm run s3-upload && npm run update-cloudfront",
+    "-------": "-------------------------------------------------------",
+    "s3-upload": "aws s3 cp ./dist/ s3://sandbox-level-4-temp/frontend/dist/ --recursive --exclude *.map",
+    "update-cloudfront": "aws cloudfront create-invalidation --distribution-id ENBFR12GT6OOF --paths \"/*\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
+    "axios": "^1.8.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "react-router": "^7.1.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/dotenv-webpack": "^7.0.8",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.13",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "babel-loader": "^10.0.0",
+    "concat-cli": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "sass": "^1.86.0",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/public/index.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="titleTag">React Template</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body id="bodyTag"></body>
+</html>
+
+
+///// FILE: "Sandbox Level 4/frontend/redirect.js"
+
+/**************************************************************
+ * @summary Redirects the SPA to the root path
+ * @param rootPath Set this to the correct root path
+ * @description
+ * Useful when an SPA page is refreshed.
+ * Load this module through 404.html to redirect on 404 errors.
+ * By redirecting to the root path, 404 errors are removed.
+ * Use Redirect.js to redirect to the path where the 404 occured.
+ **************************************************************/
+
+const rootPath = "/sandbox-level-4";
+const path = window.location.pathname;
+window.localStorage.setItem("redirect", path);
+window.location.replace(rootPath);
+
+
+///// FILE: "Sandbox Level 4/frontend/src/controllers/handleAccountUpdate.ts"
+
+import axios from "axios";
+import { Account } from "../models/Account";
+import { baseUrl } from "../utils/baseUrl";
+
+export async function handleAccountUpdate(
+  newName: string,
+  newPhone: string
+): Promise<Account | undefined> {
+  const url = baseUrl.databaseServer + "/update";
+  const data = { name: newName, phone: newPhone };
+  debugger;
+  const response = await axios.post(url, data);
+  const account: Account = response.data;
+  if (!account) return undefined;
+  return account;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/controllers/handleSignInAttempt.ts"
+
+import { Account } from "../models/Account";
+import { authenticationAws } from "../modules/authenticationAws";
+
+export async function handleSignInAttempt(
+  event: Event
+): Promise<Account | undefined> {
+  event.preventDefault();
+
+  // const inputs = event.target;
+  // const emailInput = inputs[1];
+  // const passwordInput = inputs[2];
+  // const closeButton = inputs[3];
+
+  // const email = emailInput.value;
+  // const password = passwordInput.value;
+
+  const form: any = event.target;
+  const email = form.elements.email.value;
+  const password = form.elements.password.value;
+  const closeButton = form.elements.closeButton;
+  const inputs: any = event.target;
+
+  const account = await authenticationAws(email, password);
+  if (account) {
+    closeButton.click();
+    inputs.reset();
+  }
+  return account;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/controllers/handleSignUpAttempt.test.ts"
+
+import { handleSignUpAttempt } from "./handleSignUpAttempt";
+
+describe("handleSignUpAttempt", () => {
+  it("returns an account if the email is available (not in the database)", async () => {
+    // ARRANGE
+    const email = "available@email.com";
+    const password = "available";
+
+    // ACT
+    const result = await handleSignUpAttempt(email, password);
+
+    // ASSERT
+    expect(result).toHaveProperty("email");
+    expect(result).toHaveProperty("password");
+
+    // CLEANUP
+    // Insert code here to delete the account so it becomes available again
+  });
+  it("returns nothing if the email is not available (already in the database)", async () => {
+    // ARRANGE
+    const email = "aaa@aaa.com";
+    const password = "other password";
+
+    // ACT
+    const result = await handleSignUpAttempt(email, password);
+
+    // ASSERT
+    expect(result).toBeUndefined();
+  });
+});
+
+
+///// FILE: "Sandbox Level 4/frontend/src/controllers/handleSignUpAttempt.ts"
+
+import axios from "axios";
+import { Account } from "../models/Account";
+import { baseUrl } from "../utils/baseUrl";
+
+export async function handleSignUpAttempt(
+  newEmail: string,
+  newPassword: string
+): Promise<Account | undefined> {
+  const url = baseUrl.databaseServer + "/signup";
+  const data = { email: newEmail, password: newPassword };
+  const response = await axios.post(url, data);
+  const account: Account = response.data;
+  if (!account) return undefined;
+  return account;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/controllers/handleSubmit.ts"
+
+export function handleSubmit(event: Event) {
+  event.preventDefault();
+  console.log("Handle the form submission");
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/index.tsx"
+
+import { createRoot } from "react-dom/client";
+import React from "react";
+import { Home } from "./Views/Home";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { Contact } from "./Views/Contact";
+import { About } from "./Views/About";
+import { HandleRefresh } from "./Views/HandleRefresh";
+import { rootPath } from "./utils/rootPath";
+import { Custom404 } from "./Views/Custom404";
+import { ReactFeedbackPractice } from "./Views/ReactFeedbackPractice";
+import { RenderPractice } from "./Views/RenderPractice";
+import { Header } from "./Views/Header";
+import { Server } from "./Views/Server";
+import { Provider } from "react-redux";
+import { store } from "./modules/redux/store";
+
+const bodyTag = document.getElementById("bodyTag");
+const root = createRoot(bodyTag);
+root.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <HandleRefresh>
+        <Header />
+        <Routes>
+          <Route path={`${rootPath}/`} element={<Home />} />
+          <Route path={`${rootPath}/contact`} element={<Contact />} />
+          <Route path={`${rootPath}/about`} element={<About />} />
+          <Route
+            path={`${rootPath}/react-feedback`}
+            element={<ReactFeedbackPractice />}
+          />
+          <Route
+            path={`${rootPath}/render-practice`}
+            element={<RenderPractice />}
+          />
+          <Route path={`${rootPath}/server`} element={<Server />} />
+          <Route path="*" element={<Custom404 />} />
+        </Routes>
+      </HandleRefresh>
+    </BrowserRouter>
+  </Provider>
+);
+
+
+///// FILE: "Sandbox Level 4/frontend/src/models/Account.ts"
+
+export type Account = {
+  email: string;
+  password: string;
+  name: string;
+  phone: number;
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/src/models/Car.ts"
+
+export class CarClass {
+  color: string;
+  year: number;
+  isForSale: boolean;
+}
+
+export interface CarInterface {
+  color: string;
+  year: number;
+  isForSale: boolean;
+}
+
+export type CarType = {
+  color: string;
+  year: number;
+  isForSale: boolean;
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/src/models/Credentials.ts"
+
+export type Credentials = {
+  email: string;
+  password: string;
+  timestamp: number;
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/addition.test.ts"
+
+import { addition } from "./addition";
+
+describe("The addition function...", () => {
+  it("adds positive numbers", addPositives);
+  it("adds a positive and negative number", addPositiveNegative);
+  it("adds negative numbers", addNegatives);
+  it("return NaN when strings are used", addStrings);
+  it("adds number strings", addNumberStrings);
+});
+
+function addPositives() {
+  //ARRANGE: Set the variables for the test
+  const x = 3;
+  const y = 4;
+
+  //ACT: Use the unit with the variables
+  const result = addition(x, y);
+
+  //ASSERT: Check if the unit works as expected
+  expect(result).toBe(7);
+}
+
+function addPositiveNegative() {
+  //ARRANGE
+  const x = 3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-1);
+}
+
+function addNegatives() {
+  //ARRANGE
+  const x = -3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-7);
+}
+
+function addStrings() {
+  //ARRANGE
+  const x = "dog";
+  const y = "cat";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBeNaN();
+  // expect(result).toBe(NaN);
+}
+
+function addNumberStrings() {
+  //ARRANGE
+  const x = "3";
+  const y = "4";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(7);
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/addition.ts"
+
+export function addition(x: number | string, y: number | string) {
+  const result = Number(x) + Number(y);
+  return result;
+}
+
+// const result = addition([16, 27, "cat", 45, "five", 60, "true"]);
+
+// function getGreeting(greetings: Array<string>) {
+//   return greetings[0];
+// }
+
+// const result2 = getGreeting(["hello", "hi", "what's up"]);
+
+// if (result2 === "123" || result2 === "hi")
+//   console.log("Those are my favorite greetings");
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/assertion.ts"
+
+import { CarClass, CarInterface, CarType } from "../models/Car";
+import { Attendance, CarInfo, Cars, CodexLevel } from "./custom-types";
+
+{
+  // The type of the variable can be asserted at the beginning
+  const cars: Cars = [
+    { color: "red", year: 2025, isForSale: true },
+    { color: "green", year: 2023, isForSale: false },
+    { color: "white", year: 2000, isForSale: true },
+    // { first: "bob", middle: "greg", last: "smith" }, //Not CarType
+  ];
+}
+
+{
+  // The type of the variable can be asserted at the end
+  const cars = [
+    new CarClass(),
+    new CarClass(),
+    new CarClass(),
+  ] as Array<CarClass>;
+}
+
+{
+  // TypeScript provides an intellisense popup of the available choices
+  let attendance: Attendance = "present";
+  // attendance = "gift"; // TypeScript error because the value is not in the list
+}
+
+{
+  // TypeScript provides an intellisense popup of the available choices
+  let level: CodexLevel = 4;
+  // level = 5; // TypeScript error because the value is not in the list
+}
+
+{
+  // Custom types show the details of the data type that they alias on mouseover
+  const carInfo: CarInfo = ["red", 2024, false];
+  // carInfo[2] = "false"; //TypeScript error because a boolean is expected for that position
+}
+
+{
+  // Interfaces do not show the details of the type on mouseover
+  const car: CarInterface = { color: "red", year: 2025, isForSale: true };
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/authenticationAws.ts"
+
+import axios from "axios";
+import { Account } from "../models/Account";
+import { baseUrl } from "../utils/baseUrl";
+
+export async function authenticationAws(
+  userEmail = "",
+  userPassword = ""
+): Promise<Account | undefined> {
+  const url = baseUrl.databaseServer + "/read";
+  const data = {
+    email: userEmail,
+    password: userPassword,
+  };
+  const response = await axios.post(url, data);
+  let account = response.data;
+  if (!account) account = undefined;
+  return account;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/callback-types.ts"
+
+example1: {
+  function myOutputer(callback: (message: string) => string) {
+    callback("Hello");
+  }
+
+  myOutputer(myOutput2);
+
+  function myOutput2(message: string) {
+    return `Your message is: ${message}`;
+  }
+}
+
+example2: {
+  function myHandler(callback: (event: Event) => void) {
+    callback(new Event("click"));
+  }
+
+  myHandler(myHandleClick);
+
+  function myHandleClick(event: Event) {
+    // No return value
+  }
+}
+
+example3: {
+  function myFunction(callback: () => {}) {
+    callback();
+  }
+
+  myFunction(myCallback);
+
+  function myCallback() {
+    const myObject = { color: "red" };
+    return myObject;
+  }
+}
+
+example4: {
+  function myStateFunction(
+    callback: (value: any) => [any, (value: any) => void]
+  ) {
+    callback("Hello");
+  }
+
+  myStateFunction(myUseState);
+
+  function myUseState(value: any) {
+    const tuple = [value, setter];
+    return tuple as [any, (value: any) => void];
+
+    function setter(value: any) {
+      // Insert code about how to set the value
+    }
+  }
+}
+
+example5: {
+  function myFunction2(callback: Function) {
+    callback();
+  }
+
+  myFunction2(myCallback2);
+
+  function myCallback2(message: string, value: any) {
+    return "hello";
+  }
+}
+
+// FUNCTIONS THAT I USE, THAT ACCEPT A CALLBACK FUNCTION
+
+setTimeout((x, y, z) => {}, 1000);
+describe("These test are for myFunction", () => {
+  console.log("hi");
+});
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/callback-types.txt"
+
+example1: {
+  function myOutputer(callback: (message: string) => string) {
+    callback("Hello");
+  }
+
+  myOutputer(myOutput2);
+
+  function myOutput2(message: string) {
+    return `Your message is: ${message}`;
+  }
+}
+
+example2: {
+  function myHandler(callback: (event: Event) => void) {
+    callback(new Event("click"));
+  }
+
+  myHandler(myHandleClick);
+
+  function myHandleClick(event: Event) {
+    // No return value
+  }
+}
+
+example3: {
+  function myFunction(callback: () => {}) {
+    callback();
+  }
+
+  myFunction(myCallback);
+
+  function myCallback() {
+    const myObject = { color: "red" };
+    return myObject;
+  }
+}
+
+example4: {
+  function myStateFunction(
+    callback: (value: any) => [any, (value: any) => void]
+  ) {
+    callback("Hello");
+  }
+
+  myStateFunction(myUseState);
+
+  function myUseState(value: any) {
+    const tuple = [value, setter];
+    return tuple as [any, (value: any) => void];
+
+    function setter(value: any) {
+      // Insert code about how to set the value
+    }
+  }
+}
+
+example5: {
+  function myFunction2(callback: Function) {
+    callback();
+  }
+
+  myFunction2(myCallback2);
+
+  function myCallback2(message: string, value: any) {
+    return "hello";
+  }
+}
+
+// FUNCTIONS THAT I USE, THAT ACCEPT A CALLBACK FUNCTION
+
+setTimeout((x, y, z) => {}, 1000);
+describe("These test are for myFunction", () => {
+  console.log("hi");
+});
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/CRUD/createAccount.ts"
+
+import axios from "axios";
+
+export async function createAccount(event: Event) {
+  event.preventDefault();
+  const form: any = event.target;
+  const inputs = form.elements;
+  const email = inputs.email.value;
+  const password = inputs.password.value;
+
+  //SEND A REQUEST...
+  const baseUrl = "http://localhost:8000";
+  const path = "/create";
+  const query = `?email=${email}&password=${password}`;
+  const url = baseUrl + path + query;
+  const response = await axios.get(url);
+  return response.data;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/custom-types.ts"
+
+import { CarClass, CarInterface, CarType } from "../models/Car";
+
+// Informs TypeScript of the alias you want to use for a data type
+// A custom data type can be created from any of the JavaScript data types
+export type Cars = Array<CarClass | CarInterface | CarType>;
+export type Attendance = "present" | "late" | "excused" | "absent";
+export type CodexLevel = 1 | 2 | 3 | 4;
+export type CarInfo = [string, number, boolean]; //Primitive data types are lowercase
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/custom-types.txt"
+
+import { CarClass, CarInterface, CarType } from "./Car";
+
+// Informs TypeScript of the alias you want to use for a data type
+// A custom data type can be created from any of the JavaScript data types
+export type Cars = Array<CarClass | CarInterface | CarType>;
+export type Attendance = "present" | "late" | "excused" | "absent";
+export type CodexLevel = 1 | 2 | 3 | 4;
+export type CarInfo = [string, number, boolean]; //Primitive data types are lowercase
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/describeCarObject.ts"
+
+import { CarClass, CarInterface, CarType } from "../models/Car";
+
+export function describeCarObject(car: CarClass | CarInterface | CarType) {
+  const { color, year, isForSale } = car;
+  console.log(car);
+  return `Your car is ${color}, made in ${year}, and for sale is ${isForSale}`;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/describeCarTuple.ts"
+
+export function describeCarTuple(carInfo: [string, number, boolean]) {
+  const [color, year, isForSale] = carInfo;
+  return `Your car is ${color}, made in ${year}, and for sale is ${isForSale}`;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/destructuring.ts"
+
+{
+  // Extracting values without destructuring
+  const car = { color: "red", year: 2025, isForSale: true };
+  const color = car.color;
+  const year = car.year;
+  const isForSale = car.isForSale;
+}
+
+{
+  // Objects on the right side of the equal sign can be destructure on the left side
+  // The properties must match on the left side
+  const { color, year, isForSale } = {
+    color: "red",
+    year: 2025,
+    isForSale: true,
+  };
+}
+
+{
+  // Variables that are objects can be destructured
+  const car = { color: "red", year: 2025, isForSale: true };
+  const { color, year, isForSale } = car;
+}
+
+{
+  // Extracting values from a parameter without destructuring
+  function getCarDescription(carObject: any) {
+    const color = carObject.color;
+    const year = carObject.year;
+    const isForSale = carObject.isForSale;
+    return `Your car is ${color}, made in ${year}, and for sale is ${isForSale}`;
+  }
+}
+
+{
+  // Extracting values from a parameter with destructuring
+  function getCarDescription1({ color, year, isForSale }) {
+    return `Your car is ${color}, made in ${year}, and for sale is ${isForSale}`;
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/getAnswer.test.ts"
+
+import { getAnswer } from "./getAnswer";
+
+describe("getAnswer", () => {
+  it("returns a response when given a question and context", async () => {
+    // ARRANGE
+    const question = "What's my name?";
+    const context = "My name is Rolazar.";
+
+    // ACT
+    const answer = await getAnswer(question, context);
+
+    // ASSERT
+    expect(answer).toBeDefined();
+  });
+  it("returns the correct answer when given a question and context", async () => {
+    // ARRANGE
+    const question = "What's my name?";
+    const context = "My name is Rolazar.";
+
+    // ACT
+    const answer = await getAnswer(question, context);
+
+    // ASSERT
+    expect(answer).toBe("Rolazar");
+  });
+  it("returns a response when the answer is unknown", async () => {
+    // ARRANGE
+    const question = "What's my name?";
+    const context = "He is an instructor at CodeX Academy.";
+
+    // ACT
+    const answer = await getAnswer(question, context);
+
+    // ASSERT
+    expect(answer).toBe("Sorry, I don't know.");
+  });
+});
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/getAnswer.ts"
+
+import axios from "axios";
+import { baseUrl } from "../utils/baseUrl";
+
+export async function getAnswer(
+  userQuestion: string,
+  userContext: string
+): Promise<string> {
+  const url = baseUrl.aiServer + "/ai";
+  const data = {
+    question: userQuestion,
+    context: userContext,
+  };
+  const response = await axios.post(url, data);
+  let answer: string = response.data;
+  if (!answer) answer = "Sorry, I don't know.";
+  return answer;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/getPromoMessage.ts"
+
+export function getPromoMessage(event: Event) {
+  event.preventDefault();
+  const inputs = event.target;
+  const name = inputs[1].value;
+  const email = inputs[2].value;
+  const message = `Thank you ${name}! Your promo code was sent to ${email}`;
+  return message;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/redux/stateSelectors.ts"
+
+import { StateVariables } from "./stateVariables";
+
+export function selectGlobalTotalQuantity(state: StateVariables) {
+  const { globalTotalQuantity } = state;
+  return globalTotalQuantity;
+}
+
+export function selectGlobalAnswer(state: StateVariables) {
+  const { globalAnswer } = state;
+  return globalAnswer;
+}
+
+export function selectGlobalAccount(state: StateVariables) {
+  const { globalAccount } = state;
+  return globalAccount;
+}
+
+export function selectGlobalCredentials(state: StateVariables) {
+  const { globalCredentials } = state;
+  return globalCredentials;
+}
+
+export function selectSignInAreaDidMount(state: StateVariables) {
+  const { signInAreaDidMount } = state;
+  return signInAreaDidMount;
+}
+
+export function selectSignInAreaButton(state: StateVariables) {
+  const { signInAreaButton } = state;
+  return signInAreaButton;
+}
+
+export function selectSignInModalErrorMessage(state: StateVariables) {
+  const { signInModalErrorMessage } = state;
+  return signInModalErrorMessage;
+}
+
+export function selectSignUpModalErrorMessage(state: StateVariables) {
+  const { signUpModalErrorMessage } = state;
+  return signUpModalErrorMessage;
+}
+
+export function selectAccountModalErrorMessage(state: StateVariables) {
+  const { accountModalErrorMessage } = state;
+  return accountModalErrorMessage;
+}
+
+export function selectHomeDidMount(state: StateVariables) {
+  const { homeDidMount } = state;
+  return homeDidMount;
+}
+
+export function selectHomeMessage(state: StateVariables) {
+  const { homeMessage } = state;
+  return homeMessage;
+}
+
+export function selectHomeClickCount(state: StateVariables) {
+  const { homeClickCount } = state;
+  return homeClickCount;
+}
+
+export function selectHomeComponent(state: StateVariables) {
+  const { homeComponent } = state;
+  return homeComponent;
+}
+
+export function selectAboutDidMount(state: StateVariables) {
+  const { aboutDidMount } = state;
+  return aboutDidMount;
+}
+
+export function selectContactDidMount(state: StateVariables) {
+  const { contactDidMount } = state;
+  return contactDidMount;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/redux/stateSetters.ts"
+
+import { Account } from "../../models/Account";
+import { Credentials } from "../../models/Credentials";
+import { StateVariables } from "./stateVariables";
+
+// State setters are methods that match their state variable
+export const stateSetters = {
+  globalAnswer: function (state: StateVariables, action: ActionString) {
+    const newValue = action.payload;
+    state.globalAnswer = newValue;
+  },
+
+  globalAccount: function (state: StateVariables, action: ActionAccount) {
+    const newValue = action.payload;
+    state.globalAccount = newValue;
+  },
+
+  globalCredentials: function (
+    state: StateVariables,
+    action: ActionCredentials
+  ) {
+    const newValue = action.payload;
+    state.globalCredentials = newValue;
+  },
+
+  signInAreaDidMount: function (state: StateVariables, action: ActionBoolean) {
+    const newValue = action.payload;
+    state.signInAreaDidMount = newValue;
+  },
+
+  signInAreaButton: function (state: StateVariables, action: Action) {
+    const newValue = action.payload;
+    state.signInAreaButton = newValue;
+  },
+
+  signInModalErrorMessage: function (
+    state: StateVariables,
+    action: ActionString
+  ) {
+    const newValue = action.payload;
+    state.signInModalErrorMessage = newValue;
+  },
+
+  signUpModalErrorMessage: function (
+    state: StateVariables,
+    action: ActionString
+  ) {
+    const newValue = action.payload;
+    state.signUpModalErrorMessage = newValue;
+  },
+
+  homeDidMount: function (state: StateVariables, action: ActionBoolean) {
+    const newValue = action.payload;
+    state.homeDidMount = newValue;
+  },
+  homeClickCount: function (state: StateVariables, action: Action) {
+    const newValue = action.payload;
+    state.homeClickCount = newValue;
+  },
+  homeMessage: function (state: StateVariables, action: Action) {
+    const newValue = action.payload;
+    state.homeMessage = newValue;
+  },
+  homeComponent: function (state: StateVariables, action: Action) {
+    const newValue = action.payload;
+    state.homeComponent = newValue;
+  },
+
+  aboutDidMount: function (state: StateVariables, action: Action) {
+    const newValue = action.payload;
+    state.aboutDidMount = newValue;
+  },
+
+  contactDidMount: function (state: StateVariables, action: Action) {
+    const newValue = action.payload;
+    state.contactDidMount = newValue;
+  },
+};
+
+type Action = {
+  payload: any;
+  type: string;
+};
+
+type ActionBoolean = {
+  payload: boolean;
+  type: string;
+};
+
+type ActionString = {
+  payload: string;
+  type: string;
+};
+
+type ActionAccount = {
+  payload: Account | undefined;
+  type: string;
+};
+
+type ActionCredentials = {
+  payload: Credentials | undefined;
+  type: string;
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/redux/stateVariables.tsx"
+
+import React from "react";
+
+export const stateVariables = {
+  globalTotalQuantity: 0,
+  globalAnswer: "(The answer will appear here)",
+  globalAccount: undefined,
+  globalCredentials: undefined,
+
+  signInAreaDidMount: false,
+  signInAreaButton: "",
+
+  signInModalErrorMessage: "",
+
+  signUpModalErrorMessage: "",
+
+  accountModalErrorMessage: "",
+
+  homeDidMount: false,
+  homeClickCount: 0,
+  homeMessage: "Hello world!",
+  homeComponent: "",
+
+  aboutDidMount: false,
+
+  contactDidMount: false,
+};
+
+export type StateVariables = typeof stateVariables;
+
+// NOT NECESSARY TO MANUALLY DEFINE THE TYPE IF USING typeof
+// type StateVariables = {
+//   didMount: boolean;
+//   message: string;
+//   clickCount: number;
+// };
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/redux/store.ts"
+
+import {
+  configureStore,
+  ConfigureStoreOptions,
+  createSlice,
+  CreateSliceOptions,
+} from "@reduxjs/toolkit";
+import { stateVariables } from "./stateVariables";
+import { stateSetters } from "./stateSetters";
+
+const sliceOptions: CreateSliceOptions = {
+  name: "global", // Describe the state
+  initialState: stateVariables,
+  reducers: stateSetters, // Slice reducers as state setters
+};
+const slice = createSlice(sliceOptions);
+export const set = slice.actions;
+
+const storeOptions: ConfigureStoreOptions = { reducer: slice.reducer };
+export const store = configureStore(storeOptions);
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/return-type.txt"
+
+function myOutput(message: string): void {
+  // Insert the message into the DOM
+}
+
+function getPromoMessage(event: Event): string {
+  let promoMessage: string;
+  // Insert code for generating a promo message
+
+  return promoMessage;
+}
+
+function authentication(email: string, password: string): boolean {
+  let isAuthenticated: boolean;
+  // Insert code for authenticating
+
+  return isAuthenticated;
+}
+
+function handleSignlnAttempt(event: Event): string | void {
+  let errorMessage: string;
+  // Insert code to generate an error message
+  // or handle an authenticated sign in
+
+  return errorMessage;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/return-types.ts"
+
+function myOutput(message: string): void {
+  // Insert the message into the DOM
+}
+
+function getPromoMessage(event: Event): string {
+  let promoMessage: string;
+  // Insert code for generating a promo message
+
+  return promoMessage;
+}
+
+function authentication(email: string, password: string): boolean {
+  let isAuthenticated: boolean;
+  // Insert code for authenticating
+
+  return isAuthenticated;
+}
+
+function handleSignlnAttempt(event: Event): string | void {
+  let errorMessage: string;
+  // Insert code to generate an error message
+  // or handle an authenticated sign in
+
+  return errorMessage;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/savePersistentLogin.ts"
+
+import { Account } from "../models/Account";
+import { Credentials } from "../models/Credentials";
+
+export function savePersistentLogin(account: Account) {
+  const currentTimestamp = Date.now();
+  const credentials: Credentials = {
+    email: account.email,
+    password: account.password,
+    timestamp: currentTimestamp,
+  };
+  const loginString = JSON.stringify(credentials);
+  localStorage.setItem("credentials", loginString);
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/tdd-practice/activateOnClick.test.ts"
+
+import { activateOnClick } from "./activateOnClick";
+
+describe("activateOnClick", () => {
+  it("returns a result with an onClick method that returns a result", () => {
+    //ARRANGE
+    const object = {
+      onClick: myFunction,
+    };
+
+    //ACT
+    const result = activateOnClick(object);
+
+    //ASSERT
+    expect(result).toBeDefined();
+
+    function myFunction() {
+      return 5;
+    }
+  });
+});
+
+
+///// FILE: "Sandbox Level 4/frontend/src/modules/tdd-practice/activateOnClick.ts"
+
+export function activateOnClick(object: { onClick: Function }) {
+  return "TODO: return the result of activating the onclick method of the object";
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/utils/baseUrl.ts"
+
+// import dotenv from "dotenv"; NOT APPLICABLE IN THE FRONTEND. INSTEAD, WEBPACK INJECTS THE ENVIRONMENT VARIABLES.
+// dotenv.config(); NOT APPLICABLE IN THE FRONTEND. INSTEAD, WEBPACK INJECTS THE ENVIRONMENT VARIABLES.
+
+const localDatabaseUrl = process.env.localDatabaseUrl;
+const localAiUrl = process.env.localAiUrl;
+const lambdaUrl = process.env.lambdaUrl;
+const appEngineUrl = process.env.appEngineUrl;
+
+let databaseUrl = lambdaUrl;
+let aiUrl = appEngineUrl;
+
+const hostname = window.location.hostname;
+const isRunningLocally = hostname === "localhost";
+if (isRunningLocally) {
+  databaseUrl = localDatabaseUrl;
+  aiUrl = localAiUrl;
+}
+
+export const baseUrl = {
+  databaseServer: databaseUrl,
+  aiServer: aiUrl,
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/src/utils/output.ts"
+
+export function output(
+  message: string,
+  outputTag = "outputTag",
+  shouldAppend = true
+) {
+  if (shouldAppend) window[outputTag].innerHTML += message;
+  else window[outputTag].innerHTML = message;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/utils/rootPath.ts"
+
+export let rootPath = "";
+const hostname = window.location.hostname;
+if (hostname === "rolazar.github.io") rootPath = "/sandbox-level-4";
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/About.tsx"
+
+import React, { useEffect } from "react";
+import { Navbar } from "./Navbar";
+
+export function About() {
+  return (
+    <main>
+      <h1>About</h1>
+    </main>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/AccountContent.tsx"
+
+import React from "react";
+import { useSelector } from "react-redux";
+import {
+  selectAccountModalErrorMessage,
+  selectGlobalAccount,
+} from "../modules/redux/stateSelectors";
+
+export function AccountContent() {
+  const account = useSelector(selectGlobalAccount);
+  const errorMessage = useSelector(selectAccountModalErrorMessage);
+
+  return (
+    <>
+      Email: <input type="email" name="email" value={account.email} readOnly />
+      <br />
+      Password:{" "}
+      <input
+        type="password"
+        name="password"
+        value={account.password}
+        readOnly
+      />
+      <br />
+      Name: <input type="text" name="name" defaultValue={account.name} />
+      <br />
+      Phone: <input type="text" name="phone" defaultValue={account.phone} />
+      <div style={{ color: "red" }}>{errorMessage}</div>
+    </>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/AccountModal.scss"
+
+#accountModalButton {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/AccountModal.tsx"
+
+import React from "react";
+import { AccountContent } from "./AccountContent";
+import "./AccountModal.scss";
+import { useDispatch } from "react-redux";
+import { set } from "../modules/redux/store";
+import { handleAccountUpdate } from "../controllers/handleAccountUpdate";
+
+export function AccountModal() {
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <button
+        id="accountModalButton"
+        type="button"
+        className="btn btn-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#accountModal"
+      >
+        Account
+      </button>
+
+      <form
+        onSubmit={handleSubmit}
+        className="modal fade"
+        id="accountModal"
+        tabIndex={-1}
+        aria-labelledby="accountModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="accountModalLabel">
+                Account
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <AccountContent />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+                name="closeButton"
+              >
+                Close
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </>
+  );
+
+  async function handleSubmit(event: any) {
+    event.preventDefault();
+    const form = event.target;
+    const inputs = form.elements;
+    const name = inputs.name.value;
+    const phone = inputs.phone.value;
+    const closeButton = inputs.closeButton;
+    const account = await handleAccountUpdate(name, phone);
+    if (account) {
+      let action = set.globalAccount(account);
+      dispatch(action);
+      action = set.accountModalErrorMessage("");
+      dispatch(action);
+
+      closeButton.click();
+      form.reset();
+    } else {
+      const action = set.accountModalErrorMessage(
+        "There was an error updating your account."
+      );
+      dispatch(action);
+    }
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Ai.tsx"
+
+import React from "react";
+import { getAnswer } from "../modules/getAnswer";
+import { useDispatch, useSelector } from "react-redux";
+import { selectGlobalAnswer } from "../modules/redux/stateSelectors";
+import { set } from "../modules/redux/store";
+
+export function Ai() {
+  const answer = useSelector(selectGlobalAnswer);
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <h1>Artifical Intelligence</h1>
+      <form onSubmit={handleSubmit}>
+        Question:
+        <br />
+        <input name="question" defaultValue="What's my name" />
+        <br />
+        Context:
+        <br />
+        <textarea name="context" defaultValue="My name is Rolazar."></textarea>
+        <br />
+        <input type="submit" />
+      </form>
+      {answer}
+    </div>
+  );
+
+  async function handleSubmit(event: any) {
+    event.preventDefault();
+    const form = event.target.elements;
+    const question = form.question.value;
+    const context = form.context.value;
+    const answer = await getAnswer(question, context);
+    const action = set.globalAnswer(answer);
+    dispatch(action);
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Contact.tsx"
+
+import React, { useEffect } from "react";
+import { Navbar } from "./Navbar";
+
+export function Contact() {
+  return (
+    <main>
+      <h1>Contact</h1>
+    </main>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Custom404.tsx"
+
+import React from "react";
+
+export function Custom404() {
+  return (
+    <main className="container">
+      <h1>Invalid page...</h1>
+    </main>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/HandleRefresh.tsx"
+
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+
+/*************************************************
+ * @summary Removes the 404 error on SPA refresh
+ * @param props.children The elements to render on refresh
+ * @description
+ * This component depends on the local storage used by redirect.js
+ * In redirect.js, properly set the root path.
+ */
+export function HandleRefresh(props) {
+  const children = props.children;
+  const navigateTo = useNavigate();
+  const [didMount, setDidMount] = useState(false);
+  useEffect(componentDidMount, []);
+
+  if (didMount) return <>{children}</>;
+  else return <></>;
+
+  function componentDidMount() {
+    const redirectPath = localStorage.getItem("redirect");
+    if (redirectPath) {
+      navigateTo(redirectPath);
+      localStorage.setItem("redirect", "");
+      setTimeout(() => setDidMount(true), 1000);
+    } else setDidMount(true);
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Header.tsx"
+
+import React from "react";
+import { Navbar } from "./Navbar";
+
+export function Header() {
+  return (
+    <header>
+      <Navbar />
+    </header>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Home.scss"
+
+#mainHome {
+  h1 {
+    color: red;
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Home.tsx"
+
+import React, { useEffect, useState } from "react";
+import { Navbar } from "./Navbar";
+import { describeCarTuple } from "../modules/describeCarTuple";
+import { describeCarObject } from "../modules/describeCarObject";
+import { CarClass, CarInterface, CarType } from "../models/Car";
+import "./Home.scss";
+import src from "../../assets/new-year-2025.jpg";
+import { Tooltips } from "./Tooltips";
+import { ImageMap } from "./ImageMap";
+import { Quote } from "./Quote";
+import { Trivia } from "./Trivia";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectHomeClickCount,
+  selectHomeComponent,
+  selectHomeDidMount,
+  selectHomeMessage,
+} from "../modules/redux/stateSelectors";
+import { set } from "../modules/redux/store";
+import { Ai } from "./Ai";
+
+export function Home() {
+  // const result = JSON.stringify(<ImageMap />);
+  let component: any = useSelector(selectHomeComponent);
+  const didMount = useSelector(selectHomeDidMount);
+  const message = useSelector(selectHomeMessage);
+  const clickCount = useSelector(selectHomeClickCount);
+  const [carDescription, setCarDescription] = useState(<></>);
+  const dispatch = useDispatch();
+
+  useEffect(componentDidMount, []);
+
+  if (component === "ImageMap") component = <ImageMap />;
+  if (component === "Quote") component = <Quote />;
+
+  return (
+    <main id="mainHome">
+      <h1>Home</h1>
+      <h3>{message}</h3>
+      <button onClick={handleClick}>Click</button>
+      <div>{clickCount}</div>
+      {component}
+      <Ai />
+      {/* <Trivia /> */}
+      {/* {carDescription} */}
+      {/* <Tooltips /> */}
+      {/* <ImageMap /> */}
+      {/* <img src={src} /> */}
+    </main>
+  );
+
+  function componentDidMount() {
+    let action = set.homeDidMount(true);
+    dispatch(action);
+
+    action = set.homeMessage("Have a nice day!");
+    dispatch(action);
+
+    // action = set.component(<ImageMap />);
+    // action = set.component("ImageMap");
+    // const componentDescription = {
+    //   name: "img",
+    //   src: "http://jpeg.picture"
+    // }
+    action = set.homeComponent("Quote");
+    dispatch(action);
+
+    /************************************************/
+
+    // const result = describeCarTuple(["red", 2024, false]);
+
+    const carClass = new CarClass();
+    carClass.color = "green";
+    carClass.year = 2020;
+    carClass.isForSale = true;
+
+    const carInterface: CarInterface = {
+      color: "red",
+      year: 2019,
+      isForSale: true,
+    };
+
+    const carType: CarType = {
+      color: "white",
+      year: 2021,
+      isForSale: false,
+    };
+
+    const result = describeCarObject(carType);
+    setCarDescription(<h3>{result}</h3>);
+  }
+
+  function handleClick() {
+    const action = set.homeClickCount(clickCount + 1);
+    dispatch(action);
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/ImageMap.tsx"
+
+import React, { useEffect } from "react";
+import src from "../../assets/2d-shapes.jpg";
+
+export function ImageMap() {
+  useEffect(componentDidMount, []);
+
+  return (
+    <>
+      <header></header>
+      <main>
+        <img width="75%" useMap="#my-image-map" src={src} alt="shapes" />
+        <map name="my-image-map">
+          <area
+            title="Click the rectangle"
+            coords="195,70, 365,170"
+            shape="rect"
+            href="https://en.wikipedia.org/wiki/Rectangle"
+          />
+          <area
+            title="Click the circle"
+            coords="610,115, 55"
+            shape="circle"
+            href="#circles"
+          />
+          <area
+            title="Click the heart"
+            coords="610,525, 635,505, 660,640, 610,600, 555,540, 580,505"
+            shape="poly"
+            href="https://en.wikipedia.org/wiki/Heart"
+          />
+        </map>
+      </main>
+    </>
+  );
+
+  function componentDidMount() {
+    imageMapResize();
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Navbar.tsx"
+
+import React from "react";
+import { Link } from "react-router";
+import { SignInArea } from "./SignInArea";
+import { rootPath } from "../utils/rootPath";
+
+export function Navbar() {
+  return (
+    <nav>
+      <Link to={`${rootPath}/`}>Home | </Link>
+      <Link to={`${rootPath}/about`}>About | </Link>
+      <Link to={`${rootPath}/contact`}>Contact | </Link>
+      <Link to={`${rootPath}/react-feedback`}>Feedback Practice | </Link>
+      <Link to={`${rootPath}/render-practice`}>Render Practice | </Link>
+      <Link to={`${rootPath}/server`}>Server | </Link>
+      <SignInArea />
+    </nav>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Quote.tsx"
+
+import axios from "axios";
+import React, { useState } from "react";
+
+export function Quote() {
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
+
+  return (
+    <section>
+      <h3>Quote</h3>
+      <button onClick={handleClick}>Click to get quote</button>
+      <blockquote>{quote}</blockquote>
+      <i>{author}</i>
+    </section>
+  );
+
+  async function handleClick() {
+    const response = await axios.get("http://localhost:8000/quote");
+    const quote = response.data.quote;
+    const author = response.data.author;
+    setQuote(`"${quote}"`);
+    setAuthor(`- ${author}`);
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/ReactFeedbackPractice.tsx"
+
+import React, { FormEvent, useState } from "react";
+import { getPromoMessage } from "../modules/getPromoMessage";
+
+export function ReactFeedbackPractice() {
+  const [promoMessage, setPromoMessage] = useState(<></>);
+
+  return (
+    <main>
+      <h1>React Feedback Practice</h1>
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <legend>Enter a name and email: </legend>
+          <input />
+          <input type="email" />
+          <button type="submit">Sign me up!</button>
+        </fieldset>
+      </form>
+      {promoMessage}
+    </main>
+  );
+
+  function handleSubmit(event: any) {
+    const message = getPromoMessage(event);
+    setPromoMessage(<h1>{message}</h1>);
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/RenderPractice.tsx"
+
+import React, { useEffect, useState } from "react";
+
+export function RenderPractice() {
+  const [elements, setElements] = useState([]);
+  const [updateCount, setUpdateCount] = useState(0);
+
+  useEffect(componentDidMount, []);
+  useEffect(componentDidUpdate, [updateCount]);
+
+  return <>{elements}</>;
+
+  function componentDidMount() {
+    elements.push(<h1 key="myTitle">Render Practice</h1>);
+    setUpdateCount(updateCount + 1);
+  }
+
+  function componentDidUpdate() {
+    if (updateCount === 1) {
+      elements.push(<button>Click here!</button>);
+    }
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Server.tsx"
+
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { createAccount } from "../modules/CRUD/createAccount";
+
+export function Server() {
+  const [serverResponse, setServerResponse] = useState("");
+  useEffect(componentDidMount, []);
+  return (
+    <main>
+      <h1>Server</h1>
+      {serverResponse}
+      <form onSubmit={handleSubmit}>
+        <input type="email" name="email" />
+        <input type="password" name="password" />
+        <input type="submit" />
+      </form>
+    </main>
+  );
+
+  function componentDidMount() {
+    getResponse();
+  }
+
+  async function getResponse() {
+    const response = await axios.get("http://localhost:8000/api");
+    const stringified = JSON.stringify(response.data);
+    setServerResponse(stringified);
+  }
+
+  async function handleSubmit(event: any) {
+    const response = await createAccount(event);
+    const stringified = JSON.stringify(response.data);
+    setServerResponse(stringified);
+  }
+
+  // function componentDidMount() {
+  //   const promise = axios.get("http://localhost:8000/");
+  //   // const promise = axios.get("http://localhost:8000/api");
+  //   // const promise = axios.get("http://localhost:8000/api?message=hello");
+  //   promise.then(handleResponse);
+  // }
+
+  // function handleResponse(resolveValue: any) {
+  //   const response = resolveValue.data;
+  //   const stringified = JSON.stringify(response);
+  //   setServerResponse(stringified);
+  // }
+
+  // function componentDidMount() {
+  //   const promise = fetch("http://localhost:8000/");
+  //   promise.then(handleResponse);
+  // }
+
+  // function handleResponse(resolveValue: any) {
+  //   const promise = resolveValue.text();
+  //   promise.then(handleResult);
+  // }
+
+  // function handleResult(resolveValue: string) {
+  //   setServerResponse(resolveValue);
+  // }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/SignInArea.tsx"
+
+import React, { useEffect, useState } from "react";
+import { SignInModal } from "./SignInModal";
+import { SignOutModal } from "./SignOutModal";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectGlobalAccount,
+  selectSignInAreaButton,
+  selectSignInAreaDidMount,
+} from "../modules/redux/stateSelectors";
+import { Credentials } from "../models/Credentials";
+import { authenticationAws } from "../modules/authenticationAws";
+import { Account } from "../models/Account";
+import { set } from "../modules/redux/store";
+import { SignUpModal } from "./SignUpModal";
+import { AccountModal } from "./AccountModal";
+
+export function SignInArea() {
+  const account = useSelector(selectGlobalAccount);
+  const didMount = useSelector(selectSignInAreaDidMount);
+  let button: any = useSelector(selectSignInAreaButton);
+  const dispatch = useDispatch();
+
+  useEffect(componentDidMount, []);
+  useEffect(componentDidUpdate, [account]);
+
+  if (button === "SignInModal")
+    button = (
+      <>
+        <SignInModal />
+        <SignUpModal />
+      </>
+    );
+  if (button === "SignOutModal")
+    button = (
+      <>
+        <AccountModal />
+        <SignOutModal />
+      </>
+    );
+
+  // button = buttonMap[button]; // Use object bracket notation a mapping to choose the component to render
+
+  return <>{button}</>;
+
+  function componentDidMount() {
+    console.log("MOUNT PHASE: SignInArea");
+    const action = set.signInAreaDidMount(true);
+    dispatch(action);
+
+    getPersistentLogin();
+  }
+
+  function componentDidUpdate() {
+    if (didMount) {
+      console.log("UPDATE PHASE: SignInArea");
+      let action: any;
+      if (account) action = set.signInAreaButton("SignOutModal");
+      else action = set.signInAreaButton("SignInModal");
+      dispatch(action);
+    }
+  }
+
+  async function getPersistentLogin() {
+    let account: Account = undefined;
+    const login = localStorage.getItem("credentials");
+    if (login) {
+      const credentials: Credentials = JSON.parse(login);
+      const { email, password, timestamp } = credentials;
+      const currentTimestamp = Date.now();
+      const elapsedTime = currentTimestamp - timestamp;
+      const isExpired = elapsedTime > 86400000;
+      if (isExpired) localStorage.setItem("credentials", "");
+      else {
+        account = await authenticationAws(email, password);
+        if (account) {
+          const action = set.globalAccount(account);
+          dispatch(action);
+        } else localStorage.setItem("credentials", "");
+      }
+    }
+
+    let action: any;
+    if (account) action = set.signInAreaButton("SignOutModal");
+    else action = set.signInAreaButton("SignInModal");
+    dispatch(action);
+  }
+}
+
+const buttonMap = {
+  SignInModal: (
+    <>
+      <SignInModal />
+      <SignUpModal />
+    </>
+  ),
+  SignOutModal: <SignOutModal />,
+};
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/SignInContent.tsx"
+
+import React from "react";
+
+export function SignInContent(props) {
+  const errorMessage = props.errorMessage;
+
+  return (
+    <>
+      Email: <input type="email" name="email" required />
+      <br />
+      Password: <input type="password" name="password" required />
+      <div style={{ color: "red" }}>{errorMessage}</div>
+    </>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/SignInModal.scss"
+
+#signInModalButton {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/SignInModal.tsx"
+
+import React, { useState } from "react";
+import { SignInContent } from "./SignInContent";
+import { handleSignInAttempt } from "../controllers/handleSignInAttempt";
+import { set } from "../modules/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { Credentials } from "../models/Credentials";
+import { selectSignInModalErrorMessage } from "../modules/redux/stateSelectors";
+import "./SignInModal.scss";
+import { savePersistentLogin } from "../modules/savePersistentLogin";
+
+export function SignInModal() {
+  const errorMessage = useSelector(selectSignInModalErrorMessage);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <button
+        id="signInModalButton"
+        type="button"
+        className="btn btn-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#signInModal"
+      >
+        Sign In
+      </button>
+
+      <form
+        onSubmit={handleSubmit}
+        className="modal fade"
+        id="signInModal"
+        tabIndex={-1}
+        aria-labelledby="signInModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="signInModalLabel">
+                Sign In
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <SignInContent errorMessage={errorMessage} />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+                name="closeButton"
+              >
+                Close
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Sign In
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </>
+  );
+
+  async function handleSubmit(event: any) {
+    const account = await handleSignInAttempt(event);
+    if (account) {
+      const action = set.globalAccount(account);
+      dispatch(action);
+      savePersistentLogin(account);
+    } else {
+      const action = set.signInModalErrorMessage(
+        "The email and password don't match"
+      );
+      dispatch(action);
+    }
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/SignOutModal.tsx"
+
+import React from "react";
+import { useDispatch } from "react-redux";
+import { set } from "../modules/redux/store";
+
+export function SignOutModal() {
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <button
+        type="button"
+        className="btn btn-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#signOutModal"
+      >
+        Sign Out
+      </button>
+
+      <form
+        onSubmit={handleSubmit}
+        className="modal fade"
+        id="signOutModal"
+        tabIndex={-1}
+        aria-labelledby="signOutModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="signOutModalLabel">
+                Sign Out
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">Are you sure you want to sign out?</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </>
+  );
+
+  function handleSubmit(event: any) {
+    event.preventDefault();
+    const inputs = event.target;
+    const closeButton = inputs[1];
+    closeButton.click();
+    const action = set.globalAccount(undefined);
+    dispatch(action);
+
+    localStorage.setItem("credentials", "");
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/SignUpContent.tsx"
+
+import React from "react";
+
+export function SignUpContent(props) {
+  const errorMessage = props.errorMessage;
+
+  return (
+    <>
+      Email: <input type="email" name="email" required />
+      <br />
+      Password: <input type="password" name="password" required />
+      <div style={{ color: "red" }}>{errorMessage}</div>
+    </>
+  );
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/SignUpModal.tsx"
+
+import React from "react";
+import { set } from "../modules/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSignUpModalErrorMessage } from "../modules/redux/stateSelectors";
+import { handleSignUpAttempt } from "../controllers/handleSignUpAttempt";
+import { SignUpContent } from "./SignUpContent";
+import { savePersistentLogin } from "../modules/savePersistentLogin";
+
+export function SignUpModal() {
+  const errorMessage = useSelector(selectSignUpModalErrorMessage);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <button
+        type="button"
+        className="btn btn-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#signUpModal"
+      >
+        Sign Up
+      </button>
+
+      <form
+        onSubmit={handleSubmit}
+        className="modal fade"
+        id="signUpModal"
+        tabIndex={-1}
+        aria-labelledby="signUpModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="signUpModalLabel">
+                Sign Up
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <SignUpContent errorMessage={errorMessage} />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+                name="closeButton"
+              >
+                Close
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </>
+  );
+
+  async function handleSubmit(event: any) {
+    event.preventDefault();
+    const form = event.target;
+    const inputs = event.target.elements;
+    const email = inputs.email.value;
+    const password = inputs.password.value;
+    const closeButton = inputs.closeButton;
+    const account = await handleSignUpAttempt(email, password);
+    if (account) {
+      let action = set.globalAccount(account);
+      dispatch(action);
+      action = set.signUpModalErrorMessage("");
+      dispatch(action);
+
+      savePersistentLogin(account);
+      closeButton.click();
+      form.reset();
+    } else {
+      const action = set.signUpModalErrorMessage(
+        "An account with that email already exists."
+      );
+      dispatch(action);
+    }
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Tooltips.tsx"
+
+import React, { useEffect } from "react";
+import src from "../../assets/new-year-2025.jpg";
+
+export function Tooltips() {
+  useEffect(componentDidMount, []);
+
+  return (
+    <section>
+      <img
+        id="new-year"
+        data-bs-title="Happy New Year 2025!!!"
+        data-bs-toggle="tooltip"
+        className="depth"
+        width="400px"
+        src={src}
+      />
+    </section>
+  );
+
+  function componentDidMount() {
+    //TOOLTIP
+    const imgTag = document.getElementById("new-year");
+    new bootstrap.Tooltip(imgTag);
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/src/Views/Trivia.tsx"
+
+import axios from "axios";
+import React, { useState } from "react";
+
+export function Trivia() {
+  const [trivia, setTrivia] = useState("");
+
+  return (
+    <section>
+      <h3>Trivia</h3>
+      <button onClick={handleClick}>Click to get trivia question</button>
+      <div>{trivia}</div>
+    </section>
+  );
+
+  async function handleClick() {
+    const baseUrl = "http://localhost:8000";
+    const path = "/trivia";
+    const query = "?amount=1&category=12&type=multiple";
+    const url = baseUrl + path + query;
+    const response = await axios.get(url);
+    const result = JSON.stringify(response.data);
+    setTrivia(result);
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/tsconfig.json"
+
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "module": "Preserve"
+  }
+}
+
+
+///// FILE: "Sandbox Level 4/frontend/webpack.config.ts"
+
+import { Configuration } from "webpack";
+import Dotenv from "dotenv-webpack";
+
+export default {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx|ts|tsx)/,
+        use: "babel-loader",
+      },
+      {
+        test: /\.(scss|css)/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(jpg|png|mp4)/,
+        type: "asset/resource",
+      },
+    ],
+  },
+  // watch: true, // Not needed for Webpack dev server
+  // watchOptions: { aggregateTimeout: 1000 }, // Not needed because Webpack dev server doesn't produce build errors like Live Server
+  // mode: "production", // Disables the debugger. Compresses the code so file size is smaller.
+  mode: "development", // Enable the debugger
+  devtool: "source-map", // Allows the debugger to show us the original code instead of the compressed code
+  //Webpack does not process .jsx files by default
+  //Let Webpack look for .jsx files when file extensions are not specified in import statements
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  },
+  devServer: {
+    historyApiFallback: true, //Provides support for SPA's by loading index.html on 404 errors.
+    // open: true, //Automatically open a browser tab when starting webpack dev server
+  },
+  plugins: [new Dotenv()],
+} as Configuration;
+
+
+///// FILE: "Sandbox Level 4/notes/ai.md"
+
+# Artifical Intelligence
+
+### Google's NotebookLM
+
+- An Al that's free to use that answers questions about notes and other media you provide
+
+1. Log into https://notebooklm.google.com/
+2. Add notes, videos, text, and websites in the left panel
+3. Ask questions about the notes and media in the center panel
+4. In the right panel, listen to Al generated audio summarizing the notes and media
+
+### Artificial Intelligence
+
+- A combination of programming, large sets of data, and problem solving
+- Machine learning - Computers learn from data without being explicitly programmed
+- Computer Vision - Computers analyze images and videos, then identify what's in them
+- Generative Al - Computers create new text and other media based on data it already has
+- Natural Language Processing - Computers understand and generate human language
+
+### Natural Language Processing (NLP)
+
+- Bridges the communication gap between humans and machines with a natural language
+- NLP analyzes user input then extracts the intent and other info like time and location
+- NLP keeps track of the conversation and context, such as questions previously asked
+- NLP produces a response based on information from the internet or a given context
+- NLP can respond in a language that it has already analyzed and understood
+
+### Hugging Face Al models
+
+- Hugging Face is a platform (website) for creating, running, and deploying Al models
+- Al models are programs that detect patterns in data and respond based on the patterns
+- Al models on Hugging Face have been programmed to respond according to tasks
+- https://huggingface.co/
+
+### Hugging Face Al tasks
+
+- Tasks are actions that Al models have been trained to perform
+- Hugging Face lists a variety of task and the pre-trained Al models that can perform them
+- Pre-trained Al models are programs that have recognized patterns in specific sets of data
+- Click on a task to view details about it:
+- https://huggingface.co/tasks
+
+### Question Answering Al
+
+- A question answering Al can answer a question based on a document or text
+- It takes 2 inputs - question and context
+- It provides 1 output - the answer
+- There are thousands of Al models that can perform the question answering task
+- https://huggingface.co/tasks/question-answering
+
+### Hugging Face libraries
+
+- Hugging Face libraries are modules or packages that are used to connect to Al models
+- Inference API - a REST API that a frontend can send inputs and receive Al outputs
+- Push to Hub - Al from a library can be custom trained and uploaded to Hugging Face
+- Widgets - When custom Al from a library is uploaded, it'll have a website interface
+- https://huggingface.co/docs/hub/en/models-libraries
+
+### Transformers.js library
+
+- Most Hugging Face libraries (packages) were written in the Python programming language
+- Transformers.js makes some Al models compatible with JavaScript
+- Unlike many Hugging Face libraries, Transformers.js can only be downloaded
+- View the similarities and differences between JavaScript and Python:
+- https://huggingface.co/docs/transformers.js/v3.0.0/index
+
+### Al model search
+
+- Use the Hugging Face website to search for Al models
+
+1. In the Task section, select `Question Answering` from Natural Language Processing
+2. In the Libraries section, choose `Transformers.js`
+3. Observe Xenova in the names
+
+### Install Xenova Transformers.js
+
+- Xenova is a company that heavily contributes to the progress of Transformers.js
+
+1. Install and view `@xenova/transformers` in the NPM site
+2. `pnpm approve-builds` runs extra scripts that some packages require to complete installation
+3. Install Python by typing `python` in the terminal
+
+### Use TDD to design a question answering Al module
+
+1. Create a test file `getAnswer.test.ts`
+2. Test that it receives a `question` and a `context` then responds
+3. Test that it responds with the correct answer if it's in the `context`
+4. Test that it doesn't provide an answer if it's not in the `context`
+5. Test other likely and unlikely cases
+
+### Code the function signature
+
+1. Create the file `getAnswer.ts`
+2. Export the function `getAnswer`
+3. Add the parameters - `question` and `context`
+4. Assert the parameter types
+5. Assert the return type(s)
+
+### Transformers.js pipeline
+
+- The pipeline function lets you choose an Al task to perform, then returns an Al model
+
+1. View instructions in the Xenova Al model page - Use this model (top left)
+2. Import the `pipeline` function
+3. Give it the `"question-answering"` task, and it returns an Al Model
+4. Give the Al model a `question` and `context`, then get the response
+
+### Jest cannot test Transformers.js
+
+- An error appears when running the test file with Jest
+- Jest is not compatible with the new import/export syntax
+- The new import/export syntax is in the `Transformers.js` module, not in our code
+- `Transformers.js` also uses `import.meta`, which is not compatible with Jest
+- The `import.meta` syntax imports from different locations depending on the environment
+
+### Vitest
+
+- A unit testing framework very similar to Jest, but compatible with Transformers.js
+
+1. Install `vitest` and uninstall all Jest packages
+2. Uninstall and unconfig `@babel/preset-env` because it was only required to use Jest
+3. Change the `jest` command to `vitest` for running tests
+4. Run the tests with Vitest
+
+### Vitest configuration
+
+- Some configuration is necessary to make Vitest run without importing the test functions
+
+1. Create `vitest.config.ts` and `import { UserConfigExport } from "vitest/config"`
+2. Export a default object and assert its datatype `as UserConfigExport`
+3. Set the property `test: { globals: true, watch: false }`
+4. Run the test
+
+### Remove TypeScript and timeout errors
+
+- Tests fail because they timeout - they need time to download the Al Model
+
+1. In `tsconfig.json`, add `"types": [ "vitest/globals" ]` to declare the test functions (describe, it, and expect) for TypeScript
+2. Add `{ timeout: 100000 }` as the second parameter of the `describe` function
+
+### Configure the Al model
+
+1. To remove the warning, specify the model to use
+2. To save Al models in a folder, set the options object to `{ cache_dir: "ai-models" }`
+
+### Fix test errors
+
+1. Run the tests in a debugger to find out what's wrong
+2. Don't let the module return an answer if it's probably wrong
+3. Don't run the Al model if the inputs are invalid
+
+### Get a response from the backend Al server
+
+1. Create a route and a route handler to run `getAnswer`
+2. Let the route handler extract the `question` and `context` from `query` parameters
+3. Send the return value of `getAnswer`
+4. Try the route with a browser
+
+### Errors bunding Transformers.js
+
+- Bundling `Transformers.js` will result in errors
+- Adding new loaders won't work because `Transformer.js` is different for each platform
+- Bundling assumes that the code should be the same no matter which platform it's on
+- `Transformers.js` needs to be installed specifically for each platform
+- The post-install script ensures compatibility with each platform
+
+### Configure Webpack to NOT bundle Transformers.js
+
+- Externals are modules that won't be included in the Webpack bundle
+- Externals must be imported by the bundle
+- Externals type specifies how the bundled app should import the external module
+
+1. In the Webpack config, add `externals: ["@xenova/transformers" ]`
+2. Also add `externalsType: "commonjs-module"`
+
+### Install externals
+
+- Because externals are not bundled, they must be installed separately so the app works
+
+1. Temporarily add the `PORT` environment variable in the `dist` folder
+2. Go to the `dist` folder and run the bundled app
+3. Delete the `node_modules` folder and try running the bundled app from the `dist` folder
+4. Use npm (not PNPM) to install `@xenova/transformers` in the `dist` folder
+
+### Deploy the Al to App Engine
+
+1. Remove the temporary `PORT` from the `dist` folder
+2. Make sure a copy of the `ai-models` folder is in the `dist` folder
+3. Deploy the `dist` folder to App Engine
+4. Get a response from the deployed backend Al server
+
+### Query parameters special characters
+
+- The browser may insert special characters into query parameters
+
+1. Send query parameters to the backend Al server
+2. Notice that spaces are automatically replaced by `%20` or `+`
+
+### Al interference
+
+- The special characters can interfere with Al answers
+- The Al may not be able to answer, or it might respond with `%20` or `+`
+- Use the HTTP method `POST` to send data as-is (without replacement characters)
+- See [express.md](./express.md) for details
+
+### Convert the Al route
+
+- Use the `POST` method to securely send unaltered data through the Al route
+
+1. In the `index.ts` file, change the Al route to use the `post` method
+2. In the Al route handler, use the data from `request.body`
+3. Use Postman to view the response
+
+### Frontend Al interface
+
+```javascript
+<input name="question"/>
+<textarea name="context"></textarea>
+```
+
+- Create a frontend user interface that accepts a `question` and `context`
+
+1. Create a React component called `Ai`
+2. Let it render a form that accepts a `question` and a `context`
+3. Use the `name` attribute to easily access values through form elements
+
+### Frontend Al handler
+
+```javascript
+const form = event.target.elements;
+const question = form.question.value;
+const context = form.context.value;
+```
+
+- Handle the form submission and get the result
+
+1. In the submission handler, use the debugger to explore `event.target.elements`
+2. Extract the `question` and `context` values from `event.target.elements`
+3. Send the `question` and `context` to a module called `getAnswer` (not created yet)
+4. Save the response in a local variable
+
+### Frontend Al module TDD
+
+```javascript
+const response = await axios.post(url, data);
+```
+
+1. Create a file called `getAnswer.test.ts`
+2. Write tests for a module called `getAnswer` that accepts a `question` and `context`
+3. Let the module return an answer from the backend AI server
+4. Code `getAnswer` according to the test specifications
+5. Use the Axios `post` method to send `data` to the backend server
+6. Observe that the backend server doesn't receive the data
+
+### JSON parameters
+
+```javascript
+app.use(json());
+```
+
+- Axios accepts data as an object and uses the post method to send data as a JSON string
+- Express needs to be configured to receive JSON parameters
+
+1. Use the debugger to confirm that data is not being transmitted from frontend to backend
+2. To the backend `index.ts` file, add `app.use(json())` to enable JSON parameters
+3. Use the debugger to confirm that JSON parameters are being received through `request.body`
+
+### Answer probability score
+
+```javascript
+const { answer, score } = response;
+```
+
+- The Al model provides the probability that the answer is correct
+- Probability is a score from 0 to 1 in which 1 means the Al is certain of the answer
+
+1. Destructure the `answer` and `score` from the `response`
+2. Check if the `score` is high enough
+3. Use a condition to customize the response
+
+### Use Redux for rendering the answer
+
+```javascript
+const action = set.globalAnswer(answer);
+dispatch(action);
+```
+
+1. In `stateVariables.ts` add a categorized state variable for the answer
+2. Code its selector and setter in `stateSelectors.ts` and `stateSetters.ts`
+3. Add `useSelector` and `useDispatch` to the Ai component
+4. Dispatch an `action` to set the value of the state variable for the answer
+5. Render the answer
+
+### Congratulations!
+
+- You've integrated a full stack Al
+- Frontend interface with backend server
+
+### Use Bootstrap to style the Al interface
+
+- Components: Grid system, Collapse, icon
+- Spacing: `m-3` `mt-3` `mb-3` `my-3` `p-3` `pt-3` `pb-3` `py-3`
+- Borders: `border` `border-primary` `rounded`
+- Colors: `bg-primary` `text-primary` `btn-primary`
+- Size: `fs-3` `w-50` `vw-50`
+
+
+///// FILE: "Sandbox Level 4/notes/aws.md"
+
+# AWS
+
+Amazon Web Services
+
+### Environment variables
+
+- Environment variables are stored outside of your app, but your app has access to them
+- Environment variables can be accessed through the `process` object
+- The `process` object is provided to apps running in NodeJs, not in the browser
+- AWS can be configured to run apps in NodeJs
+- A file called `.env` can be used to declare or change environment variables
+
+### Environment variables route
+
+1. In the backend, create the file `.env` in the root folder
+2. Add `.env` to `.gitignore`
+3. To the `.env` file, add `mode = development`
+4. Create a route `"/env"` and a handler to send environment variables in the response
+5. Install `dotenv` and initialize it in the handler with `dotenv.config()`
+6. Access the environment variable with `process.env.mode` and send it in a response
+
+### AWS Lambda
+
+- AWS Lambda is a service that can be used to deploy your backend server
+- Your backend server will not actually do the listening
+- AWS Lambda will receive requests, then run them through your route handlers
+- AWS Lambda is called a serverless service because it runs more like a function
+- It runs only when called, and only uses your handler functions, not the Express listener
+
+### Create an AWS Lambda function
+
+1. From the AWS Lambda Dashboard, click on `Create Function`
+2. Enter a function name (ex. sandbox-level-4)
+3. Click `Create Function`
+
+### Lambda zip file
+
+- The server code can be manually typed or uploaded as a zip file
+
+1. Select the lambda function
+2. Click the Upload from button and choose .zip file
+3. Zip the files in the `dist` folder
+4. Upload the .zip file to AWS Lambda
+
+### Test and view logs
+
+- The lambda function can go for a test run and logs can be viewed
+
+1. In the `Test` tab, click the `Test` button
+2. Click `Details` to view the logs
+
+### AWS Lambda file name
+
+```
+Error: Cannot find module 'index'
+```
+
+- AWS Lambda requires a JavaScript file called index
+- Configure Webpack to change the bundle filename
+
+1. Edit Webpack configuration and add `output: { filename: "index.js" }`
+2. Update NPM scripts to use the new bundle name
+3. Delete `dist`, rebuild, zip, upload to AWS Lambda, test, and view logs
+
+### AWS Lambda exported handler
+
+```
+index.handler is undefined or not exported
+```
+
+- AWS Lambda requires a function called handler to be exported from the index file
+
+1. Edit `index.ts`
+2. Export a function called `handler`.
+3. Let it be an empty function for now.
+4. Delete `dist`, rebuild, zip, upload to AWS Lambda, test, and view logs
+
+### Webpack tree shaking
+
+- Tree shaking refers to Webpack's ability to exclude unused code
+- The Webpack bundle only includes code that was imported into your app
+- Observe tree shaking efficiency by comparing `node_modules` to the bundle size
+- Tree shaking also excludes exports that are not being used
+- By default, Webpack will not include the unused handler function in the bundle
+
+### Webpack library files
+
+- Library files contain unused code that are meant to be used by other files (ex. packages)
+- Configure Webpack to include the exported handler function so AWS Lambda can use it
+
+1. Edit the Webpack config file
+2. Add `output: { library: { type: "commonjs" } }`
+3. Rebuild, zip, upload to AWS Lambda, test, and view logs
+
+### Serverless converter
+
+```
+Task timed out after 3.00 seconds
+```
+
+- The test sends a request and expects a response within a short amount of time
+- Convert the Express app into a serverless app compatible with AWS Lambda
+
+1. Install `serverless-http`
+2. `import serverless from "serverless-http"`
+3. `export const handler = serverless(app);`
+4. Rebuild, zip, upload to AWS Lambda, test, and view logs
+
+### Congratulations!
+
+- Your backend server is deployed to AWS Lambda
+
+1. `Configuration` tab > `Function URL` in the sidebar > `Create function URL` button
+2. `Auth type` > `NONE` > `Save` button
+3. `Function overview` section > `Function URL` click link
+4. View the server page
+5. View the `"/env"` route for environment variables
+6. Observe there are no environment variables
+
+### AWS Lambda environment variables
+
+- AWS Lambda is a separate environment from your local development environment
+- Configure environment variables in AWS Lambda
+
+1. `Configuration` tab > `Environment variables` in the sidebar > `Edit` button
+2. `Add environment variable` button
+3. `Key: mode` > `Value: production` > `Save` button
+4. View the `"/env"` route and observe the environment variable
+
+### Disable the Express listener
+
+- AWS Lambda should do the listening while your Express app does the handling
+
+1. Observe the Express listener in the AWS Lambda test details
+2. In `index.ts`, import and initialize `dotenv`
+3. If the environment variable `mode` is `development`, start the Express listener
+4. Rebuild, zip, upload to AWS Lambda, test, and view logs
+
+### Webpack zip plugin
+
+- Webpack can be configured to automatically zip the bundle for AWS Lambda
+
+1. Install `zip-webpack-plugin`
+2. In Webpack config, `import Zip from "zip-webpack-plugin";`
+3. Install `@types/zip-webpack-plugin`
+4. Add `plugins: [ new Zip() ]`
+5. Delete dist, rebuild, upload to AWS Lambda, test, and view logs
+
+### AWS CLI
+
+- Terminal commands can be used to log into AWS and make changes
+
+1. In the AWS console, create a user with full AWS Lambda and DynamoDB access, but no console access
+2. Create a CLI access key for the lambda user and download the .csv file
+3. Install AWS CLI for your system (search the internet for "install aws cli")
+4. Login with the lambda user from the CLI with the command `aws configure`
+
+### AWS Lambda commands
+
+- Terminal commands can be used to make changes to AWS Lambda
+
+1. CLI commands for AWS Lambda - search the internet for "aws cli lambda v2"
+2. View the section for updating function code
+3. `aws lambda update-function-code --function-name sandbox-level-4 --zip-file fileb://dist/index.js.zip`
+
+### Automate deployment to AWS Lambda
+
+- Create an NPM script that combines these commands
+
+1. Bundle in production mode and zip
+2. Upload the zip file to AWS Lambda
+3. OPTIONAL: Push to GitHub
+
+### AWS S3
+
+- Simple Storage Service
+- Bucket - like a hard drive
+- Object - like a file
+
+### Create an S3 bucket
+
+1. For Bucket name, put sandbox-level-4
+2. Leave all other settings as default
+3. Create bucket
+
+### Put objects in the S3 bucket
+
+1. Create a folder called `frontend`
+2. In the `frontend` folder, upload `index.html`
+3. Create a folder called `dist` in the `frontend` folder
+4. In the `dist` folder, upload `main.js`
+5. Leave all upload settings as default
+
+### AWS CloudFront
+
+- A service that distributes (or copies) your S3 objects worldwide
+- Your website loads faster because the files are physically closer to the user
+- Multiple copies means if one storage site goes down, another site can provide the files
+- Can configure which folder and file to render for your website
+- Can configure for SPA sites
+
+### Create an AWS CloudFront distribution
+
+1. For Origin domain, select the sandbox level 4 S3
+2. For the Origin path, type `/frontend`
+3. Web Application Firewall (WAF) - do not enable
+4. Set Price class to `Use only North America and Europe`
+5. Set Default root object to `index.html`
+
+### Give CloudFront access to the S3 bucket
+
+1. In the Origins tab, select and edit the sandbox level 4 origin
+2. Select `Origin access control settings (recommended)`
+3. Click `Create new OAC` then click the Create button
+4. Click `Copy policy`, **???save changes???**, and go to the S3 bucket Permissions tab
+5. Edit the Bucket policy and paste in the policy
+
+### Render the website with AWS CloudFront
+
+1. Load the `Distribution domain name` in a browser tab
+2. Observe the home page loads and navigation works
+3. Observe that loading a page other than root shows `Access Denied`
+
+### SPA settings for AWS CloudFront distributions
+
+1. In the `Error pages` tab, click Create custom error response
+2. For HTTP error code, select `403: Forbidden`
+3. For Custom error response, select `Yes`
+4. For Response page path, type `/index.html`
+5. For HTTP Response code, select `200: OK`
+
+### Deploy updates to AWS S3 and CloudFront
+
+- Objects must be invalidated to trigger CloudFront to redistribute them
+
+1. Upload an updated `main.js` file to the S3 `dist` folder
+2. In the CloudFront distribution `Invalidations` tab, click Create invalidation
+3. For Add object paths, type `/*` to invalidate all objects in the S3
+4. Click Create invalidation
+
+### Automate the deployment
+
+1. In IAM, attach policies to the CLI user - full access to S3 and CloudFront
+2. https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html
+3. `aws s3 cp ./dist/ s3://sandbox-level-4-temp/frontend/dist/ --recursive --exclude *.map`
+4. `aws cloudfront create-invalidation --distribution-id ENBFR12GT6OOF --paths "/*"`
+5. Add to NPM scripts
+
+- Hard refresh: CTRL + SHIFT + R
+  - Use hard refresh to reflect website updates
+  - Hard refresh re-downloads the website files
+- Escape character: `\`
+  - Use the escape character for NPM scripts that require double quotes in them
+
+### How to get the s3 link (URI)
+
+1. Select the bucket
+2. Select/navigate to the target folder
+3. The s3 link (URI) will be at the top left for the selected folder
+
+### Minimize zip size
+
+```javascript
+plugins: [new Zip({ include: /^index.js$/ })];
+```
+
+- The `library` option allows Webpack to bundle exported code
+- As a result, unnecessary files may be included in the zipped bundle
+- Minimize zip size by specifying the files to include
+
+1. Edit Webpack config
+2. `plugins: [ new Zip({ include: /^index.js$/ }) ]`
+
+### Ignore the backend dist folder
+
+- The dist folder is for starting the backend server
+- Because GitHub doesn't start the server, the repository can ignore the dist folder
+
+1. Add `dist` to `.gitignore`
+2. `git rm -r --cached dist`
+3. Commit changes and push updates to GitHub
+
+
+///// FILE: "Sandbox Level 4/notes/dynamodb.md"
+
+# DynamoDB
+
+### Connect to DynamoDB with environment variables
+
+```javascript
+const apiKey = {
+  region: process.env.region,
+  credentials: {
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+  },
+};
+```
+
+1. In the backend, save `accessKeyId`, `secretAccessKey`, and `region` in `.env`
+2. Import `dotenv` and initialize it
+3. Use the environment variables to construct the `apikey` object
+4. Connect to DynamoDB with the `apiKey` object
+5. Create the nice DynamoDB client
+
+### CRUD
+
+- CRUD refers to actions that can be performed on a database
+
+1. CREATE: Add new data to a database
+2. READ: Retrieve existing data from a database
+3. UPDATE: Change existing data in a database
+4. DELETE: Remove data from a database
+
+### Review - Read from DynamoDB
+
+```javascript
+const request = {
+  TableName: "logins",
+  Key: { email: "aaa@aaa.com" },
+};
+
+const response = await niceClient.get(request);
+```
+
+- See [readDemo.ts](../backend/src/modules/dynamodb/readDemo.ts) for details
+
+1. In the sandbox, create the `read.ts` module in a `dynamodb` folder
+2. Form the `request` object with
+   `TableName` - the name of the table in DynamoDB
+   `Key` - an object that contains the key and value to look for
+3. Send the request object with the `get` method
+4. If there's a match, the response will have an `Item` object containing the data
+
+### Create data in DynamoDB
+
+```javascript
+const request = {
+  TableName: "logins",
+  Item: { email: "new@email.com", password: "new" },
+};
+
+const response = await niceClient.put(request);
+```
+
+- See [createDemo.ts](../backend/src/modules/dynamodb/createDemo.ts) for details
+
+1. In the sandbox, create the `create.ts` module in the `dynamodb` folder
+2. Form the `request` object with
+   `TableName` - the name of the table in DynamoDB
+   `Item` - an object that contains the keys and values to put in the table
+3. Send the `request` object with the `put` method
+4. If successful, the response will have `httpStatusCode` 200
+
+### Update data in DynamoDB
+
+```javascript
+const request: UpdateCommandInput = {
+  TableName: "logins",
+  Key: { email: "test@email.com" },
+  AttributeUpdates: { password: { Value: "new password" } },
+};
+
+const response = await niceClient.update(request);
+```
+
+See [updateDemo.ts](../backend/src/modules/dynamodb/updateDemo.ts) for details
+
+1. In the sandbox, create the `update.ts` module in the `dynamodb` folder
+2. Form the `request` object with `TableName`, `Key` of the data to update, and
+   `AttributeUpdates` - an object whose properties are the keys that should update, which are objects with a `Value` property which contain a new value
+3. Send the `request` object with the `update` method
+4. If successful, the response will have `httpStatusCode` 200
+
+### Delete data in DynamoDB
+
+```javascript
+const request = {
+  TableName: "logins",
+  Key: { email: "test@email.com" },
+};
+
+const response = await niceClient.delete(request);
+```
+
+- See [deleteDemo.ts](../backend/src/modules/dynamodb/deleteDemo.ts) for details
+
+1. In the sandbox, create the `del.ts` module in the `dynamodb` folder
+2. Form the `request` object with `TableName` and the `Key` of the data to delete
+3. Send the `request` object with the `delete` method
+4. If successful, the response will have `httpStatusCode` 200
+
+### TDD Read Practice
+
+Use TDD to create a backend route that reads account information from DynamoDB
+
+1. In the DynamoDB console, add a `name` and `phone` to each login
+2. In `index.ts`, define the route `"/read"` and handler for reading account info
+3. In the `module` folder, use TDD to test the function `readAccount`
+4. Test that it returns an `email`, `password`, `name`, and `phone` when given an existing email
+5. Test that the result matches - the `email` in the result is the same as the given `email`
+6. Test that it doesn't return a result when the `email` is not in the list
+7. Test that it doesn't return a result when the `email` is an object
+8. Code the function signature and assert the return type
+9. Code the function according to the test specifications
+10. Code the route handler to respond with the result of `readAccount`
+
+
+///// FILE: "Sandbox Level 4/notes/express.md"
+
+# Express
+
+### Express.js
+
+- A JavaScript framework for writing backend server applications
+- A server can be written with Node.js http module, but Express.js is more popular
+- Search Indeed.com for entry level jobs in the USA that want experience with Express
+- https://expressjs.com/
+
+### Backend TypeScript template
+
+- Create a TypeScript template to easily start new backend projects
+
+1. Create a new VS Code workspace for `Express Template`
+2. Create a `src` folder with `index.ts`
+3. `pnpm install express`
+4. In index.ts, `import express from "express"`
+
+### Backend TypeScript configuration
+
+1. Configure Webpack and Babel to watch and compile TypeScript
+2. To webpack.config.ts, add `"target": "node"`
+3. Add `tsconfig.json`, `.gitignore`, and packages
+4. `pnpm install @types/express --save-dev`
+5. In package.json, `"build": "npx webpack --watch"`
+
+### Backend TypeScript app
+
+1. Specify variables for the `hostname`, `port`, and `path` of the page
+2. Instantiate an express `app` object
+3. With the `get` method, specify the `path` and the `handler` (empty function for now)
+4. With the `listen` method, specify `port` and `hostname`
+5. Use NPM script, `"start": "node ./dist/main.js"`
+
+### Backend listener
+
+`app.listen(port, hostname)`
+
+- The listener method is used to specify a `port` and `hostname`
+- It listens for any activity that happens at that hostname and port (ex: `localhost:8000`)
+- When a request comes in, the listener identifies the path (ex: `/`)
+- Then the listener routes the request to the `handler` for that `path`
+
+### Backend get method
+
+`app.get(path, handler)`
+
+- The get method assigns a handler to a path
+- When a request goes to the path, the listener calls the handler for that path
+
+### Backend path handler
+
+`function handler(request, response)`
+
+- The handler is a function that processes requests
+- The listener gives the handler a request object, and a response object
+
+1. Add the `request` and `response` parameters to handler
+2. Assert their types: `Request` and `Response` from the `express` package
+
+### Response object
+
+`response.send("<h1>Hello world!</h1>")`
+
+- The response object has a send method which takes a string or an object
+- The send method sends the response as a string
+
+1. Try sending `"<h1>Hello world !< /h1>"`
+2. Try sending `{ message: "Hello world!" }`
+3. Must re-run `node ./dist/main.js` or `npm start` to apply changes
+
+### Request object
+
+`const { url } = request;`
+
+- Contains information about the request that was sent to the server
+- In this case, the request is coming from the browser
+
+1. Start the server in a JavaScript debug terminal
+2. Inspect the `request` object
+3. Destructure the `url` property from the `request` object
+4. Respond with the value of the `url`
+
+### Express app summary
+
+```javascript
+const app = express();
+app.get(path, handler);
+app.listen(port, hostname);
+```
+
+1. Instantiate an Express `app` that contains methods for starting a server
+2. Specify a `path` and a `handler` for that path
+3. Start the server by listening for activity at a domain (`hostname` and `port`)
+
+### Nodemon
+
+- Nodemon stands for Node monitor
+- It's a module that can start and automatically reload the Express server
+- https://nodemon.io/
+
+1. `pnpm install nodemon --save-dev`
+2. `"start": "nodemon ./dist/main.js"`
+
+### Listener callback
+
+`app.listen(port, hostname, handleListen)`
+
+- When the listener is loaded, it can run a callback function
+
+1. Add a callback to the listener (ex `handleListen`)
+2. Let the callback display the URL for viewing the server response
+3. Also display instructions to run the build script
+4. Also display instructions to run the debugger
+
+### Access the backend from the frontend
+
+`fetch("http://localhost:8000/")`
+
+1. Create a React component
+2. From `componentDidMount`, send a `fetch` request
+3. Observe async/await cannot be used in `componentDidMount`
+4. Save the response in a state variable and render it
+5. Obeserve the fetch error
+
+### Review - CORS
+
+- Cross Origin Resource Sharing
+- If the requesting domain is not in the server's CORS list, the browser blocks the response
+
+1. Use the debugger in the backend
+2. Observe that the server does send the response
+3. Observe that the browser client doesn't receive the response
+
+### Enable CORS - Cross Origin Resource Sharing
+
+- The `cors` module allows Cross Origin Resource Sharing between client and server
+
+1. `pnpm install cors`
+2. Add TypeScript support with `pnpm install @types/cors --save-dev`
+3. In `index.ts`, `app.use( cors() )`
+4. Observe the frontend receives the server response
+
+### Axios
+
+- Axios is a module that's more popular than the built-in `fetch` module
+  https://axios-http.com/
+
+1. `pnpm install axios`
+2. Use the axios `get` method instead of `fetch`
+3. Observe the usage differences
+
+### Folder structure for backend routes
+
+```
+> Express Template
+  > src
+    > routes
+    index.ts
+```
+
+- Create a separate file for each path, also known as routes
+- Match the file name with the path and the function name
+
+1. Create a `routes` folder in the `src` folder
+2. In `routes`, create a file called `root.ts`
+3. Move the `handler` code into `root.ts` and name the function `root`
+
+### Add a path for frontend clients
+
+```javascript
+const data = { origin: request.headers.origin };
+```
+
+- Frontend clients usually receive data from backend servers
+- The root path of the server can be used for the server page
+
+1. In the Express server, add the `"/api"` path and a route handler called `api`
+2. In the `routes` folder, add `api.ts` and a function called `api`
+3. Let it respond with data only, like an object containing the origin
+
+### Request query
+
+`axios.get("http://localhost:8000/api?message=hello")`
+
+- Contains query parameters that were sent through the URL
+
+1. Add query parameters to the path `/api?message=hello`
+2. Use JavaScript debug terminal to inspect the `request` object
+3. Add the query to the server response `data`
+
+### Add Jest to the Express template
+
+1. Install packages and update configurations for Jest support
+2. Add an NPM script for test
+3. Make sure Jest is working
+
+### Review - Proxy server
+
+- From the frontend, a proxy server was required to receive a response from APIs
+- https://opentdb.com
+- https://favqs.com/api
+- https://github.com/Freeboard/thingproxy
+- https://corsproxy.io/
+
+### Custom API proxy
+
+1. Write tests for a function called `getQuote` with no parameters
+2. Test if the function properly returns information from the FavQs API
+3. Code `getQuote` according to the test specifications
+4. Add a route and a handler to send a response with the results of `getQuote`
+5. In the frontend, use Axios and a component to render the response
+
+### API proxy with query parameters
+
+1. Write tests for a function called `getTrivia` that accepts a query object
+2. Test if the function uses the query to return information from the OpenTDB API
+3. Code `getTrivia` according to the test specifications
+4. Add a route and a handler to send a response with the results of `getTrivia`
+5. In the frontend, use Axios and a component to render the response
+
+### Ignore the backend dist folder
+
+- The dist folder is for starting the backend server
+- Because GitHub doesn't start the server, the repository can ignore the dist folder
+
+1. Add `dist` to `.gitignore`
+2. `git rm -r --cached dist`
+3. Commit changes and push updates to GitHub
+
+### HTTP method POST
+
+- `POST` is an HTTP method, a way to communicate with servers, like the `GET` method
+
+1. Add to the AI backend `index.ts` file `app.post("/postDemo", postDemo)`
+2. Add the route handler `postDemo` to send a response
+3. Try to use the browser URL bar to send a request to the `postDemo` path
+4. There should be an error
+
+### Review - Postman
+
+- Postman is an app that can be used to send requests to a server
+- Query parameters can be sent through the URL manually
+- Query parameters can be entered in the Params section
+- The server response is displayed at the bottom
+- https://www.postman.com/
+
+### Postman post requests
+
+- The HTTP method can be specified for sending requests
+
+1. To use the `POST` method, select `POST` to the left of the URL bar
+2. Send a request to the `postDemo` path
+3. There should be a successful response
+
+### POST data
+
+- Using the `POST` method to send data is more secure because the data is hidden
+
+1. Observe that data in the `Params` tab is exposed in the URL
+2. With the `POST` method, data should be sent through the `Body` tab
+3. Send data through `x-www-form-urlencoded`
+4. Observe the data is hidden and not accessible through request `query` object
+
+### Request body
+
+- Express must be configured to receive data through the `POST` method
+- The hidden `POST` data is received by the backend server in `request.body`
+
+1. Use the debugger to observe that `request.body` is not in the `postDemo` handler
+2. Add to the `index.ts` file `app.use(urlencoded())`
+3. Use the debugger to observe that `request.body` is NOW in the `postDemo` handler
+
+### Request body data
+
+- Send a response that includes data from `request.body`
+
+1. Use the debugger to observe the properties of `request.body`
+2. Respond with information from `request.body`
+3. Use Postman to view the response
+
+### JSON parameters
+
+```javascript
+app.use(json());
+```
+
+- Axios accepts data as an object and uses the post method to send data as a JSON string
+- Express needs to be configured to receive JSON parameters
+
+1. Use the debugger to confirm that data is not being transmitted from frontend to backend
+2. To the backend `index.ts` file, add `app.use(json())` to enable JSON parameters
+3. Use the debugger to confirm that JSON parameters are being received
+
+
+///// FILE: "Sandbox Level 4/notes/github.md"
+
+# GitHub
+
+### Deploy from a specific folder in GitHub
+
+1. GitHub repository > Settings tab > Pages in sidebar
+2. Build and deployment section > GitHub Actions from drop down
+3. Static HTML card > Configure button
+4. Change line 40 to `path : './frontend'` and update the comment on line 39
+5. Commit changes button
+
+### Ignore the backend dist folder
+
+- The dist folder is for starting the backend server
+- Because GitHub doesn't start the server, the repository can ignore the dist folder
+
+1. Add `dist` to `.gitignore`
+2. `git rm -r --cached dist`
+3. Commit changes and push updates to GitHub
+
+
+///// FILE: "Sandbox Level 4/notes/googleCloud.md"
+
+# Google Cloud
+
+### Google Cloud
+
+- Like AWS, Google Cloud offers services for building and deploying applications
+- Unlike AWS, Google Cloud can deploy backend servers the traditional way for free
+- The free tier is for personal use (a server with high traffic may accrue charges)
+- For registration, a valid credit card is required just in case the free tier is exceeded
+- Create an account at https://cloud.google.com/
+
+### App Engine
+
+- App Engine is a Google Cloud service for building and deploying server backends
+- Supports traditional backend deployment for NodeJs apps
+- Unlike AWS, only CLI commands can deploy a backend server to Google App Engine
+- The free tier is for personal use (a server with high traffic may accrue charges)
+- https://cloud.google.com/appengine
+
+### Create a new App Engine project
+
+1. Log into the Google Cloud console https://console.cloud.google.com/
+2. At the top left, click on the project box > `New Project` > `Name: Sandbox Level 4` > `Create`
+3. At the top right project box, select `Sandbox Level 4` > at the bottom `View All Products`
+4. Select `App Engine` > `Create Application`
+5. A billing account is required to create an application
+
+### Add a Google Could billing account
+
+- These are general instructions (not detailed)
+
+1. At the top left, click the menu > `Billing` > `Manage billing accounts` > `Add billing account`
+2. Provide billing information > Activate account > add 2-step verification
+3. `Setup budget alerts` > `Create budget` > `Name: Free` > `Amount: $0.01`
+
+### Install Google Cloud SDK (CLI)
+
+1. Google Cloud console > `View all products` > Select `App Engine` > `Create Application`
+2. Choose a region that's closest to you > `Next`
+3. Language: `Node.js` > Environment: `Standard` > `Download the Cloud SDK`
+4. `Install Google Cloud SDK for all users` > In a VS Code terminal, `gcloud --version`
+5. If the Google Cloud CLI doesn't work, close all VS Code windows or sign out/in
+
+### Create a local backend project
+
+- These are general instructions (not detailed)
+
+1. Workspace: `backendGoogleCloud` > copy the backend template into the workspace
+2. In the terminal > `gcloud init` > Yes to sign in > visit link > Allow Google SDK access
+3. In the terminal > choose the sandbox-level-4 project > type `gcloud app deploy`
+4. An error message will show that an `app.yaml` file is required
+
+### The app.yaml file
+
+```yaml
+runtime: nodejs22
+```
+
+- The `app.yaml` file tells App Engine which NodeJs version should run the backend server
+
+1. Install node packages with `PNPM` > build the project to generate a bundle in `dist`
+2. Create `app.yaml` in the `dist` folder > Add `runtime: nodejs22` to `app.yaml`
+3. In the terminal > `gcloud app deploy ./dist/app.yaml` > try again if error
+4. Open the displayed link in the browser > Error message that service is unavailable
+
+### App Engine requirements
+
+- App Engine requires these to be in the folder that will be deployed:
+
+1. The `app.yaml` file for specifying the NodeJs version to use
+2. The `package.json` file for installing dependencies (even if there are none)
+3. A `"start"` script in `package.json` for starting the backend server
+4. The backend server must listen on the `PORT` environment variable from App Engine
+
+### Configure the backend server for App Engine
+
+1. Add `.env` to `.gitignore` > in `.env`, add your preferred `PORT` (ex. `PORT = 8000`)
+2. Install `dotenv` > configure `dotenv` in `index.ts`
+3. Set the `listener` port to `process.env.PORT` > Use type `any` to remove TypeScript error
+4. Copy `package.json` to the `dist` folder > empty out `dependencies` and `devDependencies` > empty out NPM scripts > add the script `"start": "node main.js"`
+
+### Deploy the backend server to App Engine
+
+1. Rebuild the propject `npm run build` to include code updates
+2. In the terminal > `gcloud app deploy ./dist/app.yaml`
+3. Open the displayed link in the browser > your server root handler should respond
+4. Save the command in an NPM script (ex. `"deploy"`)
+5. Add an NPM script to open a browser tab with the live App Engine server link
+
+### App Engine extra steps
+
+1. In the `dist` folder, run `npm install` (not PNPM) to generate `package-lock.json`
+2. OPTIONAL: Delete node modules in the `dist` folder because App Engine ignores it
+3. Save a backup of `app.yaml`, the modified `package.json` file, and `package-lock.json` in a folder (ex. `.bak`)
+4. Add the backup folder to `.gitignore`
+
+### App Engine environment variables
+
+- Use a separate `.env` file to store environment variables for App Engine
+
+1. In the `dist` folder, define App Engine environment variables in a `.env` file
+2. Save a backup of `.env` in a folder (ex. `.bak`)
+3. Add the `dist` folder to `.gitignore` because GitHub doesn't deploy the backend
+
+
+///// FILE: "Sandbox Level 4/notes/practice.md"
+
+# Practice
+
+### React Feedback Practice
+
+Use functional programming to output form feedback the
+
+1. In a React component, create a state variable called promoMessage
+2. Render `promoMessage` and a form that accepts a `name` and `email`
+3. When the form is submitted, let it call `handleSubmit`, an inner function
+4. Create a module function called `getPromoMessage` that accepts an `event` object.
+5. Let `getPromoMessage` extract the values from the form in the event target
+6. Create a promo code message that includes the values from the form
+7. Let `getPromoMessage` return the promo code message
+8. In `handleSubmit`, call `getPromoMessage` and store the return value
+9. Use a setter to store the return value in `promoMessage`
+10. Render the `promoMessage` in a Bootstrap Alert instead
+
+### React Render Practice
+
+1. Create a React component called `<RenderPractice>`
+2. Add a state variable called `elements` and set the initial value to an empty array
+3. Render the state variable between empty tags
+4. In the mount phase, push an `<h1>Render Practice</h1>` into the elements array
+5. Notice the `h1` tag doesn’t render. To fix, first create a state variable called `updateCount`
+6. Initialize the value with 0, then increment it with a setter in the mount phase
+7. Notice there’s an error. To fix, add `key=“title”` to the h1 tag
+8. In the update phase, when `updateCount` is 1, push a button into elements
+9. Notice the button doesn’t render. To fix, increment `updateCount` when adding the button
+10. Notice there’s an error. To fix, add `key=“button”` to the button tag
+
+### Redux Sign-in Practice
+
+Use Redux to login and logout the user
+
+1. For the Redux store, create a state variable, selector, and setter for login status
+2. Let the `SignInArea` component select the Redux state regarding login status
+3. When the Redux state shows the user is logged out, show the `SignIn` component
+4. When the Redux state shows the user is logged in, hide the `SignIn` component
+5. When the Redux state shows the user is logged in, show the `SignOut` component
+6. When the Redux state shows the user is logged out, hide the `SignOut` component
+7. In the `SignIn` component, when the user logs in, `dispatch` an `action`
+8. Let the action `set` the proper Redux state for logging in
+9. In the `SignOut` component, when the user logs out, `dispatch` an `action`
+10. Let the action `set` the proper Redux state for logging out
+
+### Persistent Login Practice
+
+Keep the login status persistent so it stays even when the page is refreshed
+
+1. In the frontend when users authenticate, store their `email` and `password` in an object
+2. Use `JSON.stringify` to convert the object to a string
+3. Store the string with `localStorage.setItem` and an appropriate key (ex. `"login"`)
+4. When users logout, store an empty string with `localStorage.setItem` and the same key
+5. When the sign-in area mounts, get a login with `localStorage.getItem` and the same key
+6. If a login was saved, convert it to a login object with `JSON.parse`
+7. Use the `email` and `password` from the login object to authenticate
+8. If the credentials authenticate, login the user
+9. If the credentials don't' authenticate, store an empty string login with `localStorage`
+10. If the user changes the password, update the login string in `localStorage`
+
+### Expiring Persistence Practice
+
+After a set amount of time, expire a persistent login so users must re-enter their credentials
+
+1. In the frontend when users authenticate, get a `currentTimestamp` with `Date.now()`
+2. Store the user's `email`, `password`, and the `timestamp` in an object
+3. Use Persistent Login Practice instructions to store login info with `localStorage`
+4. When the sign-in area mounts, get the `currentTimestamp` with `Date.now()`
+5. Also use Persistent Login Practice instructions to get login info from `localStorage`
+6. If a login was saved, convert it to a login object with `JSON.parse`
+7. Subtract the `currentTimestamp` and the `timestamp` from the login object
+8. Check if the difference is greater than `86,400,000` (1 day in milliseconds)
+9. If the difference is more than 1 day, store an empty string for the login in `localStorage`
+10. The empty string indicates an expired login and will require users to re-authenticate
+
+### Redux Sign-up Practice
+
+Use Redux to toggle access to the sign-up page
+
+1. Create a Sign-up component with a sign-up button and a modal
+2. Let the modal contain a sign-up form that asks for an `email` and `password`
+3. When the sign-up form is submitted, check if the `email` is in the database
+4. If it is, send an error message that an account has previously been created
+5. If the `email` is not in the list, create a new `account` in the database
+6. On successful sign-up, automatically login the user by setting the proper Redux state
+7. Let the `SignInArea` component select the Redux state regarding login status
+8. When the Redux state shows the user is logged in, hide the Sign-up component
+9. When the user logs out, set the proper Redux state
+10. When the Redux state shows the user is logged out, show the Sign-up component
+
+### Redux Account Practice
+
+Use Redux to toggle access to the account page where users can edit their information
+
+1. Create an `Account` component with an account button and a modal
+2. Let the modal contain an editable form (except for email) with the account's information
+3. When the account form is submitted, update the database
+4. To the `Account` component, add a `Delete` component with a delete button and a modal
+5. Let the modal confirm with a `password` that the account should be deleted
+6. If it's confirmed, delete the account and automatically logout the user
+7. Set the proper Redux state to show when the user is not logged in
+8. Let the `Account` component select the Redux state about login status
+9. When the Redux state shows the user is logged in, show the `Account` component
+10. When the Redux state shows the user is logged out, hide the `Account` component
+
+
+///// FILE: "Sandbox Level 4/notes/react.md"
+
+# React
+
+### Use async/await in a React component
+
+```javascript
+function componentDidMount() {
+  getResponse();
+}
+```
+
+- The `componentDidMount` function cannot directly use async/await
+- From `componentDidMount`, call a function and use async/await from there
+
+1. Let `componentDidMount` call a function (ex. `getResponse()`)
+2. Let that function use async/await
+
+
+///// FILE: "Sandbox Level 4/notes/redux.md"
+
+# Redux
+
+### What is Redux
+
+- Redux is a JavaScript framework
+- A set of functions and rules for managing state variables
+- State variables are stored in a central location instead of individual components
+- Eliminates the need for parent components to pass communication callbacks to children
+
+### Review - communication between parent and child components
+
+```xml
+<SignInArea>
+  <SignInModal onSignIn={handleSignIn} />
+  <SignOutModal onSignOut={handleSignOut} />
+</SignInArea>
+```
+
+- A callback function is passed so the child component can communicate with its parent
+- `SignInArea` - parent component that passes callback functions to its children
+- `SignInModal` - child component that activates the callback on sign in
+- `SignOutModal` - child component that activates the callback on sign out
+- The purpose of the callback is to change a state variable in the parent component
+
+### Redux centrally stored state variables
+
+- Redux state variables are centrally stored
+- A child component can change a state variable that the parent uses
+- A parent component can change a state variable that a child uses
+- Parent and child components can communicate with centrally stored state variables
+
+### Redux Store
+
+- Store is the Redux object that stores state variables
+
+1. Install `@reduxjs/toolkit`
+2. Create `store.ts` in a folder called `redux` in the `modules` folder
+3. Import `configureStore` into `store.ts`
+4. `const store = configureStore(storeOptions);`
+
+### Redux Store options
+
+- The options object is the datatype `ConfigureStoreOptions` which has a reducer property
+
+1. `const storeOptions = {};`
+2. Assert the type to `ConfigureStoreOptions`
+3. Add the `reducer` property
+
+### Redux Reducer
+
+- The `reducer` is a function that can change state variables in the Redux `store`
+- To properly create a `reducer` that Redux expects, use the function `createSlice`
+
+### Redux Slice
+
+- A `slice` is an object that contains state variables and reducers that change them
+
+1. Import `createSlice`
+2. `const slice = createSlice(sliceOptions);`
+
+### Slice options
+
+- The options object defines state variables and reducers
+
+1. `const sliceOptions = {};`
+2. Assert the datatype as `CreateSliceOptions`
+3. Add these properties: `name`, `initialState`, `reducers`
+4. Let the `name` describe the state variables - `name: "global"`
+
+### Slice initial state
+
+```javascript
+export const stateVariables = {
+  didMount: false,
+  clickCount: 0,
+  message: "Hello world!",
+};
+```
+
+- The initial state declares state variables with key/value pairs
+
+1. In the `redux` folder, create a file called `stateVariables.ts`
+2. Export an object of state variables as key/value pairs
+3. Import `stateVariables` into `store.ts` and set - `initialState: stateVariables`
+
+### Slice reducers
+
+```javascript
+function (state, action)
+```
+
+- A slice reducer is a function that accepts a `state` and `action` object
+- The function changes the `state` based on the `action`
+- The `state` object will contain state variables as key/value pairs
+- The `action` object will contain the new value for a state variable
+- The `state` and `action` objects will be provided by Redux
+
+### Slice reducers as setters
+
+```javascript
+export const stateSetters = {
+  didMount: function (state, action) {},
+  clickCount: function (state, action) {},
+  message: function (state, action) {},
+};
+```
+
+- We will program the reducers to be setters - functions that set their state variable
+- The function name will be same name as the state variable (instead of starting with set)
+
+1. Create the file `stateSetters.ts` and `export const stateSetters = {}`
+2. Add methods that match the state variables: `didMount`, `clickCount`, `message`
+3. Let their values be an anonymous function that accepts a `state` and an `action` object
+
+### Slice reducers as setters
+
+- Later we will observe how they work and how to program them
+
+1. Add a `debugger` to each function for now
+2. These functions will be activated later by components and Redux
+3. In `store.ts` `sliceOptions`, set `reducers` to `stateSetters`
+
+### State custom type
+
+- Use the typeof keyword to create a custom type for state variables
+
+1. In `stateVariables.ts` create a custom type called `StateVariables`
+2. `type StateVariables = typeof stateVariables`
+3. Export the custom type
+4. Assert the custom type to state objects in slice reducers (aka state setters)
+
+### Slice reducer method
+
+```javascript
+const storeOptions = { reducer: slice.reducer };
+const store = configureStore(storeOptions);
+```
+
+- The `slice` object will have a `reducer` property
+- The `reducer` activates a state setter when a component wants to set a state
+
+1. In `store.ts`, update `storeOptions`
+2. Let the `reducer` be `slice.reducer`
+
+### Flux philosophy
+
+![alt text](image-5.png)
+
+- Flux is a philosophy that describes how data should flow in a single direction
+
+1. The component should tell the dispatcher which action to perform
+2. The dispatcher uses the correct reducer to perform the action
+3. The results of changing state variables are saved in the store
+4. Components can select and use state variables from the store
+
+### Redux implements Flux philosophy
+
+- Flux is the design while Redux is the code that implements Flux design
+- `useSelector`: A React hook for accessing a state variable in the store
+- `slice.actions`: An object that contains actions that the dispatcher can perform
+- `useDispatch`: A React hook that gives components access to the dispatcher
+- `<Provider>`: A React component that gives child components access to the Redux store
+
+### Provider component
+
+```javascript
+<Provider store={store}>
+```
+
+- The Provider component gives components access to the Redux store and hooks
+
+1. Install `react-redux` which provides React utilities that work with Redux
+2. In `index.tsx`, import the `Provider` component and the Redux `store`
+3. Place components as children of `Provider` if they need access to Redux state variables
+4. Let the `store` attribute of the `Provider` component be the Redux `store`
+
+### useSelector
+
+```javascript
+const didMount = useSelector(callback);
+```
+
+- This `useSelector` hook selects a state variable in the Redux store
+
+1. `import { useSelector } from "react-redux";`
+2. Add the `useSelector` hook to a component
+3. Store the return value in a variable that matches the state variable to be selected
+4. Let `useSelector` accept a callback function
+
+### Selector function
+
+```javascript
+function selectDidMount(state)
+```
+
+- The callback function is called the selector
+- The selector receives all the state variables from Redux, then returns a state variable
+- The naming convention is to start with select, then camel case the state variable to select
+
+1. Create an empty selector function that accepts a `state` object and assert the type
+2. Let this selector function be the callback for the `useSelector` hook
+
+### Selector function implementation
+
+```javascript
+function selectDidMount(state) {
+  const { didMount } = state;
+  return didMount;
+}
+```
+
+- Code the selector function to select and return a state variable
+
+1. Use the `debugger` to view the state object
+2. Use dot notation or destructuring to select a state variable from the `state` object
+3. Return the selected state variable
+4. Confirm that the component receives the state variable
+
+### State selectors
+
+- Create a file to export state selectors so other components have easy access to them
+
+1. Create `stateSelectors.ts` in the `redux` folder
+2. Add a selector function for each state variable in the Redux `store`
+3. Export each selector function
+4. Import selector functions wherever they are needed to access state variables
+
+### useDispatch
+
+```javascript
+const dispatch = useDispatch();
+```
+
+- This hook returns a `dispatch` function which is used to change state variables
+
+1. Import `useDispatch` and add it into a component
+2. In the mount phase, use the `dispatch` function
+3. Let the `dispatch` function take in an `action` object
+
+### Slice actions
+
+- The Redux slice contains actions that the dispatcher can accept
+- The actions will be used to set the values of state variables
+
+1. In `store.ts`, `export const set = slice.actions;`
+2. Use the `debugger` to view the actions
+3. Observe the dot notation that would be used to set a state variable
+
+### Dispatch an action
+
+```javascript
+const action = set.didMount(true);
+dispatch(action);
+```
+
+1. In components that use the dispatcher, import `set` from `store.ts`
+2. Next to the `dispatch` function, use dot notation to select a state variable in `set`
+3. Pass in the new value for the state variable and save the return value as the `action`
+4. Use the `debugger` to follow the dispatcher into a `reducer` (`stateSetters`)
+
+### Action payload
+
+- The `action` object contains the new value of the state variable
+- In a `reducer`, set a state variable to the value in the `payload`
+
+1. `const newValue = action.payload`
+2. Change the value of a state variable to the new value
+3. Code and make sure the other reducers work properly
+
+### Redux workflow summary
+
+![alt text](image-5.png)
+
+1. Create a Redux `store` and use `<Provider>` so the `store` is accessible to components
+2. Add state variables to the `store` and create a selector for each state variable
+3. With `useSelector`, components can select state variables
+4. With `set` object actions, components can request for state variables to change
+5. With `useDispatch`, the dispatcher can send actions to the correct reducers
+6. The reducers set the new values of state variables, then update them in the Redux store
+
+### Redux DevTools
+
+- A browser extension that shows a history of state variables and how they changed
+
+1. Install the `Redux DevTools` extension into your browser
+2. Cause states to change in your app
+3. Open the extension in the browser dev tools
+4. Press play and observe how state variables were changed by components
+
+### Non-serializable states
+
+```javascript
+let component: any = useSelector(selectComponent);
+if (component === "ImageMap") component = <ImageMap />;
+```
+
+- Non-serializable states are objects that cannot be stringified
+- For Redux Dev Tools compatibility, Redux does not allow non-serializable states
+
+1. Observe an error when stringifying a component or storing it into a Redux state
+2. Store a placeholder for the non-serializable object (ex. `"Carousel"` or `"ImageMap"`)
+3. Restore the non-serializable object after selecting (ex. `<Carousel />` or `<ImageMap />`)
+
+### Use Redux for rendering the answer
+
+See [ai.md](./ai.md) for details
+
+```javascript
+const action = set.globalAnswer(answer);
+dispatch(action);
+```
+
+1. In `stateVariables.ts` add a categorized state variable for the answer
+2. Code its selector and setter in `stateSelectors.ts` and `stateSetters.ts`
+3. Add `useSelector` and `useDispatch` to the Ai component
+4. Dispatch an `action` to set the value of the state variable for the answer
+5. Render the answer
+
+
+///// FILE: "Sandbox Level 4/notes/tips.md"
+
+# Review
+
+### Sandbox Level 4
+
+1. Create a VS Code workspace for Sandbox Level 4
+2. Copy a React template into Sandbox Level 4
+
+### Review: JSX
+
+```js
+<main>
+  <h1>Hello world!</h1>
+</main>
+```
+
+- JavaScript XML - JavaScript syntax that looks like HTML
+
+1. Rename component files from `.js` to `.jsx`
+2. Notice the icon
+3. Try to run the app
+
+### Configure Webpack for JSX
+
+- Webpack does not process `.jsx` files by default
+- Let Webpack look for `.jsx` files when file extensions are not specified in import statements
+
+1. Add `.jsx` to the babel-loader section
+2. Specify `resolve.extensions: [".js", ".jsx"]`
+
+### PNPM - Performant Node Package Manager
+
+- A package manager to replace npm
+- Packages installed by npm take up disk space when they are insta
+- PNPM saves space by storing packages in a central location, then pro
+- Website: https://pnpm.io/
+
+### Install packages with PNPM
+
+1. Install PNPM globally: `npm install --global pnpm`
+2. Delete the `node_modules` folder
+3. Install with PNPM: `pnpm install`
+4. Delete `package.lock.json`
+5. Use PNPM to install and uninstall packages from now on
+
+### Dev dependencies
+
+- Packages that are only required for development purposes
+- Packages that are not imported by your project
+- Categorize packages as dependencies and dev dependencies
+
+1. Uninstall dev packages: `pnpm uninstall webpack`
+2. Reinstall as dev dependencies: `pnpm install -- save-dev webpack`
+
+### Object destructuring
+
+- Objects can be destructured similar to arrays. Just match the property names.
+- `const {color, year, isForSale} = { color:"red", year:2025, isForSale:true }`
+- `const car = { color:"green", year:2023, isForSale:false }`
+  `const { color, year, isForSale } = car;`
+- `function getCar( { color, year, isForSale } )`
+
+### Primitive vs Object constants
+
+```javascript
+// Primitive data types cannot be changed after being declared as a constant
+const myString = "hello";
+myString = "bye"; //ERROR
+
+// Object data type can change values after being declared as a constant
+// The object, or container of items, remains contant
+// The items can change without changing the container
+const myObject = { message: "hello" };
+myObject.message = "bye"; //NO ERROR
+```
+
+### NPM scripts - start
+
+- A convenient way to run (and remember) common CLI commands
+
+1. Add to package.json scripts, `"start": "npx webpack server"`
+2. Run the script with `npm run start` (or `npm start`)
+3. Define the "start" script to run (and remember how to run) other projects
+
+### NPM scripts - build
+
+1. `"build": "npx webpack"`
+2. Run the script with `npm run build`
+3. Define the "build" script to build (and remember how to build) other projects
+
+### NPM scripts
+
+- Add more common CLI commands
+
+1. `"test": "npx jest"`
+2. `"deploy": "git push"`
+3. To run a single test file `"test": "npx jest ./src/modules/addition.test.ts"`
+4. Update script `"build": "npx webpack --mode=production"`
+
+### Open a browser tab from the CLI
+
+- The `open-cli` module can open a browser tab from the terminal command line
+- Specify the full URL copied from the browser address bar
+
+1. `pnpm nstall open-cli -- save-dev`
+2. `npx open-cli http://localhost:8000`
+3. OPTIONAL: `"open-tab": "npx open-cli http://localhost:8000"`
+
+### Manually close ports
+
+- Sometimes ports can remain open when VS Code is closed without stopping a server
+- Use the `kill-port` module to close ports that were accidentally left open
+
+1. `pnpm install kill-port --save-dev`
+2. `npx kill-port 8000`
+3. OPTIONAL: `"close-port": "npx kill-port 8000"`
+
+### Run multiple commands from 1 script
+
+- Use the `&&` symbol to combine multiple commands into 1 NPM script
+
+1. `"start": "npx kill-port 8000 && npx nodemon ./dist/main,js"`
+2. `"build": "npx open-cli http://localhost:8000 && npx webpack -- watch"`
+3. OPTIONAL: `"start": "npm run close-port && npm run start-server"`
+4. OPTIONAL: `"build": "npm run open-tab && start-build"`
+
+### Restructure Sandbox Level 4
+
+```
+> Sandbox Level 4
+  > backend
+  > frontend
+  > notes
+  Sandbox Level 4.code-workspace
+```
+
+1. Create a folder in Sandbox Level 4 called `frontend`
+2. Move the frontend code into the `frontend` folder and create a workspace
+3. The `notes` folder and workspace file can stay in the main sandbox folder
+4. Create a folder in Sandbox Level 4 called `backend`
+5. Copy the Express template into the `backend` folder and create a workspace
+
+### Replacing if statements with mapping objects
+
+```javascript
+// if (button === "SignInModal") button = <SignInModal />;
+// if (button === "SignOutModal") button = <SignOutModal />;
+
+const buttonMap = {
+  SignInModal: <SignInModal />,
+  SignOutModal: <SignOutModal />,
+};
+
+let button = "SignInModal";
+button = buttonMap[button];
+```
+
+- Object bracket notation can be used to access properties and store their values
+- Use the mapping object to associate strings with values
+- The object properties are strings
+
+### Combine code into 1 text file for NotebookLM
+
+1. `pnpm install --save-dev concat-cli`
+2. `npx concat-cli --files ./src/**/*.* --output code.txt`
+3. `npx concat-cli --files *.js *.ts *.html *.json --output config.txt`
+4. Add `code.txt` and `config.txt` to NotebookLM sources
+5. Ask NotebookLM questions about the code
+
+
+///// FILE: "Sandbox Level 4/notes/typescript.md"
+
+# TypeScript
+
+### TypeScript
+
+- A programming language that enhances JavaScript
+- Allows data types to be specified and verified
+- When data types are specified, bugs can be avoided
+- Specified data types provide a popup intellisense menu of available properties
+- Website: https://www.typescriptlang.org/
+
+### Configure Babel for TypeScript
+
+1. Change `babel.config.json` to `babel.config.js`
+2. Install the preset: `pnpm install -save-dev @babel/preset-typescript`
+3. Add the preset to `babel.config.js`
+
+### Configure Webpack for TypeScript
+
+1. Add `.ts` and `.tsx` to the babel-loader section
+2. Add `.ts` and `.tsx` to the resolve section
+
+### Create a TypeScript React template
+
+1. Rename files in the src folder `.js` to `.ts`
+2. Rename files in the src folder `.jsx` to `.tsx`
+3. Observe TypeScript errors
+4. Run the app
+
+### Configure TypeScript to be less strict
+
+1. Create `tsconfig.json`
+2. Add an object with `compilerOptions.jsx: preserve`
+3. Observe TypeScript errors
+4. Add to the object `compilerOptions.module: preserve`
+5. Observe TypeScript errors
+
+### Use TypeScript to specify data types
+
+- Specify data types with a colon `color: string`
+- Specify data types for parameters that don't have a default value `event : Event`
+- Specify data types for class properties that don't have a default value
+- If you're not sure what the data type should be, set it to `any`
+
+### TypeScript convenient imports
+
+- TypeScript provides intellisense popup menus for objects and exports.
+- The files do not need to be open for TypeScript to get information.
+- The objects and exports should be in TypeScript files.
+- Try doing an import from a file that's closed.
+
+### No built-in TypeScript support for React
+
+- TypeScript cannot provide intellisense popup for JavaScript files.
+- React was written in JavaScript.
+
+1. From a .tsx file, try to import React.
+2. Try to automatically import useState and useEffect.
+3. Observe no automatic imports.
+
+### React data types
+
+- Install a package that provides TypeScript support for React
+
+1. `pnpm install --save-dev @types/react`
+2. Try to automatically import React, useState, and useEffect.
+3. Observe automatic import statements
+
+### TypeScript primitive data types
+
+- String - `color: string`
+- Number - `year: number`
+- Boolean - `isForSale: boolean`
+- Null - `myNullVariable: null`
+- Undefined - `myUndefinedVariable: undefined`
+
+### TypeScript array data types
+
+- String array - `colors: Array<string>` or `string[]`
+- Number array - `years: Array<number>` or number[]
+  Boolean array - `isForSale: Array<boolean>` or boolean[]
+  Combination array - `myData: Array<string | number | boolean>`
+
+### TypeScript tuple data types
+
+```js
+let myTuple: [string, Function];
+myTuple = useState("hello");
+
+function display(carInfo: [string, number, boolean] = ["red", 2025, true]) {
+  console.log(carInfo);
+}
+```
+
+- Informs TypeScript about the length and items of an array
+- Tuple for color, year, and isForSale - `carInfo: [string, number, boolean]`
+- Tuple for first, middle, and last name - `fullName: [string, string, string]`
+- Tuple for grades per CodeX level - `grades: [number, number, number, number]`
+
+### TypeScript object data types
+
+- Informs TypeScript about the properties that are expected to be in objects
+- `class Car { color: string, year: number, isForSale: Boolean }`
+- `interface FullName { first: string, middle: string, last: string }`
+- `type CodexGrade = { level1: number, level2: number, level3: number, level4: number }`
+
+### TypeScript custom data types
+
+- Informs TypeScript of the alias you want to use for a data type
+- A custom data type can be created from any of the JavaScript data types
+- `type Cars = Array<Car>`
+- `type Attendance ="present" | "late" | "excused" | "absent"`
+- `type CodexLevel = 1 | 2 | 3 | 4`
+- `type CarInfo = [ string, number, Boolean ]`
+
+### Type assertion
+
+- Informs TypeScript about the data type you expect a variable to be
+- `const cars: Cars = [ {"red",2025,true}, {"green",2023,false}, {"white",2000,true} ]`
+- `const cars = [ new Car(), new Car(), new Car() ] as Cars`
+- `const attendance: Attendance = "present"`
+
+### Enable TypeScript support for Jest
+
+1. Uninstall `@jest/globals` because it's only for JavaScript files
+2. Install `@types/jest` to enable TypeScript support for Jest
+3. Install `@babel/preset-typescript`
+4. Add `@babel/preset-typescript` to the Babel config file
+5. Observe intellisense without importing Jest test functions
+
+### Return types
+
+See [return-types.ts](../src/modules/return-types.ts) for examples
+
+- Informs TypeScript about the data type a function should return
+- `function output( message:string ) : void`
+- `function getPromoMessage( event: Event ) : string`
+- `function authentication( email: string, password: string ) : boolean`
+- `function handleSignlnAttempt( event: Event ) : string | void`
+
+### Callback function types
+
+See [callback-types.ts](../src/modules/callback-types.ts) for examples
+
+- Informs TypeScript about what type of callback function signature is expected
+- `(message: string) => string`
+- `(event: Event) => void`
+- `() => {}`
+- `(value: any) => [ any, (value: any) => void ]`
+- `Function`
+
+### Declaration file
+
+- Declaration files inform TypeScript of data types that were not defined in the source code
+- Filename must end with .d.ts
+
+1. Create `index.d.ts` in the root folder
+2. Add `declare module "*.jpg"` to inform TypeScript that `.jpg` files can be imported
+3. Add declarations for other asset extensions
+
+### Data types for built-in JavaScript modules
+
+`async function myFunction()`
+`const promise = new Promise(callback)`
+
+- Some built-in JavaScript modules do not have TypeScript support
+
+1. Observe TypeScript errors when using `async` and `Promise`
+2. `pnpm install @types/node -- save-dev`
+3. Observe the TypeScript error is gone
+
+### TypeScript declarations for external scripts
+
+```javascript
+declare const bootstrap: any;
+declare const imageMapResize: any;
+```
+
+- TypeScript doesn't recognize functions that come from external scripts (like CDN files)
+- Add functions and objects from external scripts to the TypeScript declaration file
+
+1. Edit the TypeScript declaration file (ex. `index.d.ts`)
+2. Add an object declaration for Bootstrap - `declare const bootstrap: any`
+3. Add a declaration for image maps - `declare const imageMapResize: any`
+
+
+///// FILE: "Sandbox Level 4/notes/webpack-babel.md"
+
+# Webpack & Babel
+
+### Webpack dev server
+
+- A feature-rich server that's integrated with Webpack
+- Fast because it runs in memory only.
+- Writes bundles, but not to the hard drive.
+- Uses the Webpack configuration file
+- https://webpack.js.org/configuration/dev-server/
+
+### Use Webpack dev server instead of Live Server
+
+1. `pnpm install webpack-dev-server --save-dev`
+2. `npx webpack server`
+3. Open the displayed URL in a browser tab
+4. Observe the result
+
+### Webpack dev server folder structure
+
+1. Create the `public` folder on the same level as the `src` folder
+2. Copy `index.html` into the `public` folder
+3. Change the `script` source to the output filename `src="main.js"`
+4. Refresh the browser results
+
+### Webpack dev server for SPAs
+
+1. Load a page other than the home page
+2. Make changes to any of the pages
+3. Add Webpack configuration - `devServer: { historyApiFallback: true }`
+4. Restart the server
+5. Optionally open a browser tab automatically - `devServer: { open: true }`
+
+### Unnecessary configuration options
+
+- Watch is not necessary because Webpack dev server automatically watches
+- Delay is not necessary because the dev server bundles without build errors
+
+1. Disable the watch option
+2. Disable the delay option
+
+### Enable TypeScript support for Webpack
+
+1. Rename the configuration file to `webpack.config.ts`
+2. `pnpm install ts-node --save-dev`
+   - Webpack uses ts-node to convert webpack.config.ts to JavaScript
+3. In webpack.config.ts, `import { Configuration } from "webpack"`
+4. Assert the exported object `as Configuration`
+5. Observe intellisense for configuration options
+
+### Webpack manual build
+
+- Webpack dev server does not write bundled files to disk
+- Bundle files manually so GitHub (and Live Server) can render your site
+
+1. Delete `dist` folder and run Webpack dev server
+2. Manually bundle files with `npx webpack`
+
+### NPM scripts - start
+
+- A convenient way to run (and remember) common CLI commands
+
+1. Add to package.json scripts, `"start": "npx webpack server"`
+2. Run the script with `npm run start` (or `npm start`)
+3. Define the "start" script to run (and remember how to run) other projects
+
+### NPM scripts - build
+
+1. `"build": "npx webpack"`
+2. Run the script with `npm run build`
+3. Define the "build" script to build (and remember how to build) other projects
+
+
+///// FILE: "Sandbox Level 4/Sandbox Level 4.code-workspace"
+
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {}
+}
+
+
+///// FILE: "Express Template/babel.config.js"
+
+export default {
+  presets: [
+    "@babel/preset-env", // Converts new export/import syntax to old export/import syntax which is compatible with Jest
+    "@babel/preset-typescript", // Converts TypeScript to JavaScript
+  ],
+};
+
+
+///// FILE: "Express Template/Express Template.code-workspace"
+
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
+
+///// FILE: "Express Template/package.json"
+
+{
+  "scripts": {
+    "start": "npm run close-port && npm run start-server",
+    "build": "npm run open-tab && npm run start-build",
+    "test": "npx jest ./src/modules/addition.test.ts",
+    "------": "------------------------------------------------",
+    "open-tab": "npx open-cli http://localhost:8000",
+    "close-port": "npx kill-port 8000",
+    "start-server": "npx nodemon ./dist/main.js",
+    "start-build": "npx webpack --watch"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "babel-loader": "^10.0.0",
+    "jest": "^29.7.0",
+    "kill-port": "^2.0.1",
+    "nodemon": "^3.1.9",
+    "open-cli": "^8.0.0",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
+
+
+///// FILE: "Express Template/src/index.ts"
+
+import express, { Request, Response } from "express";
+import cors from "cors";
+import { root } from "./routes/root";
+import { api } from "./routes/api";
+
+const hostname = "localhost"; // Local domain
+const port = 8000; // Common backends ports: 8000, 9000, 3000
+const path = "/"; // The path where server info will be rendered in a browser
+
+const app = express(); // Instantiate the Express.js object
+app.use(cors());
+app.get("/", root); // The handler runs when the path is visited in the URL
+app.get("/api", api);
+app.listen(port, hostname, handleListen); // The server listens at the specified hostname and port
+
+function handleListen() {
+  console.log(`Listening on http://${hostname}:${port}...`);
+  console.log(`Open a new terminal and type 'npm run build'`);
+  console.log(`To debug, start this server in a JavaScript Debug Terminal`);
+}
+
+
+///// FILE: "Express Template/src/modules/addition.test.ts"
+
+import { addition } from "./addition";
+
+describe("The addition function...", () => {
+  it("adds positive numbers", addPositives);
+  it("adds a positive and negative number", addPositiveNegative);
+  it("adds negative numbers", addNegatives);
+  it("return NaN when strings are used", addStrings);
+  it("adds number strings", addNumberStrings);
+});
+
+function addPositives() {
+  //ARRANGE: Set the variables for the test
+  const x = 3;
+  const y = 4;
+
+  //ACT: Use the unit with the variables
+  const result = addition(x, y);
+
+  //ASSERT: Check if the unit works as expected
+  expect(result).toBe(7);
+}
+
+function addPositiveNegative() {
+  //ARRANGE
+  const x = 3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-1);
+}
+
+function addNegatives() {
+  //ARRANGE
+  const x = -3;
+  const y = -4;
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(-7);
+}
+
+function addStrings() {
+  //ARRANGE
+  const x = "dog";
+  const y = "cat";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBeNaN();
+  // expect(result).toBe(NaN);
+}
+
+function addNumberStrings() {
+  //ARRANGE
+  const x = "3";
+  const y = "4";
+
+  //ACT
+  const result = addition(x, y);
+
+  //ASSERT
+  expect(result).toBe(7);
+}
+
+
+///// FILE: "Express Template/src/modules/addition.ts"
+
+export function addition(x: number | string, y: number | string) {
+  const result = Number(x) + Number(y);
+  return result;
+}
+
+// const result = addition([16, 27, "cat", 45, "five", 60, "true"]);
+
+// function getGreeting(greetings: Array<string>) {
+//   return greetings[0];
+// }
+
+// const result2 = getGreeting(["hello", "hi", "what's up"]);
+
+// if (result2 === "123" || result2 === "hi")
+//   console.log("Those are my favorite greetings");
+
+
+///// FILE: "Express Template/src/routes/api.ts"
+
+import { Request, Response } from "express";
+
+export function api(request: Request, response: Response) {
+  const data = {
+    origin: request.headers.origin,
+    query: request.query,
+  };
+  response.send(data);
+}
+
+
+///// FILE: "Express Template/src/routes/root.ts"
+
+import { Request, Response } from "express";
+
+export function root(request: Request, response: Response) {
+  const { url } = request;
+  response.send(
+    `<h1>Express Template</h1><p>Welcome to the backend page. Your path is ${url}</p>`
+  );
+}
+
+
+///// FILE: "Express Template/tsconfig.json"
+
+{
+  "compilerOptions": {
+    "module": "Preserve"
+  }
+}
+
+
+///// FILE: "Express Template/webpack.config.ts"
+
+import { Configuration } from "webpack";
+
+export default {
+  module: {
+    rules: [
+      {
+        test: /\.(js|ts)/, // Compile these files with babel-loader
+        exclude: /.(json)/, // Don't combile json files with babel-loader
+        use: "babel-loader",
+      },
+    ],
+  },
+  mode: "development",
+  devtool: "source-map",
+  resolve: {
+    extensions: [".js", ".ts"], // Automatically inserts file extensions in import statements
+  },
+  target: "node",
+} as Configuration;
+
+
+///// FILE: "React Template/404.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/react-navigation/redirect.js"></script>
+  </head>
+</html>
+
+
+///// FILE: "React Template/babel.config.js"
+
+export default {
+  presets: [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+  ],
+};
+
+
+///// FILE: "React Template/index.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="titleTag">React Template</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./dist/main.js" defer></script>
+  </head>
+  <body id="bodyTag"></body>
+</html>
+
+
+///// FILE: "React Template/package.json"
+
+{
+  "name": "react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.14",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "jest": "^29.7.0",
+    "sass": "^1.85.1",
+    "sass-loader": "^16.0.4",
+    "style-loader": "^4.0.0",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.2.0"
+  }
+}
+
+
+///// FILE: "React Template/public/index.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="titleTag">React Template</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body id="bodyTag"></body>
+</html>
+
+
+///// FILE: "React Template/React Template.code-workspace"
+
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
+
+///// FILE: "React Template/redirect.js"
+
+/**************************************************************
+ * @summary Redirects the SPA to the root path
+ * @param rootPath Set this to the correct root path
+ * @description
+ * Useful when an SPA page is refreshed.
+ * Load this module through 404.html to redirect on 404 errors.
+ * By redirecting to the root path, 404 errors are removed.
+ * Use Redirect.js to redirect to the path where the 404 occured.
+ **************************************************************/
+
+const rootPath = "/react-navigation";
+const path = window.location.pathname;
+window.localStorage.setItem("redirect", path);
+window.location.replace(rootPath);
+
+
+
+
+///// FILE: "React Template/src/index.tsx"
+
+import { createRoot } from "react-dom/client";
+import React from "react";
+import { Home } from "./Views/Home";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { Contact } from "./Views/Contact";
+import { About } from "./Views/About";
+import { HandleRefresh } from "./Views/HandleRefresh";
+import { rootPath } from "./utils/rootPath";
+import { Custom404 } from "./Views/Custom404";
+import { Header } from "./Views/Header";
+
+const bodyTag = document.body;
+const root = createRoot(bodyTag);
+root.render(
+  <BrowserRouter>
+    <HandleRefresh>
+      <Header />
+      <Routes>
+        <Route path={`${rootPath}/`} element={<Home />} />
+        <Route path={`${rootPath}/contact`} element={<Contact />} />
+        <Route path={`${rootPath}/about`} element={<About />} />
+        <Route path="*" element={<Custom404 />} />
+      </Routes>
+    </HandleRefresh>
+  </BrowserRouter>
+);
+
+
+///// FILE: "React Template/src/utils/output.ts"
+
+export function output(
+  message = "",
+  outputTag = "outputTag",
+  shouldAppend = true
+) {
+  if (shouldAppend) window[outputTag].innerHTML += message;
+  else window[outputTag].innerHTML = message;
+}
+
+
+///// FILE: "React Template/src/utils/rootPath.ts"
+
+export let rootPath = "";
+const hostname = window.location.hostname;
+if (hostname === "rolazar.github.io") rootPath = "/react-navigation";
+
+
+///// FILE: "React Template/src/Views/About.tsx"
+
+import React, { useEffect } from "react";
+import { Navbar } from "./Navbar";
+
+export function About() {
+  return (
+    <main>
+      <h1>About</h1>
+    </main>
+  );
+}
+
+
+///// FILE: "React Template/src/Views/Contact.tsx"
+
+import React, { useEffect } from "react";
+import { Navbar } from "./Navbar";
+
+export function Contact() {
+  return (
+    <main>
+      <h1>Contact</h1>
+    </main>
+  );
+}
+
+
+///// FILE: "React Template/src/Views/Custom404.tsx"
+
+import React from "react";
+
+export function Custom404() {
+  return (
+    <main className="container">
+      <h1>Invalid page...</h1>
+    </main>
+  );
+}
+
+
+///// FILE: "React Template/src/Views/HandleRefresh.tsx"
+
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+
+/*************************************************
+ * @summary Removes the 404 error on SPA refresh
+ * @param props.children The elements to render on refresh
+ * @description
+ * This component depends on the local storage used by redirect.js
+ * In redirect.js, properly set the root path.
+ */
+export function HandleRefresh(props) {
+  const children = props.children;
+  const navigateTo = useNavigate();
+  const [didMount, setDidMount] = useState(false);
+  useEffect(componentDidMount, []);
+
+  if (didMount) return <>{children}</>;
+  else return <></>;
+
+  function componentDidMount() {
+    const redirectPath = localStorage.getItem("redirect");
+    if (redirectPath) {
+      navigateTo(redirectPath);
+      localStorage.setItem("redirect", "");
+      setTimeout(() => setDidMount(true), 1000);
+    } else setDidMount(true);
+  }
+}
+
+
+///// FILE: "React Template/src/Views/Header.tsx"
+
+import React from "react";
+import { Navbar } from "./Navbar";
+
+export function Header() {
+  return (
+    <header>
+      <Navbar />
+    </header>
+  );
+}
+
+
+///// FILE: "React Template/src/Views/Home.scss"
+
+#mainHome {
+  h1 {
+    color: blue;
+  }
+}
+
+
+///// FILE: "React Template/src/Views/Home.tsx"
+
+import React from "react";
+import "./Home.scss";
+
+export function Home() {
+  return (
+    <main id="mainHome">
+      <h1>Home</h1>
+    </main>
+  );
+}
+
+
+///// FILE: "React Template/src/Views/Navbar.tsx"
+
+import React from "react";
+import { Link } from "react-router";
+
+export function Navbar() {
+  return (
+    <nav>
+      <Link to="/">Home | </Link>
+      <Link to="/about">About | </Link>
+      <Link to="/contact">Contact</Link>
+    </nav>
+  );
+}
+
+
+///// FILE: "React Template/webpack.config.ts"
+
+import { Configuration } from "webpack";
+
+export default {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        use: "babel-loader",
+      },
+      {
+        test: /\.(scss|css)$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(jpg|png|mp4)$/,
+        type: "asset/resource",
+      },
+    ],
+  },
+  // watch: true,
+  // watchOptions: {
+  //   aggregateTimeout: 1000,
+  // },
+  mode: "development",
+  devtool: "source-map",
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  },
+} as Configuration;
