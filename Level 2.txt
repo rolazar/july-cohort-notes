@@ -1,0 +1,3115 @@
+///// FILE: "Sandbox Level 2/api.css"
+
+code{color:#3535ff}
+
+///// FILE: "Sandbox Level 2/api.html"
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link href="api.css" rel="stylesheet" />
+    <script src="utility-functions.js"></script>
+    <script src="api.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <pre>
+        REST API
+        ---------------
+        <img src="api-illustration.jpg" alt="API Illustration">
+        REST: Representational State Transfer
+        API: Application Programming Interface
+        A set of rules for communicating with a server.
+        The URL to connect with the server must be properly formed.
+        1. Client: Makes a request accorfing to the REST API (menu).
+        2. REST API: Send the request in a way the server understands.
+        3. Server: Processes the request.
+        4. REST API: Delivers the response (stringified object).
+      </pre>
+
+      <pre>
+        REST API Analogy
+        --------------------
+        <img src="api-analogy.jpg">
+        1. Customer: Request a meal from the menu.
+        2. Waiter: Write the request in a way the chef understands.
+        3. Chef: Processes the request by cooking the meal
+        4. Waiter: Responds by delivering the meal.
+      </pre>
+
+      <pre>
+        Trivia API
+        ----------------
+        <button onclick="handleClick(event)">Trivia</button>
+      </pre>
+      <div id="outputTag"></div>
+      <pre>
+        fetch function
+        --------------
+        <code>
+        const promise = fetch("https://opentdb.com/api.php?amount=1");  
+        </code>
+        Sends a request to the URL of the REST API
+        Returns promise
+        Its resolve value is not a stringified object.
+        The resolve value is a special object created by the fetch function.
+        There's an extra step to access the response from the REST API.
+      </pre>
+
+      <pre>
+        text method
+        ------------------
+        <code>
+        const promise = resolveValue.text(); //fetch object
+        </code>
+        Retrieves the stringified object from the fetch object
+        Returns a promise
+      </pre>
+
+      <pre>
+        Extracting the data
+        ---------------------
+        <code>
+        const response = JSON.parse(resolveValue);
+        const results = response.results;
+        const item = results[0];
+        const question = item.question;
+        const answer = item.correct_answer;
+        const incorrects = item.incorrect_answers;
+        </code>
+        Store each property, one level at a time until you get the data you need.
+      </pre>
+
+      <pre>
+        Displaying the data
+        -------------------------
+        <code>
+        output(trivia);
+        </code>
+        1. Create sample HTML of a trivia question and it's answers
+        2. Converted it to a template string
+           - put backticks around it
+           - store it in a variable
+           - move it to JavaScript
+        3. Replaced with variables
+        4. Output to an HTML element
+      </pre>
+
+      <div>How many planets are in the solar system?</div>
+      <ol type="a">
+        <li>Nine</li>
+        <li>Seven</li>
+        <li>Six</li>
+        <li>Eight</li>
+      </ol>
+
+      <pre>
+        Specifying the data
+        ----------------------
+        <code>
+        https://opentdb.com/api.php?amount=2
+        https://opentdb.com/api_category.php
+        </code>
+        The REST API documentation teaches how to form the URL to request specific data
+        Specify <code>amount</code> to get multiple questions
+        Get a list of categories.
+        Use a slightly different URL to see a list of categories and their ID
+        Use the API helper to properly form a URL based on specifications
+        Paste the URL into the fetch function
+      </pre>
+
+      <pre>
+        Postman
+        --------------
+        An application for trying out and testing REST APIs
+        The icon at the bottom left closes the History panel.
+        The icon at the bottom right splits the panels vertically.
+      </pre>
+
+      <pre>
+        Base URL
+        --------------
+        The URL where the REST API is located
+      </pre>
+
+      <pre>
+        Key value pairs
+        --------------------
+        They specify the data we want to request
+        Key is on left, value is on the right
+        Connected with = and separated by &
+        Starts with ?
+      </pre>
+
+      <pre>
+        FavQs
+        -------------------------
+        <code>
+        https://favqs.com/api
+        https://favqs.com/api/quotes
+        </code>
+        Favorite quotes API documentation
+        Use <code>filter</code> to find a word
+        Use <code>type</code> to find a <code>tag</code> or <code>author</code>
+        To use the <code>/quotes</code> endpoint, an API key is required.
+      </pre>
+
+      <pre>
+        Endpoint
+        ------------
+        <code>
+        /qotd
+        </code>
+        A path that is appended to the base URL
+        Contain data about specific resources
+        Endpoint for Question of the day
+        NOTE: If a CORS proxy server is not used, there will be a CORS error.
+        <button onclick="handleQuoteOfTheDay()">Quote of the day</button>
+      </pre>
+
+      <pre>
+        API key
+        ---------------
+        A unique string (or code) that grants access to a REST API
+        To use some REST APIs, an API key is required
+
+        To use an API key from FavQs.com:
+        1. Use the Postman app
+        2. Auth tab
+        3. Change the type to Bearer Token
+        4. Paste API key into the token box
+      </pre>
+
+      <pre>
+        API key headers
+        --------------------
+        <code>
+        const key = "abc123";
+
+        const options = {
+          headers: {
+            Authorization: `Token token="${key}"`,
+          },
+        };
+
+        const promise = fetch(url, options);
+        </code>
+        1. Create an object with authorization headers.
+        2. Send a request with fetch and the object.
+
+        <button onclick="handleQuotes()">Quotes</button>
+      </pre>
+
+      <pre>
+        CORS
+        -----------
+        Cross Origin Resource Sharing
+        Origin: The web address of the client and server
+        Cross Origin: Different origins
+        Resource: Data such as files and stringified objects
+        Resource sharing: transmitting the resources
+        <img width="50%" src="Cors1.jpg">
+        CORS is the origin's policy for sharing resources.
+        Servers are supposed to tell browser their CORS policy.
+        The CORS policy is a list of origins that are allowed to access the server.
+        Browsers block the response if the origin is not on the list.
+        -----------
+        Some servers do not specify their CORS policy
+        Browsers automatically block responses from different origins
+        The quotes API doesn't specify a CORS policy
+        Browsers automatically block responses from the quotes API
+        <img width="50%" src="Cors2.jpg">
+        Postman is not a browser, so it can receive the reponse.
+        The browser can receive the response because the URL matches.
+        The VS Code terminal is not a browser, so it receives the response.
+        The browser enforces CORS.
+        <img width="50%" src="Cors3.jpg">
+        The browser can accept responses from an API that has CORS
+        The trivia API has CORS for all origins.
+      </pre>
+
+      <pre>
+        CORS Proxy Server
+        ---------------------
+        <img width="50%" src="Cors4.jpg">
+        Allow the browser to receive reponses from a server that does not specify CORS.
+        1. Accepts the request from the client
+        2. Forwards the request to the API
+        3. Receives the response from the API
+        4. Manipulates the response so the browser doesn't block it
+      </pre>
+
+      <pre>
+        thingproxy
+        --------------
+        <code>
+        const proxy = "https://thingproxy.freeboard.io/fetch/";
+        const baseUrl = "https://favqs.com/api";
+        const endpoint = "/qotd";
+        const url = proxy + baseUrl + endpoint;
+        const promise = fetch(url);
+        </code>
+        A public proxy server that's free to use.
+        Append the API URL to the proxy URL.
+        https://github.com/Freeboard/thingproxy
+
+      </pre>
+      <pre>
+        Free APIs
+        ------------
+        <code>
+        https://free-apis.github.io/
+        </code>
+        A list of free APIs
+        Some require an API key
+        Press the ? button for color codes
+      </pre>
+    </main>
+    <footer></footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/api.js"
+
+function handleClick(event) {
+  debugger;
+  const promise = fetch("https://opentdb.com/api.php?amount=1&type=multiple");
+  promise.then(parseResponse);
+}
+
+function parseResponse(resolveValue) {
+  debugger;
+  //THE RESOLVE VALUE WILL BE A FETCH OBJECT
+  //THE TEXT METHOD EXTRACTS THE STRINGIFIED OBJECT
+  const promise = resolveValue.text();
+  promise.then(viewResponse);
+}
+
+function viewResponse(resolveValue) {
+  debugger;
+  //THE RESOLVE VALUE WILL BE A STRINGIFIED OBJECT
+  //THE PARSE METHOD GENERATES AN OBJECT FROM THE STRING
+  const response = JSON.parse(resolveValue);
+  const results = response.results;
+  const item = results[0];
+  const question = item.question;
+  const answer = item.correct_answer;
+  const incorrects = item.incorrect_answers;
+
+  const trivia = `<div>${question}</div>
+      <ol type="a">
+        <li>${incorrects[0]}</li>
+        <li>${incorrects[1]}</li>
+        <li>${incorrects[2]}</li>
+        <li>${answer}</li>
+      </ol>`;
+  output(trivia);
+}
+
+function handleQuoteOfTheDay() {
+  debugger;
+  const proxy = "https://thingproxy.freeboard.io/fetch/";
+  const baseUrl = "https://favqs.com/api";
+  const endpoint = "/qotd";
+  const url = proxy + baseUrl + endpoint;
+  const promise = fetch(url);
+  promise.then(extractResponse);
+}
+
+function extractResponse(resolveValue) {
+  debugger;
+  const promise = resolveValue.text();
+  promise.then(parseQotdResponse);
+}
+
+function parseQotdResponse(resolveValue) {
+  debugger;
+  const response = JSON.parse(resolveValue);
+}
+
+function handleQuotes() {
+  debugger;
+  const proxy = "https://thingproxy.freeboard.io/fetch/";
+  const baseUrl = "https://favqs.com/api";
+  const endpoint = "/quotes";
+  const url = proxy + baseUrl + endpoint;
+
+  const key = "5e54b84a40971e2bf3a8189e74295adc";
+
+  const options = {
+    headers: {
+      Authorization: `Token token="${key}"`,
+    },
+  };
+
+  const promise = fetch(url, options);
+  promise.then(extractResponse);
+}
+
+
+///// FILE: "Sandbox Level 2/api.scss"
+
+$lightBlue: rgb(53, 53, 255);
+
+code {
+  color: $lightBlue;
+}
+
+
+///// FILE: "Sandbox Level 2/aria.md"
+
+# ARIA
+
+### Accessible Rich Internet Applications
+
+It's a way to make websites more accessible to people with disabilities.
+
+### ARIA attributes
+
+1. `aria-current`
+   - Indicates that an item is currently selected.
+   - `"page"` indicates that the item is a page.
+   - `"true"` that the item is currently selected.
+   - Other valid values: `"step" "location" "date" "time"`
+   - Use on elements that can be selected.
+2. `aria-disabled`
+   - Indicates the status of an item.
+   - `"true"` indicates that the item is disabled.
+   - Switch it to `"false"` when the item is enabled.
+   - Use on elements that can be disabled and enabled.
+3. `aria-label`
+   - Describes an item without a label.
+   - `"Close"` is describing a button that has a meaning, but no label.
+   - Use on icons or images that have a meaning but no label.
+
+### Enable the accessibility tree in developer tools
+
+1. Open developer tools
+2. Elements tab
+3. Accessibility tab
+4. Enable full-page accessibility tree
+5. Refresh the page
+
+### Accessibility tree
+
+The accessibility tree:
+
+- Represents the structure of a web page.
+- Only includes accessibility elements.
+- How assistive technologies interpret and describe a web page to a user.
+
+### Semantic elements
+
+1. header
+2. main
+3. footer
+4. section
+5. headings
+6. `<p>`
+7. `<label>`
+8. `<article>`
+   - Use for blog posts, news articles, and other independent self-contained content.
+   - Example: recipe cards
+9. `<section>`
+   - Use to enclose themes, categories, and content with headings.
+   - Example: recipe ingredients, recipe instructions
+10. `<dialog>`
+
+- Use this for a box or window that can be opened or closed.
+- Example: Bootstrap alert
+- Note: Use the open attribute to show the `<dialog>` content.
+
+11. `<output>`
+    - Use this for the result of a calculation or showing feedback.
+    - Example: The form has been successfully submitted.
+
+### Semantic attributes
+
+1. Attributes that begin with `aria`
+   - aria-current
+   - aria-disabled
+   - area-label
+2. `type`
+   - type="password"
+   - type="tel"
+3. `role`
+   - role="alert"
+4. `for` and `id`
+   - for="phone"
+   - id="phone"
+   - `for` should match the `id`
+
+
+///// FILE: "Sandbox Level 2/boilerplate.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/borders.html"
+
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <main>
+    <h1>Bootstrap Borders</h1>
+    <h3>Border width</h3>
+    <ul>
+      <li class="border border-1 m-1">border-1</li>
+      <li class="border border-2 m-1">border-2</li>
+      <li class="border border-3 m-1">border-3</li>
+      <li class="border border-4 m-1">border-4</li>
+      <li class="border border-5 m-1">border-5</li>
+    </ul>
+    <h3>Border color</h3>
+    <ul>
+      <li class="border border-5 border-primary m-1">border-primary</li>
+      <li class="border border-5 border-secondary m-1">border-secondary</li>
+      <li class="border border-5 border-success m-1 m-1">border-success</li>
+      <li class="border border-5 border-danger m-1">border-danger</li>
+      <li class="border border-5 border-warning m-1">border-warning</li>
+      <li class="border border-5 border-info m-1">border-info</li>
+      <li class="border border-5 border-dark m-1">border-dark</li>
+      <li class="border border-5 border-light bg-secondary m-1">
+        border-light
+      </li>
+      <li class="border border-5 border-white bg-secondary m-1">
+        border-white
+      </li>
+      <li class="border border-5 border-black m-1">border-black</li>
+    </ul>
+    <h3>Border positions</h3>
+    <ul>
+      <li class="border-top border-5 border-primary m-1">border-top</li>
+      <li class="border-bottom border-5 border-primary m-1">border-bottom</li>
+      <li class="border-start border-5 border-primary m-1">border-start</li>
+      <li class="border-end border-5 border-primary m-1">border-end</li>
+    </ul>
+    <h3>Border radius</h3>
+    <ul class="text-center">
+      <li class="rounded border border-5 border-primary m-1">rounded</li>
+      <li class="rounded-pill border border-5 border-primary m-1">
+        rounded-pill
+      </li>
+      <li class="rounded-circle border border-5 border-primary m-1">
+        rounded-circle
+      </li>
+    </ul>
+    <h3>Custom borders</h3>
+    <div class="border-dashed border border-5 m-1">border-dashed</div>
+    <div class="border-dotted border border-5 m-1">border-dotted</div>
+    <div class="border-double border border-5 m-1">border-double</div>
+    <div class="border-groove border border-5 m-1">border-groove</div>
+    <div class="border-ridge border border-5 m-1">border-ridge</div>
+    <div class="border-inset border border-5 m-1">border-inset</div>
+    <div class="border-outset border border-5 m-1">border-outset</div>
+    The file styles.css should be loaded after Bootstrap.<br />
+    Using !important is necessary to override Bootstrap.
+  </main>
+</body>
+
+
+///// FILE: "Sandbox Level 2/cli.md"
+
+Bash Commands
+
+ls - List all folders and files in a diretory
+
+FILE COMMANDS
+
+`touch`
+create a file
+Example: `touch index.html`
+
+mv - rename a file (move)
+Example: mv index.html home.html
+
+cp - copy a file
+Example: cp original.html new.html
+
+rm - remove a file
+Example: rm oldFile.html
+
+FOLDER COMMANDS
+
+mkdir - make a folder (make directory)
+Example: mkdir newFolder
+
+cd - navigate folder structure (change directory)
+Example: cd myFolder
+
+cd .. - navigate to the previous folder (.. means back)
+
+mv - rename a folder (move)
+Example: mv oldName newName
+
+cp -r - copy a folder (-r means recursive)
+Example: cp -r originalFolder newFolder
+
+`rm -r`
+remove a folder
+`-r` means recursive
+Example: `rm -r oldFolder`
+
+`.`
+Current folder
+
+`..`
+Parent folder
+
+`clear`
+Clears the terminal
+
+up arrow
+Previous command
+
+down arrow
+Next command
+
+tab
+Autofills the command
+
+
+///// FILE: "Sandbox Level 2/forms.html"
+
+<head>
+  <title>Form Inputs</title>
+  <script src="utility-functions.js"></script>
+  <script src="forms.js"></script>
+</head>
+<body>
+  <h1>Form Inputs</h1>
+  <hr />
+  <h2>Inputs</h2>
+
+  <h3>Buttons</h3>
+
+  <pre>
+    <button type="button">Click button</button>
+    <input type="button" value="Click button" />
+    <input type="submit" value="Add submission" />
+    <input type="reset" value="Reset form" />
+    <input type="image" src="submit-button.png" />
+    <input type="radio" /> Radio button
+    <input type="checkbox" /> Checkbox
+  </pre>
+
+  <h3>Text Inputs</h3>
+  <pre>
+    <input type="text" placeholder="Text input">
+    <input type="email" placeholder="Email input">
+    <input type="tel" placeholder="Phone number input">
+    <input type="number" placeholder="Number input">
+    <input type="password" placeholder="Password input">
+    <input type="search" placeholder="Search input">
+    <input type="url" placeholder="URL input">
+  </pre>
+
+  <h3>Interface</h3>
+  <pre>
+    <input type="file">
+    <input type="color"> Color picker
+    <input type="time">
+    <input type="week">
+    <input type="month"> Month picker
+    <input type="date">
+    <input type="datetime-local">
+    <input type="number" min="10" max="30"> Number range
+    <input type="range" min="10" max="30"> Number slider
+    <select>
+      <option>item 1</option>
+      <option>item 2</option>
+      <option>item 3</option>
+      <option selected>Dropdown</option>
+    </select>
+  </pre>
+
+  <hr />
+
+  <h2>Forms</h2>
+  <h3>Validation</h3>
+  <pre>
+    Forms can validate their input.
+    Inputs are checked before being submitted.
+    Type invalid values to see form validation.
+  </pre>
+
+  <form>
+    <input type="email" placeholder="Email input" />
+    <input type="submit" />
+  </form>
+
+  <form>
+    <input required placeholder="Required input" />
+    <input type="submit" />
+  </form>
+
+  <form>
+    <input
+      type="text"
+      placeholder="Input length"
+      minlength="5"
+      maxlength="10"
+    />
+    <input type="submit" />
+  </form>
+
+  <form>
+    <input
+      type="tel"
+      placeholder="Phone number input"
+      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    />
+    <input type="submit" />
+    ###-###-####
+  </form>
+
+  <h3>Processing</h3>
+  <form onsubmit="myProcessForm(event)">
+    <input
+      required
+      name="myPassword"
+      type="password"
+      placeholder="Password input"
+    /><br />
+    <input name="firstname" placeholder="First name" /><br />
+    <input name="lastname" placeholder="Last name" /><br />
+    <p>
+      The form array only contains form input.<br />
+      This is a paragraph, not in the form array.
+    </p>
+    <input type="submit" value="Submit Form!!!" />
+  </form>
+  <output id="outputTag"></output>
+</body>
+
+
+///// FILE: "Sandbox Level 2/forms.js"
+
+function myProcessForm(event) {
+  debugger;
+  event.preventDefault(); //Prevents the page from refreshing after submitting a form.
+  const form = event.target;
+  const passwordInput = form[0];
+  const firstnameInput = form[1];
+  const lastnameInput = form[2];
+  const firstname = firstnameInput.value;
+  output(`Your first name is ${firstname}.<br>`);
+}
+
+
+
+
+///// FILE: "Sandbox Level 2/generic-elements.html"
+
+<div>
+  <span>Dolore magna aliqua</span>
+  <div>
+    <a>Voluptate</a>
+    <a>Inceptos</a>
+    <a>Bibendum</a>
+    <a>Habitant</a>
+  </div>
+</div>
+<div>
+  <div>
+    <div>Orci proin porttitor facilisi in</div>
+  </div>
+  <div>
+    <div>Platea porttitor semper</div>
+    <div>
+      Platea accumsan mauris cursus maecenas non porta arcu. Feugiat accumsan
+      ridiculus habitant mattis nam curabitur.
+    </div>
+    <div>
+      Nulla egestas massa senectus egestas egestas hendrerit vulputate magnis.
+      Praesent vel velit mus sagittis nostra porttitor.
+    </div>
+  </div>
+  <div>
+    <div>Platea accumsan mauris cursus maecenas non porta</div>
+    <div>
+      Feugiat accumsan ridiculus habitant mattis nam curabitur. Nulla egestas
+      massa senectus egestas egestas hendrerit vulputate magnis.
+    </div>
+    <div>
+      Lorem proin habitant in arcu faucibus. Orci facilisi hendrerit nisl magna
+      velit lacinia urna lacinia.
+    </div>
+  </div>
+</div>
+<div>
+  <span>Massa sociosqu volutpat platea aptent.</span>
+</div>
+
+
+///// FILE: "Sandbox Level 2/generic-form.html"
+
+<form>
+  Name: <input /><br />
+  Email: <input /><br />
+  Phone: <input /><br />
+  Rating:
+  <input type="radio" name="rating" />😀 <input type="radio" name="rating" />🙁
+</form>
+
+
+///// FILE: "Sandbox Level 2/git.md"
+
+# GIT COMMANDS
+
+### INSTALL GIT BASH
+
+1. Run the command `git --version`
+2. If there's an error, install [Git Bash](https://git-scm.com/)
+3. Choose default options, but override the branch name with main.
+4. Reload VS Code to apply changes.
+
+### INSTALL GITHUB CLI
+
+1. Run the command `gh --version`
+2. If there's an error, install [GitHub CLI](https://cli.github.com/)
+3. Choose default options.
+4. Reload VS Code to apply changes.
+
+### CONFIGURE USER NAME
+
+1. `git init`
+2. Run the command `git config user.name`
+3. If it's not correct, run the command `git config user.name "myUserName"`
+4. To set it as default, run the command `git config --global user.name "myUserName"`
+
+### CONFIGURE USER EMAIL
+
+1. `git init`
+2. Run the command `git config user.email`
+3. If it's not correct, run the command `git config user.email "my@email.com"`
+4. To set it as default, run the command `git config --global user.email "my@email.com"`
+
+### COPY THE REPOSITORY LINK
+
+1. Open GitHub
+2. Open the repository
+3. Click on the green Code button
+4. Copy the HTTPS link
+
+### PULL FROM GITHUB
+
+```
+git init
+git remote add origin https://github.com/myRepositoryLink
+git pull origin main
+```
+
+### DELETE UNUSED FILES
+
+1. If there are files that VS Code doesn't need (like Glitch files), delete those.
+
+### CREATE A NEW REPOSITORY IN GITHUB
+
+1. Click on the cat icon at the top left.
+2. Click on the green new button at the top left.
+3. Enter the repository name.
+4. Click Create repository.
+5. Do not change the default settings.
+
+### PUSH TO GITHUB FOR THE FIRST TIME
+
+```
+gh auth login
+git remote set-url origin https://github.com/myRepositoryLink2
+git add .
+git commit -m "added files"
+git push --set-upstream origin main
+```
+
+### PUSH TO GITHUB REGULARLY
+
+```
+git add .
+git commit -m "the changes I made"
+git push
+```
+
+### RENAME DEFAULT BRANCH TO MAIN
+
+`git branch -M main`
+
+### SET DEFAULT BRANCH TO MAIN
+
+`git config --global init.defaultBranch main`
+
+### DELETE SOURCE CONTROL
+
+```
+ls -a
+rm -rf .git
+```
+
+`-rf` mean recursive and force
+
+### VIEW BRANCHES
+
+`git branch`
+
+### CREATE A BRANCH
+
+`git branch whatYouWantToDo`
+
+### SWITCH TO A BRANCH
+
+`git switch myBranch`
+
+### SWITCH TO A BRANCH ON GLITCH
+
+`git checkout myBranch`
+
+### MERGE CHANGES
+
+1. Switch to the branch that will absorb the changes. Example `git switch main`
+2. `git merge myBranch`
+
+### USE VS CODE EDITOR INSTEAD OF VIM EDITOR
+
+`git config --global core.editor "code --wait"`
+
+### COMMAND DESCRIPTIONS
+
+1. `git init`
+   - Initializes source control
+2. `git pull origin main`
+   - Copies files from the origin
+3. `gh auth login`
+   - Grants authorization to push to your repository
+4. `git remote set-url origin`
+   - Sets the origin
+5. `git push --set-upstream origin main`
+   - Pushes files to GitHub and makes origin and main the default options
+
+---
+
+### MERGE TEST
+
+INITIALIZE SOURCE CONTROL
+
+1. `git init`
+2. `git config user.name "myUserName"`
+3. `git config user.email "my@email.com"`
+4. `touch index.html`
+5. `git add .`
+6. `git commit -m "added files"`
+
+PUSH TO A NEW REPOSITORY
+
+7. Create a GitHub repository called merge-test
+8. `git remote add origin http://myRepository`
+9. `git push --set-upstream origin main`
+
+CREATE A BRANCH
+
+10. `git branch myBranch`
+11. `git switch myBranch`
+12. Add `<p>Hello World!</p>` to index.html
+13. Save the changes CTRL + S
+14. `git add .`
+15. `git commit -m "updated file"`
+
+MERGE THE BRANCH
+
+16. `git switch main`
+17. Change the history from `Auto` to `All`
+18. `git merge myBranch`
+19. `git push`
+
+SETUP FOR REBASE
+
+20. `git switch myBranch`
+21. Add `<p>Amazing World!</p>` to index.html.
+22. Save the changes CTRL + S
+23. `git add .`
+24. `git commit -m "updated file"`
+25. `git switch main`
+26. `touch about.html`
+27. `git add .`
+28. `git commit -m "added a file"`
+29. `git merge myBranch`
+30. Approve the merge by closing the merge editor or the VIM editor (type :qa and ENTER)
+
+REBASE THE COMMITS
+
+31. `git rebase myBranch`
+32. `git push`
+33. `git switch myBranch`
+34. `git rebase main`
+
+RESOLVE A MERGE CONFLICT
+
+35. Add `<h1>About Page</h1>` to about.html
+36. Save the changes CTRL + S
+37. `git add .`
+38. `git commit -m "added heading"`
+39. `git switch main`
+40. Add `<h2>About Page</h2>` to about.html
+41. Save the changes CTRL + S
+42. `git add .`
+43. `git commit -m "added heading"`
+44. `git merge myBranch`
+45. Select a resolution.
+46. Save the changes CTRL + S
+47. `git add .`
+48. `git commit -m "merged changes"`
+49. `git push`
+
+RESOLVE A REBASE CONFLICT
+
+50. `git rebase myBranch`
+51. Select a resolution.
+52. Save the changes CTRL + S
+53. `git add .`
+54. `git rebase --continue`
+55. `git push` will result in an error
+56. `git push --force`
+
+RESTORE A SAVE POINT
+
+57. Select a commit to restore.
+58. Copy its id
+59. `git reset --hard id123456789`
+60. `git push` will result in an error
+61. `git push --force`
+
+PUSH A BRANCH TO GITHUB
+
+62. `git push origin myBranch`
+
+DELETE A BRANCH
+
+63. `git branch --delete myBranch` will result in error
+64. `git branch -D myBranch`
+65. `git branch`
+
+RESTORE A BRANCH FROM GITHUB
+
+66. `git branch myBranch origin/myBranch`
+67. `git branch`
+
+
+///// FILE: "Sandbox Level 2/html.md"
+
+# HTML NOTES
+
+### SUB-LEVEL LISTS
+
+1. Create a list like `<ol>`
+2. Add a `<li>`
+3. Insert a list into `<li>`
+4. Add `<li>` to the sub-level list
+
+### HTML ENTITIES
+
+1. Special characters rendered by special code.
+2. Always starts with `&` and ends with `;`.
+3. The code goes in between.
+4. Example: `&lt;` is the less than sign
+5. Example: `&gt;` is the greater than sign
+
+### CODE EMPHASIS
+
+1. `<code>` adds emphasis by using monospace font and changing the color.
+
+### PREFORMATTED TEXT
+
+1. `<pre>` renders all spaces and line breaks
+
+
+///// FILE: "Sandbox Level 2/image-map.html"
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Image Map</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+  </head>
+  <body class="container">
+    <header></header>
+    <main>
+      <h1>Image Map</h1>
+      <p>
+        Image maps create clickable regions in a picture.<br />
+        Hover the mouse over some shapes.
+      </p>
+      <img
+        width="25%"
+        usemap="#my-image-map"
+        src="2d-shapes.jpg"
+        alt="shapes"
+      />
+      <map name="my-image-map">
+        <area
+          title="Click the rectangle"
+          coords="195,70, 365,170"
+          shape="rect"
+          href="https://en.wikipedia.org/wiki/Rectangle"
+        />
+        <area
+          title="Click the circle"
+          coords="610,115, 55"
+          shape="circle"
+          href="#circles"
+        />
+        <area
+          title="Click the heart"
+          coords="610,525, 635,505, 660,640, 610,600, 555,540, 580,505"
+          shape="poly"
+          href="https://en.wikipedia.org/wiki/Heart"
+        />
+      </map>
+      <p>
+        <ol>
+          
+          <li>
+            Use <code>&lt;map&gt;</code> and <code>&lt;area&gt;</code> to define an image map.
+            <ul>
+              <li><code>&lt;map&gt;</code> needs the <code>name</code> attribute</li>
+              <li><code>&lt;img&gt;</code> needs the <code>usemap</code> attribute</li>
+              <li><code>usemap</code> should start with <code>#</code> and match <code>name</code></li>
+            </ul>
+          </li>
+          
+          <li>
+            <b>area</b> needs the <b>shape</b> attribute
+            <ul>
+              <li><b>shape</b> can be <b>rect</b>, <b>circle</b>, or <b>poly</b>.</li>
+              <li><b>area</b> needs the <b>coords</b> attribute</li>
+              <li><b>coords</b> can be obtained with Luna Paint or Pix Spy.</li>
+            </ul>
+          </li>
+          
+          <li>Add <b>href</b> to <b>area</b> to make it clickable.</li>
+          <li>Add <b>title</b> to <b>area</b> for tooltip popups.</li>
+          <li>Add <b>target=“_blank”</b> to <b>area</b> so links open in a new tab.</li>
+          
+          <li>
+            Add link to image map resizer JSDelivr CDN.
+            <ul>
+              <li>Call <b>imageMapResize()</b> to automatically scale image maps.</li>
+            </ul>
+          </li>
+        </ol>
+      </p>
+      
+      <h2 id="circles">All about circles</h2>
+      <script>
+        imageMapResize();
+      </script>
+    </main>
+    <footer></footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/index.html"
+
+<html>
+  <body>
+    <h1>Amazing World!</h1>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/javascript.css"
+
+code{color:#00438b}
+
+///// FILE: "Sandbox Level 2/javascript.html"
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link href="javascript.css" rel="stylesheet" />
+    <script src="javascript.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <pre>
+        Activator function
+        ---------------
+        <code>
+        function greeting() {
+          display("Hello world!");
+        }
+        </code>
+        A function that doesn't have parameters.
+        Its only purpose is to call a function with parameters.
+
+        Test results:
+        A value can be sent to functions without parameters.
+        Add a parameter to the function to access the value.
+
+        <button onclick="greeting()">Activate me!</button>
+        <button onclick="activatorTest()">Activator test</button>
+      </pre>
+
+      <pre>
+        Callback function
+        ----------------------
+        <code>
+        function myFunction(callbackFunction) {
+          callbackFunction();
+        }
+        function activator() {
+          myFunction(greeting);
+        }
+        activator();
+        </code>
+        A function that is passed as a parameter.
+        A function can be passed to another function.
+        The function can run that function.
+
+        <button onclick="activator()">Activate me!</button>
+      </pre>
+
+      <pre>
+        setTimeout
+        -----------------
+        <code>
+        setTimeout(greeting, 5000);
+        </code>
+        A function that calls a function after a specified time.
+        It acceps a function and a delay time in milliseconds.
+
+        <button onclick="delayedGreeting()">Delayed greeting</button>
+      </pre>
+
+      <pre>
+        Asychronous
+        -----------------
+        <code>
+        function asynchronous() {
+          setTimeout(greeting, 5000);
+          display("Waiting for the greeting...");
+        }
+        </code>
+        Able to run other code while waiting for some code to respond.
+        Like multitasking.
+        Other code runs immediately after <code>setTimeout</code>
+        The <code>greeting</code> function runs after other code.
+
+        <button onclick="asynchronous()">Delayed greeting</button>
+      </pre>
+
+      <pre>
+        Server simulation
+        --------------------
+        <code>
+        setTimeout(serverResponse, 5000);
+        </code>
+        A server takes time to respond.
+        Use asynchronous code to simulate it.
+        <form onsubmit="submitForm(event)">
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required /><br />
+          <input type="submit" />
+        </form>
+      </pre>
+
+      <pre>
+        JSON stringify
+        ------------------
+        <code>
+        function displayObject() {
+          const myCar = {
+            color: "red",
+            year: 2024,
+          };
+        
+          const result = JSON.stringify(myCar);
+          display(result);
+        }
+        </code>
+        Generates a string from an object.
+        Need to store result.
+        JSON - JavaScript Object Notation
+        Servers communicate with stringified objects.
+        The syntax we use to represent objects.
+        - Curly braces represent an object
+        - Properties are separated by a comma
+        - Properties in quotes
+        - Values are set with colon
+
+        <button onclick="displayObject()">Display object</button>
+      </pre>
+
+      <pre>
+        JavaScript class
+        -------------------
+        <code>
+        class MyCar {
+          color = "red";
+          year = 2024;
+        }
+        </code>
+        A JavaScript class is like a template.
+        It predefines an object without creating it.
+        Usually created towards the top of a JavaScript file.
+        
+        Syntax:
+        1. Keyword <code>class</code>
+        2. Class name, usually in PascalCase
+           - PascalCase is like camelCase, but starts with a capital.
+        3. Curly braces
+        4. Assign properties their values
+           - Use equal signs and semi-colons
+      </pre>
+
+      <pre>
+        JavaScript class vs object
+        ---------------------------
+        <code>
+        class MyCar {
+          color = "red";
+          year = 2024;
+        }
+        
+        const myCar = {
+          color: "red",
+          year: 2024,
+        };
+        </code>
+        Directly displaying a class shows its code.
+        In developer tools, a class has a name and length.
+        The JavaScript class is different from a JavaScript object.
+        The syntax of a class is different than an object.
+
+        <button onclick="classVsObject()">class vs object</button>
+      </pre>
+
+      <pre>
+        Create a new object from a class
+        -----------------------------------
+        <code>
+        const myCar = new MyCar();
+        const myCar2 = new MyCar();
+        const myCar3 = new MyCar();
+
+        myCar2.color = "white";
+        myCar3.year = 2025;
+        </code>
+        The objects start with the properties and values defined by the class.
+        The objects are independent.
+        - The values of their properties can be changed individually.
+
+        Syntax:
+        1. Keyword <code>new</code>
+        2. Name of the class with parentheses after it.
+        3. Store the value
+           - The value is an object created from the class.
+
+        <button onclick="newObject()">Create object from class</button>
+      </pre>
+
+      <pre>
+        Function in a function (nested function)
+        ------------------------------------------
+        <code>
+        function outerFunction() {
+          const message = "Hello world!";
+          innerFunction();
+        
+          function innerFunction() {
+            display(message);
+          }
+        }
+        </code>
+        Functions can be defined in other functions.
+        The inner function has access to variables in the outer function.
+        Function scope (local scope) gives access to the variables.
+        The inner function only runs when it's activated.
+
+        <button onclick="outerFunction()">Nested function</button>
+      </pre>
+
+      <pre>
+        Promise
+        -------------
+        <code>
+        const promise = new Promise(myFunction);
+        promise.then(getMessage);
+        </code>
+        A special class that runs a callback function.
+        The object indicates the status of the callback function.
+        A Promise is not asynchronous. It immediately runs the callback function.
+        The status must be manually changed.
+        The callback function must indicate when it has finished.
+        The Promise sends a callback function to <code>myFunction</code>.
+        That callback function to <code>myFunction</code> indicates that the Promise is fulfilled.
+        That callback function is known as the <code>resolve</code> function.
+        A Promise is meant to be used by asynchronous code.
+        The asynchronous code is supposed <code>resolve</code> to indicate when it's done.
+
+        <button onclick="makePromise()">Make promise</button>
+      </pre>
+
+      <pre>
+        Promise function
+        --------------------
+        <code>
+        function myFunction(resolve) {
+          setTimeout(serverResponse2, 5000);
+          display("Inside my myFunction");
+        
+          function serverResponse2() {
+            display("Form was succesfully processed.");
+            resolve();
+          }
+        }
+        </code>
+        The parameter <code>resolve</code> is a callback function.
+        It is passed from the Promise.
+        Use an inner function to give access to the resolve function.
+      </pre>
+
+      <pre>
+        The then function
+        ----------------------
+        <code>
+        promise.then(getMessage);
+
+        function getMessage(resolveValue) {
+          display(resolveValue);
+        }
+        </code>
+        The <code>then</code> function runs the callback function when the promise is resolved (fulfilled)
+        The callback function has access to the resolve value.
+      </pre>
+
+      <pre>
+        Resolve function and resolve value
+        -------------------------------------
+        <code>
+        resolve("The promise is fulfilled.");
+        </code>
+        The resolve function is a callback function.
+        It is passed to the function that is given to the Promise.
+        It indicates that the Promise is fulfilled.
+        The resolve function is meant to be used by asynchronous code.
+        The resolve value gets passed to the callback of the <code>then</code> function.
+      </pre>
+
+      <pre>
+        Promise - Best practices
+        -------------------------------
+        <code>
+        const promise = makeRequest("https://myserver.com");
+        
+        function makeRequest(url) {
+          const promise = new Promise(getServerResponse);
+          return promise;
+        }
+        </code>
+        A promise is usually the return value of a function.
+        Communication with a server is called a request.
+        Server communication is established with a url.
+
+      </pre>
+
+      <pre>
+        Method
+        ------------
+        <code>
+        promise.then(getMessage);
+        document.write("Hello world!");
+        </code>
+        A method is a function that's part of an object.
+      </pre>
+
+      <pre>
+        Handler
+        --------------
+        <code>
+        onsubmit="submitForm(event)"
+        </code>
+        A handler is a function that runs in response to an event.
+        Another example is <code>onclick</code> which can run a function in response to an event.
+        Example events:
+        1. When a form is submitted
+        2. When a button is clicked
+      </pre>
+
+      <pre>
+        Handler naming convention
+        ----------------------------
+        <code>
+        onsubmit="handleSubmit(event)"
+        onclick="handleClick(event)"
+        </code>
+        A handler function usually starts with <code>handle</code>
+      </pre>
+
+      <pre>
+        Server Simulation with Promise
+        ---------------------------------
+        <form onsubmit="handleSubmit(event)">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <input type="submit" />
+        </form>
+      </pre>
+
+      <pre>
+        JSON parse
+        --------------
+        <code>
+        const response = JSON.parse(resolveValue);
+        </code>
+        Parse: Analyze the data and convert it to a usable format.
+        <code>JSON.parse</code> converts a string into an object.
+        A stringified object is not a usable format.
+        The object is a usable format.
+      </pre>
+    </main>
+    <footer></footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/javascript.js"
+
+class MyCar {
+  color = "red";
+  year = 2024;
+}
+
+function newObject() {
+  debugger;
+  const myCar = new MyCar();
+  const myCar2 = new MyCar();
+  const myCar3 = new MyCar();
+
+  myCar2.color = "white";
+  myCar3.year = 2025;
+
+  display(JSON.stringify(myCar));
+  display(JSON.stringify(myCar2));
+  display(JSON.stringify(myCar3));
+}
+
+function classVsObject() {
+  class MyCar {
+    color = "red";
+    year = 2024;
+  }
+
+  debugger;
+  display(MyCar);
+  display(myCar);
+}
+
+function display(message) {
+  document.write(message);
+}
+
+function greeting() {
+  debugger;
+  display("Hello world!");
+}
+
+function myFunction(callbackFunction) {
+  callbackFunction();
+}
+
+function activator() {
+  debugger;
+  myFunction(greeting);
+}
+
+function delayedGreeting() {
+  setTimeout(greeting, 5000);
+}
+
+function asynchronous() {
+  debugger;
+  setTimeout(greeting, 5000);
+  display("Waiting for the greeting...");
+}
+
+function submitForm(event) {
+  debugger;
+  event.preventDefault();
+  const inputs = event.target;
+  const emailInput = inputs[0];
+  const email = emailInput.value;
+  display("Submitting form for " + email + "...");
+  setTimeout(serverResponse, 5000);
+}
+
+function serverResponse() {
+  debugger;
+  display("Form was succesfully processed.");
+}
+
+function displayObject() {
+  const myCar = {
+    color: "red",
+    year: 2024,
+  };
+
+  const result = JSON.stringify(myCar);
+  display(result);
+}
+
+function myFunction(resolve) {
+  debugger;
+  setTimeout(serverResponse2, 5000);
+  display("Inside my myFunction");
+
+  function serverResponse2() {
+    debugger;
+    display("Form was succesfully processed.");
+    resolve("The promise is fulfilled.");
+  }
+}
+
+function makePromise() {
+  debugger;
+  const promise = new Promise(myFunction);
+  promise.then(getMessage);
+  display("Made a promise.");
+}
+
+function getMessage(resolveValue) {
+  display(resolveValue);
+}
+
+function activatorTest(myParameter) {
+  debugger;
+  display(myParameter);
+}
+
+function outerFunction() {
+  debugger;
+  const message = "Message from the outer function.";
+  innerFunction();
+
+  function innerFunction() {
+    display(message);
+  }
+}
+
+function handleSubmit(event) {
+  debugger;
+  event.preventDefault();
+  const inputs = event.target;
+  const emailInput = inputs[0];
+  const email = emailInput.value;
+  display("Submitting form for " + email + "...");
+  const promise = makeRequest("https://myserver.com");
+  promise.then(parseResponse);
+}
+
+function getServerResponse(resolve) {
+  setTimeout(activateResolve, 5000);
+
+  function activateResolve() {
+    debugger;
+    //SIMULATE A SERVER BY SENDING A STRINGIFIED OBJECT
+    const response = {
+      message: "Successfully processed.",
+    };
+    const resolveValue = JSON.stringify(response);
+    resolve(resolveValue);
+  }
+}
+
+function parseResponse(resolveValue) {
+  debugger;
+  const response = JSON.parse(resolveValue);
+  const message = response.message;
+  display(message);
+}
+
+function makeRequest(url) {
+  const promise = new Promise(getServerResponse);
+  return promise;
+}
+
+
+///// FILE: "Sandbox Level 2/javascript.scss"
+
+$codeColor: rgb(0, 67, 139);
+
+code {
+  color: $codeColor;
+}
+
+
+///// FILE: "Sandbox Level 2/markdown.md"
+
+# Heading
+
+## Heading
+
+### Heading
+
+Ordered List
+
+1. item
+2. item
+3. item
+
+Unordered List
+
+- item
+- item
+- item
+
+Horizontal Line
+
+---
+
+`code`
+
+```
+code block
+code block
+code block
+```
+
+[CodeX Academy](https://codex.academy)
+
+HTML
+
+<u>underline</u>
+<br>
+<button>Click Here</button>
+
+
+
+
+///// FILE: "Sandbox Level 2/samples/alert.html"
+
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+  <dialog
+    open
+    class="alert alert-warning alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>Holy guacamole!</strong> You should check in on some of those fields
+    below.
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </dialog>
+</body>
+
+
+///// FILE: "Sandbox Level 2/samples/recipe-cards.html"
+
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+</head>
+<body class="container p-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <article class="card">
+          <img
+            class="card-img-top"
+            src="data:image/jpeg;base64,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"
+          />
+          <div class="card-body">
+            <h3 class="card-title">Fish Tacos</h3>
+            These are loaded with fresh ingredients and perfectly seasoned plump
+            fish.
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <img
+            class="card-img-top"
+            src="data:image/jpeg;base64,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"
+          />
+          <div class="card-body">
+            <h3 class="card-title">Country Fried Steak</h3>
+            A Southern favorite, these crispy, breaded, tenderized cube steaks
+            drenched in creamy gravy can be served for breakfast or dinner.
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <img
+            class="card-img-top"
+            src="data:image/jpeg;base64,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"
+          />
+          <div class="card-body">
+            <h3 class="card-title">Spaghetti</h3>
+            This spaghetti and meatball recipe is the ultimate weeknight family
+            dinner.
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+///// FILE: "Sandbox Level 2/samples/recipe-fish.html"
+
+<html lang="en">
+  <head>
+    <title>Fish Taco</title>
+    <style>
+      img {
+        width: 100%;
+      }
+      .navigation {
+        margin-bottom: 10px;
+        text-align: right;
+      }
+      main {
+        font-size: 5vw;
+      }
+      h1 {
+        text-align: center;
+        font-size: 9vw;
+      }
+      .icons {
+        width: 5%;
+      }
+      a {
+        text-decoration: none;
+      }
+      .arrows {
+        font-size: 7vw;
+      }
+      button {
+        font-size: 5vw;
+      }
+    </style>
+  </head>
+  <body id="top">
+    <header>
+      <nav class="navigation">
+        <a title="previous" class="arrows" href="steak.html">⇦</a>
+        <a href="index.html"><button>Home</button></a>
+        <a title="next" class="arrows" href="spaghetti.html">⇨</a>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <section>
+          <img
+            src="https://thecozyapron.com/wp-content/uploads/2018/03/baja-fish-tacos_thecozyapron_1.jpg"
+          />
+          <h1>Fish Taco</h1>
+          <b>Breaded, fried, and served with a creamy milk gravy.</b>
+          <p>
+            This chicken fried steak—<i
+              >also known in some areas as country fried steak</i
+            >—is breaded, fried, and then served with a creamy milk gravy.
+          </p>
+          <p>
+            Top round steak is pounded to tenderize and then it's dipped in
+            buttermilk and breaded with flour. These steaks are delicious with
+            eggs, hash browns, and biscuits in the morning or with mashed
+            potatoes and steamed vegetables in the evening.
+          </p>
+          <p>
+            The dish is popular in the Southern states, and it is fried like
+            Southern fried chicken. The dish is also similar to the
+            <u>German dish wiener schnitzel</u>, which is made with tenderized
+            veal.
+          </p>
+          <hr />
+        </section>
+
+        <section>
+          <h3 id="ingredients">Ingredients</h3>
+          <ul>
+            <li>
+              1 pound top round, about 1/2 inch thick, cut into 4 equal portions
+            </li>
+            <li>1/4 cup vegetable oil, or shortening, more as needed</li>
+            <li>1 cup buttermilk</li>
+            <li>1 teaspoon Tabasco sauce</li>
+            <li>1 cup all-purpose flour</li>
+            <li>1 teaspoon salt, more to taste</li>
+            <li>1/2 teaspoon freshly ground black pepper, more to taste</li>
+            <li>1 1/2 to 2 cups milk</li>
+            <li>1 dash cayenne pepper, optional</li>
+          </ul>
+          <hr />
+        </section>
+
+        <section>
+          <h3 id="instructions">Instructions</h3>
+          <ol>
+            <li>Gather the ingredients.</li>
+
+            <li>Heat the oven to 200 F or the "keep warm" setting.</li>
+
+            <li>
+              Using the pointed side of a meat mallet, pound the steaks to
+              tenderize them, then use the flat side of the mallet to pound them
+              to about 1/4-inch thick.
+            </li>
+
+            <li>
+              Pour the shortening or vegetable oil into a deep, heavy skillet to
+              depth of about 1/2-inch to 1-inch. Heat the oil to 370 F.
+            </li>
+
+            <li>In a shallow bowl, mix the buttermilk and hot pepper sauce.</li>
+
+            <li>
+              In another shallow bowl or pie plate, combine the flour, 1
+              teaspoon salt, and the pepper and mix well.
+            </li>
+
+            <li>Dip each steak in the buttermilk, then the flour mixture.</li>
+
+            <li>
+              Reserve 1 1/2 tablespoons of the flour mixture and set aside.
+            </li>
+
+            <li>
+              Two at a time, deep fry the steaks, turning once, until nicely
+              browned on both sides, about 3 to 4 minutes.
+            </li>
+
+            <li>
+              Transfer the steaks paper towels to drain and then place on a rack
+              in a baking pan. Put them in the preheated 200 F oven while you
+              prepare the gravy.
+            </li>
+
+            <li>
+              Discard all but 1 1/2 tablespoons of the fat from the skillet.
+              With skillet over low heat, whisk in reserved 1 1/2 tablespoons
+              flour mixture.
+            </li>
+
+            <li>
+              Stir until smooth and bubbly, scraping up browned bits from the
+              bottom of the skillet.
+            </li>
+
+            <li>Cook, stirring, for 2 minutes to cook the flour.</li>
+
+            <li>
+              Whisk in the milk and ground cayenne, if using. Bring the mixture
+              to a simmer and continue cooking for about 2 minutes. Season with
+              salt and pepper to taste.
+            </li>
+
+            <li>Serve the steak with the gravy.</li>
+          </ol>
+        </section>
+
+        <section>
+          <a href="https://www.youtube.com/watch?v=tGTyYh6M1wA"
+            >CLICK HERE TO WATCH ME MAKE THE STEAK</a
+          >
+        </section>
+      </article>
+    </main>
+    <footer>
+      <nav>
+        <ul>
+          <li><a href="#top">Top</a></li>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#instructions">Instructions</a></li>
+        </ul>
+      </nav>
+      <nav class="navigation">
+        <a class="arrows" href="spaghetti.html">⇦</a>
+        <a href="index.html"><button>Home</button></a>
+        <a class="arrows" href="taco.html">⇨</a>
+      </nav>
+    </footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/Sandbox Level 2.code-workspace"
+
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ]
+}
+
+
+///// FILE: "Sandbox Level 2/sass.css"
+
+p{color:red}#mixin-example{box-shadow:5px 5px gray;text-shadow:3px 3px #a9a9a9}#mixin-button{transform:scale(1) rotate(0deg);transition:transform 1s}#mixin-button:hover{transform:scale(2) rotate(15deg);transition:transform 2s}#animated-button{transform:scale(1) rotate(0deg);transition:transform 1s}#animated-button:hover{transform:scale(0.5) rotate(-10deg);transition:transform 2s}#subtitle{width:fit-content;transform:scale(1) rotate(0deg);transition:transform 1s}#subtitle:hover{transform:scale(0.5) rotate(-10deg);transition:transform 2s}@font-face{font-family:"Snowtop Caps";src:url("SnowtopCaps.otf")}main{font-family:"Snowtop Caps"}footer{font-family:fantasy}h1{color:#005f00;width:fit-content}h1:hover{color:#8c0000}p b{color:#4646ff}pre code{color:#8c0000}pre i{color:purple}.bg-image{background-image:url("pics/thumbs-up.png")}.horizontalRepeat{background-repeat:space no-repeat}.verticalRepeat{background-repeat:no-repeat repeat}.width{width:100vw}.height{height:200px}.size7{background-size:7%}.size50{background-size:50%}.stretch{background-size:25% 100%}.gradient{background-image:linear-gradient(90deg, gray, white 10% 90%, gray)}
+
+///// FILE: "Sandbox Level 2/sass.html"
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SASS</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="sass.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <header></header>
+    <main>
+      <h1>SASS</h1>
+      <p>Syntactically <b>Awesome</b> Style Sheets</p>
+
+      <pre>
+        SASS <code>nesting</code> syntax
+        pre {
+          code {
+            color: red;
+          }
+        }
+        A style can be nested in another style to select a nested element.
+        The code tag in the pre tag is styled.
+      </pre>
+
+      <pre>
+        SASS <i>variable</i> syntax
+
+        $myColor: purple;
+        pre {
+          i {
+            color: $myColor;
+          }
+        }
+
+        SASS variables starts with $
+        Use colon to store a value
+        Use the variable name to access the value
+      </pre>
+
+      <pre>
+        Background image variable
+        --------------------------
+        $thumbsUp: url("thumbs-up.png");
+        .bg-image {
+          background-image: $thumbsUp;
+        }
+      </pre>
+      <div class="bg-image size50 width height"></div>
+
+      <pre>
+        Horizontal repeat variable
+        -----------------------------------
+        $horizontalRepeat: space no-repeat;
+        .horizontalRepeat {
+          background-repeat: $horizontalRepeat;
+        }
+      </pre>
+      <div class="horizontalRepeat bg-image size7 width height"></div>
+
+      <pre>
+        Vertical repeat variable
+        --------------------------
+        $verticalRepeat: no-repeat repeat;
+        .verticalRepeat {
+          background-repeat: $verticalRepeat;
+        }
+      </pre>
+      <div class="verticalRepeat bg-image width height size7"></div>
+
+      <pre>
+        Background size variable
+        -------------------------
+        $stretch: 25% 100%;
+        .stretch {
+          background-size: $stretch;
+        }
+      </pre>
+      <div class="stretch bg-image width height"></div>
+
+      <div class="gradient width height">
+        <pre>
+          Gradient variables
+          -----------------------
+          $darkGradient: linear-gradient(90deg, gray, black 10% 90%, gray);
+          $lightGradient: linear-gradient(90deg, gray, white 10% 90%, gray);
+          .gradient {
+            background-image: $lightGradient;
+          }
+        </pre>
+      </div>
+
+      <pre>
+        RGBA color variables
+        -----------------------
+        $darkGreen: rgba(0, 95, 0, 1);
+        $lightBlue: rgba(70, 70, 255, 1);
+        $darkRed: rgba(140, 0, 0, 1);
+
+        Declare the color variables all in one area, towards the top.
+        Use them throughout the SASS file.
+        Define/declare variables before using them.
+        Changing the value of the variable affects the whole file.
+        Single source of truth - changing 1 thing changes them all.
+      </pre>
+
+      <pre>
+        Single line comments
+        // CUSTOM COLORS
+        SASS supports single line comments like JavaScript
+      </pre>
+
+      <pre>
+        Adjust width to automatically fit content
+        ------------------------------------------
+        <code>width: fit-content;</code>
+        Useful on block elements.
+        Block elements will still use a whole line.
+        But the hit box of the block element is reduced.
+        Compare it with <code>display:inline</code> which lines up the elements.
+      </pre>
+
+      <pre>
+        Parent syntax
+        --------------------
+        <code>
+        h1 {
+          color: $darkGreen;
+          width: fit-content;
+        
+          &:hover {
+            color: $darkRed;
+          }
+        }
+      </code>
+      Groups styles together under the parent selector.
+      Use <code>&</code> to substitute for the parent.
+      Any style belonging to the parent will be passed to the child styles.
+      </pre>
+
+      <pre>
+        Font variables
+        --------------------
+        <code>
+        $primaryFont: sans-serif;
+        $secondaryFont: fantasy;
+        </code>
+        Use variables to store fonts.
+        Single source of truth.
+      </pre>
+      <pre>
+        Adding fonts
+        --------------------
+        <code>
+        @font-face {
+          font-family: "Snowtop Caps";
+          src: url("SnowtopCaps.otf");
+        }
+        main {
+          font-family: "Snowtop Caps";
+        }
+        </code>
+        1. Download the font https://dafont.com
+        2. If the font is in a .zip, move the font out to the root folder.
+        3. Use <code>@font-face</code> to add the font.
+        4. Use <code>font-family</code> to name the font.
+        5. Use <code>src: url()</code> to link the font file.
+        6. Use the font name.
+      </pre>
+
+      <pre>
+        SASS mixins - single line
+        ----------------------------
+        <code>
+        @mixin redText {
+          color: red;
+        }
+
+        p {
+          @include redText;
+        }
+        </code>
+        Mixins are like variables
+        A single-line mixin stores a property and a value
+        Type <code>@mixin</code> to declare/define a mixin variable
+        Type <code>@include</code> to use the mixin
+        Mixins can substitute for utility classes so elements can be desccribed by their name
+      </pre>
+      <p>This is a paragraph</p>
+
+      <pre>
+        Using multiple mixins
+        ------------------------
+        <code>
+        #mixin-example {
+          @include boxShadow;
+          @include textShadow;
+        }
+        </code>
+        Use @include for each mixin
+      </pre>
+      <span class="bg-primary p-3" id="mixin-example">Hello world!</span>
+      <br />
+      <br />
+      <pre>
+        SASS mixins - multi line
+        ---------------------------
+        <code>
+          @mixin animation1 {
+            transform: scale(1) rotate(0deg);
+            transition: transform 1s;
+          }
+          #mixin-button {
+            @include animation1;
+          }
+        </code>
+        A multi-line mixin stores multiple properties and values
+      </pre>
+      <button class="btn btn-success" id="mixin-button">Click!</button>
+
+      <pre>
+        SASS mixin - all in one
+        --------------------------
+        <code>
+        @mixin animation {
+          transform: scale(1) rotate(0deg);
+          transition: transform 1s;
+        
+          &:hover {
+            transform: scale(0.5) rotate(-10deg);
+            transition: transform 2s;
+          }
+        }
+        #animated-button {
+          @include animation;
+        }
+        </code>
+        The all in one mixin includes animation1 and animation2
+        Parent syntax is used
+        This mixin can be used in any element to animate it
+      </pre>
+      <button class="btn btn-primary" id="animated-button">Hello!</button>
+      <h2 class="bg-warning" id="subtitle">Here's an h2</h2>
+    </main>
+    <footer>Hello footer!</footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/sass.scss"
+
+// CUSTOM COLORS
+$darkGreen: rgba(0, 95, 0, 1);
+$lightBlue: rgba(70, 70, 255, 1);
+$darkRed: rgba(140, 0, 0, 1);
+
+// CUSTOM FONTS
+$primaryFont: "Snowtop Caps";
+$secondaryFont: fantasy;
+
+// MIXINS
+@mixin redText {
+  color: red;
+}
+
+@mixin boxShadow {
+  box-shadow: 5px 5px grey;
+}
+
+@mixin textShadow {
+  text-shadow: 3px 3px darkgrey;
+}
+
+@mixin animation1 {
+  transform: scale(1) rotate(0deg);
+  transition: transform 1s;
+}
+
+@mixin animation2 {
+  transform: scale(2) rotate(15deg);
+  transition: transform 2s;
+}
+
+@mixin animation {
+  transform: scale(1) rotate(0deg);
+  transition: transform 1s;
+
+  &:hover {
+    transform: scale(0.5) rotate(-10deg);
+    transition: transform 2s;
+  }
+}
+
+p {
+  @include redText;
+}
+
+#mixin-example {
+  @include boxShadow;
+  @include textShadow;
+}
+
+#mixin-button {
+  @include animation1;
+
+  &:hover {
+    @include animation2;
+  }
+}
+
+#animated-button {
+  @include animation;
+}
+
+#subtitle {
+  width: fit-content;
+  @include animation;
+}
+
+@font-face {
+  font-family: "Snowtop Caps";
+  src: url("SnowtopCaps.otf");
+}
+
+main {
+  font-family: $primaryFont;
+}
+
+footer {
+  font-family: $secondaryFont;
+}
+
+h1 {
+  color: $darkGreen;
+  width: fit-content;
+
+  &:hover {
+    color: $darkRed;
+  }
+}
+
+p b {
+  color: $lightBlue;
+}
+
+pre {
+  code {
+    color: $darkRed;
+  }
+}
+
+$myColor: purple;
+
+pre {
+  i {
+    color: $myColor;
+  }
+}
+
+$thumbsUp: url("pics/thumbs-up.png");
+.bg-image {
+  background-image: $thumbsUp;
+}
+
+$horizontalRepeat: space no-repeat;
+.horizontalRepeat {
+  background-repeat: $horizontalRepeat;
+}
+
+$verticalRepeat: no-repeat repeat;
+.verticalRepeat {
+  background-repeat: $verticalRepeat;
+}
+
+.width {
+  width: 100vw;
+}
+
+.height {
+  height: 200px;
+}
+
+.size7 {
+  background-size: 7%;
+}
+
+.size50 {
+  background-size: 50%;
+}
+
+$stretch: 25% 100%;
+.stretch {
+  background-size: $stretch;
+}
+
+$darkGradient: linear-gradient(90deg, gray, black 10% 90%, gray);
+$lightGradient: linear-gradient(90deg, gray, white 10% 90%, gray);
+
+$gradient: linear-gradient(90deg, red, yellow 10% 90%, blue);
+
+.gradient {
+  background-image: $lightGradient;
+}
+
+
+///// FILE: "Sandbox Level 2/scopes.js"
+
+//VARIABLE SCOPES
+//SEPTEMBER 5, 2024 HOUR 3
+
+//GLOBAL SCOPE
+//DECLARE VARIABLES OUTSIDE OF CURLY BRACES
+//ANY CODE IN THE SAME FILE HAS ACCESS TO THE VARIABLE
+const PI = 3.14;
+const globalVariable = "I'm in the global scope!";
+
+//FUNCTION SCOPE (AKA LOCAL SCOPE)
+//DECLARE VARIABLES IN A FUNCTION
+//ONLY THE FUNCTION HAS ACCESS TO THE VARIABLES
+function myFunction() {
+  const myVariable = 5;
+  const localVariable = "I'm in the function scope!";
+
+  document.write(globalVariable);
+}
+
+//BLOCK SCOPE
+//DECLARE VARIABLES IN CURLY BRACES
+//ONLY THE CODE BLOCK HAS ACCESS TO THE VARIABLES
+while (false) {
+  const x = 5;
+}
+
+do {
+  const x = 7;
+  document.write(x);
+} while (false);
+
+if (true) {
+  const x = 8;
+} else {
+  const x = 10;
+}
+
+{
+  let x = "x";
+  document.write(x); //DISPLAYS "x"
+}
+
+document.write(x); //UNDEFINED
+
+{
+  let x = 555;
+  document.write(x); //DISPLAYS 555
+}
+
+
+///// FILE: "Sandbox Level 2/semantic-elements.html"
+
+<header>
+  <h1>Dolore magna aliqua</h1>
+  <nav>
+    <a>Voluptate</a>
+    <a>Inceptos</a>
+    <a>Bibendum</a>
+    <a>Habitant</a>
+  </nav>
+</header>
+<main>
+  <header>
+    <h1>Orci proin porttitor facilisi in</h1>
+  </header>
+  <section>
+    <h2>Platea porttitor semper</h2>
+    <p>
+      Platea accumsan mauris cursus maecenas non porta arcu. Feugiat accumsan
+      ridiculus habitant mattis nam curabitur.
+    </p>
+    <p>
+      Nulla egestas massa senectus egestas egestas hendrerit vulputate magnis.
+      Praesent vel velit mus sagittis nostra porttitor.
+    </p>
+  </section>
+  <section>
+    <h2>Platea accumsan mauris cursus maecenas non porta</h2>
+    <p>
+      Feugiat accumsan ridiculus habitant mattis nam curabitur. Nulla egestas
+      massa senectus egestas egestas hendrerit vulputate magnis.
+    </p>
+    <p>
+      Lorem proin habitant in arcu faucibus. Orci facilisi hendrerit nisl magna
+      velit lacinia urna lacinia.
+    </p>
+  </section>
+</main>
+<footer>
+  <p>Massa sociosqu volutpat platea aptent.</p>
+</footer>
+
+
+///// FILE: "Sandbox Level 2/semantic-form.html"
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="semantic-form.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section>
+        <form>
+          <label for="name">Name:</label> <input id="name" type="text" /><br />
+          <label for="email">Email:</label>
+          <input id="email" type="email" /><br />
+          <label for="phone">Phone:</label>
+          <input id="phone" type="tel" /><br />
+          <label for="radio-buttons">Rating:</label>
+          <section id="radio-buttons" style="display: inline">
+            <input id="happy" type="radio" name="rating" /><label
+              for="happy"
+              aria-label="happy face"
+              >😀</label
+            >
+            <input id="sad" type="radio" name="rating" /><label
+              for="sad"
+              aria-label="sad face"
+              >🙁</label
+            >
+          </section>
+        </form>
+        <output>Please complete the form.</output>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/src/index.html"
+
+
+
+///// FILE: "Sandbox Level 2/styles.css"
+
+.inline {
+  display: inline;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+.transparent-green {
+  color: rgba(6, 68, 0, 0.259);
+}
+
+.thumbs-up {
+  background-image: url("pics/thumbs-up.png");
+}
+
+.size12 {
+  background-size: 12%;
+}
+
+.repeat {
+  background-repeat: repeat;
+}
+
+.no-repeat {
+  background-repeat: no-repeat;
+}
+
+.space {
+  background-repeat: space;
+}
+
+.repeat-horizontal {
+  background-repeat: space no-repeat;
+}
+
+.repeat-vertical {
+  background-repeat: no-repeat repeat;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.bg-1value {
+  background-position: 20%;
+}
+
+.bg-offcenter {
+  background-position: 20% 0%;
+}
+
+.gradient-basic {
+  background-image: linear-gradient(white, gray);
+}
+
+.gradient-colors {
+  background-image: linear-gradient(white, gray, green);
+}
+
+.gradient-direction {
+  background-image: linear-gradient(to bottom right, white, gray, green);
+}
+
+.gradient-degree {
+  background-image: linear-gradient(90deg, white, gray, green);
+}
+
+.gradient-stops {
+  background-image: linear-gradient(90deg, black, gray 10% 90%, black);
+}
+
+.width100 {
+  width: 100%;
+}
+
+.height {
+  height: 200px;
+}
+
+.opacity25 {
+  opacity: 0.25;
+}
+
+.opacity0 {
+  opacity: 0;
+}
+
+.i-green,
+.b-green {
+  color: green;
+}
+
+i b {
+  color: green;
+}
+
+#red-italic {
+  color: red;
+  font-style: italic;
+}
+
+.blue-bold {
+  color: blue;
+  font-weight: bold;
+}
+
+article {
+  color: sandybrown !important;
+}
+
+article {
+  /* color: green !important; */
+  color: green;
+  font-weight: bold;
+}
+
+.border-dashed {
+  border-style: dashed !important;
+}
+
+.border-dotted {
+  border-style: dotted !important;
+}
+
+.border-double {
+  border-style: double !important;
+}
+
+.border-groove {
+  border-style: groove !important;
+}
+
+.border-ridge {
+  border-style: ridge !important;
+}
+
+.border-inset {
+  border-style: inset !important;
+}
+
+.border-outset {
+  border-style: outset !important;
+}
+
+.box-shadow {
+  box-shadow: 2px 2px gray;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px gray;
+}
+
+.rotate:hover {
+  transform: rotate(20deg);
+}
+
+.translate:hover {
+  transform: translate(10px, -10px);
+}
+
+.scale:hover {
+  transform: scale(2);
+}
+
+.scale-rotate:hover {
+  transform: scale(2) rotate(20deg);
+}
+
+.animation:hover {
+  transform: scale(2) rotate(20deg);
+  transition: transform 2s;
+}
+
+.animation {
+  transform: scale(1) rotate(0deg);
+  transition: transform 1s;
+}
+
+
+///// FILE: "Sandbox Level 2/styles.html"
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Styles</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header></header>
+    <main class="gradient">
+      <h1>CSS Notes</h1>
+
+      <pre>
+        display: block;
+        Puts elements on their own line.
+        The a tags are now block elements.
+        They have their own line.
+      </pre>
+      <a class="block">a tag 1</a>
+      <a class="block">a tag 2</a>
+      <a class="block">a tag 3</a>
+
+      <pre>
+        display: inline;
+        Makes elements in line.
+        The p tags are now inline.
+      </pre>
+      <p class="inline">p tag1</p>
+      <p class="inline">p tag2</p>
+      <p class="inline">p tag3</p>
+
+      <pre>
+        display: none;
+        Makes the element invisible,
+        but it's still in the Elements panel.
+      </pre>
+      <img class="none" src="2d-shapes.jpg" />
+
+      <pre>
+        Background image
+        background-image: url("thumbs-up.png");
+        Add the filename or URL for the image.
+      </pre>
+      <div class="thumbs-up width100 height"></div>
+
+      <pre>
+        Resizing the background image
+        background-size: 12%;
+        1 value sets the width and height proportionately.
+        2 values sets the width and height individually.
+      </pre>
+      <div class="size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Repeating a background
+        background-repeat: repeat
+        The background repeats to fill up all the space,
+        which may clip (or cut off) the image.
+      </pre>
+      <div class="repeat size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Repeating a background
+        background-repeat: no-repeat
+        By default, the background repeats
+      </pre>
+      <div class="no-repeat size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Repeating a background
+        background-repeat: space
+        Repeats the background such that it doesn't get cut off
+      </pre>
+      <div class="space size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Repeating a background horizontally
+        background-repeat: space no-repeat
+        The first value is the horizontal repeat (x)
+        The second value is the vertical repeat (y)
+        Values are separated by a space
+      </pre>
+      <div class="repeat-horizontal size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Repeating a background vertically
+        background-repeat: no-repeat repeat
+        The first value is the horizontal repeat (x)
+        The second value is the vertical repeat (y)
+        Values are separated by a space
+      </pre>
+      <div class="repeat-vertical size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Background positions
+        background-position: center;
+        The choices are top, bottom, left, right, center
+      </pre>
+      <div class="bg-center no-repeat size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Background positions
+        background-position: 20%;
+        1 value sets the x and y position the same
+      </pre>
+      <div class="bg-1value no-repeat size12 thumbs-up width100 height"></div>
+
+      <pre>
+        Background positions
+        background-position: 20% 0%;
+        2 values position x and y individually
+      </pre>
+      <div
+        class="bg-offcenter no-repeat size12 thumbs-up width100 height"
+      ></div>
+
+      <pre>
+        Adding multiple background images
+        background-image: url("thumbs-up.png");
+        background-image: linear-gradient(white, gray);
+        Add background images to nesting elements.
+        The elements nested deeply will appear in front.
+      </pre>
+
+      <div class="gradient-basic">
+        <div class="thumbs-up width100 height"></div>
+      </div>
+
+      <div class="gradient-basic height">
+        <pre>
+          Basic Gradient
+          background-image: linear-gradient(white, gray);
+        </pre>
+      </div>
+
+      <div class="gradient-colors height">
+        <pre>
+          Multiple Colors Gradient
+          background-image: linear-gradient(white, gray, green);
+          Add more colors by seperating them with a comma.
+        </pre>
+      </div>
+
+      <div class="gradient-direction height">
+        <pre>
+          Gradient Directions
+          background-image: linear-gradient(to bottom right, white, gray, green);
+          To change the direction, add to the beginning:
+          to right
+          to bottom right
+          to left
+          to bottom left
+        </pre>
+      </div>
+
+      <div class="gradient-degree height">
+        <pre>
+          Gradient Degrees
+          background-image: linear-gradient(90deg, white, gray, green);
+          To change the direction, add degrees to the beginning:
+          90deg (right)
+          135deg (bottom right)
+          270deg (left)
+          225deg (bottom left)
+        </pre>
+      </div>
+
+      <div class="gradient-stops height">
+        <pre>
+          Gradient color stops
+          background-image: linear-gradient(90deg, black, gray 10% 90%, black);
+          2 values next to the middle color sets solid color positions
+          Separated by spaces
+        </pre>
+      </div>
+
+      <pre class="transparent-green gradient-basic">
+        RGBA
+        color: rgba(6, 68, 0, 0.259);
+        Sets the transparency of colors
+        Red Green Blue Alpha
+        0 alpha is invisible
+        1 alpha is fully visible
+      </pre>
+
+      <pre>
+        Opacity
+        opacity: 0.25;
+        Sets the transparency of elements
+        0 is invisible
+        1 is fully visible
+      </pre>
+      <div class="gradient-basic">
+        <img class="opacity25" src="thumbs-up.png" />
+      </div>
+
+      <pre>
+        display:none vs opacity:0
+        display:none
+          - makes the element invisible
+          - removes the element from the browser
+          - the element is still in the element tree
+        opacity:0
+          - makes the element invisible
+          - doesn't remove the element from the browser
+          - the element still takes up space in the browser
+      </pre>
+      <div class="border border-5 m-1">
+        <div class="none">Hello World!</div>
+      </div>
+      <div class="border border-5 m-1">
+        <div class="opacity0">Hello World!</div>
+      </div>
+
+      <pre>
+        Grouping selector
+        .i-green, .b-green {
+          color: green;
+        }
+        Separate elements, classes, or IDs with commas.
+        The grouping selector applies the style to all of those elements.
+      </pre>
+      <i class="i-green">italic tag</i>
+      <b class="b-green">bold tag</b>
+      <i class="i-green">italic tag</i>
+      <b class="b-green">bold tag</b>
+
+      <pre>
+        Nesting selector
+        i b {
+          color: green;
+        }
+        Select the nested element(s)
+        Example: &lt;b&gt; is nested in &lt;i&gt;
+      </pre>
+
+      <i>
+        italic
+        <b>Inside the &lt;i&gt; tag</b>
+        italic
+        <b>Inside the &lt;i&gt; tag</b>
+      </i>
+      <b>Not in the &lt;i&gt; tag</b>
+
+      <pre>
+        Specificity
+        Styling priority
+        1. inline
+        2. id
+        3. class
+        4. element
+
+        Styles are applied based on their specificity or priority.
+        Styles with lower priority get overwritten.
+        !important overwrites them all.
+        !important also goes by load order.
+        The !important that gets loaded last gets applied.
+      </pre>
+
+      <article style="color: black" class="blue-bold">
+        article with inline style black and class blue-bold
+      </article>
+      <article id="red-italic" class="blue-bold">
+        article with class and id
+      </article>
+      <article class="blue-bold">article with class blue-bold</article>
+      <article class="blue-bold">article with class blue-bold</article>
+      <article>just article</article>
+
+      <pre>
+        Padding shorthand property
+        padding: 5px 6px 7px 8px
+        Padding gets applied in a clockwise direction when 4 values are specified.
+
+        padding: 10px 20px
+        Providing 2 values specifies
+        1. top and bottom
+        2. left and right
+
+        padding: 10px 20px 30px
+        Providing 3 values specifies
+        1. top
+        2. left and right
+        3. bottom
+      </pre>
+
+      <pre>
+        Margin shorthand property
+        margin: 5px 6px 7px 8px
+        Margin gets applied in a clockwise direction when 4 values are specified.
+
+        margin: 10px 20px
+        Providing 2 values specifies
+        1. top and bottom
+        2. left and right
+
+        margin: 10px 20px 30px
+        Providing 3 values specifies
+        1. top
+        2. left and right
+        3. bottom
+      </pre>
+
+      <pre>
+        Box shadow
+        box-shadow: 2px 2px gray;
+        1. x offset
+        2. y offset
+        3. color
+      </pre>
+      <span class="box-shadow bg-info m-5">Hello World!</span>
+      <br />
+      <br />
+      <pre>
+        Text shadow
+        text-shadow: 2px 2px gray;
+        1. x offset
+        2. y offset
+        3. color
+      </pre>
+      <span class="text-shadow m-5">Hello World!</span>
+      <br />
+      <br />
+      <pre>
+        Transformations
+        transform: rotate(20deg);
+      </pre>
+      <button class="rotate btn btn-primary m-5">Click</button>
+
+      <pre>
+        Transformations
+        transform: translate(10px, -10px);
+      </pre>
+      <button class="translate btn btn-primary m-5">Click</button>
+
+      <pre>
+        Transformations
+        transform: scale(2);
+        Decimal values make the element smaller
+        Integers increase the size of the element
+      </pre>
+      <button class="scale btn btn-primary m-5">Click</button>
+
+      <pre>
+        Transformations
+        transform: scale(2) rotate(20deg);
+        Apply multiple transformations separated by spaces
+      </pre>
+      <button class="scale-rotate btn btn-primary m-5">Click</button>
+
+      <pre>
+        Transitions (animations)
+        transition: transform 2s;
+        The first value is the style to animate
+        The second value is the duration of the animation
+
+        Set an animation for the orginal state to prevent snap-back
+      </pre>
+      <button class="animation btn btn-primary m-5">Click</button>
+    </main>
+    <footer></footer>
+  </body>
+</html>
+
+
+///// FILE: "Sandbox Level 2/utility-functions.js"
+
+function display(message) {
+  debugger;
+  document.write(message);
+}
+
+function output(message) {
+  outputTag.innerHTML += message;
+}
