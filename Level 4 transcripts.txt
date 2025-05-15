@@ -43429,6 +43429,2147 @@ Transcript from May 13, 2025
  That's today's class focused on evaluations.
  Ask the ground for a few minutes just in case anyone has questions. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO]
 
+///// FILE: "Level 4/transcripts/May 14, 2025 20-56.txt"
+
+Transcript from May 14, 2025
+
+[00:00:00]
+ Good evening class. Welcome to Codex Academy level four.
+ It's week 10, day three, and the focus of this week is evaluations.
+ So today's agenda.
+ We'll do announcements. I mean, we'll take attendance, do announcements, review.
+ I'll give you a quick tip.
+ Then continue with the practice.
+ On a second hour, many evaluations, but I will post the practice while
+[00:00:36]
+ opening the breakout rooms.
+ Third hour, also many evaluations, but I'll post the assignment.
+ Follow the opening breakout rooms.
+ So you can take attendance. If you haven't marked your attendance yet, make sure you head on over to your codecs account and mark yourself present.
+ Now time the announcements.
+ Again, student collaboration day is Monday, May 19.
+ Last day of class is less than two weeks away.
+[00:01:52]
+ It's crunch time, no time to rest.
+ Last day of class is the 24th.
+ But you should actually try to be ready and presentable because they're hoping that
+ we can present on Tuesday of next week.
+ Present what you have, even if it may or may not be graded, even if you haven't done
+ all of your evaluations present what you have if they
+ if they want to go through and continue with Tuesday
+[00:02:33]
+ and I'll see what I can do now pushing it until Thursday Okay, so time limit for linear evaluations is 60 minutes.
+ So it's good if you can have your notes all together.
+ You can put notes in your comments.
+ When you do your linear evaluations that will faster.
+ You know, have all the information in need.
+ Okay, so no more corrections for week 8.
+ eight corrections for week nine have closed and what I can still I can still continue to do evaluations I mean submissions for week nine
+[00:03:45]
+ have both, but I can still continue to do the corrections
+ for week nine.
+ But this is week 10.
+ I still haven't written it here.
+ Week 10.
+ In the evaluations.
+ This is the final evaluation. This is this is it when she gets this done rather than with evaluations. Hopefully you have all the points
+[00:04:16]
+ you need for all the evaluations. So this one for on time submission. She submitted it by yesterday.
+ But she can submit it for late credit
+ interactions until May 20.
+ This is the final evaluation.
+ And basically it's about transformers JS
+ and how your capstone uses it.
+ AI interface, so this is for your front end,
+[00:04:59]
+ your capstone front end,
+ should have a AI interface, and it should, it should use the response from the
+ AI in the backend.
+ I mean, this is, this is easy to do if you just take what I showed you in the sandbox
+ and just pop it into your capstone.
+ That'll put this requirement, but the capstone finale though, capsstone finale over here,
+ requires it for it to look nice and to be practical integrated into your website somehow.
+[00:05:36]
+ Not like some example page or anything like that that looks unpolished.
+ No, we should look polished inside of your capstone canal.
+ But for the evaluation, we just need it to be set up.
+ It doesn't need to be polished for the evaluation.
+ We just need to be able to talk about it
+ and make it work in the capstone.
+ Persistent and expiring logins.
+[00:06:03]
+ I showed you how to do that.
+ I showed you how to do those last week just in case you needed a boost in applying that.
+ And then the last one is editable accounts. Okay.
+ Let's see here.
+ So the assignments are still in the process of being graded.
+ You'll receive extensions.
+ Let's see, we have some close assignments.
+[00:06:44]
+ App engine. We have some close assignments, half engine, close this for Lake Credit on Thursday.
+ Capital finale is due on Thursday.
+ Remember, capital finale here. And here,
+ May 15th before class.
+ So that's tomorrow.
+ They credit until a little week after.
+ So we should basically have all the capstone assignments integrated. And this is just a quick list of those. your front end should connect to local and deployed servers when it's appropriate.
+[00:07:53]
+ And then this one properly structure and design the front end to provide an overall good
+ user experience.
+ So this one will help your presentations to show how follows your website looks like
+ and how practical it is instead of just showing examples it's showing an actual
+ thing that you can have customers visit and sell things
+ on a service.
+ services. For be a very good project, it'll be a very good project when you have a job interview. And it's just a basically a polished website that's ready to go and customers can start using it. Or at least your friends and family can start using it.
+[00:08:46]
+ And it doesn't look like an example website.
+ All of these are,
+ other things that we learned previous weeks
+ like artificial intelligence,
+ persistent login, editable accounts, using the post method,
+ use the post method for security.
+ So I need to start switching over to the post method
+[00:09:23]
+ if you're not already doing that.
+ So, you don't have enough points in some of these assignments contact the student's success team.
+ So, they can, you know, open up some of your close assignments.
+ If you're working on, if some of these assignments close on you,
+ which you've made it all the way to the finale,
+ it's most likely that you do meet the requirements released
+ and easily get the points for it.
+[00:10:02]
+ easy to get the points for it.
+ Let's see. Don't get stuck for more than 15 minutes. Post into like, "Ho, ho, ho."
+ And hopefully someone answers your question there and/or hopefully you find the solution before someone answers.
+ As long as, at least if you post, then you have an opportunity,
+ I mean, like you have a backup just in case,
+ it might have been a situation where you could have been stepped for four hours,
+ but because you posted it in July cohort,
+[00:10:38]
+ you were only stepped for 30 minutes.
+ So you never know.
+ Tonight cohort is a posting into my cohort is a way to just have a back-to-plant. And I see there's a new post here, you can see what this is all about. It looks like Alexander fixing here.
+ Up and on.
+ Skip that.
+ And then.
+ Alexander mock it.
+[00:11:21]
+ Okay, so. So in this case, you can mock it by just providing the location.
+ You can set the value, I think, maybe not.
+ I'm not sure.
+ I haven't tried it, but it hasn't been necessary in any of the tests.
+ So this one, Windows had to find.
+ Show them the class.
+ You need to install just environment.
+[00:11:54]
+ JSTOM.
+ And you need to put it in the adjust config file.
+ So this is for front and testing front end expects window location things will not refine. But if you're using just you can search through the transcripts,
+ right top of that.
+ Getting a 404 in AWS Lambda.
+ Change post methods. So, as you get, cannot get.
+ All these easy, I get the best instead of closer class. post here, but it should be axial should be using post. So I can also ask him if you are going to contact your AWS
+[00:13:14]
+ name with server manually, you can use postman and use the post method of postman.
+ And so we get method.
+ postman and said we get met it
+ let's see both methods and explain locally.
+ And then,
+ and if it's saying "cannot" again, that means he's most likely using axiels.get instead of axiels.co.
+ that again instead of X-E of black posts.
+[00:14:09]
+ But he's saying it's working on locally.
+ So possibly we got to rebuild. I extended the So, yeah, for this one, I would say, go check your front end, make sure it's easy, axial is dot close.
+ No book, LM.
+ So no book LM.
+ You can give your fast notes, your code and
+ fast transcripts. Something I figured out, no book LM also accepts the URL of [BLANK_AUDIO] Okay, so here's a GitHub repository.
+ Here's one of the files I have.
+[00:15:56]
+ I'll just take the redirect.
+ If you try to give this link to the file, I mean to notebook LM.
+ It's not doing a work.
+ So I think redirect.js.
+ It's not going to work. There should be an error here. [inaudible]
+ [inaudible]
+ [inaudible] Yeah, that one doesn't look accurate. to get something that'll work. You need to click on "off". Then when you see it look like the time here.
+[00:17:56]
+ yeah this one looks here
+ so the tip here, go cook lm also except some URL of raw code from GitHub. So when you go to GitHub and you want to pick a file,
+ one of your files from there, click on raw,
+ or click on the file first, click on raw,
+ and it looks like this.
+ That's what you can give to know from them and add it to the sources.
+ I actually, I think I added transcript to the game one.
+[00:18:40]
+ Now, this transcript up to week 10 day one.
+ And now we're going to review. So get ready to, you know, just absorb or take notes if I say anything new.
+ And now the microphone's ready just in case we have any questions for
+ later we're going to do a media evaluation.
+ Okay, so now time for the review.
+ So with read-up read-ups account practice,
+ we started
+[00:19:25]
+ to use Redux to toggle access to the account page,
+ where users can edit their information.
+ We were able to do this create an account component,
+ let the model contain an editable form,
+ except for email.
+ And I also didn't want to change the password. At least
+ not yet. That's gonna make things a little bit more difficult. When the
+[00:19:54]
+ account is submitted, update the database. So I didn't get a chance to be that
+ yet. So let's just see how this looks first.
+ A little pile. [BLANK_AUDIO] [BLANK_AUDIO]
+ [BLANK_AUDIO] start. I say he changes, he changes route to post. This one could stay on yet. So he should be changing that
+ back to get
+ all right so with this render
+ the front end (mumbling) [BLANK_AUDIO] I did install something. I didn't stop sleeping. I don't know if that helps. Anyways, I'm excited for you.
+[00:23:29]
+ I'm excited.
+ Being easy.
+ Okay, so we, we'll be signed in.
+ So you met within the account page right here.
+ And we had some information.
+ So for the practice, we got to this part with the
+ modal contained in the whole form with the
+[00:24:18]
+ counts information. So that's how far we got.
+ I'm gonna continue with that.
+ So I'm gonna switch to the next slide here.
+ Actually, before I continue,
+ then you guys, let me give you guys a chip.
+ So what you could do is combine code
+ into one text file or notebook L.F.
+[00:24:59]
+ So remember how notebook L.F. won't accept your code
+ as a JavaScript file. Well, what you could do is just combine all your code into
+ what text file. Now we, you don't need to do any converting, I mean, you don't
+ need to manually convert your code into text files. And you say, "Space by just
+ dumping all your code into one file." So I'm gonna show you guys how to do this. That way
+ you can easily include your code in notebook L.M.
+ I'm going to put this in the tip section. So these are all command lines right here. You can just fix them.
+[00:26:16]
+ You shouldn't get space there.
+ Another command line.
+ And I'll describe what each thing does here. Each flag, each option.
+ Okay, let's follow the steps. Right here.
+ We're going to combine our code into one text file and then we'll put the Lm.
+ So let's install in the dead dependencies,
+ attacking called content.cli.
+[00:27:16]
+ Next, the admin is listening.
+ I guess I'm going to put that on the front end.
+ And here I can install, save that, come cat, see how it might look like that.
+ Come cat means like concatenate or combine things together and see a live command line, but it's also a
+ function. So who want to use the command line for a it's command, well, NPX, let's you run one of the node modules.
+ So here's node module, and takes that you run the node module in the terminal.
+ Files, this flag here or this option, let's use specify which files to concatenate
+[00:28:25]
+ or to put it to merge together.
+ I need to fix something here.
+ Some things, there's too many spaces.
+ There should not be spaces here.
+ So not these spaces here.
+ There you can see it. here. Again files specifies which files you want to merge together and this is This means right here go into the source folder and all sub folders in the source folder. If and I have many folders inside of it.
+ And once you actually, I just have one file inside of it,
+[00:29:55]
+ directly inside of the source folder.
+ So, we want to merge all the files inside of there including the ones in the subholders so
+ that's what the two wild cards here meet. The asterisk means get all the sub
+ folders and this one right here wild card for file names so any file name and
+ then the dot and then ends with any extension.
+ So this basically means any folder, any file in those folders.
+ Here's the output flag.
+[00:30:44]
+ It tells us which file you want to combine them into. And so I want to combine it all into cool not text.
+ So I'm just going to copy this code here.
+ Run it on the front and command line.
+ And then a root folder.
+ Because the root folder has access to the source folder.
+ because the holder has access to the resource holder.
+ If this works, I should have a file called code.txt.
+[00:31:20]
+ So I'm here around here and it should contain all the code from front end. and looks like it finished.
+ Let's look at the, let's look at the results here.
+ Here's code now text.
+ And here's all the code from the form. And just keeps unglowing and going.
+ This is all the files merged together.
+ Next one is this one for including the files in the current folder.
+ So NPX, that's this a node package in the terminal.
+[00:32:07]
+ Here's a node package we want to write and we want to specify the files.
+ So in the current folder we want to include JavaScript files,
+ TypeScript files, NCL files and JSON files.
+ And then we want to output it to the file called config.txt.
+ So this one will get us things in the root folder.
+ Because right now, right now these things over here, these over here I just coat from the source folder.
+ I don't have anything from the config or the root folder.
+[00:32:50]
+ See, I have these files right here, but none of these are, you know,
+ merged together like this.
+ I'm going to merge them together with that code right there.
+ To the JavaScript files in the root folder, time to go to HTML and JSON files.
+ And then I'll put it to config.txt.
+ So basically, I'm going to config.txt.
+ OK, so I ran the command.
+[00:33:22]
+ I see config.txt.
+ So it has things from my, my Babel.
+ This one has redirect.js.
+ This declaration file.
+ This one's the Webpack file.
+ Okay.
+ Okay, so I got those.
+[00:33:43]
+ Now I can add code text and config.text to notebook L.F. [no audio]
+ [inaudible]
+ [inaudible]
+ [inaudible]
+ [inaudible]
+ [inaudible]
+ [inaudible] So what should I ask you? How do I set of read-ups?
+[00:34:30]
+ So it doesn't have the notes about read-ups, but it has my read-ups code.
+ So let's see if it says anything interesting about that. You have two of the kit, we have three dots, and it's mentioning that two packages
+ we need right here.
+ Yep, that's right.
+ Store and selectors.
+ So we save them in the store folder. State selectors.
+ It looks good.
+[00:35:17]
+ Yeah, it looks good. So you won't see this kind of strategy if you search for it on
+ the internet. I'm teaching you search for it on the internet.
+ I'm teaching you the easy way to use Redux.
+ When you search on the internet it's more complicated.
+ So this looks good.
+ So that's the tip there.
+ You can combine your files into one.
+[00:35:50]
+ We'll contact that CLI and then
+ bring it over. You can do the same thing with your notes,
+ which are notes into one file.
+ And then bring it over to notebook L.M.
+ It will answer your questions. We'll go to the next one. We'll go to the next one. We'll go to the next one. We'll go to the next one. We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+[00:36:07]
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+[00:36:14]
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+[00:36:21]
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one.
+ We'll go to the next one. We'll go to the next one. We'll go to the next one. We'll go to the next one. the account form is submitted update the database.
+ So I'm going to share my screen again.
+ So here's the account model. Here's the form.
+ And we'll submit. So under that is, to do is I'm going to sign up this similar.
+[00:37:07]
+ So I'm going to go into the sign up here.
+ I'm just going to sign up.
+ I'm going to sign up.
+ I'm going to model it.
+ So before I just sent the event object to the head alert,
+ with this time I'm doing all the immense stuff here. So that's okay.
+ I can continue with this since I haven't.
+[00:37:49]
+ But it's better you can re-factuate outside.
+ So this part looks cleaner and so that this component just focuses on rendering things things and setting up read-ups where it is. on the same here.
+ And puts them in a dark corner back in this.
+ [BLANK_AUDIO] You can be on the password, no, I'm not going to get the votes.
+ I don't want those.
+ I like, I'm gonna get the name and the phone number.
+ [BLANK_AUDIO] and the phone will rip.
+[00:39:11]
+ I'm gonna get the name and the phone number.
+ And this will make a new thing to close the button.
+ I should make this in sync so that this await from the handle.
+ I'm going to use a different button called I can't repeat.
+ You're acting as colorful, okay?
+ So, actually, no, I'll let it update the name and the owner.
+ I'm not going to make a TDD for this,
+[00:40:14]
+ because just to hit this down on the caster,
+ we already have a TDD for the sign of localize.
+ It's very similar.
+ So if it updates, if it updates,
+ then I want to receive the account information.
+ But if it doesn't update, I want it to be in blank.
+ So if it does update, if I want it to view,
+[00:40:56]
+ I want it to update the account object.
+ update the account object and also I want to clear up any errors here there are messages I don't need to do anything with persistent login. If you want to include the form, and we set everything,
+ and if there's an error, set account, and we will error message.
+ There was an error.
+ Okay, so to do this, to get rid of these errors, I can do this. Use dispatch.
+ I need to bring this in.
+ I need to bring this, I don't have access to this batch because it's outside of the
+[00:42:52]
+ component, so I'm going to bring all of this in.
+ I'm going to be with here on the bottom.
+ So it doesn't apply right to the top.
+ I want the top to be clean.
+ I want to focus on the rendering. When I'm looking at the component, from top to the clean. I want to focus on the rendering.
+ When I'm looking at the component,
+ from top to bottom, I just want to look at the things
+[00:43:10]
+ that involve the rendering.
+ And then if I need to look at the headlifts in,
+ I'll just go down and look at the panel.
+ OK, so I need to set object.
+ Okay, so I need to set object. I don't have anything for the counter-modal error message.
+ So I'm going to set that up. [no audio] Just like that first.
+ Make sure I have a select record.
+[00:44:26]
+ Just copy this down and hit "4". I can't move over every message.
+ I need to select that.
+ It looks like that.
+ It's selected.
+ Unless the name is variable, then I create it in state.
+ Variable file. the name is variable, then I create it in state variable style.
+ So I actually need to select it from here.
+[00:45:01]
+ But I do, I do need to select it, but not from here. It's gonna be used in the contents right here
+ the error message
+ so now I can select use select
+ select account I need to put a few that work for me. And this one I haven't made this, I haven't made this
+ function yet.
+ That's okay, then just quickly make that function here and if you want and do account update.us and it's going to make an I think it takes ending your name and playing with the strings. which are more streams.
+ And this is going to return a promise which results in the account
+[00:46:56]
+ for undefined.
+ And that's the function signature.
+ As I want, I wanted to either return in account if it was successful
+ or nothing if it was not successful.
+ Let's see if it rendered anything there.
+ I don't see the placeholder, so that's good.
+ If I refresh this, yeah, so we can see that the error message is blank.
+[00:47:40]
+ That's good I can change it here
+ just like this
+ just like this is the electric working
+ property the placeholder right there
+ that's a thing and then we'll select the other side.
+ And then we'll select the other side.
+ And then we'll select the other side.
+[00:48:19]
+ And then we'll select the other side. Now all that's left to do is set up this handler.
+ Put a front there.
+ Put a little one in the tab.
+ You can go first.
+ So this is the handler.
+ I'm just going to copy the sign of the tent here.
+ I'll see what else I'll need to change.
+[00:48:54]
+ Actually, this is not going to work.
+ That's sign in the tent. and the same rectangle. Right here.
+ And you guys should have something similar to this. Like this is the part that chooses which you are an L.
+ It's a bit either the local or the deploy.
+ So basically it's been trying to connect to the lambda server,
+ but if it doesn't, it's going to connect to the local server.
+ So here.
+[00:49:41]
+ This one is going to send some data,
+ which is going to be this one for me.
+ We will get this mixed up here. and the corner.
+ and the corner.
+ and the corner.
+ And I'm not going to send it to the sub-assign of route. I want to send it to the update route.
+ I haven't created it yet, but I already have an idea that I wanted to go to a route called
+[00:50:36]
+ update.
+ And then all this looks fine right here.
+ So now I have to rip off the back end.
+ But we're running out of time.
+ So I have to continue on the back end,
+ tomorrow.
+ But this wind should compete
+[00:51:00]
+ in front end.
+ So let me just put a,
+ you look it right here here because this is a hardware
+ little crate because there's no vacuum to accept this.
+ I mean there's no rot to accept that.
+ So let's just get that far. So if I'm going to change this here, instead of handy it will be Arnold.
+ Instead of sighted, I need to change that. I'm just fixing that first.
+[00:51:52]
+ I'm going to save.
+ And then you see.
+ And so it says "safe" right there. Change its Arnold.
+ It's safe.
+ And so if you handle a couple of things,
+ you can't handle it.
+ And if you can't handle it.
+[00:52:22]
+ And if you can't handle it that. Try it again. and for it.
+ Alright again.
+ Okay so this is the part where it's going to go to my local host URL.
+ Which is not working right now because I haven't set up the big route. It's supposed to send the data. So this is the part where it's going to break.
+ I'll just press 'Pray' and it breaks.
+ And I'll continue with this tomorrow. some more.
+ Now we're going to guys after the break. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay, so we're back from the break.
+[01:03:55]
+ For the second hour of class, I'm just going to post a practice just in case you want to work on it.
+ And I'm also going to open the breakout rooms. [no audio]
+ [no audio]
+ [no audio] Okay, so the break-, I'm going to look at the lineup.
+ Unless anyone wants to volunteer for either corrections or many evaluation. We need to get these many evaluations out of the way.
+ Oh.
+ - Kiss.
+[01:05:44]
+ - I saw it to finish week nine, but so this is my second attempt. If I don't what happens if I can
+ If I don't explain these well enough to
+ Do you think you're ready?
+ Now I need to look more at this
+ App engine and Okay, well, okay, so you want to do so that's correct Now, I need to look more at this app engine.
+ Okay, well, okay, so you want to do, so that's corrections for week nine, right?
+ Yeah. So, I'm taking corrections for week nine all this week.
+[01:06:18]
+ Okay.
+ So, if you're not ready for that, and it's going to be your second submission, you want
+ to make an account.
+ Right.
+ But there are some things for week 10 that you probably can get out of the way.
+ Let me look at it, see if I, yeah, I just saw that I have something from, let me see, let's just, it's from,
+ two, an assignment that,
+[01:06:59]
+ oh, an evaluation for week two.
+ What happened?
+ I added a 64 on an assignment from week two.
+ Having a good.
+ Okay, so yeah, that's something you have to contact.
+ I'll contact you.
+ I'll contact you.
+[01:07:17]
+ Success team.
+ Yeah.
+ And if you need to get that reopened up.
+ Okay, I'll message them.
+ Let's see, with 10.
+ Yeah, I can, I can maybe do this, the third and fourth one.
+ Questions?
+[01:07:44]
+ Okay. All right, so let's head on over to the
+ mini evaluation room and I'll use to get those out of the way. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [ Pause ] Oops.
+ Okay, so we're going to'll see you guys after the break. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay, so we're back from the break and into the third alvera class where I'll just post the assignment and open the breakout rooms.
+ And then we get those open first.
+ Let's see here. 40 minutes for the remainder of Chris's MIDI evaluation, and then I'll reopen the breakout
+ rooms.
+ Okay, Chris, I'll see you in the breakout room. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [ Pause ] >> Is there a pass?
+[02:25:26]
+ >> Evaluation rules are.
+ >> That was 16 minutes when I did my evaluations and when I was a student, there are only 30 minutes.
+ So I had to stay focused and not ask any questions but just do all the talking according to what the notes I had prepared.
+ So I see. Yeah, at least you got some points and I gave you that point on the persistent.
+ Oh, cool. Thanks. Oh, actually, no, I can't give you because you didn't talk about the expiring,
+ but we're going to continue with the expiring there. Oh yeah, I didn't do the expiring, it's right. But yeah, we'll continue that. Once you have everything, I'm sure
+ you'll just breeze through the rest of the topics there. Yeah, the AI stuff I'm not.
+[02:26:23]
+ Yeah, the AI stuff I'm not. Yeah.
+ Yeah.
+ So I'll just remember the evaluations are 60 minutes time
+ limit.
+ So it's good to stay on topic.
+ And you know.
+ OK.
+[02:26:45]
+ Let's see. So the rest of this time, I can use for another mini evaluation or corrections, or I can
+ just answer questions that anyone has, or if you want me to take a look at your code
+ and get my opinion on it, I can do that too.
+ Otherwise, I'll let you opinion on it. I can do that too.
+ Otherwise, I'll let you work on things. I'm gonna open the breakout rooms.
+ Chris, you have a question.
+ Thank you.
+[02:27:17]
+ - Can you just quickly show me how to do the time out?
+ - Yeah.
+ A time out while we're testing for the expiring.
+ Oh, okay.
+ Is it just adding like a...
+ - Okay, so let's see here.
+ I'm gonna pull up this sandbox.
+[02:27:43]
+ Let's see here. I'm going to pull up this sandbox.
+ But the breakout rooms are open for 20 minutes just in case anyone wants to
+ breakout will just open and I got popped into it. Was that not supposed to happen?
+ I'm going to do this in the main room. Okay.
+ I'm still in the main room, but I can hear you in the main room. I'm just sharing my screen in the main room. Oops. I'm going to run the
+ thing there. Okay, so there was a practice we had on expiring persistence.
+ Right here.
+[02:28:41]
+ Persistent login practice instructions. When the sign in area amounts get the
+ let's see where do you want me to start. I just need to see like where this
+ current timestamp and date just how it's used. Okay so the first occurrence is
+ here at the beginning. When the user's authenticate,
+ I'm going to get the first timestamp.
+ You were using on the AWS. Is it okay if I use my read?
+ Yeah.
+[02:29:15]
+ Okay.
+ Because they're going to basically do the same thing.
+ Yeah.
+ And that's what I, yeah.
+ I just reused my code that already did that.
+ Okay.
+ Cool.
+[02:29:27]
+ But if you, if you basically duplicated your code so that your, so that all your
+ credit stuff is not in the same section.
+ Yeah.
+ And that's fine too.
+ Oh, yeah, I'm going to switch the front end.
+ I'm going to go to the part where we sign in.
+ Then close everything here.
+[02:29:50]
+ So we can stay focused on the sign in.
+ Sign in area or actually sign in model.
+ There's a sign in modal when we get signed in.
+ So it's going to handle the sign in right here.
+ If it gets signed in successfully, I'm going to get an account, which contains their
+ email, their password, their name, and their phone number.
+ So if there is an account, I'm going to do these things right here.
+[02:30:29]
+ I'll save the account information and Redux,
+ which makes that account information available to all the components.
+ Then I'm going to save the persistent login.
+ I refactored it out into another function.
+ Because I'm going to use the same function when I create an account.
+ So basically I'm going to reuse my code instead of typing it twice. Okay, why is it not going? There it is. All right, so let's
+ see what the instructions say. Just going to go here. In the front end, when the users authenticate, get the current timestamp and date.
+[02:31:26]
+ OK, so they just authenticated.
+ Wait, did I not?
+ Oh, here it is.
+ OK.
+ I'm going to get the current timestamp with date.now.
+ This is going to give me the number of milliseconds that have passed since
+ 1970. I'm going to save this object and just save that string of find object in the credentials key.
+[02:32:10]
+ Think of this as like one of the state variables in Redux and this is the value of that state variable. So, I have to string a find object because I can't store objects directly in local storage,
+ local storage only stores strings.
+ So, I string a find this object and save it in local storage right here with set item.
+ So, the timestamp. So, your question was at that time stamp.
+ So date.now, that provides this timestamp of when they logged in.
+ Store the user's email password and timestamp in an object.
+ So that's where it happens here.
+[02:33:14]
+ Use persistent login practice instructions to store login info.
+ With local storage. So that's what happened here.
+ During the file the object and then store that object. I know what you Chris I know that what you're doing is just saving each individual email and password and.
+ In the individual key.
+ That's fine too that way you don't need to stringify anything.
+ that's fine too that way you don't need to stringify anything. But it would be actually better to pass the whole object because it keeps the time stamp with account like otherwise they're kind of something.
+ And if they're all really if it's related you do want to keep them together in this kind of object format. - Yeah. - Because if they're separated out,
+[02:34:05]
+ and sometimes those can get to mixed up.
+ So that's, I mean, it's more straightforward
+ to just store individual items like that.
+ It's easy, 'cause you don't have to stringify anything.
+ But just one little step like this,
+ then you keep them all together.
+ - So when you do the, if it's streamifying the whole object, how is it, how are you able to
+[02:34:35]
+ subtract the current time from the, or the time sample the current time. I have to parse it.
+ So it's stored as a string, but then when I get that string out, so let me get to that part.
+ Okay.
+ So when the sign in area mounts,
+ get the current time time stamp with date dot now.
+ So I want to check the basically.
+ That's one the user, you know, opens the computer and they,
+[02:35:10]
+ let's say they log into the website. So let me see what happened here. Oh, this is,
+ this is when I try to go to the other path. So like right now, I'm still signed in,
+ path. So like right now, I'm still signed in. Still signed in. I tried to go to the update path, which is haven't created yet. So that's why I crashed. I'm still signed in and
+ then let's say I'm a user and I just shut down my computer, shut down my computer that
+ represents showing down my computer and then I log back in and open my browser.
+ I'm still signed in.
+ So when I open my browser, that's the that's the mount.
+[02:35:52]
+ It just got it just remounted the sign in area.
+ So that's why this one says when the sign in area melts.
+ Get the timestamp.
+ That just basically means that the user
+ just opened up their computer again.
+ - Here you go.
+ What do I did now?
+[02:36:17]
+ - So where is it sign in area?
+ - Okay.
+ - So here's the component did map. Yeah.
+ Okay, and there's component here's the sign in area. So when it mounts,
+ I know that the user just logged in or opened it.
+ They opened the browser and I want to check what's if they
+ said still stayed long, the logged in or not.
+[02:36:48]
+ So, so I have a separate function called get persistent login, which is over here.
+ The reason why I wanted to take it out to a separate function is because I need a sync.
+ to a separate function is because I need async.
+ - async.
+ - Yeah, because I'm gonna,
+ I'm going to use a wait right here.
+ You can't use async inside of component in mount.
+[02:37:22]
+ I mean, you can't use a wait in component in mount.
+ Because if you put async in front of here, your cause component did mount. Because if you put a sink in front of here,
+ you cause component did mount to load return to promise.
+ You cause component did mount to return to promise, which is not something you want to do, because uh, but what do you need to, what do you need a sink? Can it just
+ But what do you need to what do you need a sink? Can it just can't you just because
+ All right, time because I
+ Because I need to
+[02:37:54]
+ Possibly log out the user. I mean
+ Reload, I mean, I need to log in the user
+ because when they when they open their browser again
+ They're not gonna be logged in Their information will be saved in local storage, but they won't be logged in. It's also
+ possible that their password changed because they might have been logged
+ in somewhere else. So there's something as I need to verify with the back end
+ before I can log them in basically. I need to verify with the backend before I can log them in basically.
+[02:38:27]
+ I need to verify things with the backend.
+ So you're talking about like if you're talking about automatically logging them in for certain amount, you may say log.
+ Blog out somehow.
+ No, yeah, yeah, that's right.
+ When they log out like they have maybe they have a browser open and one computer,
+ and then they have another browser, just like that,
+ in another computer.
+[02:38:56]
+ So they could log out of this computer.
+ If they log out of this computer,
+ they should also log out of this computer, they should also log out of this computer.
+ Right. So if I log out here,
+ whoops, what happened? Why did it say that?
+ Well, isn't local storage just set on the brow? Isn't that part of the DOM?
+ So that's just local, I mean, so that's just a persistent lot for that one browser.
+[02:39:26]
+ And let me fix this part.
+ Why does this thing break now?
+ Can't even sign out.
+ Oh, okay.
+ So I got signed out.
+ That's why it didn't let me.
+ Okay.
+[02:39:41]
+ So let me just sign in here.
+ What was your question again?
+ - So persistent logins is only good for that browser
+ because if look that local storage is just saved
+ on that dom or that browser or is it?
+ - Yeah.
+ Oh, actually, yeah, it's only, let me see.
+[02:40:04]
+ Yeah, if they are, it's gonna be local storage on,
+ you know, this is edge, the local storage on
+ Chrome is different because there are different browsers.
+ You're not really logged into the,
+ you're just logged into that browser basically.
+ You persist at all.
+ Yeah, logged into the browser. Actually.
+[02:40:26]
+ But ideally, you wanted to be able to log into both,
+ but that might not-- that's not a requirement right now.
+ So let's say I have another browser right here. If I sign out of this browser, I should also,
+ "Oh, I'm not signed into this browser."
+ So there's no verification.
+ Right now there's no verification if I'm signed in or out of another browser.
+ >> And is it possible to sign in automatically
+[02:41:05]
+ on another browser if you're signed into,
+ because when you have to go to the process of sign.
+ - Well, what, is it possible?
+ No, it's not possible unless the email was saved already.
+ So yeah, like in all other production ready websites,
+ if you're going onto a different browser, you have to sign in
+ and basically that will cause the sign in to be saved in that browser.
+[02:41:34]
+ What about just like a different device?
+ Yeah, even that too. A different device is local storage are, you know, local storage are local storage on chrome is different than the local storage and edge.
+ Okay, so if I say my local storage here in chrome edge doesn't know about it because it has its own local storage.
+ Could you do like a
+ So the next step, well, let me just focus on one browser. Sorry.
+ So it doesn't get confusing.
+ Yeah.
+[02:42:12]
+ Let me just, that gets more complicated when you're thinking of cross-browser synchronization.
+ Yeah.
+ So when the sign-in area mounts get the current time stamp and date.
+ So this is where I'm doing here. I'm gonna
+ okay, so I'm gonna get the first I need to get the saved login. Right there, you're going to get the saved login. So if there is a login, it's kind of coming as a string.
+ I mean, it's going to come in as a string, but I need to parse it and turn it back into an object.
+ And this object, I'm going to just destructure it, but I can get some values.
+[02:43:10]
+ Here's the timestamp that I'm getting. So this is
+ the timestamp of when the browser is reloaded.
+ They just came back, they stepped away from their desk, and now
+ they're back, maybe they're back one day later, or maybe they're back one hour
+ later. We don't know, that's what this one checks. How long has it been since
+ they've reloaded? Or since they've logged in. So here, this is where we check their laps time.
+ How long has it been?
+[02:43:48]
+ We subtract the current.
+ We subtract the, this is a timestamp when they logged in.
+ This is a timestamp when the page was reloaded.
+ So we're gonna get the time to lapsed.
+ And I'm gonna create a Boolean variable here.
+ This one tells me if it's expired.
+ In this case, if the time elapsed is greater than one day,
+[02:44:12]
+ that's 86,400,000 milliseconds, you can ask AI.
+ Like, how many milliseconds is in a day?
+ I did have to talk it. it like they were like right away.
+ Yeah. So if it is expired, I'm going to just clear the,
+ clear that key in the local storage.
+ That way there's no more login.
+ Yeah. But if it's not expired,
+[02:44:46]
+ if it's not expired, I'm gonna read log them in.
+ How do I read log them in?
+ I don't have their full account information.
+ I only have their email in password.
+ For security purposes, I'm just keeping the bare minimum.
+ Okay.
+ So technically, if you do save their full account information in
+[02:45:09]
+ your in your local storage, then maybe you don't have to re-authenticate. But in
+ this case, I am re-authenticating because it's possible that they did change their
+ password through a different browser.
+ So what's it, why are you, since you're defining what an expired amount of time is,
+ and you're saying if it has expired, we'll just reload it.
+ And why not just extend the expired time?
+ What's that?
+[02:45:48]
+ Well, if you could do that, if you want, I want to set it to a fixed amount of time.
+ But if you want to extend the expiration,
+ you can do that too.
+ So it looks like if it's expired,
+ you're logging them in automatically.
+ So if it's expired, I'm clearing the credentials.
+ - Oh, if it's not expired, you're resetting the day.
+[02:46:11]
+ - If it is, yeah, if it's expired,
+ I clear the local storage, which says that
+ there's nothing saved.
+ - Yeah.
+ And then I'll--. And then other one.
+ In recent time out for that.
+ Because if they, basically, if they, if they reload the browser,
+[02:46:39]
+ they are not logged in because before I had, before I had persistent log in if you just
+ refresh the browser it logs me out right yeah so it returns back to that
+ state so when the browser is reloaded it just clears the local storage and
+ they're already logged out because that's the default behavior when you
+ reload a a browser the person gets logged out automatically that's the default behavior when you reload a browser, the person gets logged out automatically.
+ That's the default behavior where we're overriding that with persistent login.
+ But so if it's not expired, that's when I reauthenticate them just to make sure their email
+[02:47:17]
+ and their password match because it's possible that they could have changed these in a different
+ browser.
+ is possible that they could have changed these in a different browser.
+ - Well, what happens if they did?
+ - If they did change us in a different browser,
+ then they will get logged out right here.
+ - Oh, yeah, okay.
+[02:47:43]
+ - Okay.
+ You know, for security purposes, what if they change their password in another browser,
+ but in this original browser it didn't change,
+ that becomes a security risk because someone else can start using this browser.
+ You know how on Facebook you can say,
+ log me out of all of my devices and all the browsers.
+ So it's a similar feature. It's like that. Okay, basically logs them out of all. If the password
+[02:48:14]
+ changed, it logs them out of all all instances, all browsers. So yeah, so this checks it.
+ So, yeah, so this checks it. So if it's still authenticates, then it's going to, you know, save the account and they're logged in.
+ This is basically, if I save the account, it's going to trigger the login.
+ But if it doesn't reauthenticate, it goes to here, which clears the credentials. That saved in local storage.
+ And no login ever happens.
+ Okay.
+ That was good.
+[02:48:54]
+ Good demo.
+ Thank you.
+ So, basically, just follow the steps in here
+ and they should get you going.
+ We got to this part.
+ This is expiration.
+ If it's more than a day, sorry, empty string.
+[02:49:14]
+ And the empty string basically indicates the expired
+ login.
+ So once you get to that part, the empty string,
+ then you're basically done.
+ But I have here, if there's an account, that's
+ how I'm going to set the buttons here, the me visible or invisible.
+ OK, that makes sense.
+[02:49:42]
+ OK, so the breakout rooms are back.
+ Okay, so the breakout rooms are back. And then,
+ gonna conclude the class.
+ So in conclusion, we did some of the
+ Redux account practice.
+ We didn't get that much in.
+ I think we only got one mind. Actually, we didn't finish that line because we have to get the back end going.
+[02:50:08]
+ We just worked on the front end.
+ So there's three minutes to mark your attendance.
+ If you have any questions, I'm going to stick around.
+ Otherwise, class is dismissed.
+ around otherwise classes dismissed. That's that's today on evaluations. [BLANK_AUDIO] >> I'll extend your, do you need help on anything? Want me to help you with any code?
+ >> Yeah.
+ So I need some help troubleshooting this network issue.
+[02:52:04]
+ >> Okay. >> It's crashing my back end again.
+ Okay.
+ It's kind of sad because I've done create and read now update is the one that's, I mean,
+ it's, you fit. And I don't have any trouble with update. Any, any, any, a reportable trouble.
+ What is the other two?
+ Okay, so what's going on here?
+ Okay, so excuse me, this network error.
+[02:52:34]
+ So from, for now, I've just dumped all these on one page.
+ The register review and update.
+ So I enter all my update info and I hit submit and it crashed the back end server
+ It's refusing the connection from the put command here on this part
+ Okay, you put put It's a bit supposed to use a post method or the get method
+ Whichever you
+ But I haven't gotten to the post part in the Oh, there should be.
+[02:53:05]
+ Yes.
+ You should be using axiels that get in order to make the update.
+ Yeah, so think of it like a channel.
+ Where's your axiels?
+ I'm looking for a hang on.
+ There's too many things open right now.
+ This is front air
+[02:53:27]
+ All right now we're using axios
+ Access communicating on two channels. There's a public channel, which is get and then the secret channel, which is post
+ Those are the only channels I talked to you about
+ Public channel is get and that's the one you're using your setup for right now,
+ I think. You're not using post yet, right? I'm not using post, but I put put in my index.ts.
+ Oh,
+ It works.
+[02:54:02]
+ >> It works. >> Okay.
+ >> Well, hang on.
+ >> Yeah.
+ >> Well, we should be using both the standard one.
+ >> I know post is standard, but I haven't got there in the assignments yet.
+ >> But you're using put, which is a, you're using put, which is something I haven't
+ taught you, but it's almost the same thing as, it's pretty much the same thing as post.
+[02:54:26]
+ - Can you use post in Axios?
+ - Yeah.
+ - Okay, what I did understand is, to me,
+ the word, the keyword get sounds like you're returning something.
+ So if I put, get here, is it actually gonna send my updates
+ or is it gonna freak out and not doing it?
+ Yeah, well, you have to think of that as a CTP methods.
+[02:54:54]
+ So they're not action words.
+ They're not action words.
+ They're not action words.
+ They're just channels.
+ They're channels.
+ That makes more sense.
+ So this is get is the get is the public channel and post is the think of post as the private channel.
+[02:55:14]
+ The private. Yeah, is the public. The private is private.
+ Okay. Okay. And so you're using a walkie talking and you're just you were just using two channels for simplicity.
+ That makes more sense.
+ You could use posts if you're set up for it.
+ If you're not, then you just use get.
+ Okay, let me see.
+ I think.
+[02:55:39]
+ But if you're already, let me see what you did for your back end.
+ Your back end. But if you're already, let me see what you did for your backend. My back is work.
+ I don't want to touch the back end anymore.
+ It's taking me hours to make it function.
+ And it might not work because you just changed the axios to get.
+ So let's double check your index file for the backend.
+ So let's double check your index file for the back end. My index file is get it has gat in the foot.
+[02:56:12]
+ Yeah, right now it's not set up for the put.
+ So you have to change it to get if that's the easiest fix that you can do now.
+ I think it's common these out because I don't need them.
+ The gats are already there. I didn't take them away. Oh, can just comment these out because I don't need them. The
+ gets are already there. I didn't take them away. Oh, okay. Oh, they're doubled up. I see.
+ Okay. Right. Cause I didn't want to remove stuff that I need. Yeah. Because some things
+ we're using get and other things we're using good. Yeah. I would change those to, um, to post
+[02:56:41]
+ until you're ready. But I don't want to. I don't want to do that yet because I'm not ready to do post.
+ Yeah, I mean, you can keep it commented out, but use posts instead of put.
+ Oh, I see what you're saying.
+ [pause]
+ [pause]
+ Your control D. Not working. You're controlled.
+ You're not working.
+[02:57:07]
+ No, I'm just not used to doing it.
+ I'm not used to doing it this is faster for me.
+ Especially when they're all next to each other.
+ If they were like all over the place.
+ Okay.
+ So.
+ It should work like this.
+[02:57:27]
+ Okay, but it doesn't work.
+ And I tried to see what happens.
+ Let's see what happens.
+ We're going to have to follow one of the routes. So that's what part of the front end is not working when this happened.
+ When it wasn't working was the update.
+ Okay.
+ So the front.
+[02:57:54]
+ But the create has put in it. So now I have to update all of the stuff on the front. Okay, just, yeah, just the axial, that's a quick fix there.
+ Yeah, it's not set up for the put or the post command, but you should be using those because that's the requirement in the. I know, but it's not in this particular assignment that i'm trying to finish. So, yeah, that's why I didn't do.
+ Yeah, that's fine.
+ Where's my page.
+ Okay.
+ Console.
+ We let it page.
+[02:58:31]
+ So the part is not working is down here. Well, now I have to retest all of these.
+ You have multiple errors there.
+ Those are IDs are identical.
+ Identical IDs.
+ Back in the in the those are errors there. No, I thought they were warnings because they're yellow.
+ >> Okay. Well, you should be using unique IDs for each one.
+ >> Well, the problem is there are all different components.
+[02:58:59]
+ And normally all of these components are not going to be loaded at the same time.
+ So,
+ but they are loaded at the same time. - Right now, yeah.
+ So let me comment these two out.
+ - Okay.
+ - Okay, so that's all that.
+ - Dispert development, okay.
+[02:59:21]
+ Just refresh that.
+ So that takes away all those, okay.
+ So that takes away all those. Okay.
+ Okay, there's some still identical things here.
+ You might have copied and pasted some IDs.
+ Oh, wait, no, that's a different one.
+ Did have autocomplete attributes current password.
+[02:59:44]
+ Okay, so let's look at, let's see if we can fix that really quick.
+ Well, let me see how you made that form.
+ Kind of small like.
+ That is not the right form anyway.
+ Kind of small. I could barely see it on.
+ Okay, there. that's better. Because when it's streaming on,
+ when it's streaming, it's someone that pixels someone, no, some of the pixels get very.
+[03:00:15]
+ Oh, that's you. It like it makes it like a square and things like that. So, um,
+ like that. So let me see here, it was saying something placeholder, class name, acquired,
+ what's the message here? Input elements see, your input says ID.
+ That's on account words.
+ Quite that.
+ What is that?
+ See that.
+[03:00:54]
+ Can I see that?
+ OK. type is password placeholder.
+ It's not password.
+ Okay, I don't not sure what that is.
+ But yeah, that's the full room where the answer the password.
+ It's shouting about.
+ This it doesn't like
+[03:01:26]
+ something in this div. Yeah, I'm not sure why everything there looks fine. And I
+ just found a site builder. I have this user label for user password.
+ for user password.
+ Yeah, that looks fine.
+ I'm not sure. We can continue.
+ So you should be able to send something.
+ Right, send that to the backend.
+[03:01:58]
+ Is this for adding?
+ Yeah, for adding an account.
+ - Yeah, let's make a video of this. - Okay, let's see what happens when you try to.
+ Okay.
+ For testing purposes, do you want to have it with prepopulated values?
+ Or you just wanted the placeholders there.
+ I just wanted to placeholders.
+[03:02:29]
+ Okay. Because they go a lot of populates and from the browser window, once I am
+ manually checking it, I don't like this button, this button has to go. So it has a created
+ vehicle with the gas. Yeah, so that works. Yeah, that worked. That worked. Would they get method or think of it like the get channel.
+ This one is good. Let me try the read one again.
+ Oh, I can't you.
+ >> I can't you. >> Yeah. Those were commented together.
+ So you have to uncomment them together.
+[03:03:09]
+ >> I did the model together.
+ Oops.
+ >> Oops.
+ >> There's a div all the way at the end.
+ You have to bring it down.
+ Where did it have to get thrown?
+ That's that, dude.
+[03:03:30]
+ This is moving, Stephanie.
+ Stop that.
+ I had to fix this.
+ I don't remember how to fix it.
+ So I left it alone for now. OK, so it's working. You got to fix this. I don't remember how to fix it, so I left it alone for now.
+ >> Okay. So it's working.
+ You got to response back.
+[03:03:49]
+ >> I mean, it works.
+ >> Yeah. It works.
+ I'll fix it later, cosmetically speaking.
+ >> Yeah.
+ >> Consider it is not supposed to be on page anyway.
+ I didn't care right now.
+ Stop it. supposed to be page anyway, I didn't care right now. So maybe the update is not
+[03:04:09]
+ working because three things were running at the same time. I don't want to see the password.
+ >> No.
+ >> Also because your put method was not set up properly. Or the put channel.
+ You just change them back to get.
+ I think that's what fixed it.
+ And you're also using them one at a time.
+ >> Yeah, it's not running because I haven't hit submit with everything completed yet.
+[03:04:44]
+ >> Yeah, so let's try it.
+ Let's see what happens.
+ I'm trying to find the password field.
+ Why where's my password field?
+ What do you want to do?
+ You're going to, are we going to disable that?
+ Oh, this is what I want to update.
+[03:05:03]
+ Yeah, I don't want them to update their password here.
+ >> So what you could do is just --
+ >> I'm trying to make it not required, there we are.
+ >> That's what I want.
+ >> You could disable, put disabled.
+ >> I don't want to do that.
+ >> Or you could just put value value if they have a value.
+[03:05:30]
+ No, it updated now. Oh, but it says the bad. It's showing you that message
+ because it's not into a password. Yeah, you need to put a password. Yeah. Yeah. I wanted to see it with, okay, now it freaked out.
+ Network error, okay. So we can follow that. So let's go from the handler where you submit the form.
+ And we'll just follow it from there.
+ Well, the backend crashed.
+ Back in crash. So eventually, you have to restart that.
+ The logic in the back end must be something must be wrong with the logic in the back end.
+[03:06:18]
+ So we let's follow the front end. Let's go from your handler.
+ The front end update form.
+ So let's update form.
+ Where does it handle the.
+ The submission right there.
+ Okay.
+ So what is it doing?
+[03:06:54]
+ It's the same logic I have in the create form.
+ It's grabbing all the data right here. It's grabbing all the data from the form.
+ And then it's setting up an object to send to DynamoDB over here,
+ using the data that it grabbed in the form.
+ - Wait, I'll get.
+ I'll get.
+ There might be a cleaner way to write this.
+[03:07:27]
+ Oh, what's all that about?
+ That's a, that's a, that's a big data type there.
+ Basically target is event.target.
+ You don't need that data type where you put as everything after as,
+ you don't need that. Just comment that whole from 24 to 30. No, I mean comment,
+ no, put that. Okay, you can do that too. I don't do it things until I know they're gone. Okay, so target that event.
+ And then, okay, so this one, yeah, this one is that you need target. No, it needs to
+[03:08:21]
+ be target thatevent.elements.
+ We're here.
+ Otherwise, there was going to go through as undefined.
+ Yeah, so let's do like this.
+ 24, line 24, let that be formed.
+ Form equals event.target.
+ Then inputs, let's put that in the chat.
+[03:08:47]
+ You chose that, I didn't do that.
+ Press Ctrl C. Okay, and then make.
+ Form and then make a new variable called inputs right at under that.
+ >> Have that somewhere. >> No, actually just call it target.
+ So make a new variable right underneath there.
+ We don't need to use inputs.
+ We'll use target.
+[03:09:20]
+ It's so hard.
+ >> So I'm going to use it.
+ >> Yeah.
+ >> We'll use it. Yeah. When you start it, it's fine. Because we can change it later.
+ So, Kant's target.
+ I logic disappeared.
+ I had a whole bunch of inputs things.
+[03:09:37]
+ And in one of these functions.
+ And then now it's going.
+ We probably moved it out into a different function.
+ Okay. We probably moved it out into a different function.
+ Okay, wait, you have the same data type there. You have the same huge data type.
+ So I had all that and it disappeared somewhere today.
+ I was living during this.
+[03:09:59]
+ Yes, which I don't know.
+ Okay. I don't know. Maybe you switch branches. Yeah, this is update. This is update account. So,
+ maybe I'm trying to find where the logic is so that I can copy and paste it instead of manually
+ typing it all because no, it's okay. Just just, um, that's just.
+ Because it's not like what you've already made.
+ And I have to go to.
+ Yeah.
+[03:10:31]
+ Yeah.
+ It's all we're going to do is just going to change one line.
+ You don't need to copy and paste anything.
+ Just do.
+ Fox target.
+ Equals. I need form.element. Sorry. Form.element.
+ There. And then for the data type of form, change the data type of form.
+[03:11:07]
+ Yeah, and I know. Oops.
+ Oh my God.
+ Press control Z.
+ Form that element.
+ Elements was spelled incorrectly,
+ so I had to retype it.
+ Okay, so I can.
+[03:11:19]
+ Yeah, it doesn't like itself for form.
+ We're gonna change the data type to that, any.
+ Make that, any, make that one, any.
+ - There we go. - Okay.
+ - There, now the value should be fine.
+ The values were coming in undefined before,
+ the way you had it.
+[03:11:41]
+ So email was gonna be undefined, password was gonna be
+ undefined, everything, going to be undefined everything
+ because you were not extracting values properly.
+ Were these correct down here?
+ Now it's correct, yeah it's correct now. But before I was before,
+ the way you had it before it was not correct.
+ So you could rename target there to inputs because it might make more sense.
+[03:12:11]
+ But you should do a right click.
+ Otherwise, you're going to have to do that. >> Hopefully.
+ >> We store our next to each other so I don't want to go searching for them.
+ >> Okay. There. So that makes more sense.
+ So the form, you have a form and then that form has inputs.
+ So that's what the naming convention is doing there.
+ You're copying and pasting, but you have different names. what the naming convention is doing there.
+[03:12:48]
+ You're copying and pasting, but you have different names, so you're going to get
+ errors.
+ They're not ever going to be all on the same page at the same time.
+ No, I mean, you're variable names.
+ Your variable names are different. That's why you're getting errors there at the bottom.
+ So, whoops. Yeah, I do think still yet.
+ No, no, the variable names will not conflict.
+[03:13:22]
+ It's the ID names that will conflict.
+ So you can leave it as inputs.
+ The ID, the element ID like in the HTML,
+ where there's ID, those will conflict,
+ but variable names will be--
+ - What kind of thing are you gonna do right click?
+ Find all references.
+[03:13:41]
+ - No, it's too late for that now.
+ You can change that to target can change that to Target. No, no, no.
+ Other one.
+ Okay, change input to Target or Target.
+ Then you can right-click it and then rename it rename symbol.
+ I was here rename symbol here.
+ It's almost that.
+[03:14:14]
+ Higher.
+ Higher.
+ Then.
+ Input.
+ For the.
+ Oh, cool.
+ I like that. Yeah, it has an S. - Oh, cool. - I like that. - There.
+[03:14:25]
+ - It has an S.
+ - Yep.
+ That works.
+ Why is there something you're telling me to fit in here?
+ - It's, we can see it in the sidebar.
+ Now you can, let's fix it.
+ Which one was it?
+[03:14:40]
+ You can see it in the sidebar.
+ It's in the sidebar.
+ - I'm not saying anything.. There's a G over here.
+ There it is.
+ It's fixed.
+ All right, so we're working on update account.
+ And I think it's going to work fine now.
+[03:14:55]
+ Let's just try to do it from the website.
+ Because what I saw was it was coming.
+ Everything was coming in undefined.
+ That's the problem Jordan and I were having in our session today that we were trying to fix.
+ Okay, so it's still broken. Okay, let's network.
+ Okay, let's go back and
+ read the back end. Back end is broken. The back end is probably not running. Yeah.
+[03:15:33]
+ No, I just crashed. It was, well, let's try it again then. Let's
+ re-submit the floor. I'm already dry by side so we can see if it crashes.
+ Okay. Well, we see that is running right now.
+ So let's re-submit the form.
+ Okay. So it's crashed.
+ All right. So we're going to follow it from the front end.
+ So let's put a debugger somewhere. Do you have it running on VS code debugger?
+[03:16:14]
+ No, or no.
+ I mean, I did, but I couldn't get into work earlier. We could use depth tools. It's okay. So you're going to have it running. It just doesn't it just doesn't work. Okay. Yeah. So we'll just use
+ depth tools for the debugger. That's put where's your XCO's call and that
+ update account.tcsx. Why is it an X YCD bugger in this branch?
+ Why is the debugger in this branch?
+ >> Dolly's flame light wasn't working on it.
+ >> Oh, is it? This is front end.
+[03:16:53]
+ It should be fine.
+ >> No, it's not over-ended.
+ >> I have a branch.
+ >> You didn't make the, you're making changes.
+ You're making changes. But I'm not supposed to be in this branch on this screen.
+ I'm in a different branch.
+ You're in the update branch, right?
+[03:17:19]
+ Front end.
+ Upstate.
+ You're in the update branch.
+ I can't see.
+ Yeah, you are.
+ At the bottom corner, which grants you on.
+ >> Oh, good.
+[03:17:32]
+ >> Bottom left.
+ >> But the debugger is in this branch.
+ >> No.
+ >> I'm going to tell you the terminal because I need to deploy that.
+ >> Yeah.
+ It's just not refreshed. It's just not refreshed. That's that's a
+ old terminal from earlier today. Okay. Well, let's put a debugger right before the axios just type the word debugger.
+[03:18:07]
+ Wait, what is that one for? Is that?
+ That's what it is.
+ Yeah, no, no, for the front end,
+ you don't need a debugger.
+ Is this for the back end?
+ You're going to load a debugger?
+ No, this is the front end.
+[03:18:23]
+ Okay, so do you have the server for the front end running right now?
+ No, I was about to start it.
+ Okay, you don't need, it has its own debugger.
+ You don't need to open it on a debug terminal.
+ Oh, yeah, you can watch, you can try it.
+ So you can be only needs a debug terminal for no J for the backend.
+ So that's that's that looked like the server for the, uh, which one's which now you have.
+[03:18:56]
+ This is the backend. It has a debug. Okay. I see. Okay. Yeah. That's good.
+ That's a backend crash, which you should, yeah, restart that.
+ And then the other one is the front end.
+ (indistinct)
+ Okay, that's good.
+ Okay, that's good.
+ It will, they don't debug it.
+[03:19:13]
+ If you just type in the bugger somewhere,
+ right before the axial's call.
+ (indistinct)
+ - I'm typing in debugger.
+ I just wanna hit red buttons.
+ - Yeah, that might not work here. Put the bugger
+ put the bugger in front of a axios call or right before an axios call. There's no axios call,
+[03:19:36]
+ axios call, there's an update user, yeah, right before update user.
+ Okay, so will it stop there if you put a red button? There is no red button. It's making dots.
+ It disappeared. Okay. No, it's right there. You can put it on the console. Try to put one on the console log.
+ I don't like, I don't like doing it in the console. No, I mean the online 37 put one on 37 a dot on
+ 937. Okay, there I was I was hoping you would do it there. I was hoping you would do it there.
+ Oh, I was hoping this council. Sorry, I didn't understand when use a console. If you're logged, I just started console.
+ Okay, so let's see.
+[03:20:29]
+ It's possible. So if you're going to use a dev tools,
+ they're not a good problem.
+ It has a loaded before me.
+ Yeah, so okay, so let's just clarify some.
+ If you're going to use the depth tools debugger
+ You have to write the word debugger
+ Okay, if you're gonna use the VS code debugger
+[03:20:53]
+ You can just use the dots. You don't have to type the word be bugger
+ But you do
+ So that's kind of inefficient
+ basically could run both fibers, although that's kind of inefficient. But yeah.
+ >> Yes. If you're using the VS code debugger, it will also activate the browser debugger.
+ >> I prefer the VS code debugger.
+ I just couldn't get it to load for the front end this morning.
+[03:21:21]
+ >> You're going to get to work.
+ Okay. So let's just use the browser debugger for now,
+ but remove that line 18 debugger
+ and move it to in front of the create
+ or whatever that function was.
+ Update account, yeah, put it right before that.
+ Okay, let's see what happens here.
+[03:21:53]
+ So what we're gonna check for is
+ if we're getting the right values coming in.
+ Okay, so okay, it's on debugger.
+ Let's see if we got the right values coming in.
+ We've formed a object there.
+ So what are the values in that object?
+ That's not the object we're looking for.
+[03:22:22]
+ The object we're looking for is called update user account.
+ Now it should be in the first layer.
+ Now, go back up to the first closure.
+ The first closure. The first closure. I wasn't there. I didn't see any
+ conferences form. There we go. There it is. All right. So that looks all right.
+ Okay. So let's watch it. Now let's go into the update user account function.
+ No, gotta restart. You crashed the back end again.
+[03:23:06]
+ We have to make sure everything is coming in.
+ Proper going through from the front end.
+ Why don't we have enough break points to do that.
+ Is the only debugger you don't have for anyone.
+ Yeah, that's fine. I can get the work with it. Yeah, you don't have 41. Yeah, that's fine.
+ I can connect with the work with it.
+ Yeah, you can step through it,
+[03:23:29]
+ or you can put breakpoints in the browser.
+ Okay, let's step into Update User Account. You want to go into there.
+ Go step into it.
+ Oops.
+ Step into, okay, you can put some break points here.
+ Let's see.
+ Right on, on line 18,
+[03:24:17]
+ put a break point on 18.
+ That's what the axial's call.
+ Okay, you can press play now.
+ Press play and then this should get there. the next few years. So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+[03:24:31]
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+[03:24:41]
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second.
+ So, we're going to do a second. So, we're going to do a second. So, we're going to do a second. So, we're going to do a second. So, we're going to do a second. going on. The back end. Or is this the one where I just, I hate testing forms because you had to fill out everything every time.
+ Yeah, so over and again.
+ Which is.
+ Yeah, that's why I was asking you do one prepopulated data.
+[03:24:57]
+ So that you don't have to type it over and over.
+ The problem is when I, when people prepopulate those,
+ then they push things to QA without taking their hard-coded data out.
+ >> Yeah, well, let's do that.
+ >> I would totally forget.
+ No, I would leave it there and forget.
+ I would push it and you would be trying to grade it that way.
+[03:25:21]
+ >> Okay.
+ >> I'll freeze it.
+ >> I will forget.
+ So, you are all showing it showing is undefined. Well, it's
+ didn't run that line yet. So that's why it's showing is undefined. So let's run that line.
+ And press, no, it didn't run yet because it's still on that line. Oh, no, generated it. Okay, let me see. Wait, now it's gone.
+ It went to some XHR or whatever that should.
+[03:25:49]
+ Okay, I didn't.
+ Okay, press the up, press the up one step, step out.
+ Okay, I should see URL here.
+ URL is that look right?
+ 9,000 has email.
+ Yes, it's correct. Password. your L is that look right? 9000 has email password.
+ I don't know what's correct.
+[03:26:09]
+ I mean, it's missing some things here.
+ What is it missing?
+ Well, this is supposed to be an update.
+ So are you going to update the name or?
+ The other fields.
+ I didn't put them in the function. That could explain why it's not working.
+ But it's supposed to do updated user account and updated user account this year.
+[03:26:38]
+ You say it's going to the function.
+ Oh, but it's supposed to put all these in the URL. Hang on. I mean,
+ you're wrong. Right, right click on update user account. Or okay, you can do that too.
+ And go to definition. No, uh, just definition. Oh, man. I do.
+ What if they're no?
+ Well, you know, you'll have to put conditions for those. And
+ Yeah.
+[03:27:19]
+ As we're in it's easier to do it.
+ It's easier with
+ easier with the post command, but you're not there yet, or the post method.
+ I could put a question mark somewhere. No, you can't.
+ No, don't put that. There's an error there. You can see that already.
+ Don't use it if you don't know what it does.
+ Why is it wanting to put a question right?
+[03:27:59]
+ No.
+ It just means it's not required.
+ Yeah, so if it's not required, then it wouldn't require it.
+ Okay, email.
+ But you're requiring it for the update because you want to see if it's something that you want to update me. >> Add word. Use your name. Name.
+ Phone.
+ That should do it.
+[03:28:28]
+ >> Okay.
+ >> Here, Adequally.
+ That would be widespread.
+ >> Yeah, so that means your backend is not handling undefined values.
+ >> Oh, it's not handling undefined values.
+ - Oh, it's not handling mode here because that's a lot of time that I haven't had to spend.
+ I just want basic things to work first.
+[03:28:56]
+ - Yeah, that's called the Happy Path.
+ The Happy Path.
+ - Happy Path.
+ - All the variables and values are there,
+ which you need to set up your TDD to handle the non-happy paths.
+ Okay, let's see if the URL gets formed properly.
+ Okay, there it is.
+[03:29:18]
+ Does it look right?
+ Okay, let's see the whole damn thing. If you mass over it, you can see.
+ Yep, that looks good.
+ Okay, let's see what happens when the back end takes it.
+ This press play.
+ Back end will take it.
+ It'll either break. Okay, so we got a response. That's a valid
+[03:29:50]
+ response. That's in the thing. So I have to display it.
+ >> I want to display it.
+ This is the updated stuff.
+ That will go in the view.
+ They can view their username and the view thing, but not in the update thing.
+ They're not changing it in here. That's it. They're not.
+ Yes.
+[03:30:27]
+ Okay.
+ Yeah.
+ Okay.
+ You're not up there.
+ And.
+ Okay.
+ So it's working.
+[03:30:38]
+ You're just missing some values in your.
+ Your.
+ Yeah.
+ I have to go back to the. So you know that. You're just missing some values in your URL.
+ >> Yeah, yeah. I have to go back to the.
+ >> So you know that your backend is crashing when it gets some undefined values.
+ So let your TDD help you find those.
+[03:31:04]
+ >> Which TDD for this?
+ >> For the backend, the TDD for the backend should help you find,
+ you should be testing those undefined values and not crashing.
+ >> Well, if the non-existing email address,
+ it throws an error if the password is incorrect,
+ if it throws an error, if they try to update the username,
+ which we already saw, it throws an error,
+[03:31:32]
+ if the email format is invalid.
+ Those are the things that I have currently tested.
+ - Yeah, and one thing you might wanna do
+ is undefined, undefined username undefined,
+ stuff, yeah, undefined basically,
+ because that's that's one is correct.
+ - Well, I have a choice here.
+[03:31:53]
+ I can keep writing more tests for this,
+ or I can work on the Redux assignment
+ and the app engine and the finale assignment.
+ But I can't do all of that by six thirty tomorrow
+ Not possible. So I have to use what I'm gonna prioritize tomorrow
+ Yeah, and yeah, so it's good. I'm kind of gonna call this today, but it's not down again
+ Okay
+[03:32:20]
+ Yeah, so at least we got that fixed just just yeah, remember that
+ Yeah, so at least we got that fixed. Just remember that
+ Just remember that when you get undefined values coming in it's gonna crash your back in
+ But so far I don't know how to submit this then should I just make a page for everything
+ Yeah, or just rename that
+ Okay, just rename it. Okay, just rename it for now.
+ I could rename the IDs.
+[03:32:49]
+ Yeah, I'll already have seven pages up here.
+ I don't want anymore.
+ Yeah, so go ahead and post all those components at the same time,
+ but just rename the IDs, make them unique.
+ Okay, that way, though, I'll be on one page.
+ My other thing is that I they'll be on one page.
+ My other thing is that I don't ever want an end user to be able to sign into their account Okay. So how do I handle that on here?
+[03:33:28]
+ Just post it as deleteable now and then change it later.
+ I think, I think,
+ I think you should just let them delete for now until you figure out how to just disable it.
+ Because that's going to take more logic.
+ So what you want, what you want to do is you want to just give them ability to delete
+ or it looks like they delete, but it's actually going to still stay in the database, right?
+ Yeah.
+[03:34:02]
+ Actually, I would like it is a radio button thing that says, like,
+ not for create, but like view account, view update or delete radio buttons.
+ And then based on what radio button they select, it would load the right component. Yeah, it's cleaner.
+ Showing all of the components. That's what I put that.
+ Yeah, well, do you know how to do that?
+ I don't remember exactly somewhere in here in this account.
+ Yeah, so you're ready.
+[03:34:41]
+ So, so I would do buttons.
+ The easiest, the happy path there would just be like, that would be like
+ a to do, but you can't, if you do like that, it's going to show up on the web page,
+ you will see that. Yeah, I did the wrong type of comment structure. Yeah. I forgot how to do this.
+ There you go.
+ No, the happy and easy path would just be to activate all those
+ all at the same time on the same page.
+[03:35:58]
+ Add radio buttons. So users and select action and account action. So the happy path would just be to activate those again, but just change their IDs. Oops, now that you don't want to do it one at one line at a time.
+ Okay, I just change their IDs to be unique.
+ Like create or email that create or.
+ They are unique IDs that.
+ They're not unique when they're all.
+ Render together.
+ Yeah. This one says register account.
+[03:36:28]
+ No, how about the email?
+ The the elements.
+ The element.
+ They're saying like that has to be created email.
+ Like I can just add creates to the end of it.
+ No.
+ - Yeah, yeah, yeah.
+[03:36:50]
+ That's right. - Sorry, just don't get it.
+ Well, no, it would have to be every place that it's used.
+ - Mm-hmm.
+ You have to make it unique.
+ So, like a pen creates somewhere.
+ - Yeah.
+ - What a pain.
+[03:37:03]
+ - Yeah, the labels should match to.
+ But be very careful. You don't miss anything.
+ I won't miss anything. If I do it tomorrow, if I do it now, I will.
+ That's why I'm doing one.
+ And then the matching, yeah.
+ I also have to go check how password is spelled on every page because there's a typo. [BLANK_AUDIO]
+ Okay, so those are unique.
+[03:38:07]
+ Just do it from, yeah.
+ Do you, okay, instead of read. Yes, because view is what?
+ View is what normal people look at.
+ They don't know what read means.
+ They don't know database terms.
+ You missed something.
+ Where?
+[03:38:42]
+ Password.
+ Oh, yeah, password.
+ See, it's spelled wrong with me.
+ >> No, not just that, but as view there.
+ And maybe not copy the--
+ >> I must have copied the location.
+ >> Because it's not.
+[03:39:00]
+ >> Yeah.
+ >> Okay, I got that one.
+ >> So that's it.
+ >> I didn't do this one yet.
+ Yeah, it's better to do it now because I might forget tomorrow.
+ You missed. Okay, there it is.
+ I fixed that password.
+[03:39:43]
+ It's the incorrect placeholder also.
+ For whatever reason, I had the international placeholder.
+ I don't know why. I'm just thinking about things in those terms.
+ Because that's how you're supposed to think about things globally.
+ Not just about how we will do that.
+ Okay, let's see how it renders on your on the browser if there's any ID conflicts.
+ Oh, let me take you back.
+[03:40:17]
+ There's a way.
+ Just should just be where I think.
+ It's going to be near the function call.
+ That's in the wrong function.
+ No, it's in the it's in the component.
+ We're doing the component, but I didn't see it.
+ It's close to the function call.
+[03:40:41]
+ Oh, it was down here.
+ That's right.
+ It moved.
+ Yeah.
+ Okay. That should be and then you. Yeah. OK, that should be.
+ And then you just have to take the dots away
+ from the browser.
+[03:40:51]
+ Just press play and then order refresh and then
+ the--
+ You can--
+ That refresh?
+ That's--
+ No, refresh is--
+ That's the--
+[03:40:59]
+ Or it's--
+ Or it's--
+ That's a different one.
+ OK, the break one is away.
+ OK. All right. So console. Okay, so console, click on console and let's see if you get any errors.
+ No, just that weirdo about the.
+ Okay.
+[03:41:19]
+ Input elements should have autocomplete attributes.
+ Yeah, I don't know why it wants autocomplete.
+ It's a browser error.
+ That's about Google saying that we just use a Google message.
+ And the browser.
+ Yeah.
+ Yeah.
+[03:41:42]
+ Okay. Okay.
+ Okay, so we got at least we got your, your front end. Oh, look, I don't know why I want this, but it's a browser error.
+ Do I need to fix that?
+ I don't care. No, no. That's how you fix it. There's an autocomplete attribute for HTML
+ apparently. I've never heard of it before, but okay. Other people probably have.
+ Must be related to the update. They want to enforce. - The company want to think it's proud.
+ I've seen that for a while, but I've ignored it
+[03:42:28]
+ 'cause it was because it looked like it came from Chrome
+ and it was yellow.
+ I was like, "Yeah, I'm okay."
+ - So, I see.
+ Yeah, I use edge and I don't see those things.
+ So.
+ - Oh, that's why you don't want to see those.
+[03:42:42]
+ Yeah, I've chrome bells and these stuff.
+ I'm like, "Hmm, okay, someday, maybe. Alright, so I just need to do the one, and then I'll be
+ done with this. Yeah, so the key there is just making sure the data is going
+ through from the front end to the back end properly and that'll help you solve
+ any bugs. The happy Path. The Happy Path
+ provides a lot of data. >> I mean, that was the thing. It worked fine on register/create
+ and view. It was only update that freaked out. The other two were just fine. >> Yeah.
+[03:43:19]
+ It freaked out because it was getting undefined because you just copied and pasted the URL which was incomplete.
+ - Yeah, so it was the incomplete URL
+ that caused the crash, not the other things.
+ Okay.
+ - Yeah, that completely URL caused undefined values.
+ All right.
+ So there's going to be--
+[03:43:41]
+ - I'm giving you the--
+ - There's going to be the delete.
+ You're gonna--
+ - Yeah.
+ So that means the, it's not gonna take just gonna work on the delete. You're gonna. Yeah. So that means the, it's not going to take me long to do the delete. The delete's probably one, the delete's gonna be as easy as the
+ it's going to take a lot less time than read even or maybe about the same
+ as to read because because all I'm going to do for the delete is do the same
+[03:44:02]
+ thing where where they just entered the username and the password. And then, and it'll delete it based on
+ that. I really want to, okay, I have a question for now, just, we had it for
+ now, just let them, for now, just let them delete. And then when you figure out
+ how to just like keep going, I'm not worried about that. I'm just what I'm saying
+ is when they're going to delete stuff,
+ I'm not making them fill out their entire account information.
+ I'm just making them fill out the username
+[03:44:31]
+ and password to delete just the way I looked at you.
+ Okay, I don't know what to do about animation
+ 'cause part of the original assignment
+ from way back when was we have animation.
+ And so I have this animation button and I think think it makes it makes me miserable because it looks terrible.
+ I don't like it.
+ Well, you can change you can change the angle.
+[03:44:53]
+ I mean, this is too much of an angle. You want it.
+ You want it less of an angle or not.
+ I just don't like animation on buttons. So I don't know where to put animation.
+ I could animate my name up here in the corner instead
+ of the button where my name is up here.
+ - Okay, so do you know how to do that?
+ - Yeah, I just would take the class that I put here
+[03:45:17]
+ and put it on my name instead.
+ - Yeah, yeah, you can do that.
+ - Yeah, I'll just do that.
+ 'Cause this is distracting to to it. Yes. I don't like it. It's not a good usability feature. I just needed a place. I just needed a place to animate and I didn't know where to put it.
+ Also, this tab is really squished together.
+ What if you can put it on your image.
+ On the image map? Oh no.
+[03:45:50]
+ Oh no.
+ Your image and your picture.
+ Am I about page?
+ This.
+ You can tilt your picture.
+ Why are there borders shown right there?
+ That way it's more.
+[03:46:03]
+ That's why it will make it more prominent.
+ If there's borders, then you just have to deactivate.
+ Yeah, but I thought I went deactivated all the borders, but there's one stuck around the picture that I just go,
+ Oh, you know, I couldn't ever see it because I was like zoomed tiny and then I never saw the lines until this now.
+ I never saw the lines until this now.
+ Oh, another thing I'll have to do is,
+ I have to add handling for the stupid API for the quotes 'cause if the quote API is ever offline,
+[03:46:39]
+ there should be a message in the card that says,
+ no quotes are available. - So you saw a message in the card that says no quotes are available.
+ No.
+ Or just have a preset quote.
+ That copy that quote and then the.
+ Yeah.
+ I find a quote that I like and I'll do a preset quote.
+[03:47:01]
+ So I would need it.
+ And if statement for that.
+ - Yeah, if it ever comes in as an error or nothing
+ we place it with a preset. - I wanna put it in the back end.
+ - Oh, in the back end, yeah, you can do that.
+ Yeah, that's right in the back end.
+ You can put that in the to do, what that's not required right now. So
+[03:47:28]
+ I'm just going to make a comment in here so that I know in here because
+ something happened earlier in the fabric fabric use thing was was refusing to connect. I realized
+ belated Lee it was because the server had crashed but if then at then at that point, I said, hey, oh, what if it actually goes offline.
+ Yeah.
+ And then you can put the idea is to load a preset. that pretty safe quote,
+ "The safe and the variable." >> No, we're actually coded right now. >> I made it a note.
+ >> So I started it.
+[03:48:41]
+ >> I see.
+ >> I see.
+ >> I would know what I wanted to do. >> Okay. >> That's a feature thing. >> All right, see. I see. I will know what I want to do. Okay. That's a feature thing.
+ All right, cool.
+ So when I face the delete thing, then I will go poke at the Redux. Um, but let me
+ Okay.
+ Deploy this now. I'm loving this. Oh, I'm loving this deploy command. You gave me.
+[03:49:05]
+ Oops. I forgot Ron again. I shared loving this deploy command you gave me. Oops, I forgot run again.
+ I shared it with Chris because Chris started complaining about how many times he had to write all the get messages.
+ Same thing I said at the other night.
+ And I was like here, have this deploy script.
+ It helps so much.
+ I don't know why it's popping a commit but number here or the. It helps so much.
+ I don't know why it's popping a commit, but no, you're here, though.
+[03:49:32]
+ That's what that's about. Yeah.
+ That's the backend update.
+ That's also probably an extension that you installed.
+ It's automatically generating a commit message.
+ Yeah, to get, no, it just loads the last commit message that I used in that box. It just defaults to it.
+ That was a good request from when I created this branch.
+ >> Did you just, okay, you're deploying from your branch? >> Yes. Should I not deploy from my branch? I should deploy from me.
+[03:50:18]
+ >> You should be deployed.
+ >> Yeah, you should be deploying from me. Yeah.
+ Push merge everything to main and then deploy from main. If you're deploying
+ from this branch it's actually deploying from main. It's an optical illusion. It looks like
+ you're deploying from here. It's funny. I did not know that. Because the command is get, get push origin main.
+ That's the command it's running.
+ So it's actually just deploying the main branch.
+[03:50:56]
+ Not the update branch. So if I go, if I merge the branch, but I'm in the back end, when I do it, is it going
+ to merge the front end stuff?
+ I guess it merged everything.
+ Yeah, it merged. So you want to merge twice. You just have to merge the front end stuff? I guess it merged everything. - Yeah, it merges.
+ - Yeah, it merges.
+ So you want it to merge twice.
+ You just have to merge the one time.
+[03:51:29]
+ - Metal.
+ - Yeah.
+ That's right.
+ - And then should you be in the point.
+ - No, you didn't deploy it.
+ - It didn't, do you need to be in the root
+ or it doesn't matter?
+[03:51:41]
+ - You need to be in the folder where that has the script.
+ I don't know if that, that one doesn't have a deploy script.
+ That caps on the before.
+ Folder doesn't have a deploy script.
+ Okay, so then I have to deploy.
+ So I have to deploy from both.
+ Oh, yeah, it depends on.
+[03:52:03]
+ Yeah, it depends because there are points in different places.
+ Yeah wait no. So I think this is the same thing as the same command though.
+ My script is not the same the backend script is going to
+ and there is a zip file to the lambda.
+ Okay yeah that's a different one.
+ Where is Taehue?
+ - The front and--
+[03:52:32]
+ - From the front and though,
+ if you're deploying from the front end,
+ I think that's pushing everything to get.
+ - It is right now.
+ - Including the back end stuff.
+ It pushes that to you.
+ - I think so, yeah.
+[03:52:54]
+ And you should verify it just to make sure, like, after you.
+ I always go.
+ Yeah.
+ I verify the folders.
+ And like, I do a cursory test of the folders and I look to see that it message stuff and then I'll go actually go in here and look for.
+ What I changed.
+ >> Is it not take my change with my comments? They're not here.
+[03:53:31]
+ >> Is this the main branch?
+ Yeah, you're in the main branch.
+ Those your main branch have, well,
+ maybe it didn't apply to changes yet. Four minutes ago it was
+ in four minutes yet. >> It's not here. It didn't take it.
+ >> Oh, there's an area here. Change the United States for commit.
+ >> Oh, yeah, that's right.
+[03:54:27]
+ Well, I thought the merge automatically.
+ Okay, so I didn't, yeah, I see there.
+ I see it there.
+ The fin queues were not committed. And now you can do the
+ one of the the the the
+ the
+ the
+[03:54:51]
+ the
+ the
+ the
+ the
+ the
+ the
+ the
+[03:54:58]
+ the
+ the
+ the
+ the
+ the
+ the
+ the the changes in the back end.
+[03:55:09]
+ And the five few things.
+ The comments are here. Okay, so.
+ Those were in me.
+ I see. Okay.
+ I see because.
+ I would.
+ I would.
+[03:55:23]
+ And main when I committed those last two, which is fine. I'm not.
+ That's not a big deal because they're really.
+ It's a bit slow.
+ That's open up your open up the depth tools inspect and make sure there's no simple errors going on there.
+ I don't know.
+ Yeah.
+ Just the weird things.
+[03:55:59]
+ Who.
+ What's that other error then what's that one's a one, one error there at the top.
+ No, I don't see any error.
+ No, there's a red flag at the top right.
+ Where?
+ If you click on the right flag at the top right. Yeah.
+ Click on that one.
+[03:56:27]
+ Oh, it's it's here.
+ I encourage the use of the label.
+ Mm hmm.
+ Which one is that?
+ That's yelling about the autocomplete.
+ It's again.
+ No, this one's.
+[03:56:41]
+ That's the only one.
+ That's different.
+ That's new. Let me see
+ It has to be one of the new forms
+ HTML4
+ HTML4
+ HTML4 HTML4 HTML4
+[03:57:01]
+ HTML4
+ I've seen this error. It's in all of my forms.
+ Every time I have an HTML4.
+ - Let's look at the area a little bit more closely
+ than this read it.
+ Labels for azuremases and match any element ID.
+ So we have to find that there's Okay, so let's click on it. And the dev tools and find out which one is it's complaining about.
+[03:57:27]
+ >> Good luck.
+ >> Yeah.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+[03:57:34]
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+[03:57:41]
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see.
+ >> It's hard to see. >> It's hard to see. >> It's hard to see. >> It's hard to see. >> It's hard to see. Okay, so let's click on it and in the dev tools and find out which one is it's complaining about
+ Yeah, it's hard it's hard to find it that way so just click on it here. Maybe I'll tell us which one
+ It is
+ violating known
+[03:57:58]
+ It's not going the yeah, yeah, yeah, click on that. Does that do anything? It doesn't do it. It's not a valid link
+ Okay, like it won't even write a lot.
+ It's learned more button works and it tells me how to use the label.
+ It's not an issue. Okay, I can try loading up your page on
+ Can you can you put the link here in the chat?
+ Can you put the link here in the chat?
+ I'll load up your page on on my browser and see what comes up.
+[03:58:35]
+ I have a edge open also, because I'm running the classroom from it.
+ Because I was accidentally closing the classroom a couple times.
+ And it was thin, chrome.
+ Okay, let me refresh this.
+ The arrow was popping up in the form page.
+ So which one is that account?
+ Oh, in the edge, I'm getting a 404 error on the about page. So which one is that account? In Adam getting a 404 error on the about page.
+[03:59:08]
+ I just refresh it and then it should disappear.
+ Okay, I don't see that error in mine.
+ I don't see that error.
+ It's Chrome.
+ It's Chrome. Chrome is here.
+ >> You're not so glad you're.
+ >> I'll show you my screen.
+[03:59:34]
+ >> Yeah.
+ So weird.
+ >> This is Chrome.
+ This is your website.
+ There's email update.
+ Let me shrink this down right now.
+ That's the size of it.
+[03:59:53]
+ I'm going to pull this up here.
+ This will-- there's an error here,
+ but it'll disappear when I refresh.
+ OK, it's gone. How are you getting those cute stars in the required fields?
+ >> This is an extension I installed.
+ >> It will put in passwords automatically for me.
+ I don't see that in those errors here.
+[04:00:24]
+ >> It disappeared on mine.
+ It's not showing it anymore.
+ But now it's showing us two other areas.
+ It's going to be fine.
+ Oh, they're so far.
+ Oh, they're so far.
+ I don't see that.
+[04:00:43]
+ I don't see that.
+ Yeah, the back end. Yeah, the back end.
+ Um, no, the back end.
+ Just refresh it.
+ Just refresh it.
+ And then refresh and that should disappear.
+ Oh, we've.
+[04:01:02]
+ Okay, so are we all set for tonight?
+ I think so.
+ I think this for for can you come back?
+ No, it's gone.
+ Okay, I think so.
+ Yeah, sometimes it's just a first look.
+ The floor element thing came back.
+[04:01:18]
+ It has to be on this page.
+ It has to be on this page. It has to be so on. I'm on mine.
+ Oh, wait, let me try doing a hard reset.
+ You're fresh.
+ I mean, yeah, no error here on my side.
+ I'll fix it somewhere.
+ I'm going to try.
+[04:01:37]
+ I'm going to try it on edge.
+ Maybe my Chrome is out of date. >> Possibly.
+ >> Where's the update thing?
+ >> It's just the first.
+ >> It's updating Chrome.
+ I opened the Help page.
+ >> Okay. I'm happy to grow as soon as I open the health page.
+[04:02:05]
+ Okay.
+ All right. So yeah, it looks fine to me.
+ There's no errors, at least not on the account page.
+ No, yeah, it's fine.
+ Correct.
+ As we're all set here.
+ Okay.
+[04:02:24]
+ Good night. It's the entire area is going. >> Correct. >> I hope so.
+ >> I hope so.
+ Class your finger.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+[04:02:34]
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+[04:02:41]
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+ >> Thank you.
+
 ///// FILE: "Level 4/transcripts/May 3, 2025 10-36.txt"
 
 Transcript from May 3, 2025
