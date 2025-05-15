@@ -1475,15 +1475,15 @@ export async function handleSignInAttempt(
   // const password = passwordInput.value;
 
   const form: any = event.target;
-  const email = form.elements.email.value;
-  const password = form.elements.password.value;
-  const closeButton = form.elements.closeButton;
-  const inputs: any = event.target;
+  const inputs = form.elements;
+  const email = inputs.email.value;
+  const password = inputs.password.value;
+  const closeButton = inputs.closeButton;
 
   const account = await authenticationAws(email, password);
   if (account) {
     closeButton.click();
-    inputs.reset();
+    form.reset();
   }
   return account;
 }
