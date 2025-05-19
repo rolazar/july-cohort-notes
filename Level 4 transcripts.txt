@@ -45570,6 +45570,2386 @@ Transcript from May 14, 2025
  >> Thank you.
  >> Thank you.
 
+///// FILE: "Level 4/transcripts/May 15, 2025 20-47.txt"
+
+Transcript from May 15, 2025
+
+[00:00:00]
+ Good evening class. Welcome to CoDAC Academy level four.
+ It's week 10 day four.
+ And the theme of this week is evaluations where we're spending more time doing evaluations.
+ So today's agenda in the first hour, we'll take attendance to announcements, review, and work on the practice
+ that we were working on yesterday. Second hour will do many evaluations, but I'll post
+ the practice and open the breakout rooms will be open.
+ So now, if you haven't taken your attendance yet,
+[00:00:53]
+ go ahead and head on over to the Codex account.
+ Mark yourself as present. and now time for announcements. announcements here or to love the screen.
+ Okay, so as a reminder Monday, May 19 is student collaboration day.
+ schedule. For this week is evaluations. And next week is the last week, but we'll be hopefully we'll start doing some presentations. I'm asking the staff if you can do the staff
+ presentations on Thursday. And I'm hoping you guys can, you know, are you guys willing to do some practice?
+ Are you willing to do some practice like doing your presentation in front of like some cohorts?
+ Or maybe one cohort so you can practice in front of a cohort first. And then maybe on a Tuesday,
+[00:02:29]
+ practice in front of a cohort, possibly even Wednesday, get two practices in. And then on Thursday,
+ do the staff presentation or the presentation towards the management staff of
+ Codex. What do you guys think?
+ Just basically present what you have to the cohorts
+ the one or two cohorts on to ZAN Wednesday.
+ That way, you know, like you guys, you never got to see a level
+ four present their their capstone project. What if you were in like level two,
+[00:03:14]
+ level three, or maybe even level one, and you saw a level four student
+ present their capstone project to you. Would that have inspired you more. So that's what I'm hoping
+ you guys can do. Next week, if you want to practice on Tuesday and Wednesday in front of other
+ cohorts. And so is there something wrong with attendance?
+ Let me see here.
+ So as I was saying, if you're going to do presentations. May 15th right here.
+ Should be able to do that.
+[00:04:13]
+ So May 15th, I mean Tuesday and Wednesday next week,
+ whether or not you're fully finished with your capstone,
+ at least you could practice your
+ presentations in front of other cohorts, maybe on Wednesday, practice in front of each other
+ right here in the room. And I can even give you some pointers. You'll get better and better each
+ time you do it. Just present what you have, and, but I have to get permission from the staff for you to be able to do that.
+ But if you're interested, then I'll get that permission.
+[00:04:56]
+ I think it'll help if you can, if you can do your presentations in front of cohorts.
+ Okay, so,
+ um,
+ so yeah, we're focusing on any evaluations this week. Remember 16 minutes.
+ Many evaluation per submission. That's very generous because when I was
+ doing my evaluations, it was only 30 minutes and I had to cover a lot more topics than you guys.
+ So I just had my notes and then I had everything basically for me, every evaluation was like a presentation. I had to practice and then get evaluated.
+[00:05:54]
+ So every, but for you guys, you just able to just come into the mini evaluations and just wing it. But that's why we're going to do
+ presentations so at least you have something that you can prepare for. Like
+ you have some kind of experience presenting because that's what you're
+ going to do if you want to get hired as a programmer. You have to be able to
+ present your work and be confident about it.
+ Remember, click on that and submission button to get on the waiting list and qualify for that on time point.
+ We need evaluations for week eight is closed.
+[00:06:37]
+ Week nine is also closed,
+ not accepting more and more submissions,
+ but we can do corrections, correction evaluations until Saturday for week 9
+ and you volunteer as anyone needs to do corrections for week 9.
+ We have today and Saturday to finish corrections for week 9.
+ week 9. And then for week 10 mini evaluations, it'll close on Tuesday next week, but you can still get on time credit until Saturday. So if you want to get started on time credit. You have until Saturday to do that.
+ So assignments are still in the process of being graded.
+[00:07:33]
+ I purposely slowed down on grading up some assignments
+ because I saw some assignments are not
+ going to receive good criticism or good constructive
+ criticism because it's just going to basically have a bunch of zeros because a lot
+ of things are not worked on and it's not very constructive if I say, "Oh, I
+ don't see anything. I don't see nothing meets these requirements right here."
+ So I've waited a little bit to give you
+[00:08:05]
+ some time to do just a mitter assignment and see some things being done. So you
+ can expect these assignments, these next reassignments, you come in a little bit faster if you haven't gotten them graded.
+ I've graded some already.
+ So once I thought that's lacking that,
+ at least get some contracted criticism or constructive notes.
+ Let me see here. So Chris is asking Saturday, it doesn't have to be before class, it could be during class.
+ So Chris is asking many evaluations for week 9.
+[00:09:09]
+ Need to be done before Saturday class. The answer is it can be done Saturday during class time.
+ And right after class, if anything, like, flows over. [BLANK_AUDIO]
+ [BLANK_AUDIO]
+ Remember contact the student's success team, look at your grades.
+ You get your grades and make sure that at least I think 75% are more.
+ I think yeah, 75% are more on each assignment.
+ And I think 80% is the highest you can get
+[00:09:59]
+ if you turn in something late, 75% is at least 75%
+ something late 75 is a, you need at least 75 per passing each assignment and for graduation and each assignment means evaluations or many valuations and
+ also capstones. So basically these are assignments. Those things that you get points for,
+ you need to have at least 75% points on this.
+ Anything that you will see points.
+ So don't reject that.
+ Okay, so let's see.
+[00:10:42]
+ So yeah, contact the students,
+ success teams in which they're sport. Help seeker. Okay, so let's see, so yeah contact the student, success team to boost her sport, help
+ seeker, remember don't get stuck for 15 minutes or more.
+ It's crunch time and we can't afford to waste one, two, three or even four hours being
+ stuck. Post into like cohort. Have that back up plan.
+ There may be an easy question that you get after.
+ You might post it and then you get an answer.
+[00:11:12]
+ Maybe you solve yourself after five minutes.
+ Or maybe you don't solve it after four hours.
+ But at least if it's in July cohort, someone can chime in
+ within those four hours and give you a boost. And that's it's there for your own, you
+ know, for your own benefit. Notebook LM. So I provided something very useful. Compiled notes have been added to reference level 4.
+ Here's reference level 4.
+ There was this one, you know, you know, the old reference where there was a list of topics.
+[00:12:08]
+ Sometimes this can be, you know, time-consuming to create.
+ But I'm doing that.
+ But you can upload your notes, code and transcripts, and the sources panel of notebook lm.
+ What I did here is you can just click on it and then you go to notebook lm.
+ But what I did here, actually before you even
+ provide some context for notebook lm you get up can upload code, but it must be a text file,
+ paste it in, or provide a link to the raw code source in GitHub.
+[00:13:04]
+ I also provide provided compiled notes. So compiled notes can be combined.
+ You're also able to compile notes are.
+ So I've made a repository.
+ And these notes are compiled from level 4, level 3 and level 2.
+ So here if I click the link to the link, I'll be able to click the link. So I've made a repository and these notes are compiled from level 4, level 3 and level 2.
+ So here if I click on this, these are the compiled notes of our files that we have.
+ So here's like the Babel config and the
+[00:13:42]
+ and the
+ There's account.ts
+ Greater count there's the tests are here too
+ You should give you a boost if you need some help. You should give you a boost at all here
+ Everything from the sandbox is here. You see here's sandbox.
+ So that's level 4. It's not just the code, but it's also the notes.
+ So the notes are over here.
+[00:14:22]
+ So here's like the AWS loop right here.
+ We're all compounded here.
+ And then towards the end there's like the AI notes,
+ text script notes.
+ It's all compiled into one file.
+ You can feed this file into no quick LM.
+ You'll need to click on raw.
+[00:14:45]
+ You can basically just click on the file.
+ Right?
+ There's this level 4.
+ That's the code and the notes.
+ And then there's level 4 transcripts.
+ You can pick one.
+ Click on raw.
+[00:15:03]
+ That shows you the whole thing, and the thing that
+ you want here is the URL.
+ Here, the raw URL, and then give that to no cookie on them.
+ So when we find something weird, I'm just going to replace it because I've already
+ pasted them in here.
+ And then you do a bit.
+ So I'm going to add a new source.
+[00:15:34]
+ It's going to be the raw link from GitHub. And it's just going to take a few seconds to study the document. So remember,
+ you can get to these compiled notes by clicking on reference level 4. Click on compiled notes. That shows you a list of the compiled notes.
+ Right here.
+ If you go into the pick a file and click on raw,
+ you get the URL, which you can feed into notebook LM. And so I've made a notebook LM for July cohort,
+ which contains level 4, level 3, level 2 notes and transcripts. So I can ask questions like
+ Now, to fix types of errors when using events.target. LMS. As you might get touch your pairs and you do that.
+[00:17:12]
+ Right, so I'm gonna ask that question here.
+ And based on the notes and the transcripts, it's gonna give me an answer.
+ And this will leave me a look at this quickly here. It doesn't get any bigger.
+ It doesn't get any bigger.
+ So, I can make it.
+ So, let's see here.
+ Here it is.
+[00:17:50]
+ Cast, you've got that target to any.
+ So that's correct.
+ And if I click on, if I mouse over one of these numbers,
+ it shows me the part of the code that it's talking about.
+ So here,
+ conform
+ equals the head dot target cast that to any or insert that to any.
+[00:18:20]
+ And then use this form right here and access the elements from that form that elements.
+ But you can save that as inputs because it
+ makes sense when you do inputs,
+ these inputs, you'll increase the
+ 3/2 input elements.
+ Inputs got email inputs that passed in.
+ Inputs got codes, but then.
+[00:18:40]
+ So yeah, this is right.
+ It even points me to the part of the notes out a quick and easy way to fix types of errors.
+ This task is before or before it will not target any.
+ I know there are some things in July cohort.
+ So we'll see if we can answer some questions from there.
+ And so, this one right here.
+ So, Alexander was asking why this command, why this command doesn is important in the command line.
+[00:19:25]
+ So I'm going to try work. I'm going to try that.
+ Move with the limit.
+ Why isn't this command working in the command line? And then, okay, so right there, let's see if it can identify, because I answered her
+ question, because command doesn't work in the command line because command line doesn't
+ need those extra max actions, those extra max classes are only for in-pamps rips.
+ Whoops, it removed the, it removed those back slashes.
+ Because those are escape characters. Oh wait, it's season right here.
+[00:20:22]
+ Okay.
+ A WCLA installation and configuration. Admissions.
+ Might be the distribution ID that we wrong.
+ Syntax or CAPS.
+ Both escaping.
+ Okay.
+ So the sources show that we're using this command with an end-file script in your package
+[00:20:47]
+ JSON file, you need to use the escape character before the build open.
+ We'll prevent conflicts with outer posts.
+ I'll just skip the script.
+ Right?
+ You need to have posts within quotes when you have an NPM script.
+ However, if you're running the commands directly in the
+ terminal, this gave characters are typically not needed and correct syntax is used in the AWS
+[00:21:15]
+ without the max dash. So this is correct right there.
+ So you can get a lot of your questions answered instantly. If you just use this right here, just put these compiled notes.
+ I'm going to update these.
+ You'll see when I update them.
+ I update them when we get new things. So we'll see
+ when there was less updated and you can compare it. You can compare when you
+ upload it, when you upload it there. You're copy to your notebook. Because it
+[00:22:02]
+ doesn't fetch this again. So these are URLs, it doesn't fetch it again.
+ If I make changes, it's not going to get those changes,
+ which you have to do is delete the URL,
+ and then we paste it, then it's going to apply the updated notes.
+ So we're going to put that down. So for note, click on them.
+ Use the raw links and then to sources.
+ But if I make changes to these files, we need to re-upload. We're moving them first.
+[00:22:45]
+ Let me see what it's like.
+ Yeah, we have to, if I, let's just say, for example, I've updated
+ number four text. So you need to remove the source and then Come back here and get one again.
+ And then add it.
+ You should be able to look at that. and give you a lot more context.
+ If you have questions, it gives you a lot more context.
+ If you want more context around an answer,
+[00:23:34]
+ because you see I try to give you the straight answer,
+ but little quick, it gives you a lot more information.
+ If you're a current kind of person who likes a lot of context, no book-a-love, and these compiled notes will give you that context.
+ So you can use that to your advantage and to help you with any problems. You can even
+ with any problems, you can even upload your own questions
+ like your own code, right? You can upload your own code, like below the compiled notes.
+ You can put your own code and say, what's wrong with my code
+[00:24:18]
+ that I just have to wait, or I think you should be more
+ specific like, what's wrong with my handle submit function
+ Here's my here's the code from my front end and back end. Why is my front end?
+ Why is the back end crashing when?
+ When a user tries to log in
+ It's gonna take your your code and your notes compared and add also the compiled notes from
+ number 4 and level 3 and level 2 and it's going to generate an answer based on,
+[00:24:56]
+ you know, global's hot and fast. And when that, what I teach in class is the easiest
+ And when that, what I teach in class is the easiest way to do things that you search on the internet, they'll teach you hard to waste the living.
+ So it's going to be to your benefit to use reference level four and look at them to answer their lot of your questions.
+ Transcripts are available up to week 10, day 3.
+ If you want to look at them individually,
+ here week 10, day 3.
+ Let's see, get right there.
+[00:25:43]
+ Oh yeah, another question I was asked.
+ Let's see, I'm gonna ask it in the black,
+ um, local, Lm.
+ Then testing.
+ We'll just
+ help to fix just on the corners.
+ That was another question that you'd like to offer. and if you like, go for it.
+[00:26:30]
+ Okay, so let's see here. Let's see if we can scan here.
+ Yeah, it's correctly identifying that when you're using
+ just, you don't have access to the window and
+ how it can get objects.
+ So to fix that,
+ install just Environment.js DOM. And just It's not something exactly here.
+ Okay, here it is.
+[00:27:08]
+ That's here.
+ Here's the test environment JSTOP in just in the big batch AS. Let's see what other questions are here.
+ Okay, so Alexander had some questions here.
+ No form handler in the couch.
+ The correct forms are your own components.
+ Yeah, so you can any component.
+ When you have Redux, any component has access
+[00:27:47]
+ to the state variables. So if your forms need access to them, they can just select them,
+ and they can also just pass the actions. They can set very well too.
+ And he's still thinking. This component doesn't talk before,
+ though. This component is a parent component and the forms are in the children.
+ So that's where I'm stuck.
+ Yeah, and every component has access to any state variable.
+ So even the children have access to it that they can just bypass the parent that they want.
+[00:28:34]
+ It doesn't matter. So if you want to set a value from within those children, you can do that.
+ If you want to select that.
+ That's not what I'm trying to do though. I'm trying to do the radio buttons in the parent component and use the radio button on the parent that the users
+ selected to load the child. Okay, yeah so the child will need to see that the child will need to check which radio button is selected
+ Why you're a child in not the parent that that's because it won't you can you can decide how you want to do it
+ So there's two ways you can do it the parent can then can say okay, the miss radio button is choke up this
+ This pick so I will run there this time.
+[00:29:27]
+ You can do it like that. Or option number two, the tile looks at the radio buttons and
+ then it sees, okay, that's not my radio button so I'll stay in this one. And then it
+ sees, okay, that's my radio button. I will render my phone.
+ I've already wait it.
+ I've already written it to do it from the parent.
+ - Okay, yeah.
+ And you could go with that.
+[00:29:51]
+ So when you're going from the parent,
+ parent looks at the radio buttons
+ and decides, okay, this radio button was picked.
+ So I'll render this channel.
+ - So that would go and component did update that would go and component did mallet. That would go in that would be a handler. You could do that from the
+ handler but that's what I'm saying there's no handler here because there's no
+ form it's radio buttons. Yeah so the radio buttons yeah so the children are the
+[00:30:29]
+ handlers I mean the children have the handlers right so I mean where are the
+ buttons rendered are they rendered in the children or the parent no the
+ buttons are in the parent okay yeah so the parent has access to the buttons.
+ Correct. I mean, the random one.
+ So, when have access to the button?
+ It's not working.
+ So, I'm clicking, click, click, click.
+[00:30:56]
+ So, I click, you can just put a handler on click.
+ Okay.
+ Put it on the handler. And then that's how you figure out the value is chosen.
+ Um, yeah.
+ Somehow I'll figure that out.
+ Okay.
+ Let's see.
+[00:31:19]
+ Let's see if I can ask a notebook on that.
+ My notebook out of my mind isn't going to tell me how to do it,
+ because it doesn't have enough self-loaded anymore.
+ Well, you can load it now, because I've provided all the compiled
+ notes.
+ I don't have time to load that and do all the bay eye lectures
+ that I haven't caught up on.
+[00:31:41]
+ And it's only six or two seconds.
+ So you can see it's a good investment of your time to look at that because I have to use and ask which radio has been selected.
+ Oh, I've already written that part.
+ Yeah, that's already written.
+ So you know which radio button is selected from the parents?
+ Well, partially, but I was doing it as an event.
+ And so, yeah.
+[00:32:37]
+ So component did not take an event as an argument.
+ So I will have to read it.
+ Yeah.
+ So component is the component that update isn't
+ except parameters.
+ That's just update based.
+ So where do I put the handler?
+[00:32:57]
+ Do I call the handler and component it update?
+ Or do I use the handler as the action for the dispatch?
+ Neither.
+ The handler is the handler.
+ Is this a separate function?
+ Just like, okay, let me know the forms are only the any load sandbox.
+ I'm not happy to put this after the form though, I think. Is the form not be completed?
+[00:33:27]
+ No.
+ So, going back to, so this is going back to
+ Ann Lewis.
+ Now I think we talked about handlers in level two.
+ So, handlers, how do we talk about the multiple types in different levels?
+ So, handlers, I care.
+ So, I must have talked about this in level 3 then, because that's when I can reach the act.
+[00:34:11]
+ I'm pretty sure it was level 3, because we did the radio button a account model and I have a form.
+ This is the on submit event and then here's my handler.
+ Where do I put that handler?
+ First I put it down here outside of the outside of the component.
+ Okay, so here's my handle right now. The first thing I did at first is I just put it here outside of my component.
+ And there is a function.
+ I put it outside of my component, but then when I realized, "Oh, I need the dispatch."
+[00:35:00]
+ Then I took this and I put it here at the bottom of the component.
+ Now it has access to this back.
+ So that's the handler's 101, greater function.
+ Okay, so what would go at the end of the function after the component did unmount.
+ >> Outside of your component.
+ So this, I don't call it function, call it component,
+ because that's what it is. I mean, it says,
+[00:35:36]
+ what it says with more specifically, it's a component.
+ So I'll put the handler outside of your component.
+ Then when you realize you need something, So, put the handler outside of your component.
+ Then when you realize you need something,
+ put it inside.
+ So, if I, if I were to arrange this and compress everything,
+ it looks like this. This is, this is the brains of the component.
+[00:36:01]
+ Not much brains.
+ This is basically again a dispatch something.
+ This is the render part that's going to render the form in here.
+ This is the handler.
+ There's no component that did not.
+ There's no component that's update here.
+ But if you have an account page, then you should have a component did not because one of the requirements is to have a component that was complete.
+[00:36:32]
+ So, I can say this, I'm going to turn this.
+ So, if I were to ask with LM, how did you, which, how to find out?
+ which how to find out how to find out which radio mutting has been selected?
+ I would be a little bit more specific in a react form component. How to find out which radio mutting has been selected?
+ Oh, you already have a mutton?
+ OK, I'll ask you that.
+ You said you're partially going to have.
+[00:37:29]
+ Well, when I said partially, I meant that it wasn't connecting to the to the radio button event
+ because I had a handler originally and I took out the handler thinking that I was doing it
+ incorrectly. Okay, well, let's just ask this question here and let's see if we have...
+ If your solution is in the right direction.
+ [ and so on.
+ So first setting up the vent arm target so pass the vent arm target to any
+ access to elements. I then find the radio button.
+[00:38:20]
+ So radio buttons are belong together in a group.
+ They share the same name attributes.
+ They have to have the same name.
+ Finding the selected radio buses, we're doing it.
+ So there's different methods here.
+ And the inputs.
+ And the tags, the main properties. and put it's and turn it on the upper
+[00:38:47]
+ and put it in the value
+ here, the value
+ just the value and what's the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the value of the node? I think it's going to be on or off.
+ I forgot what the value is going to be.
+ Check the value of the radio button.
+ If it's not paired up, you can just ask it for more information.
+ Okay. Okay, so the chance gets up to day three this week and then the focus.
+[00:39:35]
+ You know, get ready to take some notes.
+ I'm going to take the last few minutes of this hour to reveal. And then make sure you get your mark
+ up in the very point that many evaluations are.
+ So when you further review, actually we went over this and so you guys had to combine code.
+ Like if you had multiple files of code, you can combine them into one text file for your
+ new command. one text file for your new quick lm. And this is the instructions on how to do that.
+ Just going quickly cancel underneath. And for the Redux account practice, how far did we get?
+[00:40:38]
+ We're still stuck on number three because we didn't get the back end yet. Well, I didn't not
+ for the sandbox. You guys probably have a back end already in your capsule
+ projects. So I'm just going to show you how far we've had with our account.
+ Right here, it's going to have those submit.
+ It's going to, it's going to have the account update.
+ And then it's going to send the post request to the back end
+ server, but the back end server is not ready yet.
+[00:41:38]
+ I don't have the off date route created from the back end server.
+ So that's what I need to do. So you're going to continue with the
+ practice. This one in which I make the back end server update the database. [BLANK_AUDIO]
+ Anyways, it's been through my screen.
+ [BLANK_AUDIO] Start the front end here. [wind blowing] [wind blowing]
+ [wind blowing]
+ [wind blowing]
+[00:42:56]
+ [wind blowing]
+ [wind blowing]
+ [wind blowing] Okay, so let's see if I'm going to work on the back end now.
+ I know that it's working.
+ It's running here.
+ Some reason it doesn't slow.
+ It does not have a ground for the update. We need to create that.
+[00:43:55]
+ So we do need to do first.
+ I need to go to index file and the route.
+ And that post.
+ Okay, you can't just go straight into using the post method. You need to also do this one right here.
+ You have to use JSON.
+ If you want to test it, you also need to add,
+ if you want to test it,
+[00:44:38]
+ put PostNet.
+ PostNet, you need to add URL included.
+ Postman.
+ And then this one is for... for
+ that seems
+ this one is for receiving
+ data [inaudible] data. I'm going to create the update route and set up an update route handler.
+[00:46:07]
+ It's not created yet so I'm going to go here and create it in the melts.
+ I think I already have some functions here. It's creating something like it.
+ I have hot things.
+ I'm just gonna
+ gonna copy this and
+ change it a little bit
+ make it work
+[00:46:36]
+ with a mouth.
+ You can paste it into here
+ this one's gonna be called called up in the cup.
+ Change it here, up in the cup. all the
+ so my route
+ call that
+ is my paper out
+[00:47:17]
+ actually i don't have anything
+ it's going to
+ copy that
+ my read route.
+ Okay, some changes. [BLANK_AUDIO] [BLANK_AUDIO]
+ >> Okay, so here, I'm gonna use the function call campaign account.
+ [BLANK_AUDIO]
+[00:48:04]
+ Gonna take an email, actually, Use the function called this will be the count info. I'll just say a count.
+ Alright. So this one will go into here, then it's going to give me
+ actually, then we just put, well,
+ we're going to give you back in account.
+ Actually, then we just change this to me.
+ It's all.
+ So basically, we're going to take that with Alton's in it.
+[00:49:07]
+ We're going to change this back to your account.
+ So if I pay the account is going to take in an accounting code based on the account data
+ type.
+ An account data type has an email screen name and phone.
+ If you had only this part right here, I'm getting this somewhere.
+ I'm going to get the nice pipe in somewhere.
+ I think I've seen enough since the import.
+[00:49:52]
+ Import the nice pipe.
+ And in another function, or in another file,
+ I just basically created the nice pipe object and I just need to basically
+ and so let me see here. This one is the rule of right. (mumbling) [inaudible]
+ [inaudible]
+ Well, these are not important.
+ [inaudible] Okay, that's not that we got two coffee balls in fact.
+[00:51:17]
+ Basically just gonna run this function,
+ whatever it gets, it's gonna send that.
+ That's pretty easy, I'm going to basically, I'm expecting to get an account.
+ This is where the data is received from request request.
+ I'm going to get the account info.
+ I'm going to get the account info.
+ And the name is going to come from account until that name.
+[00:52:27]
+ And the problem is going to come from the house and the problem is going to be a maybe not, I think that's it. I think that's been going on.
+ I just recorded this.
+ So it should work now.
+ Let's check if we serve the crash or not.
+ And it's building.
+ So it's back to work.
+ So I'm going to start the front end. [BLANK_AUDIO]
+[00:53:10]
+ [BLANK_AUDIO]
+ So I'm going to set some break points,
+ actually, I need to, so we can watch it happen.
+ I'm going to set some great points to the back end too.
+ Put it back in. That's where you hold the one you're working in the terminal, which is
+ the back end. That need to use the JavaScript
+ because that's not is not running in the terminal it's running in the browser
+[00:53:58]
+ so let's see here
+ this is the handle update so that
+ I have a debugger here.
+ I don't need to stand here.
+ I'm going to put the back end.
+ I'm going to watch it go to the center here
+ and it will be the center. So let me just side in here
+[00:55:07]
+ [inaudible] I think it is through our own scene in the future. Here's that story.
+ Here's that story.
+ I hope David was coming here.
+ Maybe this one is king.
+ I think it's a great one.
+ Trying to make it.
+ Actually, that's happening with the sign.
+[00:55:30]
+ So I'm going to check the sign in here.
+ Sorry, I'm going to top of here
+ and he follows his knees values these values so email
+ that's good
+ education [BLANK_AUDIO] >> [INAUDIBLE]
+ >> [INAUDIBLE]
+ >> [INAudible]
+[00:56:52]
+ Oh, under the attack is approximately injecting this.
+ [BLANK_AUDIO] [inaudible] Well, there's semicolons in the middle of those. the semi-colors. Oh, look at this after the break just taking a break right now. [BLANK_AUDIO]
+ Okay, I'll see you guys after the break. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay, so we're back from a break.
+ And for the second hour, I'm just going to post the practice.
+ So I haven't figured out the problem there.
+ The environment there was not working properly.
+ I'm just going to post this here and then I'm going to open the break [BLANK_AUDIO]
+[01:10:22]
+ Then I'm just gonna put everyone in the room. You don't have to go in a room.
+ I just want to make sure you see the brick and rooms.
+ Okay, so does anyone want to do their
+ Level 9 corrections today?
+ Or it's already good with their level 10. I mean week 9, many evaluations
+ corrections anyone wants to do those today the last day would be Saturday
+ during class or right after class. Same thing with the menu evaluations week 10.
+[01:11:11]
+ To get on time credit, you need to do it sometime this week. and see here in the lineup.
+ If you're going to wait for the last day Saturday, and may or may not have time to do your evaluation. Basically, we're asking, you know, we're hoping that you can do your evaluation during class.
+ If a lot of people want to be your evaluation at the same time,
+ it's going to be a problem that I won't be able to fill everyone.
+ So you wanted the corrections for level week 9, is that what you're saying? [wind blowing] [wind blowing] [wind blowing]
+ [wind blowing]
+ [wind blowing]
+[01:12:58]
+ [wind blowing]
+ [wind blowing]
+ [wind blowing] [inaudible]
+ [inaudible]
+ [inaudible]
+ [inaudible]
+ [inaudible] I'll see you in the great camera. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay, so I'm going to continue with UP's mini evaluation.
+[01:54:58]
+ Actually, he finished we just started the
+ week 10 mini evaluation, so the timer starts over for that.
+ So I'll see you after the break. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [ Pause ] We're back from the break.
+ And for this third hour, I'm just going to post the assignment, but open the breakout and down the open foot.
+ Okay, so I'm going to continue the mini evaluation with Ue. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [ Pause ] Okay, so the breakout rooms are back and in conclusion, while we did sort of a Redux
+ account practice walkthrough and sort of got stuck.
+ I found out what the problem was.
+[02:49:49]
+ I'll tell you guys about it on Saturday.
+ Actually, we have a few minutes.
+ I'm just going to show you guys just in case you want to run into the same problem. This is the answer.
+ So I was trying to get, environment variables, these are coming from webpack.
+ The, one of these environment variables were improperly formed.
+ So I checked my ENB file and I saw it was improperly formed or the value with that set properly.
+ I fixed it, but it did not update here. And I kept trying and
+[02:50:47]
+ trying to change it in the ENV file, but it's still didn't update here. Then I realized
+ Webpack, it doesn't know if anything changes in the ENV file because that's separate
+ from all my code.
+ So the answer basically to get my changes to apply, I had to restart webpack.
+ Just like when you edit webpack config.js,
+ the only way the changes will apply
+ is if you restart webpack.
+[02:51:22]
+ It will not restart by itself with new changes.
+ It only webpack only restarts when you edit things that are connected to your app.
+ This is a dev dependency right here, so it's not connected to my app.
+ So webpack doesn't reload when I change things here.
+ But same thing with the ENV file, if I had changed things in the ENV file,
+ those changes are not applied until I restart the server. So that's what I was doing. I was just
+ assuming one pack saw it, but that was the answer. If you're using environment variables in the front end.
+[02:52:08]
+ Make sure you restart your server when you if you change the values.
+ Okay, so you have two minutes to set attendance accordingly.
+ And then that class is dismissed.
+ That's that's today's evaluation. So I can do one, another, after fast evaluation,
+ that's one slot, and I can probably do two
+ many evaluations on Saturday.
+ So I have a total of three slots remaining for this week.
+[02:52:50]
+ Just keep that in mind. So, do we have any, anyone that wants to do any mini evaluations after class today? Otherwise, I only, I have two slots tomorrow, I mean on Saturday.
+ Okay.
+ Okay.
+ Do you guys want the breakout rooms opened? We're going to continue working together.
+ [ Pause ]
+ David, did you get your attendance working properly? the that they didn't show like it's not even it just got three question marks.
+ I've already asked
+[02:54:14]
+ one of the city was that Andrea Torrey and she said she looked at the two days asked about the six and the eighth and it shows that I was present.
+ And I know it's a day and it just like you got question marks on it.
+ It's not sure.
+ So you're you're a you marked it on those days,
+ but somehow the changes didn't take?
+ - Yeah, yeah, marked it on the days,
+ but it didn't actually take anything.
+[02:54:33]
+ So I got three days with just little question marks
+ that don't have anything.
+ - Okay, I can, I can check those.
+ - Okay, thanks.
+ I'll just make sure those are, you know,
+ properly filled in
+ Yeah, just the past three days, right?
+[02:54:49]
+ No the
+ yesterday the sixth and the eighth
+ Okay, I can just check it right now
+ So those three days it didn't have much of a lie.
+ Yesterday was 14. Let me see what yours says here. Yeah, it shows us not marked.
+ So you were present there.
+ So I'll just correct it to present.
+[02:56:02]
+ So that was yesterday the 14th and you said the 8th.
+ Yeah, the 8th and the 6th.
+ 8 and 6th. Okay,
+ that one fixed. Okay, so I'm showing up properly now.
+ Yeah, everything looks good now thank you Okay, so let me see the status on we tend evaluations.
+ Okay so looks like... Wait, what happened here? [no audio] You have a question?
+ Yeah, I don't know how to, I put like a component, or I put a account in
+[02:59:27]
+ in
+ selector
+ and
+ But the selector can take in either an account or a string and when I tried to use like
+ The like for example the selector's name is reader response
+ reader response dot email the email has For example, the selector's name is "Reader_SPANTS" "Reader_SPANTS.email"
+ The email has read squooly on it because it says
+[02:59:52]
+ "string the type string does not exist"
+ It could be a string or...
+ Can't we see?
+ Yeah.
+ So let me take a look at it.
+ Right here. Yeah, so yeah, um, we'd response. This will be a let. Yeah, so, um, you need to type cast it or insert it as an object there as an account.
+ Over here. No, no.
+[03:01:08]
+ No, no. If you try to put it after the email, let's see what happens as--
+ Oh, it tries to put it as a calendar.
+ You're a tried to clear.
+ Yeah, so if you try that, it's going to turn red.
+ What you need to do is put parentheses around read response.
+ What you need to do is put parentheses around read response. And then stick as account inside of those parentheses. Okay, but as any end then account that well it's gonna
+ yeah it's gonna let's see a cleaner I'm trying to think of the cleanest way to do
+[03:02:20]
+ this I tried to deconstruct it earlier too, but it would also turn red just like
+ Yeah, actually if you deconstruct it it might work better
+ Because oh, yeah, it's gonna still yeah, it'll still
+ So you have a or It's to be either in account or a string.
+ If you put instead of "or" put "and", I know it doesn't make as much sense, but it's
+ type string.
+ I mean, type script in it's a little bit different.
+[03:03:04]
+ Let me see here.
+ Yes, okay, so that doesn't work either.
+ And let's see.
+ Did I put any?
+ Yeah, you would have to put any
+ and then type cast it down there to account.
+ Oh, it seems to work once it's any.
+[03:03:38]
+ Yeah, you just won't have,
+ you won't have, you know, intelligence.
+ What you could do is, let's see, is,
+ put actually put account and or string up there,
+ put account orstring back.
+ And then in the condition on 34. In the condition of 34.
+ But after that condition,
+[03:04:20]
+ put an N double N.
+ No after the condition.
+ And you're going to put read component.email.
+ Let's see if that works.
+ There.
+ Does that fix it?
+ Just put that one in there.
+[03:04:48]
+ Oh, I mean, it wouldn't be recombinant.
+ It would be re-response.
+ Oh, yeah.
+ Re-response that email.
+ Oh, it still doesn't catch it.
+ Oh, OK.
+ Sometimes it can be tricky. Oh, it still doesn't catch it. Oh, okay.
+[03:05:05]
+ Sometimes it can be tricky.
+ The, um,
+ what can you typecast it at the top in that condition,
+ but as after read response.
+ And put it in parentheses.
+ And then put as account. Okay, so let me see, though, it should be in the parentheses.
+ And you see what it says there. Members in the time stream, maybe you mistake.
+[03:05:48]
+ They don't know your lap.
+ So it needs to be unknown for us as unknown as account.
+ But unknown and then put as account. No, after unknown. And then you can, after the parentheses, that email,
+ does that eliminate? Nope, it doesn't eliminate that.
+ eliminate, nope, it doesn't eliminate that.
+ What you could do is,
+ you can, uh, destructure it out. So,
+[03:06:37]
+ let's see which line.
+ Yeah, so what take,
+ take the condition out.
+ The ones that has parentheses and the email.
+ Actually, the one with the parentheses,
+ take the read response as unknown as account and move that one to the line 35.
+ You can take that condition out. Yeah.
+[03:07:08]
+ Move that to 935.
+ And then now you can destruct your read response from there. Okay, there we go.
+ I was unusually complicated.
+ You got to change it to unknown and then account.
+ What is unknown?
+ Yeah.
+ Unknown is like any.
+[03:07:51]
+ It's like any.
+ So if you change it as any and then account has the same effect.
+ So change unknown to any.
+ So it.
+ It makes a little bit more sense to you.
+ But TypeScript was saying do it with unknown.
+ So, so it just overrides this.
+[03:08:23]
+ Yeah. So it just overrides this. Yeah, it overrides any with this.
+ Yeah.
+ Basically, what you're trying to say there is,
+ you know that this is account by the time you get to this point.
+ Okay, so you use any to disable TypeScript and then you override that and you say it's
+ an account.
+ So you get the, so you get the, the Intel a sense.
+[03:09:07]
+ So when you're typing, when you're de-structuring, those properties probably popped up for you, right?
+ Yeah. Yeah.
+ Okay.
+ So same thing, how about the other ones?
+ Why are they on any?
+ Do you know what? I'll leave you across the door.
+ They start off as a string as a change.
+[03:09:33]
+ I'll wait in the one.
+ They change into TSS.
+ Right, React element. We actually can put, I think, this react element.
+ Bring and react element.
+ Is the capital R?
+ Did you see it? No. There. It's like the fourth one down. It fits one down. Not anymore. It's gone. There. There it is. Yeah.
+ I think.
+[03:10:14]
+ How would you find this react element with when it's here?
+ Right. Let's see.
+ Let's see. I know that, you know, I guess you won't find it.
+ You might see it on a component.
+ Oh, okay.
+ So there's React element right there.
+ Yeah.
+[03:10:41]
+ So the other ones are also React element.
+ So you can use that to be more clear that it's
+ going to be either one of those.
+ Makes the code a little bit messier.
+ I don't know how this extends, how it can extend further.
+ Or is it only extend to this much halfway?
+ - I haven't looked into that.
+[03:11:16]
+ - I think that's something that you can always do it like this.
+ - Something to do with the pretty here,
+ I think, 'cause it's formatting.
+ something to do with the prettier I think because it's formatting
+ I wonder if you put the instead of putting it there where if you put it as string or react element instead of in the front if you do it in the back Maybe it keeps it as one line. Okay, I'll try that.
+ Oh no, now it's even weirder. Okay, so I see.
+ Has the two.
+[03:12:07]
+ Yeah, now it's a bit more confusing to look at.
+ Okay.
+ Well, at least those are more specific.
+ But harder to read.
+ You couldn't. but harder to read. You could
+ You might be able to type cast it
+ Or just not not what happens if you don't put any type there
+[03:12:38]
+ And delete delete those
+ And so it sort of breaks down there. Let's see what happens at the bottom
+ timescript. There it is right there. Does it expect it to be a string? You can put the Academic element. Let's see.
+ For the for the state variables
+ Go to that account
+ Read component state variable.
+ Where is the So if you put as string or react element, no, no, that's not going to work like that.
+[03:13:42]
+ That's not how objects work.
+ That's an object.
+ You can need to put it after.
+ So there, that's clear. At least in the state variables part. Okay. Save that. Nothing broken there. At least your, your, your defining.
+ I select your broke.
+ Oh, I see. Okay.
+ Bring that. Okay. Okay, okay cancel that then well
+[03:14:29]
+ Actually, that's actually no it's always going to be a string here
+ So yeah, it's it's always gonna be you're always gonna be storing a string in the state variable
+ So let's go back and that was a mistake.
+ You're always gonna restarting the string in there.
+ It's only when it's in the component
+ that you're gonna reuse the variable.
+ - Yeah.
+[03:14:53]
+ - The variable that you have there is what you're reusing.
+ So that's what you, maybe,
+ oh yeah, if you put paths and then
+ what you could do is just override it,
+ just put any, no, I mean like leave that as is,
+ I mean, no remove put it back the way it was without the types,
+ like that and then down there on line 41. Put it as any
+[03:15:28]
+ not there it's gonna it won't work there
+ It only works when you define it
+ If you're gonna put it after I mean put it after yeah, right there as any
+ I should I got rid of it there. There's another one.
+ I think I might keep it like this.
+ So the.
+ You want to keep those?
+[03:16:00]
+ Yes, I can be right away that it's a.
+ Spring or react element.
+ Okay.
+ Okay, that means you can remove as any.
+ Because, yeah, it's just big lines.
+ So it's a line's only released.
+ Look at this part when I,
+[03:16:24]
+ when it's at the top and where they look at it
+ that much.
+ Okay.
+ So yeah, whatever you're comfortable with, there's different ways to approach that.
+ Yeah.
+ At least when it's like that, the code is ugly, but at least you know that that variable
+ is going to store either a string or react element.
+[03:16:47]
+ Yeah, I don't have to be bouncing over to look at it.
+ And it's informing you that you're going to repurpose that variable. What you could do is make a custom type and call it placeholder, component
+ placeholder, make custom type.
+ So anything that's going to be a ring or react element you can call it a
+ placeholder. So type placeholder equals
+ for the capital P though, as types are using capitalized
+ and some types. No, it's not going to be an object.
+[03:17:42]
+ It's either a string or a react element.
+ And then just use placeholder up there. [ Pause ]
+ >> There's that.
+ That's a little bit better. there's that yeah string root j-s-x.
+ Okay, so yeah, make a custom type called j-s-x.
+ No, oh, you want to call it.
+ Okay, basically it's going to, gonna describe what it is.
+[03:19:14]
+ I should have did the rename symbols thing.
+ Oh, everybody don't work. There we go. So, if I hit "Don't Work."
+ There we go. Well, you can make it.
+ Well, okay.
+ I'm already asking you that way too.
+ I was going to say, if you wanted to be like...
+ "Tape?"
+[03:19:44]
+ Is it because placeholder was not clear or he just didn't like what you saw when you
+ mouse over it.
+ Oh, it was it was a clear.
+ I didn't want to have to mouse over it.
+ If I was, it was going to have to mouse over it, then that was might as well just keep
+ it how it was.
+ I see.
+[03:20:01]
+ Okay.
+ So you just wanted to be able to tell what it was from just looking
+ at it. Yeah. Okay. So we got everything solved here.
+ I think it should work now.
+ I think it should work now.
+ Objects are not valid react child. That would go by this error, pops.
+ You just want. >> It's what? >> This is objects are not React child.
+[03:20:50]
+ So you're rendering it objects somewhere instead of a react element. I think it's saying this part right here.
+ That can't be.
+ Because that's, are you rendering a read response somewhere?
+ Check double check.
+ Yeah, we will click on it. And we're also rendering it directly.
+ Double click on it and then we'll see where else you're using it.
+ Yeah, just double click on it and scroll down.
+[03:21:39]
+ It should have highlighted it other places right there.
+ It might have come in as an
+ account by then.
+ Oh, my opinion is a complete response.
+ Okay, yeah, with response.
+ Oh, wait, no, never mind. That's wrong.
+ This is read component.
+[03:22:11]
+ This is read response because this is the other alternative
+ where it could be a string.
+ Just put a debugger there and you'll find out which one
+ crashes. Put a debugger there and you'll find out which one crashes.
+ Put a debugger right before that condition.
+ No, not that condition, but it's crashing after it.
+ Is that someone where it's rendering a possible object.
+[03:22:50]
+ Possible that it might not come in as a string by that time.
+ So it is read response there.
+ If you mouse over it, you'll know the value of it.
+ The string.
+ Oh, there we go.
+ It's fine right now, but eventually it's going to break somewhere.
+ Right here. going to break somewhere right here okay on the go again and then press play again okay so it's a it's an object now
+[03:23:38]
+ okay still not broken then so like four clicks and then it it. So that's the click that you're going to check more closely.
+ So let's refresh, click on play of one.
+ It's not even two.
+ Two. I think it's this click.
+ It's the first two clicks are just to load the page. Okay, there's click.
+ Click it one more time.
+ Okay, so that's three on the third click it breaks.
+[03:24:22]
+ Okay.
+ So we need to check the variables after the second click.
+ It's it's the fourth click, I think, because this is one click and then two clicks and then the page loads.
+ And then I click here and then one click and then the next click should break.
+ Okay. All right. So that's okay. So now let's check the very the values or step through it one at a time step
+ Let's find out which breaks where it breaks
+ Because I'm breaking here. Yeah, I'm step through it one at a time the conditions
+[03:25:07]
+ conditions. Okay, so it doesn't break there.
+ I think it breaks in right here.
+ Okay, keep going.
+ I'll just do the step over.
+ Or I think it broke by now.
+ Yeah, it breaks at the end of this return.
+ And that's that's see what somewhere in that return statement something is
+[03:25:32]
+ getting rendered that shouldn't be rendered. I think but it says right here
+ it says it has to do with this. Yeah but the only part that I use this is right up here.
+ I think it's in here.
+ But then you're just destructuring it there.
+ You're destructuring.
+ This is still the object that that's being rendered. So there must be a time when you're rendering the object instead of the values.
+ So it must be only
+[03:26:15]
+ the button that clicked is only for this handle this handle right here.
+ Let's be on here somewhere. [BLANK_AUDIO] So what in here, since this is true, we're component and we're response. I think it's rendering a, let's see, where are the instances where you're
+ rendering read response as a string. Only right here.
+ That's only spot. Okay, put a debugger there.
+ So we'll check if, if ever, if it ever comes in there as an object.
+ But it shouldn't update properly. Never, never went in there.
+ Are you sure that's the only might be rendering in a different component?
+[03:28:29]
+ First of the bugger.
+ The debugger is not there. [no audio]
+ Yeah, never goes to the stiblogger down here.
+ So that's not the place where it's breaking.
+ But there's only somewhere else must be rendering somewhere else.
+ Okay, there.
+ That's inside of this return.
+[03:29:19]
+ But it never comes here until it unless it goes into either this one or this one.
+ Right. It never shows up here until it.
+ You must have missed the condition.
+ So let's see. I would put the debugger right before the return.
+ Right before the return. If it reaches that debugger and it's a, and it's a, if read account is an object,
+ then that's why it's breaking. So, the reader count with the value that I mean,
+ read response.
+[03:30:34]
+ So, it's going to be rendered as an object down there.
+ >> Oh, okay.
+ I think this is, this is most-- >> Oh, read. I think this is
+ this is most component.
+ No, we component where is it?
+ Where is it? You're saying component. We component gets the span.
+ Okay, yeah.
+[03:31:13]
+ This would be a brief update component.
+ Yeah, you want to up the render the components, not the not the actual response. It worked by now.
+ I can just play through.
+ Yeah, I got to delete all these key buggers.
+ Oh, [ Writing on Board ] Okay, I'm just going to go through that.
+ All right.
+ Any other questions?
+[03:32:52]
+ I don't have any more questions now.
+ I think I'll have questions later but I don't have any more. Okay. Oh, wait, maybe, um,
+ could I delete this?
+ Uh, did update if I'm not using it?
+ Um, yeah, because that's not any of the requirements for, uh,
+ level four.
+ The did mounts and the component did update.
+[03:33:29]
+ The mount, those are Level 3 things.
+ You can leave it there as a placeholder or you can delete it since I'm not using it.
+ Well, except for if I delete it, then my selector for did mal. Is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, it to the true, but it doesn't, I don't have a condition for it anymore.
+ Okay, but you should have a lot of the requirements for the assignment is have it did not for. Or you can do it.
+ But I could still have it, but it not use it.
+ I mean, like not have it with the condition where it turns into a darker blue color.
+ Let's see.
+[03:34:39]
+ Yeah, that's fine.
+ Yeah, you know, I mean, even if you don't, even if you don't use it, one of the assignments is requiring
+ for a did not for each page component.
+ So, you should market.
+ You can console log it if you want to use it console log did not
+ in the date now face and console log it through that
+ we've got to colorize it. I would also log it in from the phone.
+[03:35:27]
+ I would also log it in from the phone.
+ I would also log it in from the phone.
+ I would actually like after I said it's true or maybe that's in a did update.
+ Yeah, my did update only had a condition of the data.
+ You can put a console log there. You can do a, you can, if you have a, if you have a component
+ did update, you can console log did not from there.
+ Okay, yeah, I'll do that actually. Or you can just console log.
+[03:36:06]
+ Because I did update will be using the did mount in the condition.
+ So that takes care of the colorization of the mount.
+ And then if you want to make component did update more useful. You can just do it also log and say, you're updating.
+ So, show me, show me your code. Do you have component did update?
+ Yeah. Okay. Can you show the code? I'll show you what I mean, if you're not sure what I was talking about.
+ So yeah, you don't need to console log in now.
+ You just put, because you're already using the not right there online 191.
+[03:37:00]
+ So you could just put their update phase.
+ Or the account component has updated.
+ Whatever it makes sense.
+ Is there, you're using the mount there, so it's colorizing the top where you're
+ at the top of the component did not should be the proper color now.
+ Yeah, that's how I had it originally, except for just without this console, a lot of it was just empty inside.
+ Are you going to keep it within an account page, or are you going to change into a modal? How are you going to need to model hiring it into it.
+[03:38:08]
+ So I was going to keep it as a account page. I wanted to make it so that it only shows up with your signed in.
+ Yeah.
+ And make sure it doesn't look like a sample page.
+ Like it shouldn't have the code operations there. It should just look
+ like you're actually editing an account. You shouldn't have read the link and things like that.
+ Because like that it looks like a sample page.
+ sample page. What do I like make it a button or something? No, you could still have an account page but make it look like an account page, not a sample page. Like if you went to,
+[03:38:55]
+ you know, pick your favorite website like Amazon or whatever, how would it look like? Or even
+ GitHub. If you go to your GitHub page, how would your account information look like?
+ Does it look like this where you can read, update, delete like that or is it more streamlined?
+ It's more, you can just probably show when I log in,
+ show. When I log in with the persistent login, I was thinking of when it holds the login information,
+ it'll also show the information here without having to do this part. So, yeah, it's just access this after your sign in.
+ Once I figure out to do that, then have the update area maybe underneath or as a like,
+[03:39:58]
+ this should only be just one field, just like I would remove the retrieve information and I would remove the delete account.
+ I would probably account.
+ Maybe you have a bunch of, and then you just have to put their password to verify not instead of putting their email.
+ that's what you're email.
+ Okay, yeah, I gotta figure out to make it so that this only shows up when you're signed in, though.
+ I think maybe I gotta put like a-
+ - A big selector in the side.
+[03:40:36]
+ - So it needs to look, yeah, it needs to select there.
+ If it sees an account, then it should pop up.
+ If it doesn't see an account, it should be invisible.
+ - Whoosh. - try to use it with?
+ With this
+ This variable. Yeah, how do I get this variable?
+ Without selected
+[03:41:04]
+ You selected.
+ Oh, just select it.
+ You selected it.
+ No.
+ Okay, I see kind of like,
+ kind of like here.
+ Yeah, you could have a condition.
+[03:41:23]
+ If there's an account.
+ Then render it.
+ If there's not a account, then just render empty tags.
+ To use the selector on a different page, I just do the same thing like this because I remember over here,
+ I think you somehow use a selector but didn't put it down here like this.
+ Not here. Oh yeah, right here. You said it here, but you didn't, you never declared it up here.
+ - Yeah, I don't need to, that's a, that's different.
+[03:42:11]
+ So you select what you want to render or use,
+ but you at the bottom, you're setting something
+ that you might not necessarily render.
+ So those are two different things. So selecting is for
+ something that you want to use. Setting is for something that you want to
+ set. You don't need to declare it. So for selecting you would have to declare it
+ though. Yeah, you have to do that syntax right there if you want to select something.
+[03:42:48]
+ >> What if you need to match it?
+ >> You'll need to just don't you if you're going to use it.
+ >> Okay, I understand now.
+ >> I think if you're not using the dispatcher and this component and you don't need it there.
+ And the other one, I have just the dispatcher because I didn't need to select anything.
+ But I needed to dispatch something.
+ Yeah. So there, yeah, totally separate.
+[03:43:28]
+ Just use them only when you need them.
+ We're going to have to put this, um,
+ kind.
+ It was here.
+ Add a comment somewhere.
+ Um, telling me that I
+ yeah that's the one that signed us one word so you got one only has a dispatch
+[03:43:55]
+ not selecting anything it would probably happen in here in the sign in there, sign in model or sign in area, but whatever. after, probably after I pressed this button is when, when it should, it should, um,
+ do the become visible. Yeah, after, yeah, it look at a, you should have it look at or select
+ the variable, like the account variable. If it sees there's an account variable, that means
+ someone logged in. Okay, so I could just use so there's a there's a account selector right there that one that one knows if someone bocked in or not.
+ And it's set.
+ And it's set.
+ I'm sure I'd think of where I should use it at so that probably, but I'm thinking once it's signed in, or should I use it in the handle or.
+[03:45:41]
+ No, like you can use it directly in the component. So the thing that you want to disappear is that my account,
+ where is that component?
+ That's my account component.
+ Where is that?
+ Yeah, so select the account.
+ Are you selecting the account anywhere there?
+ No.
+[03:46:00]
+ Or do you know if there's...
+ Read, well, read response.
+ Oh, yeah.
+ So it's a count call.
+ Yeah, so if there's an account, then render yourself.
+ If there's no account, then don't render anything.
+ Probably up here.
+[03:46:32]
+ If it's a tag of this object, then rent. Well, if there is, actually, if it's not an object, then rent or nothing. that would have to put it, probably put it all over the board.
+ So, I would put it as statement right before that, if you want to keep it down there.
+ Would I need to put all of this inside of a component or something?
+ - Well, it's fine like that. It's, you can do it.
+ If we just sponsor is an object,
+ then if the type of it is an object,
+ then you can render that stuff down there.
+[03:47:19]
+ Otherwise, render nothing.
+ Or you can do it the other way around.
+ If you want my be cleaner, if you do it the other way around, if it's not in object
+ and render nothing else, render something.
+ If it's undefined or because it's only only well it might come in as a string
+ Actually, if it is if it's a string
+ render nothing
+[03:47:54]
+ I think because oh, yeah, yeah, when it's when it's a string it means an account then go through render
+ return on the tags
+ render our return on the tags.
+ There. That should work.
+ Else.
+ Else the other one.
+ But I need to put else or just have it down there.
+[03:48:21]
+ No, you don't need to put the, you don't need to put, no, put else, but put the,
+ without the curly braces.
+ It's not really necessary, but it shows that it's connected.
+ Oh, wait, um
+ No, no, I don't want this the button to show up either though
+ The bunch it oh, is there a button?
+ Yeah, or this link in the
+[03:49:07]
+ In the navigation that's that's what I don't want to show up instead of in here. Oh, okay, yeah. So we affected the wrong thing. That's not the right thing. That's
+ not the right thing. You wanted to hide the link. Yeah. So that's what you want to go.
+ That's where you're gonna check.
+ Whenever you're right on the reader.
+ What will you randomly map link?
+ I think it's in now collapsible now for collapse.
+ I'm sure here's one.
+[03:49:48]
+ I should, I think you did this before.
+ Oh yeah, I remember now.
+ But I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this. I changed this, it's because it's always set to true right now.
+ It's over-righted. So that's why it's always been show up.
+ And you're over-righting it. So I'll have to select it up here, the global account. Yeah.
+ Now you can use the actual value instead of overriding.
+ I think when you showed me this, I didn't have the Redux completed yet.
+[03:50:31]
+ Yeah.
+ Now that you have your variables, you can use it.
+ By the way, it's been working fine, but would I have to put the domain for cloud front
+ here as well?
+ I mean, it hasn't been with different paths.
+ Does cloud front just share the same? No. No, because
+ Cloud front doesn't have a, yeah, Cloud front just has the regular root path.
+[03:51:19]
+ You only need a special loop path for get.
+ Now type of a or an object. So, you can put if accounts.
+ That makes sense to
+ unless is it coming in as undefined or an object? Yeah, so there it's gone.
+ Maybe I'll just start from here.
+ Find in.
+ There we go.
+[03:52:22]
+ There we go.
+ And then sign out.
+ It's like a hidden room. Okay, thank you.
+ >> You're welcome.
+ >> I got to stash this and then put it in to a different branch.
+ >> Okay.
+ All right, so I guess what I'll say,
+[03:53:04]
+ I'm going to see you Saturday morning, maybe.
+ I'll be there.
+ I don't know if you'll be there.
+ I should be there.
+ See you Saturday.
+ See you Saturday.
+ Bye.
+
+///// FILE: "Level 4/transcripts/May 17, 2025 10-46.txt"
+
+Transcript from May 17, 2025
+
+[00:00:00]
+ Okay.
+ Welcome to Codex Academy, level four.
+ This is week 10, day five.
+ And the focus of this week is evaluations.
+ Today's agenda.
+ This to take attendance, do announcements, review.
+ Run the practice that we were working on
+[00:00:26]
+ before, second hour, mini evaluations, post-apractus and open the breakout
+ rooms during that second hour. And in the third hour, we'll also do mini
+ evaluations, but this time I'll post the assignment and open up the breakout rooms.
+ Attendance. So make sure you head on over to your code X account and mark your attendance as present if you're here right now.
+ And now time for announcements.
+ Then we get that loaded for you. Okay, so as a reminder, team. And it's crutch time. There's only pretty much going to be only one more week of class. A bunch of time, no time to rest. You want to spend as much time as possible,
+ just getting things done. And only when it's done, that's when you should,
+[00:02:07]
+ you know, take a break or rest, because
+ then it should just be smooth sailing.
+ The presentations are going to start next week.
+ presentations are going to start next week. Sometimes next week I ask the staff if we can do presentations on Thursday but that's not,
+ this doesn't seem likely. So it might be, you know, Tuesday or Wednesday. And during the presentations, you just need to
+ present what you have.
+ And I'll go over more things on Tuesday.
+[00:03:01]
+ Or maybe I should post some things today.
+ Yeah, maybe I'll post some things today about the presentations.
+ If not today, then Monday during the collaboration.
+ That way you can practice during the student collaboration day.
+ So many evaluations, 60 minutes per submission.
+ This is the last day for week nine corrections. And also the last day for week 10 on time credit.
+ The assignments are still in the process of being graded.
+[00:04:03]
+ And if you don't receive an extension to submit
+ some corrections or some assignments that are posed by now,
+ just let me know just like what was posted in the chat.
+ Because those extensions need to be manually done. They're not
+ automatic. So sometimes when the assignments are being graded, it can be very
+ easy to look over to skip this part because it needs to be manually done to grant the extensions.
+ Okay, so all the assignments are closed so if these are being graded for you, you should
+[00:04:54]
+ get extensions and if you don't see them right away, then send me a message.
+ So the capsule in finale was due on Thursday and there's going to be late credit until Thursday next week.
+ And also correction until Thursday next week.
+ A contact student success team. I see some, I see some assignments have closed. And,
+ yeah, some assignments have closed,
+ and they are below the 75% requirement.
+ So you need to contact the students
+[00:05:37]
+ suggesting as soon as possible about that.
+ And ask for it to be reopened.
+ Also tell them, "Hey, it's going to be a quick fix, maybe?"
+ or you've already fixed the problems in those closed assignments.
+ So most likely they'll say okay go ahead give it a try
+ since it's already done. But it can't be last minute and these needs to be
+ like as soon as possible.
+[00:06:19]
+ Okay help seeker don't get stuck for more than 15 minutes.
+ Host in July cohort. So let's see if there's anything new there.
+ Which there is.
+ Okay, let me see.
+ Okay, so you had a question about making the account path not available.
+ So in the front end.
+ So in browser router, you have a path, you have paths.
+[00:07:14]
+ Let me load up the sandbox.
+ So we can take a better look at it. Okay, so you have routes and paths.
+ One of these might be the account page.
+ And you can use asking how do you disable
+ or out if they're not logged in, how do you disable the account page if they're not logged in?
+ Well, that just makes things more complicated, which I haven't taught in class.
+ But there are some things that you can apply.
+[00:08:31]
+ From whatever component, whatever component, oops.
+ So whatever component you're rendering, it can decide what it will render. So I haven't taught the class how to disable a path, but
+ you know how to render a component from a path. And you also should know how to
+ give this component the ability to show itself or to not show itself. You've
+ basically look at the Redux variables.
+ And if you like what you see in the Redux variables render it normally,
+ if you don't like what you see, just let this return empty tags.
+[00:09:19]
+ But instead of doing that, if the person is not logged in, and they go to the, they manually
+ go to the account path, when there is no log in, render a message saying users must
+ be logged in to access the page.
+ So instead of rendering nothing, render a message. you can also redirect users back to the home page. You know, use that navigate to.
+ Maybe do it after a few seconds.
+ You can say, uh, we can say, uh,
+ users must be logged into access this page redirecting you back to the home page.
+[00:09:56]
+ And after five seconds.
+ So, uh, we can see that there's a lot of data.
+ So, uh, we can see that there's a lot of data.
+ So, uh, we can see that there's a lot of data. So, uh, we can see that there's a lot of data. users must be logged into access this page redirecting you back to the home page
+ and after five seconds. So you can do that. So you can do both of those. Or you
+ can just redirect them straight. So if they go straight, if they go to this and
+ they're not logged in, it just redirects them straight to the home page
+[00:10:23]
+ without any message. You can just do this by itself, or you can do both of these.
+ And let's see Chris gave a tip on how to view Moodle in dark mode.
+ And then Alex Sandra is asking something about the unit test.
+ Which name is also used as a describe. So there's a unit test right here.
+ It doesn't provide an answer.
+ There's a question here about Amazon Forest, but the question is in a different language.
+ I mean, the context is in a different language.
+[00:11:40]
+ Or waiting to get an answer expecting it to be undefined.
+ So let's see here.
+ This one is a very low score. If score is less than 4%, this basically means 4%.
+ So I think you have your things backwards here.
+ Backwards.
+ If the certainty level is 4% give me the answer.
+ That's what you're saying.
+[00:12:42]
+ You want it the other way around.
+ If the score is less than 4% return undefined.
+ I used a 50% score, which is 0.5.
+ So if the score is less than 0.5, return undefined.
+ Let's see, did you...
+ So I would fix the score here.
+ The condition doesn't look right there.
+[00:13:17]
+ So if the score is 1, that means it's 100% searching
+ that it has the right answer. If the score is 0.5, it means it's 100% searching that it has the right answer. If the score is 0.5, it means
+ it's 50% searching that it has the right answer. So use that understanding to create the
+ condition here. And I've built the route for the AI in the sandbox webpack is looking for a different loader.
+ Yeah, so there's some setup that we needed to do.
+ Continue with the videos. There's some setup that we need to do.
+ It's going to say something about node loader.
+[00:14:12]
+ And I thought in the class, how do you handle this?
+ Yeah, so if found out external thing. All right, so again, a reminder, you can use notebook LM and I've provided a compilation
+ of the notes and the code and the transcripts here in reference level 4.
+ If you click on compiled notes, there's a compilation for level 4, level three and level two.
+ So level, this one right here, level four text, that includes the code and the notes from
+ class, level four transcripts.
+ That's the transcripts all compiled into one file.
+[00:15:32]
+ Level three text, that's the code and the notes, and level two, that's the code and the notes.
+ So if you feed these all into notebook LM,
+ it can answer things, it can answer your questions based on what was taught in class. Now, when you get better answers, then if you search the internet, you get better answers
+ if you feed this to notebook LM.
+ Or more direct answers.
+ It doesn't take long to feed this into notebook LM.
+ Let me show you here.
+[00:16:07]
+ Let me just remove all these. It just takes a few seconds for notebook LM to study these documents.
+ Okay, so there's nothing in here in the sources. So how do you add them to notebook LM so that it can answer your questions about the class?
+ You need to go here, click on a document, click on raw, which gives you a link up here, then you give notebook,
+ alumni on the website, paste it in there, so that's the whole Oops, did I just close it?
+ The transcripts.
+ Click on raw.
+ Copy this link.
+[00:17:24]
+ Paste it into here.
+ That's for level 4. If you want some contacts from level 2 and level 3, you can do that too.
+ Click on the file. Click on raw. Get the link, add it here to the book LM, and then the last one is
+ level 2.
+ Click on raw, gives you a link up here, and that link right there.
+ Now, you just need to give notebook LM a few, like one minute to process these files.
+ And then it can answer all your questions.
+[00:18:23]
+ And the answers it gives you will be based on what was taught
+ in class, not just all the possible solutions
+ when you search on the internet.
+ So it's gonna be more efficient.
+ But this, you can see here when it was,
+ the last time it was updated.
+ But you can see here when it was the last time it was updated.
+[00:18:53]
+ You can see here that these files were updated two days ago. So these are up to date, up to two days ago.
+ Eventually I'll update these maybe next week.
+ updates maybe next week.
+ It finished loading or processing these files. It's still processing.
+ Well, it needs to.
+ You'll see here there's only three files,
+ but it should add another one there it is.
+[00:19:19]
+ Yeah, the files disappear for a while.
+ And then while they disappear, sometimes when they're processing, then they reappear you just have to wait for it.
+ So if I ask here the question that Alexandra had about.
+ Where is that?
+ Can I build the routes? Looking for a different loader and then,
+ let's see here.
+ Let's ask that question here.
+[00:20:07]
+ Aye. Let's ask the question here. AI.
+ So I'm just going to copy this question.
+ I'll probably change it to be more specific so that the AI can give a better answer. the route. route, and send box.
+ When Webpack is looking for a different loader.
+ I'm going to fix the error when Webpack is looking for a different loader when trying to build the backend server for AI in the sandbox.
+ Let's see if it talks about node externals here. [ Pause ]
+ >> Yep, talks about your external modules.
+[00:21:57]
+ It's here.
+ Even without watching the video, but it gives you the --
+ it tells you where in the transcripts
+ and where in the code to find an answer.
+ When you mouse over or if you click on this, those where it is in the transcript, I think
+ I might update these transcripts to show the date and the time. Right now it's just showing the time in the video,
+ but you don't know which video it is
+[00:22:31]
+ until you scroll all the way up to the top,
+ and then the top shows which video it is.
+ So I'll see about updating these time stamps.
+ updating these time stamps.
+ They're not, these time stamps are less useful when it's compiled in, when all the transcripts are compiled into one file.
+ Okay, let me see what else is here in the announcements. Okay, so the transcripts are up to date until we attend day three.
+ Okay, we're gonna review now.
+[00:23:12]
+ It's gonna be a short review because I think I was able to build the back end,
+ but not test it.
+ So, you know, if you haven't finished the practice,
+ account practice yet,
+ the ability to edit accounts,
+ then you should pay attention to this part.
+ And then have your microphones ready,
+[00:23:34]
+ if you're going to do many evaluations,
+ or if you have a question. So review basically on Thursday, we were still working on this line right here when the account is formed is submitted update the database. Yeah, still working on that line.
+ It's short, short one liner,
+ but it takes a lot of work to finish,
+ especially if you didn't make your front end
+ and back end routes yet.
+ What was accomplished was the back end,
+[00:24:31]
+ coded the back end, coded the back end, but then it gets to connect it to the front end. So let me load that. I'll share my screen.
+ I'm going to start these servers here.
+ I'm going to start them in reverse order for the back end, and get I'm gonna start the reverse border for the
+ backend and yeah run start to
+ start
+ yeah this appears
+ it
+[00:25:38]
+ again
+ that's the back end. This is the front end. [BLANK_AUDIO] And then start.
+ [BLANK_AUDIO]
+ So in the back end, on Thursday, this is what we did.
+ Added the update route.
+ I mean, added the path right here, the route and the handler, using the post method.
+ Remember you need, you need this one if you're going to use Axios to send some data through the post method.
+[00:26:36]
+ And you need this one if you're going to send data through postman with the post method.
+ with the post method.
+ And you get your data from the body, you first that body if you're gonna,
+ if your route is getting data from the post method.
+ In this case, the data that comes in will be the account.
+ So it's gonna be an object that has,
+ So it's going to be an object that has,
+[00:27:10]
+ it's going to be basically this, it's going to be that, it's going to be an object that has an email password name and
+ the phone. That's what we expect to come in.
+ Then we're going to run our function called update account,
+ pass it in these things here.
+ going to run our function called update account. Pass it in with these things here.
+ What is it going to do?
+ Well, there's a quick and easy one.
+[00:27:37]
+ This is the request right here, the request object.
+ Provide the name on the tape.
+ I mean, provide the table, the key. Okay, so this one's not right.
+ This one's just obvious right now.
+ So account info needs to be emailed.
+ Provide that email there. That's going to be the key.
+ And then we want to update the name and the phone.
+[00:28:18]
+ Okay, so then use the update method on the nice client. Give it the request and then.
+ In this case, we're returning the response straight.
+ Probably shouldn't do it like that.
+ I should be.
+ Let's see what test could we do some tests here. So we said provide a message saying if it was process properly.
+ So if response not metadata equals 200.
+ What I'm going to do is
+[00:29:16]
+ that message.
+ This. this message equals Okay, get count for.
+ And I'm going to provide the account info. [BLANK_AUDIO]
+ [BLANK_AUDIO]
+ I guess it's gonna come in, it's a string.
+ [BLANK_AUDIO] Oh, God, that's that must go.
+ Then return the message.
+[00:30:35]
+ So the message is going to be a blank string.
+ Actually, let me put here, undefined.
+ and define string. It's going to be a string or undefined. So if it's successful, I get something. If it's not successful, I get nothing. Okay, so that's the back end and then it's just gonna return that result.
+ Either message or undefined.
+ As far as we got, then eventually I found out the problem with the front end.
+ Because these values are not coming in properly. So I fixed it in the ENV file. But then it was not taking, I was not seeing the values being, the new values being reflected here.
+ And that was because I didn't restart Webpack.
+[00:31:51]
+ Webpack doesn't know that the ENB file has changed.
+ So it just stays instead of applying the changes.
+ So whenever you make changes to Webpack,
+ config file or the ENV file, you need to reset Webpack.
+ I mean, we start the server. So here's the Webpack config file.
+ You know how, if you make changes here, the server here won't restart.
+ You have to manually restart the server whenever you make changes to files that are outside
+[00:32:32]
+ of your app.
+ So basically whenever you make changes to files that are part of your dev dependencies
+ or not imported by your app, you need to restart webpack.
+ But if you're making changes, things connected to your app,
+ or things that are imported by your app,
+ then webpack will restart and apply those changes.
+ Okay, so that's as far as we got on Thursday. Now we're just going to continue that.
+[00:33:18]
+ We're going to continue this part when the account form is submitted, update the database.
+ So I'm going to put the debuggers. So we can follow it all the way.
+ I'm going to change this to a JavaScript debugger.
+ So I'm going to keep going blank. Again, you only need the JavaScript debugger terminal for node.js applications.
+ So your back end is no JS. But your front end is not no JS.
+ That's in the browser. It runs in the browser. So if here, right, it has
+ Dev Tools. You can use that for debugging, or you can
+[00:34:32]
+ use the
+ VS code debugger there, if you're in the front end.
+ You don't need to start it with the debug terminal.
+ This is just a regular terminal.
+ It's only when you're working in the node.js or the back end
+ that you need the JavaScript debug terminal
+ if you want to start debugging.
+[00:35:00]
+ So I want to debug the front end.
+ So I'm going to instead of using dev tools, instead of using these,
+ I'm not going to use that.
+ We use the DS code debugger.
+ And to do that, you need to open up a browser page that's controlled by VS code.
+ I'm just going to sign in here.
+ Because we're testing the update.
+[00:35:41]
+ This is handling the sign in the time.
+ Only one needs to handle that.
+ This means authenticating.
+ We don't need to handle that.
+ I don't the account information.
+ Right here, it automatically populates the email, the password, the name, and the phone number.
+ I don't, what you see here is I don't have multiple forms one for read one for delete one for update right I just have one form it's all combined into one form.
+[00:36:33]
+ This one basically just did the reading right because I see it here I see the account information so read I know that read was done. This part's gonna be here if I make any changes
+ this will be the update so I'll change it to Arnold.
+ And we actually let me just make it a name so obvious that it's changed. Now we can watch the debugger.
+ Okay, it's gonna go here and then it's gonna go there. Okay, that's gonna, it's gonna catch.
+ Okay, there it is. So it's handling the submit.
+ And you see if it goes into here. Yep. Okay so it pulled out the name here. Come on. So name. There's a name, phone number didn't change, though.
+ Okay, so it pulled out the information, or extracted the information.
+[00:37:51]
+ Now it's gonna send it to handle account update.
+ Gonna give it the new name and the phone number.
+ So here it is.
+ Gonna get the URL to send the data to.
+ You're gonna perform get the URL to send the data to. You're going to perform that data object.
+ And now we're in the back end.
+ This is the back end.
+[00:38:15]
+ It's receiving it.
+ We should see the account information here.
+ Actually, this account is not complete. We see here it has
+ the name and a phone number only. It's not complete. So I need to get that
+ information. It's going to crash here.
+ Why is it going to crash?
+ It's because it can't.
+[00:38:53]
+ There's nothing to update.
+ It doesn't have an email key.
+ Oops.
+ Sorry, I haven't been sharing this whole time.
+ She said something sooner. Okay, so where was I? I'm gonna start over. So I've set some debuggers and I was saying before you only need to have the JavaScript
+ debug terminal if you want to debug your back end. You don't need the
+ job with the bug terminal for the front end. See the front end is in, this is the regular
+[00:39:56]
+ terminal right here. It's handled by either in dev tools or by VS code debugger. This one right here.
+ Okay, let's go. I'm going to try try that again try to edit this account output
+ Just an obvious name change and
+ There the debugger stopped
+ Okay, missed that part right here
+ Anytime that again
+ and again. And you also see here that the persistent login is working.
+[00:40:51]
+ It's still logged in, even though I press reset
+ or refresh.
+ So here it's extracted the name and the phone. And then it's going to pass that name in the phone over.
+ I'm going to create a data object with that new name and phone number. Then send it to the back end.
+ to the backend. Here's the backend catching the name in the phone. Then I just realized
+ this is not enough information for the backend to work. It needs an email and the password to update the account. It only has the name and it only has the name and the, it only has the name and the phone.
+ It doesn't have the email here.
+[00:41:47]
+ And it doesn't have the password.
+ So it's probably going to crash.
+ So let's see what happens.
+ Yep, it crash.
+ It didn't even get, it didn't even get to the red spot there.
+ So what I'm gonna do, I need to provide everything here.
+ So I'm gonna just update this.
+[00:42:23]
+ I'm gonna pass it the account object.
+ What I'm going to do is provide the current account.
+ Let's see.
+ Let me rename this one.
+ So handle account updates. So if I get a result from here,
+ I want that to be called updated account for, actually,
+ what I mean by,
+[00:43:00]
+ oh, I need the new account. Okay, so I'm expecting the new account to pass this.
+ I need to pass not just the name of the phone, but I also need to pass in the email and
+ the password.
+ So I need to get that with the selector.
+ So that global account.
+ It's a global variable, meaning all the components have access to it, and the data that
+ it contains is the account data.
+[00:44:01]
+ So I'll store that in a variable called account.
+ And then I'll pass that account into here, but with the new name and account.bone equals phone.
+ So I'm taking the account that I have in,
+ I currently have that's logged in.
+ I'm going to pass in the new name and the new phone from the form.
+ Give it to the handle account update.
+ So I need to fix this to accept the new info. [BLANK_AUDIO]
+[00:45:07]
+ New info.
+ That's gonna be an account.
+ [BLANK_AUDIO]
+ And I don't need to form this data anymore.
+ I'm just gonna pass the account as is the new info.
+ Let's see, let me call it new data.
+ Even though, now that's fine.
+[00:45:38]
+ Okay, so that one should look good going into there.
+ I need to, let's watch it go into there, but it's the
+ response is not going to be right, because it's just sending a message instead of what's can crash here. We start this.
+ Okay, so I'll rename this. We can watch it happen.
+ Okay, so we have a name here, a new name, Z.
+ There's a new phone right here, I didn't change it.
+ So let's just say it's a new phone.
+[00:46:35]
+ And we have the current account that we have.
+ This is the current account with the current name.
+ But we're going to change the name here.
+ I'm not assigned to read only property of the object. Okay, I guess I can't edit it.
+ So I'm going to make a new object, a new data object. on the next data equals, and's going to be a name.
+ Wait, no, there's going to be an email.
+ That's the account.
+[00:47:54]
+ That's the account.
+ That password. That's account.password. There's going to be the name which is going to be a phone which will be a new phone.
+ And that's what I'll pass into here.
+ I'll pass in that data.
+ That should work.
+ I guess I didn't want to read up.
+ So it's basically looking out for the state variable.
+[00:48:59]
+ If I try to edit it, read us doesn't like it.
+ Oh wait, I was just editing. I was changing the
+ with a flip left here. I should be able to edit the properties, but let's see what happens if I just put left there.
+ If it'll let me. Okay, I put my chainset in the name and the account.
+ So there's new name here and the phone number.
+ I mean, let's see if it'll let me edit this.
+ You'll crash.
+[00:50:02]
+ It won't let me edit.
+ Redux doesn't want editing of the variables of objects.
+ You can edit it if it's a placeholder string, but if it's an object,
+ Redux will not you. So let's just reform that.
+ Okay, let's try that again.
+ Put a name here and a phone number, trying to save it. Okay, we're going to form this data with the
+ new information. So the data that came in, there's an, there's an, the current email,
+[00:50:59]
+ there's a new name, the current password, and there's a new phone number. I'm going to send that to the backend.
+ The backend receives it here.
+ The account info that has all that, so that looks good.
+ Right here, you can see that we haven't verified the password.
+ You can see that we haven't verified the password. It'll just go ahead and change the information without verifying the password.
+ So here, it's going to create the request.
+ It's going to be created the request object with a new email name and phone.
+[00:51:41]
+ Actually, with a current email, but with a new name and a new phone.
+ And it's going to try to update it, which it does. It updates it without verifying the
+ password. So that's a security risk because all you have to do is provide an email and then it'll, if you know someone's email and
+ you know this server address and the server route, you can just send the request and it
+ will just update that email even if you don't authenticate it with a password.
+ I'm going to say message. It should be returning an account instead of a message.
+ So we're going to get wrong input from the, it's going to make a round trip to the front end.
+[00:52:45]
+ Front end is going to receive something.
+ It's expects to receive an account, but instead it receives a message.
+ So it's going to start getting buggy from here.
+ The message is just a string, but it doesn't receive an account.
+ So that's fixed at the back end should be returning an account.
+ So if response is 200, maybe rename this to account, this will be either account, it'll store in account, or it will be undefined.
+ The account will be... account in both the thing that came in.
+[00:53:59]
+ Actually, to make it easier, I just basically don't need to do that. It's not equal to 200. 100.
+ That the account be the account info.
+ The one that came up through here, that that one be undefined.
+ Just change it basically.
+ And now return the account info.
+ So this means return the account if everything goes fine. We're going to
+ whatever came in through here. We'll get returned. But if there was something wrong,
+[00:54:33]
+ then just change it to undefined and that return undefined. So that looks good. So I need to to actually this update phase should be authenticating first.
+ You can have a question, and you have
+ have it return multiple things.
+ If you want to return an account and the message and return an object.
+ So if you want to return multiple things, you make an object.
+ Let's call it result.
+ You can make it a tuple or you can make it an object.
+[00:55:26]
+ So here's how it would be as an object.
+ So if your account is an account info, and then the message right here could be like
+ success updated account.
+ Then you would instead of returning the account,
+ you just return that result.
+ That's how you return multiple values with an object
+ or with a tuple.
+[00:55:54]
+ If you're going to do it with a tuple,
+ tuple is basically just an array, a fixed array
+ would just the information, a structure to array basically it has, it's always
+ going to be the same structure.
+ You can do it like this so position zero will always be the account.
+ Position two will always be the message. You can do it like that to
+ to pull and then return the result instead of the account information.
+[00:56:36]
+ But I'm gonna, I don't need that message. I just want the account information.
+ If it's successfully updating, I just want the account information. If it's successfully updating,
+ I just want the account information.
+ It's up to you. You decide.
+ People like to have more information.
+ But when you provide more information, it's just more complex.
+ You have to pull out and extract the information that you're providing.
+[00:57:13]
+ This takes a little bit more work.
+ So it's up to you however you want to design it.
+ For large systems, most likely they're returning an object or a tuple.
+ You can decide which one you want to use, providing more information.
+ For larger systems, larger apps so that it's easier to keep track of what's going on to return more information through a
+ tool or through an object.
+ So what's missing is the authentication part here.
+[00:57:55]
+ So that's what we need to add here. as I authenticate the password before updating.
+ So I'm going to take a break now. [ Pause ] All right, there we go.
+ See you after the break. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay. Okay, so we're back from the break.
+ And again, to the second hour of class, I'm just going to post the practice here.
+ If you want to continue with that. And I'm going to open up the breakout rooms. And they'll be open for 42 minutes. So, I'm probably two slots for many evaluations today.
+ Maybe you're ready, maybe you're not ready, I suggest this
+ Do it anyways and see what you what points you can get
+[01:10:34]
+ Because it's probably gonna be your second submission
+ So maybe your pass, maybe you won't
+ If you don't pass, then you can at least
+ contact the Student success team and tell them, I want to do an extra submission
+ for this mini evaluation.
+ Actually, let me see here for week 9.
+ Yeah, week 9 will basically the corrections for week 9.
+[01:11:12]
+ If you don't have those in, those will close by, you know, the end of today. Week 8 corrections are closed. We have to contact student success team for that.
+ We have to contact student success team for that.
+ This is the last day for week nine corrections after that.
+ Then you have to contact the student success team for that to be reopened.
+ So as I was saying, I always announced it at the beginning of class, if anything is
+ closed on you, contact the student success team.
+ You'd rather do it in the next hour.
+[01:12:56]
+ Okay, so yeah, you can take this 39 minutes, which is remaining to go over what you want to discuss in the evaluations.
+ And then we'll talk about it in the third hour.
+ So if no one will be doing a mini evaluation
+ in this second hour,
+ I mean, that means you're willing to let the,
+ it's possible that the assignment might close on you
+ and then you're gonna contact to in success team
+[01:13:23]
+ if you wanna make that decision.
+ That's fine.
+ I can use that this hour to help catch you up or answer
+ any questions that you might have.
+ Oh, I did notice, Alexandra, I tried to look at your website
+ yesterday, but it was not rendering so
+ You have to be careful only upload things to GitHub or
+[01:13:54]
+ You know anything that deploys your site
+ Anything that deploys your site only upload it
+ If your if it's if the code is working. Never upload broken code
+ because you don't want a site that goes down.
+ So as soon as if something is working locally and then as soon as you upload it, you find out there's something wrong.
+ Then you should probably revert it or.
+ I don't know how I never tried reverting the the push, but it's most likely the problem is because it's contacting the wrong servers.
+[01:14:44]
+ The problem is because it's contacting the wrong servers. And that should be a quick fix.
+ Just basically if condition that says contact
+ AWS NEMDA instead of local host.
+ Okay, so I'm going to try to help Alex and her then.
+ I'll give you screen share
+ and we'll try to find out what's going on but yeah as much as possible.
+ Never let crashing code be deployed.
+[01:15:18]
+ If your code is going to crash only let that happen in your local computer.
+ Yeah, it's crashed. So render is nothing.
+ Server responded with a status. So it's probably, it looks like it's trying to contact the wrong server
+ I can hear you, well I heard something.
+ You don't know I had to tell, I didn't want to yell at you, I had to yell at
+ Alexa to stop the music. So.
+ Oh.
+[01:16:08]
+ You had some music playing in the background?
+ Yes. [BLANK_AUDIO] [no audio] So you said everything works fine locally.
+ Let's get it running on the other side. [ Pause ]
+ Okay, I just wanted to make sure I have the right commands
+ because I've been playing in the sandbox with the Google Cloud back in.
+ Hey, you should have a different folder for Google Cloud back in.
+ It's just that the commands are different because I have a start to start to over there.
+[01:17:59]
+ So I want to make sure I wasn't supposed to be running start to over here.
+ are always in its twist to be learning start to over here.
+ Okay, well, what you can do to remedy that is just put the note there in your console log.
+ Right now it says, "
+ "NPM run build." So,
+ so we should tell your console log should tell you what you should do. So,
+ what basically the workflow is just type "NPM start" and then just follow what you,
+[01:18:27]
+ the message you left for yourself in the console log.
+ >> Wow. That's really large. >> Oh, it's very 500%.
+ >> Okay. [ Pause ]
+ >> Yeah, so it doesn't look like it works even locally.
+ >> No. >> It was the --
+ >> Yeah. >> It's the Redux stuff. But it should have gotten
+ learned. Well, right now you're in the main branch. So let's fix that main branch. So let's look at the message. Look at the error message.
+[01:19:46]
+ What is it saying?
+ Missing a semicolon in home.
+ What? Why?
+ Why does it say CD import? So look at your file that is pointing to home.tsx.
+ That's what I'm doing.
+ Why is there a semi-light in one?
+ Look at line one. That's wrong.
+[01:20:26]
+ No way that came from.
+ Probably I was typing fast and thought I was in the terminal and I wasn't
+ It even says there on the in the message.
+ What was wrong with it? Line one says that it's even pointing at it right there in the message what was wrong with it.
+ Line one says that it's even pointing at it right there in the message.
+ Okay, that's that's even rendered.
+ It rendered so let's at least push that at least push that so it's.
+[01:21:04]
+ Yeah, that's not the right color. I don't know why it's growing around with the colors now.
+ And tab colors are not correct either. So, did you install an extension?
+ No, I haven't done anything except Redux.
+ Maybe you actually.
+ Change a value in a CSS file or something or a SAS file
+ I haven't changed any colors in this I say I see something there
+ Where I
+[01:21:37]
+ The same color that you see in your page
+ Well, let's see where this group item color. So maybe like, that's not the
+ age. That's a T. Old background color. Okay, I have a
+ that's not the olive. Yeah, that's not olive. I don't have any olive in my CSS. Okay.
+ Let's, most likely it's going to be background color.
+ So, you can click on the browser and I can inspect it to see the CSS and the browser.
+ It's also no longer using this logic, so that got my stuff somewhere out too, because that was working. So you have to pull up the CSS at the bottom. Or on the, that's actually on the side.
+[01:22:49]
+ It got, it's in the side panel.
+ You can close the bottom panel.
+ Don't need that one.
+ In the bottom panel.
+ Or in the CSS panel.
+ It's bigger.
+ So something is changing the background color here.
+[01:23:16]
+ Why does it say it's all.
+ Dark haters.
+ Yeah, can you disable that background color, see what happens?
+ >> I do want to do it.
+ I know what it is.
+ It's that new extension that it's this.
+ >> Yeah.
+[01:23:37]
+ That's what I asked you.
+ Did you install an extension?
+ >> I thought you meant a VS code extension. Yeah, that was it. Okay. Well, dark reader can, I'll just go blind. That's fine.
+ All right, so that's fixed.
+ So this is maybe you can set dark reader for specific or to more local host.
+ I mean, I don't care about it right now.
+ I'll just turn dark reader off. It's fine.
+[01:24:11]
+ Okay.
+ All right. Well, at least your site looks like it's rendering. So I would commit those changes and put the first dose to GitHub.
+ So at least you have something rendering all the time or something that can
+ render. You never want anything crashing, but it's deployed. [ Pause ] >> Thank you.
+ Yeah.
+ >> I didn't know the dark reader would do that.
+ Wow.
+[01:25:16]
+ That was very educational.
+ >> That's basically overriding the CSS of the science that you visit.
+ Okay, let's double, you want to double check if it's properly rendering on GitHub
+ or AWS Cloudfront.
+ >> It is not. You need to make sure that if it got the new updates, not yet, it's still two days ago.
+ It's stinking.
+ Interesting. interesting. It didn't commit. So it looks like my deploy script is working correctly.
+[01:26:11]
+ Let's take a look at it then. All this refractive one more time. Go click on settings and pages.
+ No, I mean, there's no commit in here. The last commit is three two
+ days ago on the.
+ Repository. So, okay, there was not committed here. It's definitely not going to
+ the page. Yeah, why is my script not working now? Yeah.
+ >> If you want to get a >> If you want to get a
+ >> If you want to get a
+[01:26:52]
+ >> If you want to get a
+ >> If you want to get a
+ >> If you want to get a
+ >> If you want to get a
+ >> If you want to get a >> If you want to get a So it's maybe just taking a while. It looks like it should work.
+ - It could be. I'll check it again.
+ - I'll just refresh.
+[01:27:08]
+ Yeah, refresh.
+ I'll go to the settings page.
+ It's a little bit easier to check it from there
+ if it's deployed or not.
+ - It's not doing it.
+ It's clearly not.
+ It never takes too long.
+[01:27:22]
+ It's always much faster than this.
+ - Yeah. Okay, I guess that'll do it manually then. It never takes this long. It's always much faster than this.
+ Yeah. Okay, I guess that'll do it manually then.
+ And see what happens.
+ Nothing to commit working to be clean.
+ Interesting. It should be able to commit because you're, oh, no, you're rebuilding it, but it doesn't
+ it didn't make any changes.
+[01:28:13]
+ So.
+ Yeah, I'm going to have to make a change. After the word welcome, you can put a, okay, you can do that too. [BLANK_AUDIO] [ Pause ]
+ >> Okay. So it looks like it's not liking the deployment somewhere.
+ Let's look at the message again.
+ I think it's still trying to contact not found.
+ I think it's still trying to contact local host.
+ It could be. >> Thank you.
+[01:30:54]
+ >> Thank you.
+ >> You have already deployed AWS.
+ >> Yeah, but not after I rebuilt it again. >> Why would you still have to play with it?
+ >> Have to look at the error message.
+ That's going to be your biggest clue.
+ >> My logic is missing, no.
+ Maybe that's only on the sandbox.
+[01:31:42]
+ It's the front end. You're looking at the back end.
+ I was looking at both.
+ I thought it was on the front ends,
+ but it's possible that that logic doesn't exist in my capstone,
+ and it might only be my sandbox.
+ No. No.
+ That's the sandbox.
+[01:32:12]
+ That's the issue.
+ I know I had that logic where it said that if to check the domain and if the domain is local and that logic, I don't know where it is now it's gone.
+ But it was very hard to put their front hands out of the back end.
+ I don't remember if it was the front end of the back end, but it said, look at the domain. And then it said, if the domain is this, then do that, if the domain is this,
+ that's right. And that was right. And then there was not in the back end.
+ Is not in index dot.
+ No, it wasn't where is it.
+[01:32:51]
+ It's in the it's related to the root path.
+ So.
+ Is it in here?
+ Yeah.
+ Wait, look at index dot TSXs-x where it calculates the path.
+ Yeah, so it must be in the gap of the path.
+ Yeah.
+[01:33:11]
+ But it's not.
+ There's your logic, right there.
+ No, that's not it.
+ There was another whole set of logic somewhere.
+ Oh, yeah.
+ For reading.
+ Yeah, so.
+[01:33:24]
+ That might be in the back ends. No so that might be in the back end.
+ No, that should be in the front end.
+ The front end should be deciding.
+ So where's that quote of the day component?
+ That's the one that's the split.
+ That's probably where it was.
+ It was in the quote of the day component.
+[01:33:40]
+ Yeah, it's right here.
+ That's what I was looking for.
+ Is that the right lambda URL?
+ Yeah, all of that is all of those URLs are correct.
+ But should they only be in the code of the day or should they be somewhere else as well?
+ Like in the get root path.
+ the day or should they be somewhere else as well like in the get root path.
+[01:34:12]
+ That depends on how you want to program it.
+ Well I mean what the what the component needs. Get root path right now is is so what is the purpose of get root path?
+ That's for the nav bar you need
+ to make right so this purpose that you have right here on this file is it's not
+ for the nav bar this is for the back end so it's a different I don't have
+ anything in the front end except which in get root path, which is here.
+ Yeah, so it isn't even, um, does it even get to the point where it renders get root path online 9?
+[01:35:08]
+ No, it's stopping before it. Okay, so let's let me let's look at the error message one more time in the the tools
+ from GitHub I
+ Think I close the window
+ Let me open it. >> It's just doing a 404.
+ >> Main.js.
+ >> Yeah.
+ So let's for the front end, go back to your VS code.
+[01:36:05]
+ Let it render something very simple like a hello world.
+ So comment, that's the back end.
+ Go to the front end.
+ >> I was going to see this.
+ >> Okay.
+ >> No, I was going to see a box.
+ I had to switch windows.
+[01:36:19]
+ >> Yeah. So just comment stuff out so that it can
+ just render a simple hello world.
+ Let's see if it can even get to that.
+ In the get root path?
+ No.
+ In the home page index HTML.
+ I mean index TSX.
+[01:36:39]
+ Basically just we wanted to render hello world.
+ Can it do that?
+ So disable everything there and then just render hello world. Can it do that?
+ So disable everything there, and then just render hello world.
+ Maybe with H1's around it. [no audio]
+ And in that case, you don't need quotations.
+ Otherwise, it will literally put the quotations.
+[01:37:18]
+ I mean, I don't care if it's a quotation or not.
+ Because it's just a text.
+ Let's see if it can do that.
+ That should be...
+ [no audio] that's easy to do that. That should be actually, let's look at the imports and just Okay.
+ Now you just have to wait for it to take the changes.
+ Make sure that's it.
+[01:38:20]
+ Okay.
+ Let's go ahead and try it.
+ Let's try to render it.
+ Let's look at your your ignore file.
+ So it can even render hello world. So the problem happens even before that.
+ So let's look at get ignore.
+ Yeah, you're ignoring the disk folder. You don't want to do that.
+[01:39:01]
+ It needs, it needs that. Okay, now front end needs the disk folder back, but in
+ back end, GitHub can't use a disk folder for the back end, but it needs it for the front end.
+ If you're not sure if whether or not you need to This folder and then just remove it from get ignored.
+ I mean like from all instances, even your back end.
+ If you're not sure. I mean you should only ignore it if you know that you don't need it.
+ But if you're just putting it there because you just want to copy a pattern of putting it and get ignored.
+ So that was the problem. You're ignoring the disk folder. So you can reactivate everything.
+[01:40:01]
+ Front end needs the disk folder.
+ That's where it deploys from when it comes to GitHub.
+ It might be working fine in Cloud Front though,
+ 'cause it doesn't,
+ well, it does use a disk folder too. I'm not going to be able to do that.
+ I'm not going to do that.
+ I'm not going to do that.
+[01:40:59]
+ I'm not going to do that.
+ I'm not going to do that. I'm not going to do that. I'm going to do that.
+ I'm going to do that.
+ I'm going to do that.
+ I'm going to do that.
+ I'm going to do that.
+ I'm going to do that.
+[01:41:23]
+ I'm going to do that.
+ I'm going to do that. I'm going to do that. I'm going to do that. I'm going to do that. I'm going to do that. So be very careful with what you're doing with your code.
+ If you don't understand what the code is going to do, it's possible to crash your things.
+ I mean, like, even with get ignore, you need to understand that you need the disk folder for the front end. But you don't need it. Basically GitHub is just a
+ place to share your code. And in this case, you're also using it to render your
+ front end. So if it's going to render the front end, it needs the disk folder.
+ And in terms of the back end, GitHub cannot run run the backend, so it doesn't need the
+[01:42:09]
+ disk folder there.
+ But one of the assignments requires the disk folder, so I recommend removing the disk
+ folder from Gitignore from the front end and the back end.
+ Thank you.
+ You're welcome. Okay, so let's see, eight minutes left until the next break. Any more questions. Is there Redux all set up?
+ Are you in problems with Redux or?
+ The assignment requirements for App Engine going going up to App Engine, basically you can
+[01:43:30]
+ meet the requirements just by integrating sandbox, the sandbox code into your capstone.
+ So, for example, the App Engine assignment assignment that just requires just for your front end to connect to the back end app engine. It doesn't require any AI or
+ or fancy interface.
+ So that one's going to be pretty easy to accomplish because it's all in the sandbox.
+ Just need to get it to work in their capstone.
+ Okay, so I'll just wait until the next break.
+ I'll hang out if anyone has questions.
+[01:44:28]
+ Third hour is when Chris will do his mini evaluation. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay, so we're going to take a break.
+ Let's go ahead and do that.
+ I'll post the break now. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay, so we're back for the break.
+ Kind of into the third hour.
+ I'm just going to post the assignment here and start the breakout rooms.
+ Well before I do that, I want to share something useful. So here's notebook LM set up with, you know, the compiled notes and code and transcripts. So if there's any code that you're you're wondering how it might affect your projects, and you're not sure
+ about it, you can ask it here. Like for example, is the dist folder required to be in the GitHub repository for the front end.
+[02:03:53]
+ And ask that question like that.
+ So like you're thinking to yourself, like, should I put the disc folder in the getignore file?
+ Quick answer is based on the sources.
+ Yes, the disc folder is required in the GitHub repository
+ for the front end if you want GitHub to render your site.
+ So that's correct.
+ And it just gives the details about that right there.
+[02:04:25]
+ And then I can ask the question,
+ is it required for the back end?
+ So is the this folder required to be
+ in the head repository for the back end?
+ [
+ Does here based on the sources in our conversation history, the
+ Disfolder is not required to be in the
+[02:04:55]
+ GitHub repository for the backend.
+ That is correct.
+ And it describes you here.
+ It's not required, but there is an
+ assignment that is is that's the
+ App Engine assignment or the App Engine or Capstone App Engine for that
+ assignment it requires the just folder to be and it needs to review the
+[02:05:19]
+ just folder. So even though your back end cannot run in GitHub, therefore the
+ disk folder is not necessary to be in the GitHub repository. The capstone
+ app engine assignment wants to review the disk folder. So therefore you should enable the
+ disk folder in your GitHub repository to fulfill the requirements for that
+ capstone app engine assignment.
+ Okay, so that's that. So basically, when you've got notebook,
+ notebook LM set up with the compiled class notes code
+[02:06:12]
+ and transcripts, you can ask if
+ like how some code will affect your project.
+ And I'm gonna start start the break our rooms now.
+ And I'll be Chris in the breakout room, the mini evaluation room. [ Writing on Board ] Okay, so I'll need to rename the rooms here.
+ Okay, I guess it's not taking.
+ So room number three is for the mini evaluations. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] Okay, so, alright, so the breakout rooms are back.
+ Looks like Yuki has a question.
+[02:47:07]
+ The raw for level three text is not working for notebook LM.
+ It's working.
+ Maybe you're not copying the correct link.
+ So, remember, click on the word raw.
+ It'll open up the page that just looks like a text file.
+ That's the link that you copy.
+ And then that's what you paste into notebook LM and just give notebook LM a few seconds process to file. Okay, break our rooms are back. And we were able to work on the Redux account practice a little bit.
+[02:47:53]
+ Be sure to mark your attendance.
+ You have four minutes to do it.
+ Other than that, classes dismissed.
+ We're still working on evaluations this week.
+ And let's see.
+ And there'll be corrections available for week 10 next week.
+ I'm going to open up the.
+[02:48:36]
+ The breakout rooms for 30 minutes to finish the eval for Chris. Okay, it's open. I'll meet you in the breakout room, Chris. [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] [BLANK_AUDIO] I was going to say, can you hear me?
+ Hello?
+ I can hear you, yeah.
+ Yeah, basically, that's, you get the point there.
+ You get the point for that.
+ This is the bigger it is, but it takes more, it's more expensive because.
+ Yeah, it takes up more space and more CPU,
+[03:19:06]
+ and basically that'll be the usage.
+ You will get the free usage on App Engine.
+ (gavel bangs)
+ - I'm setting up my capstone to use,
+ like, you know how I have to do the API
+ also and the AI and integrating it so that, and with in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image in the image And then that question is answered by the user.
+ It push the answer of that question is the image that gets generated.
+[03:19:51]
+ So it turns into like this one hole, like flow thing of three different actions.
+ So you said, did you do that or that's what you want to do?
+ And that's what I'm sending up.
+ That those, remember how I had to delete this stuff from my AI?
+ I think that was what me always been working on
+ the API recipe response from the spoon-acular.
+ >> Yeah, you can basically, that's called the pipeline.
+[03:20:15]
+ You go from one API or one AI from another just taking the,
+ giving it input, getting that output,
+ giving that output to another AI
+ and then letting it process that,
+ and then you get another output.
+ So it's basically a chain,
+ and basically you can have like five AI,
+[03:20:35]
+ AI is line up in a row.
+ One gets, and you pass the input.
+ You get, you give the input to one AI,
+ it provides an output, and you take that output, give it as an input to one AI, it provides an output.
+ And you take that output, give it as an input to another AI
+ that gives you a different output.
+ So that's what you're doing.
+[03:20:51]
+ You're setting up some kind of pipeline
+ with two check points.
+ The only thing that I've had some, like a bit of a speed
+ bump is like
+ just the formatting the responses so that
+ just constantly changing the response formats so that the next thing can use it.
+ >> Yeah, that's what you need to do.
+[03:21:18]
+ Format the result or the output so that the next AI can use
+ can use it as an input.
+ Yeah. That's right.
+ Okay, so that completes the mini evaluation.
+ It looks like you get all the points here.
+ Woo-ya! Awesome.
+ Okay, so I'm going to send you.
+[03:21:41]
+ I still have that level two.
+ It'll just take a second I still have that level two. You know, just take a second.
+ 10 level two.
+ I have to talk about TDD with you for level two.
+ Level two.
+ Any valent level two eval?
+ I have still apparently.
+[03:21:59]
+ Level two or week two or week two.
+ We value.
+ Yeah.
+ My bad.
+ Yeah.
+ So yeah, you have to you to, you have more than that. You have a few things that are below.
+ Yeah, check your check each assignment and make sure each assignment and check each evaluation and make sure they are meeting the requirements.
+[03:22:22]
+ And if they're not, and if they're closed, make sure you send a message
+ to student success team. So back and just not someone.
+ Oh, fuck yeah.
+ I had to change that because of the,
+ all the API's weren't returning,
+ they were causing an error because of that change
+ of hugging face.
+[03:23:01]
+ So I just fixed that last night.
+ That's why I couldn't resubmit it until then. I needed that point.
+ Then this level 9 is a little bit of submission.
+ I submitted that didn't I?
+ Yeah.
+ So two of them.
+ Okay.
+[03:23:19]
+ So that's a no.
+ I did submit that.
+ So you just corrected this.
+ Oh, you just did to dig them out.
+ Okay. Okay. I'll submit this today.
+ Okay, so I got a contact here about the back, the front end.
+ The re-opened front end for a new submission. Is that what?
+[03:23:42]
+ Is that already done two submissions?
+ Yeah. I think you, right, or I think it might have closed on you, you didn't,
+ you didn't get a chance to submit the correction, because usually when you submit a correction,
+ that you know, you meet the requirements after that, but I think for that one,
+ it closed on you before you can submit the correction.
+ I think that's funny too, because I finished everything except I went through that,
+ fixed everything except for the error page chain from the email token thing because of the
+[03:24:13]
+ hugging face change. So, if I wasn't able to, I don't want to submit that to what I was done,
+ I should just submit it and let it sit there. Should have submit the 7. Let's sit there and make some more sense.
+ should submit the 7. Let's sit there and make some more sense. Okay, help.
+ Contact you about this and week two.
+ Okay. Thanks for your help today.
+ You're welcome.
+ You're going to be here Monday, right?
+[03:24:35]
+ Tuesday?
+ Yeah. So I'll post some things for Monday for you guys to look at because it's
+ presentation week.
+ So it's post something different because at because it's presentation week. So it's a post something different
+ because usually when it's student collaboration day, I posted a specific slide, but
+ this coming Monday since it's presentation week, I'm going to post a different slide that
+ will give you a, you know, a head start on the week. Okay, cool. Thanks thanks good luck with your in-laws. Oh yes thank you very much. See you
+[03:25:07]
+ again. Bye. Bye.
+
 ///// FILE: "Level 4/transcripts/May 3, 2025 10-36.txt"
 
 Transcript from May 3, 2025

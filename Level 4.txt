@@ -67,7 +67,7 @@ export default {
 
 ///// FILE: "Sandbox Level 4/backend/src/index.ts"
 
-import express, { json, Request, Response } from "express";
+import express, { json, Request, Response, urlencoded } from "express";
 import cors from "cors";
 import { root } from "./routes/root";
 import { api } from "./routes/api";
@@ -79,6 +79,7 @@ import dotenv from "dotenv";
 import { crud } from "./routes/crud";
 import { read } from "./routes/read";
 import { signup } from "./routes/signup";
+import { update } from "./routes/update";
 
 dotenv.config();
 
@@ -88,7 +89,8 @@ const path = "/"; // The path where server info will be rendered in a browser
 
 const app = express(); // Instantiate the Express.js object
 app.use(cors());
-app.use(json());
+app.use(urlencoded()); // For receiving data from Postman form-urlencoded
+app.use(json()); // For receiving data from axios.post
 
 app.get("/", root); // The handler runs when the path is visited in the URL
 app.get("/api", api);
@@ -98,6 +100,7 @@ app.get("/env", env);
 app.get("/crud", crud);
 app.post("/read", read);
 app.post("/signup", signup);
+app.post("/update", update);
 
 const mode = process.env.mode;
 const isRunningLocally = mode === "development";
@@ -690,6 +693,34 @@ export async function readAccount(
 }
 
 
+///// FILE: "Sandbox Level 4/backend/src/modules/updateAccount.ts"
+
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument, UpdateCommandInput } from "@aws-sdk/lib-dynamodb";
+import dotenv from "dotenv";
+import { Account } from "./Account";
+import { niceClient } from "./niceClient";
+
+dotenv.config();
+
+export async function updateAccount(accountInfo: Account) {
+  // TODO: authenticate password before updating
+
+  const request: UpdateCommandInput = {
+    TableName: "logins",
+    Key: { email: accountInfo.email },
+    AttributeUpdates: {
+      name: { Value: accountInfo.name },
+      phone: { Value: accountInfo.phone },
+    },
+  };
+
+  const response = await niceClient.update(request);
+  if (response.$metadata.httpStatusCode !== 200) accountInfo = undefined;
+  return accountInfo;
+}
+
+
 ///// FILE: "Sandbox Level 4/backend/src/routes/api.ts"
 
 import { Request, Response } from "express";
@@ -791,6 +822,19 @@ import { getTrivia } from "../modules/getTrivia";
 export async function trivia(request: Request, response: Response) {
   const query: any = request.query;
   const result = await getTrivia(query);
+  response.send(result);
+}
+
+
+///// FILE: "Sandbox Level 4/backend/src/routes/update.ts"
+
+import { Request, Response } from "express";
+import { Account } from "../modules/Account";
+import { updateAccount } from "../modules/updateAccount";
+
+export async function update(request: Request, response: Response) {
+  const account: Account = request.body;
+  const result = await updateAccount(account);
   response.send(result);
 }
 
@@ -1443,13 +1487,10 @@ import { Account } from "../models/Account";
 import { baseUrl } from "../utils/baseUrl";
 
 export async function handleAccountUpdate(
-  newName: string,
-  newPhone: string
+  newInfo: Account
 ): Promise<Account | undefined> {
   const url = baseUrl.databaseServer + "/update";
-  const data = { name: newName, phone: newPhone };
-  debugger;
-  const response = await axios.post(url, data);
+  const response = await axios.post(url, newInfo);
   const account: Account = response.data;
   if (!account) return undefined;
   return account;
@@ -2597,11 +2638,13 @@ export function AccountContent() {
 import React from "react";
 import { AccountContent } from "./AccountContent";
 import "./AccountModal.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { set } from "../modules/redux/store";
 import { handleAccountUpdate } from "../controllers/handleAccountUpdate";
+import { selectGlobalAccount } from "../modules/redux/stateSelectors";
 
 export function AccountModal() {
+  const account = useSelector(selectGlobalAccount);
   const dispatch = useDispatch();
 
   return (
@@ -2663,12 +2706,18 @@ export function AccountModal() {
     event.preventDefault();
     const form = event.target;
     const inputs = form.elements;
-    const name = inputs.name.value;
-    const phone = inputs.phone.value;
+    const newName = inputs.name.value;
+    const newPhone = inputs.phone.value;
     const closeButton = inputs.closeButton;
-    const account = await handleAccountUpdate(name, phone);
-    if (account) {
-      let action = set.globalAccount(account);
+    const data = {
+      email: account.email,
+      password: account.password,
+      name: newName,
+      phone: newPhone,
+    };
+    const updatedAccount = await handleAccountUpdate(data);
+    if (updatedAccount) {
+      let action = set.globalAccount(updatedAccount);
       dispatch(action);
       action = set.accountModalErrorMessage("");
       dispatch(action);
